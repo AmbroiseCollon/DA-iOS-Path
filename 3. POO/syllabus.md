@@ -12,19 +12,23 @@ Toute la partie doit être accès sur un but : comprendre pourquoi ce concept s�
 Section 1 : Opposition avec la programmation procédurale  
 Section 2 : Qu’est-ce qu’un objet ?
 - Un objet permet de cacher une implémentation cf cours C++
+<!-- Tu parles de l'encapsulation ? Du principe d'interface ? Si oui, c'est pas un peu tôt ? C'est super difficile à comprendre je trouve, sauf si on prend un exemple de la vie réelle. (Sandy Metz a pris l'exemple d'une capsule spaciale qui n'a aucun lien avec l'extérieur et ne se connait qu'elle même. Pour communiquer, elle le fait via une interface qui lui permet d'échanger des messages. J'ai trouvé ça canon.) -->
 - Un objet permet de représenter une réalité exemple sur une personne
 
 ### Designez vos premiers objets
 
 Section 1 : Schéma de nos objets (Bus, Route, Section de route)  
+<!-- Tu vas faire un diagramme de classe ? Ou juste un schéma à main levée ? -->
 Section 2 : Découvrir le projet (télécharger le lien + render documentation + run playground manually + découvrir les fonctions du Canva)
 
 ## Développez en orienté objet
 
 ### Créez votre première classe
 Section 1 : Présentation de la syntaxe d'une classe, création de plusieurs instance (faire le lien avec String(), Int())  
-Exercice : Créer une classe Personne (ce sera un exercice filé dans tout le cours)  
+Exercice : Créer une classe Personne (ce sera un exercice filé dans tout le cours)
+<!-- Top ! Via Codevolve ? Ou en local ? -->
 Section 2 : Différence claire entre instance et classe avec la métaphore du gaufrier
+<!-- MIAM ! -->
 
 ### Ajoutez des propriétés
 Section 1 : Création d’une propriété (une propriété, c’est une variable) et mutabilité des propriétés et des instances  
@@ -45,11 +49,12 @@ Exercice : Créer une méthode à la classe personne
 ### Découvrez les propriétés et méthodes de classe
 Section 1 : Les propriétés de classe ou statique  
 Section 2 : Les méthodes de classe (mention du mot-clé class qui permet aux sous-classes d’override)
-
+<!-- Tu présentes comment overrider une classe mère avant de présenter l'héritage ?  -->
 ## Enrichissez vos objets avec l'héritage
 
 ### Héritez de nouvelles connaissances
-Section 1 : Présentation générale de l'héritage (mise en scène avec peluches d’animaux)  
+Section 1 : Présentation générale de l'héritage (mise en scène avec peluches d’animaux)
+<!-- Les animaux sont une bonne idée ! Romain, le CTO, m'avait demandé de prendre des exemples plus informatiques pour info. Il trouvait que l'exemple des animaux n'était pas très parlant (n'hésite pas à lui demander) -->
 Section 2 : Nouveau schéma de l'héritage  
 Exercice : Héritage par métier pour la classe Personne  
 Section 3 : Application à SchoolBus et création de HomeRoadSection et SchoolRoadSection
