@@ -14,7 +14,7 @@ PARTIE 1
 P1C1
 ####
 -->
-Bonjour et bienvenue dans ce cours sur la programmation orientée objet (ou POO pour les intimes)! Dans ce cours, nous allons découvrir toute la puissance de la POO et comment l'implémenter avec Swift !
+Bonjour et bienvenue dans ce cours sur la programmation orientée objet (ou POO pour les intimes) ! Dans ce cours, nous allons découvrir toute la puissance de la POO et comment l'implémenter avec Swift !
 
 **:warning:** Vous ne pourrez pas suivre ce cours sans une bonne maîtrise des bases de Swift. Par chance, c'est justement le propos de [ce cours](https://openclassrooms.com/courses/apprenez-les-fondamentaux-de-swift) ! Donc suivez-le si besoin et revenez ici ensuite !
 
@@ -22,7 +22,7 @@ Bonjour et bienvenue dans ce cours sur la programmation orientée objet (ou POO 
 Dans ce cours, nous allons utiliser le Playground. Et vous allez voir que nous pouvons faire des choses très sophistiquées avec le Playground !  
 En utilisant la programmation orientée objet et la puissance du Playground, vous allez réaliser une animation qui décrit le comportement d'un bus scolaire.
 
-[Image de l'animation P1C1_1] Légende : C'est pas beau ?
+![Légende : C'est pas beau ?](Images/P1/P1C1_1.png)
 
 Pour cela, nous allons passer par plusieurs étapes :
 - Nous allons créer la route
@@ -41,7 +41,9 @@ Oui je me doute que si vous êtes ici, c'est que vous avez hâte de faire une ap
 Et puis réjouissez vous, dans ce cours vous allez déjà réalisé un programme visuel que vous pourrez montrer à vos amis ! ;)
 
 ##### La POO
-Bon, c'est bien beau cette histoire de bus, mais pourquoi devons nous apprendre la programmation orienté objet. Il y a de très nombreuses raisons. Mais je vous propose pour le moment ces deux là :
+**:question:** Bon, c'est bien beau cette histoire de bus, mais pourquoi devons nous apprendre la programmation orienté objet ?
+
+Il y a de très nombreuses raisons. Mais je vous propose pour le moment ces deux là :
 
 ##### 1. La POO est un concept central en programmation
 Selon le [classement PYPL](http://pypl.github.io/PYPL.html), les 10 langages de programmation les plus populaires sont les suivants :
@@ -86,7 +88,7 @@ P1C2
 -->
 La programmation orientée objet est une technique de programmation incontournable aujourd'hui comme nous l'avons vu dans le chapitre précédent. Pour bien comprendre ce qu'elle est et ce qui a fait son succès, il me semble pertinent de savoir d'où elle vient !
 
-[Image P1C2_1] Légende : Embarquez pour un voyage dans l'histoire de la POO !
+![Embarquez pour un voyage dans l'histoire de la POO !](Images/P1/P1C2_1.jpg)
 
 #### Les débuts
 
@@ -94,7 +96,7 @@ Tout commence un matin de 1960. Ce jour là Ivan Sutherland, un étudiant en th�
 
 Sutherland va créer pendant sa thèse le logiciel SketchPad. Ce logiciel permet à l'aide d'un stylet de lumière de dessiner avec l'aide de l'ordinateur des formes simples comme des triangles, carrés, cercles etc. Ce projet a posé les bases de la création assistée par ordinateur (CAO).
 
-[Image P1C2_2] Légende : SketchPad
+![SketchPad](Images/P1/P1C2_2.jpg)
 
 Mais ce projet fait aussi partie des exemples fondateurs de la POO. Pourquoi ? Et bien parce qu'en POO, on créé des objets qui contiennent des propriétés et une logique propre. Et souvent ces objets représentent des éléments concrets comme un utilisateur, un article ou un panier. Et dans le cas de SketchPad, Sutherland a créé des objets pour représenter un triangle, un carré, un rond etc. Et c'est ce qui a permis à Sutherland de programmer SketchPad. Car dans son code au lieu de manipuler une variable hauteur et une autre variable largeur pour représenter un rectangle, il pouvait manipuler directement un objet rectangle dans son programme.
 
@@ -104,7 +106,7 @@ Son projet et quelques autres ont influencé le langage de programmation Simula 
 
 Dans les années 70s, l'entreprise Xerox à qui on doit l'invention de la souris et de l'interface graphique notamment planche sur l'ordinateur personnel ou _personnal computer_ et oui votre bon vieux PC :O ! Ils veulent créer un ordinateur que tout le monde pourrait facilement utiliser grâce à une interface graphique, une souris, des fenêtres etc. Et pour représenter tout ces éléments à l'écran et soutenir la logique de leur affichage, une équipe emmenée par Alan Kay a créé le langae SmallTalk qui s'inspire beaucoup de Simula et qui pour beaucoup a posé les derniers jalons de de la POO telle qu'on l'utilise aujourd'hui !
 
-[Image P1C2_3] Légende : Le Xerox Alto, l'un des tout premiers ordinateurs personnels
+![Le Xerox Alto, l'un des tout premiers ordinateurs personnels](Images/P1/P1C2_3.jpg)
 
 #### La généralisation
 
@@ -152,7 +154,7 @@ Et bien tout simplement, un objet c'est **un petit paquet de variables et de fon
 
 Prenons l'exemple du jeu "Qui est-ce ?".
 
-[Image P1C3_1] Légende : Le jeu "Qui est-ce ?". Ça vous rappelle des souvenirs ?
+![Le jeu "Qui est-ce ?". Ça vous rappelle des souvenirs ?](Images/P1/P1C3_1.jpg)
 
 **:information_source:** Dans ce jeu, chaque joueur a un plateau qui présentent 24 personnages. Chaque joueur choisit un personnage. Et chacun à son tour, les joueurs vont poser des questions pour deviner le joueur de l'autre.
 
@@ -194,12 +196,12 @@ L'objet Partie pourrait avoir une méthode `démarrer` pour lancer la partie, re
 
 Dans les méthodes des objets vont se dérouler la logique de notre programme. Cela veut dire qu'au lieu que notre programme soit une suite d'instructions, notre programme va être la combinaison de plusieurs objets qui vont interagir ensemble.
 
-[Image P1C3_3]
+![](Images/P1/P1C3_2.png)
 
 #### A quoi çà sert ?
 Les objets sont extrêmement pratiques. Un programmeur sans objets, c'est comme un jedi sans sabre laser !
 
-[Image P1C3_2]
+![](Images/P1/P1C3_3.jpg)
 
 ##### Cacher une implémentation
 Mettons que l'on ait un objet Voiture. Une voiture contient un mécanisme très compliqué. Le moteur qui brûle de l'essence. Cela crée de la chaleur. Cette énergie thermique est transormée en énergie mécanique. Le mouvement arrive jusqu'aux roues et la voiture avance. Toute cette logique est _abstraite_ dans une voiture, vous n'avez pas besoin de la connaître. On l'a déjà fait pour vous. La seule chose que vous avez à votre disposition pour effectuer cette action, c'est la pédale de l'accélérateur. Tout le reste est caché sous le capot et si le constructeur a bien fait son travail, vous n'avez pas à vous en occuper.
@@ -207,7 +209,7 @@ Mettons que l'on ait un objet Voiture. Une voiture contient un mécanisme très 
 Un objet en POO c'est exactement la même chose. Un objet peut être excessivement complexe et finalement et vous allez pouvoir l'utiliser au travers de seulement quelques méthodes très simples.
 
 ##### Représenter un concept
-Un objet vous permet de représenter un concept et de le manipuler en tant que telle. Par exemple dans notre "Qui est-ce ?", nous n'avons pas une grande liste de variables et de fonctions mélangées. Nous avons simplement 4 objets très claires qui nous permettent d'organiser simplement et facilement notre logique.
+Un objet vous permet de représenter un concept et de le manipuler en tant que telle. Par exemple dans notre "Qui est-ce ?", nous n'avons pas une grande liste de variables et de fonctions mélangées. Nous avons simplement 4 objets très claires qui nous permettent d'organiser simplement et facilement notre logique et qui représentent des concepts simples structurant le jeu.
 
 #### En résumé
 - La programmation procédurale, c'est ce que vous connaissez : la programmation à base de variables et de fonctions.
@@ -222,10 +224,145 @@ Un objet vous permet de représenter un concept et de le manipuler en tant que t
 P1C4
 ####
 -->
+Maintenant que vous avez une première idée du concept d'objet, nous allons pouvoir designer les objets de notre programme.
 
-On fait un truc visuel, parce que la POO c'est visuel (cf l'histoire de la POO)
-Section 1 : Schéma de nos objets (Bus, Route, Section de route)  
-Section 2 : Découvrir le projet (télécharger le lien + render documentation + run playground manually + découvrir les fonctions du Canva)
+#### Découvrir le projet
+
+Pour cela, je vous propose sans plus attendre de découvrir le projet sur lequel vous allez travailler. Le projet est disponible sur Github [ici](https://github.com/AmbroiseCollon/SchoolBusPlayground). Je vous invite à télécharger le projet sur votre mac.
+
+**:information_source:** Vous pouvez également travailler à partir d'un fork du projet si vous êtes à l'aise avec Git. Ce que je vous encourage à faire.
+
+Une fois le projet téléchargé, vous pouvez ouvrir le fichier `SchoolBusPlayground.playground`. Et vous devriez arriver sur ceci :
+
+![](Images/P1/P1C4_1.png)
+
+**:warning:** Si vous ne voyez pas exactement ça. Placez vous en mode assistant en utilisant ce bouton : ![](Images/P1/P1C4_2.png)
+
+Regardons un peu ce que l'on a. Nous avons tout d'abord sur la droite une étendue de pelouse sur laquelle se trouve un bus. Cela c'est notre **canva**. C'est sur ce canva que nous allons dessiner notre route et déplacer notre bus.
+
+**:information_source:** Comme nous l'avons appris avec l'histoire de la POO, la POO çà se comprends bien quand c'est visuel. C'est la raison pour laquelle nous allons avons ce canva.
+
+Voyons maintenant ce qu'il se passe côté code. Tout d'abord nous avons quatre lignes de code que je vous invite à ignorer. Elles permettent seulement d'initialiser le Canva. Ensuite la documentation nous présente 5 fonctions réparties en 2 catégories :
+- 3 qui concernent la route, ces fonctions permettent de dessiner des sections de route
+- 2 qui concernent le bus, ces fonctions permettent de faire avancer ou de faire marquer un stop au bus.
+
+Je vous invite à essayer les fonctions proposées pour comprendre un peu leur fonctionnement. Par exemple, vous pouvez écrire :
+```swift
+canva.createRoadSection()
+canva.createRoadSection()
+canva.createRoadSection()
+canva.createHomeRoadSection()
+canva.createRoadSection()
+canva.createSchoolRoadSection()
+```
+
+Dans ce code, nous créons sur le canva trois sections de route normal puis une qui contient une maison, puis une normale et enfin une qui contient une école. Cet exemple couvre les trois exemples de création de route.
+
+Maintenant, à vous de jouer ! Essayer d'utiliser les deux fonctions restantes pour déplacer le bus. Il doit avancer jusqu'à l'école en marquant un arrêt à la maison pour récupérer les écoliers
+et à l'école pour les déposer.
+
+```swift
+// Ne regardez pas la correction !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+canva.moveBusForward()
+canva.moveBusForward()
+canva.moveBusForward()
+canva.stopBus()
+canva.moveBusForward()
+canva.moveBusForward()
+canva.stopBus()
+```
+Et voilà ! Vous savez utiliser toutes les fonctionnalités du canva. Nous allons construire tout notre programme à partir de ces 5 fonctions. N'hésitez pas à jouer un peu avec pour bien vous familiariser avec son fonctionnement.
+
+**:information_source:** A chaque changement dans votre code, le playground relance le canva. Si vous souhaitez le relancer manuellement pour revoir votre animation, vous pouvez utiliser le raccourci clavier : <kbd>cmd</kbd> +<kbd>R</kbd>.
+
+#### Comprendre notre playground
+Si vous avez suivi le cours précédent comme suggéré, vous êtes déjà à l'aise avec un certain nombre de fonctionnalités du Playground mais dans ce cours nous poussons plus loin les capacités du Playground. Laissez moi en quelques mots vous en présenter les fonctionnalités dont nous allons profiter dans ce cours.
+
+**:information_source:** Elles ne vous seront pas précisément utiles dans ce cours. Mais le Playground est un des outils extrêmement pratique d'Xcode alors autant apprendre à le maîtriser. Car pour la suite, je vous encourage grandement à inclure cette outil dans votre cycle de développement.
+
+##### La documentation
+
+Il est possible que dans le texte, vous voyiez plutôt ceci :
+
+![](Images/P1/P1C4_3.png)
+
+Les commentaires en vert qui commencent par `/*:` sont un moyen d'écrire de la documentation dans le playground. Cela est utile notamment pour agrémenter le code d'instructions facilement lisibles ce qui est bien pratique dans notre cas. Si vous voulez en savoir plus sur le format de la documentation, vous pouvez aller [ici](https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/).
+
+Pour afficher correctement la documentation, vous pouvez cliquer dans le menu en haut sur `Editor` puis `Show Rendered Markup`.
+
+Si un jour, vous souhaitez utiliser le playground pour une démonstration ou pour expliquer quelque chose, soyez sûr d'utiliser la documentation du Playground. Certaines personnes ont même écrit [des livres](https://github.com/uraimo/Awesome-Swift-Playgrounds) avec le playground.
+
+##### Les live view
+
+Les live view, c'est ce que vous voyez sur la droite en mode assistant. C'est notre canva. En effet, c'est un objet vue, tel qu'il existe sur iOS dans lequel on peut glisser ce que l'on souhaite.
+
+Ces vues permettent d'avoir un rendu visuel animé ou non de ce que l'on souhaite montrer. Cela pourra vous être utile lorsque vous souhaiterez créer des composants customisés dans iOS (comme des boutons, des switch, des listes, etc.). Vous pourrez les créer en utilisant une live view pour voir instantanément le rendu. Et lorsqu'ils sont prêts vous n'aurez plus qu'à copier le code dans votre application.
+
+##### Les sources et ressources
+
+Si vous ouvrez le navigateur - le panneau de droite, vous trouverez les sources et ressources du projet.
+
+![](Images/P1/P1C4_4.png)
+
+**Les sources**  
+Les sources d'un projet permettent de cacher une implémentation à l'utilisateur du Playground. Par exemple, ici, j'ai mis l'ensemble de ce qui concerne le canva et ces animations dans les sources.
+
+L'autre avantage d'écrire du code dans les sources, c'est qu'il n'est évalué qu'une fois au lancement du Playground et non à chaque fois que le code dans le Playground est modifié. Cela permet de gagner en performance. Le Playground ne doit pas tout recalculer à chaque fois.
+
+**Les ressources**  
+Dessous, vous trouverez les ressources, c'est ici que l'on enregistre les fichiers dont le Playground va avoir besoin pour s'executer. Dans notre cas, on y trouve les images qui permettent de dessiner notre canva. Mais on aurait pu y mettre des pistes audios, des vidéos, des données, bref tout ce qui n'est pas du code !
+
+De la même manière, ces ressources ne sont chargées qu'au lancement du Playground.
+
+#### Concevoir nos objets
+
+Maintenant que le décor est bien planté, nous allons commencer à réfléchir un peu. Comment allons nous organiser notre code ?
+
+Reprenons le même genre de raisonnement que pour le jeu "Qui-est-ce ?" et essayons de découper en plusieurs objets notre code.
+
+##### Les propriétés
+
+Tout d'abord, commençons par le plus évident : le bus. Nous allons donc avoir un objet `Bus` qui va avoir quelques propriétés comme :
+- le nombre de siège
+- le nombre de siège occupés
+- le nom du chauffeur par exemple
+
+Ensuite nous allons avoir la route. La route c'est un peu plus subtil. Si on regarde les méthodes proposées par le canva, on créé la route par section. Donc la route c'est la combinaison de plusieurs section de route qui s'enchaîne. Certaines ayant une maison, d'autre une école et enfin d'autres rien.
+
+On a donc un objet `Route` qui a une propriété :
+- un tableau de section de routes
+
+Et donc nous avons un dernier objet qui est la `Section De Route`. Cette objet a donc 3 types différents. Et nous verrons comment les différentier avec l'héritage en partie 3 de ce cours.
+
+#### Les méthodes
+Mais un objet, comme vous le savez désormais, a des propriétés qui décrivent ce qu'il est, mais aussi des méthodes qui décrivent ce qu'il fait.
+
+A première vue, une route ou une section de route, ça ne fait pas grand chose... En revanche, un bus ça en fait !
+
+Donc nous allons a priori avoir 2 méthodes :
+- avance
+- marque un arret
 
 ## Développez en orienté objet
 <!--
@@ -256,6 +393,7 @@ Section 2 : Appeler une méthode
 Exercice : Créer une méthode à la classe personne
 
 ### Découvrez les propriétés et méthodes de classe
+(Réutilisez la métaphore du gaufrier ?)
 Section 1 : Les propriétés de classe ou statique  
 Section 2 : Les méthodes de classe (mention du mot-clé class qui permet aux sous-classes d’override)
 
