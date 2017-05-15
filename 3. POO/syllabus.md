@@ -240,9 +240,9 @@ Une fois le projet téléchargé, vous pouvez ouvrir le fichier `SchoolBusPlaygr
 
 Regardons un peu ce que l'on a. Nous avons tout d'abord sur la droite une étendue de pelouse sur laquelle se trouve un bus. Cela c'est notre **canva**. C'est sur ce canva que nous allons dessiner notre route et déplacer notre bus.
 
-**:information_source:** Comme nous l'avons appris avec l'histoire de la POO, la POO çà se comprends bien quand c'est visuel. C'est la raison pour laquelle nous allons avons ce canva.
+**:information_source:** Comme nous l'avons appris avec l'histoire de la POO, la POO çà se comprends bien quand c'est visuel. C'est la raison pour laquelle j'ai choisi de vous proposer un rendu visuel de notre programme.
 
-Voyons maintenant ce qu'il se passe côté code. Tout d'abord nous avons quatre lignes de code que je vous invite à ignorer. Elles permettent seulement d'initialiser le Canva. Ensuite la documentation nous présente 5 fonctions réparties en 2 catégories :
+Voyons maintenant ce qu'il se passe côté code. Tout d'abord nous avons quatre lignes de code que je vous invite à ignorer. Elles permettent seulement d'initialiser le canva. Ensuite la documentation nous présente 5 fonctions réparties en 2 catégories :
 - 3 qui concernent la route, ces fonctions permettent de dessiner des sections de route
 - 2 qui concernent le bus, ces fonctions permettent de faire avancer ou de faire marquer un stop au bus.
 
@@ -258,8 +258,14 @@ canva.createSchoolRoadSection()
 
 Dans ce code, nous créons sur le canva trois sections de route normal puis une qui contient une maison, puis une normale et enfin une qui contient une école. Cet exemple couvre les trois exemples de création de route.
 
-Maintenant, à vous de jouer ! Essayer d'utiliser les deux fonctions restantes pour déplacer le bus. Il doit avancer jusqu'à l'école en marquant un arrêt à la maison pour récupérer les écoliers
-et à l'école pour les déposer.
+**Le but de notre programme va être de déplacer le bus le long de la route en suivant 2 règles :**
+
+- Il doit s’arrêter à chaque maison pour récupérer des enfants
+- Il doit s’arrêter à chaque école pour déposer tous les enfants dans le bus.
+
+Le programme que nous allons construire doit pouvoir fonctionner quelque soit la route que nous allons dessiner.
+
+Maintenant, à vous de jouer ! Essayer d'utiliser les deux fonctions restantes pour déplacer le bus. Il doit avancer jusqu'à l'école en marquant un arrêt à la maison pour récupérer les écoliers et à l'école pour les déposer.
 
 ```swift
 // Ne regardez pas la correction !
@@ -299,7 +305,7 @@ Et voilà ! Vous savez utiliser toutes les fonctionnalités du canva. Nous allon
 #### Comprendre notre playground
 Si vous avez suivi le cours précédent comme suggéré, vous êtes déjà à l'aise avec un certain nombre de fonctionnalités du Playground mais dans ce cours nous poussons plus loin les capacités du Playground. Laissez moi en quelques mots vous en présenter les fonctionnalités dont nous allons profiter dans ce cours.
 
-**:information_source:** Elles ne vous seront pas précisément utiles dans ce cours. Mais le Playground est un des outils extrêmement pratique d'Xcode alors autant apprendre à le maîtriser. Car pour la suite, je vous encourage grandement à inclure cette outil dans votre cycle de développement.
+**:information_source:** Elles ne vous seront pas précisément utiles dans ce cours. Mais le Playground est un des outils extrêmement pratique d'Xcode alors autant apprendre à le maîtriser. En effet, pour la suite de vos travaux sur iOS, je vous encourage grandement à inclure cet outil dans votre cycle de développement.
 
 ##### La documentation
 
@@ -346,23 +352,43 @@ Reprenons le même genre de raisonnement que pour le jeu "Qui-est-ce ?" et essay
 Tout d'abord, commençons par le plus évident : le bus. Nous allons donc avoir un objet `Bus` qui va avoir quelques propriétés comme :
 - le nombre de siège
 - le nombre de siège occupés
-- le nom du chauffeur par exemple
+- le nom du chauffeur
 
-Ensuite nous allons avoir la route. La route c'est un peu plus subtil. Si on regarde les méthodes proposées par le canva, on créé la route par section. Donc la route c'est la combinaison de plusieurs section de route qui s'enchaîne. Certaines ayant une maison, d'autre une école et enfin d'autres rien.
+Ensuite nous allons avoir la route. La route c'est un peu plus subtil. Si on regarde les méthodes proposées par le canva, on crée la route par section. Donc la route c'est la combinaison de plusieurs section de route qui s'enchaîne. Certaines ayant une maison, d'autre une école et enfin d'autres rien.
 
 On a donc un objet `Route` qui a une propriété :
 - un tableau de section de routes
 
 Et donc nous avons un dernier objet qui est la `Section De Route`. Cette objet a donc 3 types différents. Et nous verrons comment les différentier avec l'héritage en partie 3 de ce cours.
 
-#### Les méthodes
+##### Les méthodes
 Mais un objet, comme vous le savez désormais, a des propriétés qui décrivent ce qu'il est, mais aussi des méthodes qui décrivent ce qu'il fait.
 
 A première vue, une route ou une section de route, ça ne fait pas grand chose... En revanche, un bus ça en fait !
 
-Donc nous allons a priori avoir 2 méthodes :
+Donc nous allons a priori avoir au moins 2 méthodes :
 - avance
 - marque un arret
+
+L'analyse que nous venons de faire s'appelle un **diagramme de classe**.
+
+![](Images/P1/P1C4_5.png)
+
+**:warning:** Dans notre analyse, il y a quelques oublis volontaires pour ne pas gâcher la surprise de nos futures découvertes ;) !
+
+#### En résumé
+- Le projet contient un Playground dans lequel est présenté un canva. Ce canva a 5 fonctions qui nous permettent de :
+	- créer une section de route avec ou sans école ou maison
+	- faire avancer le bus
+	- faire marquer un arrêt au bus
+- Dans ce cours, nous découvrons 3 fonctionnalités avancées du Playground :
+	- Les live view
+	- La documentation
+	- Les sources et ressources
+- Dans notre diagramme de classes, nous avons identifié 3 objets que nous allons créer :
+	- Bus
+	- Road
+	- RoadSection
 
 ## Développez en orienté objet
 <!--
