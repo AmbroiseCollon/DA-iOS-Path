@@ -398,30 +398,633 @@ PARTIE 2
 -->
 
 ### Créez votre première classe
-Section 1 : Présentation de la syntaxe d'une classe, création de plusieurs instance (faire le lien avec String(), Int())  
-Exercice : Créer une classe Personne (ce sera un exercice filé dans tout le cours)  
-Section 2 : Différence claire entre instance et classe avec la métaphore du gaufrier
+
+Je suppose que vous avez maintenant hâte de vous lancer dans le code orienté objet. Alors j'ai le plaisir de vous annoncer que...
+
+![](Images/P2/P2C1_1.jpg)
+
+#### Déclarer une classe
+
+Il faut d'abord commencer par le commencement et le commencement de la POO en Swift ce sont les classes. Une classe, c'est ce qui va nous permettre de définir nos objets.
+En Swift, pour écrire une classe, on utilise la syntaxe suivante :
+
+```swift
+class NomDeLaClasse {
+	// Ici viendra le contenu de la classe
+}
+```
+
+Par exemple, on a vu dans notre analyse de classes que l'on souhaite créer trois classes : Bus, Road et RoadSection. Pour faire cela, nous allons donc écrire simplement :
+
+```swift
+class Bus {
+
+}
+
+class Road {
+
+}
+
+class RoadSection {
+
+}
+```
+
+Et voilà ! Il ne suffit de rien de plus pour créer nos classes ! Bien sûr, pour le moment, elles sont relativement vides mais elles vont s'épaissir au fur et à mesure.
+
+**:information_source:** Vous remarquez que le nom d'une classe contrairement aux variables commence par une **majuscule**. C'est une convention que vous devez suivre.
+
+**:question:** Mais on en fait quoi de ces classes ?
+
+Evidemment pour le moment ça ne paraît pas hyper impressionnant. Mais vous allez voir tout de suite que c'est plus puissant qu'il n'y parait.
+
+#### Les classes et les types
+
+Vous vous souvenez des types ? Vous en connaissez un petit paquet maintenant. Voici un petit schéma pour vous les remettre en tête.
+
+![](Images/P2/P2C1_2.png)
+
+Jusqu'à présent, vous savez faire des programmes en manipulant les types ci-dessus. A partir de maintenant, vous allez aussi travailler avec les types que vous avez créé !
+
+**:question:** Comment ça les types que nous avons créé ?
+
+Eh oui ! Les classes Bus, Road et RoadSection sont des types. Exactement de la même façon que Int, String et Bool. Donc la bonne surprise de ce cours, c'est que vous savez maintenant créer des types !
+
+#### Instancier les classes
+Maintenant nous sommes en terrain conquis, les types vous savez ce que c'est. Donc vous savez les utiliser.
+
+Vous vous souvenez que pour créer des variables de types entier par exemple, on pouvait écrire simplement :
+
+```swift
+var i = 0
+```
+
+Mais on a aussi appris qu'on pouvait utiliser l'initialisation du type par défaut avec le nom du type et les parenthèses :
+
+```swift
+var i = Int() // i contient 0
+var s = String() // s contient ""
+```
+Et bien nous allons faire la même chose. Pour créer une variable de type Bus, nous allons utiliser le nom de la classe et les parenthèses :
+
+```swift
+var unBus = Bus()
+```
+
+Et voilà rien de plus simple ! Nous venons de créer ce que l'on appelle une **instance** de la classe Bus. Et on appelle ce mécanisme l'**instanciation**.
+
+**Une instance, c'est donc simplement une variable qui a pour type le nom de notre classe.**
+
+Il est important que vous fassiez correctement la différence entre une instance et une classe car c'est souvent une source de confusion quand on débute en POO.
+
+La classe, c'est le modèle. Par exemple, la classe `Int` définit la façon dont fonctionnne un entier, ses propriétés et quelques méthodes pratiques pour les manipuler.
+
+Maintenant, si j'écris :
+```swift
+var i = 0
+var j = 1
+```
+
+`i` et `j` sont des entiers précis. On dit qu'ils sont des instances de la classe Int. On peut faire une infinité d'instance à partir d'une classe. Toutes les instances de la classe auront les mêmes propriétés.
+
+**:x:** La classe Int n'est pas à proprement parler une classe mais une structure. Nous verrons ce modèle de donnée mais vous verrez que cela se comporte à 90% comme une classe. Vous pouvez retrouvez les propriétés et méthodes de la classe Int à cette [adresse](https://developer.apple.com/reference/swift/int).
+
+Prenons une métaphore pour bien comprendre. Lorsque vous faîtes des gaufres, vous utilisez un gaufrier. En fonction du gaufrier vont varier l'imprimé sur la gaufre, sa largeur, son épaisseur etc. Donc le gaufrier **définit** la gaufre. Et ensuite, vous pouvez faire autant de gaufres que vous le souhaitez, elles auront toutes une structure identique et ne va varier que ce que vous allez mettre dessus.
+
+Si vous m'avez suivi, le gaufrier représente la classe. Les instances sont les représentations concrètes de cette classe.
+
+![](Images/P2/P2C1_3.png)
+
+De toute façon, si vous savez qu'une classe permet de définir un type, vous ne vous tromperez pas ;) !
+
+#### Exercice
+
+Dans ce cours, je vous propose un exercice filé tout au long du cours. Nous allons créer une classe Personne. Et vous allez pouvoir faire l'exercice directement dans votre navigateur ! Cliquez sur l'image pour commencer l'exercice :
+
+#### En Résumé
+
+- Pour déclarer une classe avec Swift, on utilise le mot-clé `class` comme ceci :
+ ```swift
+ class NomDeLaClasse {
+ 	// Ici viendra le contenu de la classe
+ }
+ ```
+- Une classe s'utilise exactement comme un type. Lorsque l'on créé une classe, on créé un type.
+- Une classe représente un concept. On appelle les représentations concrètes de cette classe des instances. Pour créer une instance, on utilise le nom de la classe suivi de parenthèse :
+```swift
+var instance = MaClasse()
+```
+
 
 ### Ajoutez des propriétés
-Section 1 : Création d’une propriété (une propriété, c’est une variable) et mutabilité des propriétés et des instances  
-Exercice : Ajouter des attributs à la classe personne  
-Section 2 : Accéder à sa valeur, modifier une propriété
+Nous avons désormais trois classes Bus, Road et RoadSection. Et... ça nous fait une belle jambe ! Il n'y a rien dedans donc elles ne servent a priori pas à grand chose. Dans ce chapitre, nous allons découvrir les propriétés et nous allons créer les premières propriétés de nos classes. Et pour cela, nous allons reprendre ce diagramme :
+
+![](Images/P1/P1C4_5.png)
+
+Nous allons donc écrire 3 propriétés pour la classe Bus et 1 pour la classe Road.
+
+**:information_source:** Nous ne rajouterons la propriété de la classe RoadSection que dans la prochaine partie sur l'héritage.
+
+#### Créer une propriété
+
+Dans les chapitres précédents, je vous ai dit qu'un objet, c'était un petit paquet de variables et de fonctions. Et bien, tout simplement dans un objet, une variable, on appelle ça une propriété. Ces propriétés vont nous permettre de stocker des informations sur cet objet.
+
+Et donc pour créer une propriété, on va écrire la déclaration d'une variable à l'intérieur de la classe. Donc pour notre classe Bus, on va écrire :
+```swift
+class Bus {
+	var driverName = "Joe"
+	var seats = 20
+	var occupiedSeats = 0
+}
+```
+
+J'ai bien ici défini trois propriétés. L'une de type `String` et les deux autres de type `Int`. Ces propriétés ont des valeurs par défaut. Tout objet créé de la classe bus, aura comme valeur par défaut `Joe` pour la propriété `driverName`. Même chose pour les deux autres propriétés.
+
+Vous pouvez bien sûr créer des propriétés de n'importe quelle type ! Par exemple, pour la classe Road, nous allons ajouter une propriété `sections` de type tableau de `RoadSection` comme ceci :
+
+```swift
+class Road {
+	var sections = [RoadSection]()
+}
+```
+
+**:information_source:** Souvenez-vous, pour créer un tableau vide, on utilise le type du tableau donc quelque chose qui ressemble à [Type] et ensuite l'initialisation classique du type avec les parenthèses. Donc pour créer un tableau vide d'entiers, j'écris : `[Int]()`. Ici on a donc créé un tableau vide d'objet de type `RoadSection`.
+
+#### Accéder et modifier une propriété
+
+Les propriétés nous permettent donc de stocker des informations ! Alors comment y accède-t-on ?
+
+Prenons par exemple une instance de la classe Bus :
+
+```swift
+var unBus = Bus()
+```
+
+Pour accèder à une propriété de cette instance, il suffit d'utiliser le `.` suivi du nom de la propriété come ceci :
+
+```swift
+unBus.driverName // Le playground affiche sur la droite "Joe"
+```
+
+Vous remarquez sans doute que dès que vous écrivez le point à la suite de l'instance, Xcode vous propose automatiquement les noms des propriétés. Cette autocomplétion est évidemment très pratique parce qu'en plus de vous faire gagner du temps de frappe, elle vous évite de retenir les noms de toutes les propriétés de la classe.
+
+Une propriété se comporte exactement comme une variable. La seule différence, c'est qu'elle est rattachée à un objet. Donc pour modifier une propriété, il suffit d'utiliser le signe égal :
+
+```swift
+unBus.driverName = "Daniel Morales"
+```
+
+Et bien sûr vous pouvez utiliser tout ce que vous savez sur la manipulation des variables :
+
+```swift
+unBus.occupiedSeats += 1
+```
+
+#### Mutabilité des propriétés et des instances
+
+**:question:** Si une propriété se comporte comme une variable, est-ce que cela veut dire que nous pouvons créer des propriétés constantes avec `let` ?
+
+Très bonne question ;) ! Et la réponse est oui ! Par exemple, on pourrait vouloir stocker une information supplémentaire sur notre bus comme le nombre de roues. On peut assez facilement admettre que ce nombre ne vas pas changer et donc on peut rajouter la propriété :
+
+```swift
+class Bus {
+	var driverName = "Joe"
+	var seats = 20
+	var occupiedSeats = 0
+
+	let numberOfWheel = 4 // Le nombre de roues est constant et vaut 4
+}
+```
+
+Alors qu'est-ce que ça veut dire concrètement ? Et bien ça veut dire que la propriété `numberOfWheel` est fixé à 4 et comme n'importe quelle constante, je ne peux pas la modifier. Si j'écris :
+
+```swift
+unBus.numberOfWheel = 5 // Le playground affiche une erreur
+```
+Comme les variables, on peut donc avoir 2 types de propriétés :
+- les variables
+- les constantes
+
+Qu'en est-il maintenant des instances ? Est-ce que je peux créer des instances constantes. Par exemple, est-ce que je peux écrire la chose suivante ?
+
+```swift
+let unBus = Bus()
+```
+
+Je vous en prie. Essayez ! Alors ?
+
+Eh oui ! On peut créer des instances constantes. Mais qu'est-ce que cela signifie ?
+
+**:question:** Cela veut dire que je ne peux pas modifier les propriétés de l'instance `unBus` ?
+
+On aurait pu s'attendre à ça en effet mais non. Si une instance est déclaré avec let, je peux continuer à modifier toutes ses propriétés (tant que ces dernières sont variables). Mais ce que je ne peux plus faire c'est assigner une nouvelle valeure à cette instance. Prenons un exemple pour clarifier tout ça :
+
+```swift
+let unBus = Bus()
+
+unBus.driverName = "Paul" // Je peux faire ça
+
+let unAutreBus = Bus()
+unBus = unAutreBus // Je ne peux pas faire ça
+```
+
+#### Exercice
+
+Je vous propose de vous entraîner avec un petit exercice. Vous pouvez le lancer en cliquant sur l'image ci dessous.
+
+#### En résumé
+
+- Pour créer une propriété, on utilise simplement la syntaxe de la déclaration d'une variable à l'intérieur de la définition de la classe.
+- Pour accéder ou modifier un propriété, on utilise le point `.` suivi du nom de la propriété.
+- Si une propriété est constante, je ne peux JAMAIS la modifier, elle garde sa valeur par défaut.
+- Si une instance est constante, je peux modifier la valeur de ses propriétés mais je ne peux pas lui assigner un autre objet.
 
 ### Initialisez les classes
-Section 1 : Propriété non initialisée  
-Section 2 : Le mot clé init  
-Section 3 : Le mot clé self et l’intialisation avec paramètres  
+Nous avons maintenant des classes qui contiennent des propriétés. Nos classes permettent donc de stocker de l'information. Mais je ne suis pas tout à fait satisfait de nos propriétés pour l'instant.
+
+**:question:** Pourquoi ?
+
+Et bien car elles ont toutes des valeurs par défaut et parfois ça n'a pas vraiment de sens. Prenons par exemple la propriété `driverName`. Ce n'est pas logique que le nom du chauffeur soit par défaut Joe, il n'y a aucune statistique à ma connaissance qui le justifie...
+
+#### Propriétés non initialisées
+
+Essayons donc de supprimer la valeur par défaut. Pour cela, je vais donc remplacer la déclaration de la propriété en supprimant l'initialisation de celle-ci :
+
+```swift
+var driverName: String
+```
+**:information_source:** Petit rappel, si on supprime l'initialisation d'une variable, ce qui veut dire ne pas lui donner de valeur, on doit préciser son type car Swift du coup ne peux plus le déduire de sa valeur. Et une variable sans type, ça n'existe pas !
+
+A ce moment là, on a une erreur qui dit :
+
+```console
+error: class 'Bus' has no initializers
+```
+
+Qu'est-ce que ça veut dire ? Pour bien comprendre, imaginons que l'on va créer une instance de la classe Bus. Lorsque l'on fait ça, le programme va regarder toutes les propriétés de la classe Bus et créé autant de variables correspondante. Toutes ces variables vont être mises dans un petit paquet et on a notre instance ! Mais donc, lorsque l'on créé une instance, on créé autant de variables qu'il y a de propriétés. Et **toutes ces variables doivent être prêtes à l'emploi**. Pas de souci pour celles qui ont des valeurs par défaut. Mais quand le programme va vouloir créer la variable `driverName`, il ne saura pas quelle valeur lui attribuer.
+
+**:question:** Pas grave, il n'a qu'à pas lui mettre de valeur !
+
+C'est filou ! Mais quelle est le type de notre variable ?
+
+**:question:** String ?
+
+En effet, donc **cette variable n'est pas optionnelle** donc **on ne peux pas l'utiliser sans valeur**. Donc le programme va planter.
+
+**:question:** OK... Mais quelle rapport avec l'erreur affichée ?
+
+Le rapport, c'est que pour résoudre ce problème nous avons 2 solutions :
+- Soit je déclare ma variable `driverName` optionnelle et tout ira bien.
+```swift
+var driverName: String?
+```
+La variable a le droit maintenant de ne pas avoir de valeur. A priori, ça vous connaissez.
+- Soit j'utilise ce qu'on appelle un initialiseur dans lequel je vais... initialiser ma variable ! Là par contre, c'est nouveau ! Alors laissez moi vous montrer !
+
+#### L'initialisation d'une classe
+
+Tout d'abord, qu'est-ce qu'un initialiseur ? C'est une fonction qui va être appelée au moment de la création d'une instance de classe et dans laquelle on peut faire quelques calculs pour initialiser nos propriétés. On crée cette fonction à l'intérieur de la classe en utilisant le mot clé `init` :
+
+```swift
+init() {
+	// Ici on peut initialiser nos propriétés
+}
+```
+
+Par exemple, dans le cas de notre classe Bus, on va pouvoir écrire :
+
+```swift
+init() {
+	driverName = "Joe"
+}
+```
+
+Et voilà ! Nous n'avons plus d'erreur ! Vous pouvez tester en créant une instance, la propriété `driverName` aura pour valeur Joe.
+
+**:question:** Oui enfin il n'y a pas de quoi sauter au plafond...
+
+Bah pourquoi ?
+
+**:question:** On a fait que déplacer le problème. La propriété `driverName` a toujours une valeur par défaut...
+
+Hmm... Bien vu ! Mais vous ne m'aurez pas aussi facilement !
+
+#### L'initialisation avec paramètres
+
+Je vous ai dit que l'initialiseur, c'était une fonction. Et bien comme toute fonction, elle peut avoir des paramètres ! On peut donc par exemple écrire :
+
+```swift
+init(name: String) {
+		driverName = name
+}
+```
+
+Et maintenant, pour instancier un bus, on va écrire :
+```swift
+var unBus = Bus(name: "Jean")
+```
+
+L'initialisation du bus a changé ! Maintenant Swift exige que nous passions des paramètres pour instancier un nouveau bus. Et de cette façon, on peut choisir pour chaque nouvelle instance du bus, le nom du chauffeur. Alors, heureux ?
+
+**:information_source:** Evidemment, comme pour une fonction, vous pouvez utiliser plusieurs paramètres, ajouter ou enlever des étiquettes etc. Tout comme une fonction !
+
+#### Le mot-clé self
+Notre initialisation a désormais un paramètre qui s'appelle `name`. C'est bien mais ce n'est pas parfait. Pour que l'initialisation soit claire en général on préfère donner comme nom de paramètre, le nom exact de la propriété soit ici `driverName`. Alors modifions ça :
+
+```swift
+init(driverName: String) {
+		driverName = driverName
+}
+```
+
+Patatra ! Nous avons une erreur. L'erreur vient du fait que nous avons deux fois `driverName` et l'ordinateur ne sait plus si on parle de la propriété ou du paramètre. Heureusement, nous avons le vaillant mot clé `self` à notre secours !
+
+**:question:** Euh... qui ?
+
+Le mot-clé self permet dans une classe de faire référence à elle-même. Le plus simple, c'est que je vous montre :
+
+```swift
+init(driverName: String) {
+		self.driverName = driverName
+}
+```
+
+`self` se comporte comme une instance de la classe dans laquelle il est écrit. Donc quand j'écrit `self.driverName` à l'intérieur de la classe Bus, je fais référence à la propriété `driverName` de la classe Bus.
+
+En écrivant ceci, Swift sait maintenant que `self.driverName`, c'est la propriété et `driverName` après le `=`, c'est le paramètre.
+
+**:warning:** Certaines personnes utilisent le mot-clé self à tort et à travers (notamment dans les méthodes que nous verrons dans le prochain chapitre), ce n'est pas une bonne pratique. N'utilisez self qu'en cas de besoin ! Donc dans les initialiseur et dans les blocs (nous verrons ça dans un prochain cours).
+
+Voilà, nous avons désormais un initialiseur bien pratique pour notre classe Bus !
+
+#### Exercice
+Comme je suis généreux, je vous propose [non pas 1, ni 2 mais bien](https://www.youtube.com/watch?v=07URgCvODVs&feature=youtu.be&t=1m24s) 3 exercices ! Woooohouuu ! Les corrections sont plus bas.
+
+**1. Ajoutez un initialiseur à la classe RoadSection**  
+Cette classe est vide pour le moment, rajouter lui un initialiseur qui va appeler la fonction `canva.createRoadSection()` de sorte qu'à chaque fois qu'on crée une nouvelle instance de RoadSection, une section de route est ajoutée sur le canva.
+
+**2. Ajoutez un initialiseur à la classe Road**  
+Ajoutez un initialiseur  la classe Road qui prends pour paramètre `length` qui est un entier et qui détermine la taille de la route. Cet initialiseur permet de remplir le tableau des sections de route d'autant de section qu'indiqué par le paramètre `length`.
+
+**3. Ajoutez un initialiseur à la classe Personne**  
+Vous pouvez lancer cet exercice en cliquant sur l'image ci dessous :
 Exercice : Ajouter une initialisation à la classe Personne avec le nom et prénom comme paramètre
 
+**Corrections de 1 et 2**  
+```swift
+// Exerice 1
+class RoadSection {
+    init() {
+        canva.createRoadSection()
+    }
+}
+
+// Exercice 2
+class Road {
+    var sections = [RoadSection]()
+
+    init(length: Int) {
+        for _ in 0..<length {
+            self.sections.append(RoadSection())
+        }
+    }
+}
+
+var road = Road(length: 20) // Vous devriez voir une route de 20 sections se dessiner sur le canva.
+```
+
+#### En résumé
+- Pour utiliser des propriétés sans valeur par défaut, on peut :
+	- leur donner un type optionnel : la propriété pourra ne pas avoir de valeur
+	- utiliser un initialiseur
+- Un initialiseur est une fonction qui est appelé lors de la création d'une instance. Pour créer un initialiseur, on utilise le mot-clé `init`. Comme toute fonction, un initialiseur peut avoir des paramètres.
+- Le mot-clé `self` fait référence à la classe dans laquelle il est appelée. Il s'utilise comme une instance de la classe.
+
 ### Définissez des méthodes
-Section 1 : Les méthodes sont des fonctions  
-Section 2 : Appeler une méthode  
-Exercice : Créer une méthode à la classe personne
+Un objet, c'est ?
+
+![](Images/P2/P2C4_1.jpg)
+
+Et un point pour le phoque ! Je vois qu'il y en a qui suivent ! Et pour l'instant nos objets sont surtout des petits paquets de variables. Alors nous allons maintenant parler des fonctions.
+
+#### Les méthodes sont des fonctions  
+
+Un objet a des **propriétés**, on l'a vu et cela prends la forme de **variables** déclarées à l'intérieur de la classe.  
+Un objet a aussi des méthodes, on va le voir et cela prends la forme de **fonctions** définies à l'intérieur de la classe.
+
+Donc pour créer une méthode, on déclare simplement une fonction. Prenons un exemple dans la classe `Bus`. On va créer une méthode `moveForward` qui va nous permettre de faire avancer le bus. Pour cela, on va simplement rajouter dans la classe Bus :
+
+```swift
+class Bus {
+	// (...)
+
+	func moveForward() {
+		canva.moveBusForward()
+	}
+}
+```
+Ici on définit donc la méthode `moveForward` de la classe `Bus`. Cette méthode appelle la méthode `moveBusForward` du canva et permet de faire avancer le bus.
+
+**:information_source:** Les méthodes sont rigoureusement des fonctions donc elles peuvent avoir des paramètres, valeurs de retour et tout ce que vous connaissez ou apprendrez plus tard sur les fonctions.
+
+#### Appeler une méthode  
+Pour appeler notre méthode, on va faire maintenant exactement la même chose que pour les propriétés, on va utiliser le `.` après l'instance :
+
+```swift
+var unBus = Bus(driverName: "Joe")
+unBus.moveForward()
+```
+
+Et vous devriez voir le bus avancer d'une section sur le canva !
+
+#### Exercice
+
+**1. Ajouter une méthode stop**
+Ajouter une méthode `stop` à la classe Bus. Cette méthode devra appeler la méthode `stopBus` du canva.
+
+**2. Ajouter une méthode drive**
+Ajouter une méthode `drive` à la classe Bus. Cette méthode admet comme paramètre `road` de type `Road`. Lorsque cette méthode est appelée, le bus parcours toute la route sans s'arrêter.
+
+**3. Ajouter des méthodes à la classe Personne**
+Cliquez sur l'image ci-dessous pour lancer l'exercice.
+
+**Correctons de 1 et 2**
+```swift
+class Bus {
+    // (...) Propriétés et init
+    func stop() {
+        canva.stopBus()
+    }
+
+    func drive(road: Road) {
+        for _ in road.sections {
+            moveForward()
+        }
+    }
+}
+
+var road = Road(length: 20)
+var unBus = Bus(driverName: "Jean")
+unBus.drive(road: road) // Le bus avance jusqu'au bout de la route
+```
+
+#### En résumé
+- Un objet, c'est un petit paquet de variables (les **propriétés**) et de fonctions (les **méthodes**).
+- Les methodes sont des fonctions définies à l'intérieur de la classe.
+- Pour appeler une méthode, on utilise le `.` suivi du nom de la méthode.
+
 
 ### Découvrez les propriétés et méthodes de classe
-(Réutilisez la métaphore du gaufrier ?)
-Section 1 : Les propriétés de classe ou statique  
-Section 2 : Les méthodes de classe (mention du mot-clé class qui permet aux sous-classes d’override)
+Ça y est ! Nos classes comment à ressembler à quelque chose. On a même enfin un bus qui roule le long de la route ! Elle est pas belle la vie ? Mais bon, je vous connais, vous en voulez encore. Alors dans ce chapitre je vais vous montrer quelque chose qui va nous être bien pratique : **les propriétés et méthodes de classe**.
+
+**:question:** Hé mais on connaît déjà ça !
+
+Non.. pas tout à fait. Vous connnaissez en effet les propriétés et les méthodes. Mais la forme sous laquelle vous les connaissez pour l'instant s'appelle **les propriétés et méthodes d'instance** ! Pourquoi d'instance ? Parce qu'on les utilise sur des instances.
+
+**:warning:** Si la différence entre la classe et les instances n'est pas très clair pour vous, n'hésitez pas à prendre le temps de revenir au premier chapitre de cette partie.
+
+#### Créer et utiliser les propriétés et méthodes de classe
+Par exemple, la méthode `drive` que vous venez de créer dans le chapitre précédent, vous l'utilisez sur une instance : l'instance unBus en l'occurence :
+
+```swift
+unBus.drive(road: road)
+```
+Avec une méthode ou une propriété de classe, on utilise directement la classe comme ceci par exemple :
+
+```swift
+Bus.propriétéDeClasse()
+Bus.methodeDeClasse()
+```
+
+On appelle directement la méthode ou la propriété avec le nom de la classe.
+
+Pour créer une méthode ou une propriété de classe. On utilise le mot clé `static` avant la déclaration comme ceci :
+
+```swift
+class MaClasse {
+	static var unePropriétéDeClasse = 0
+	static func uneMéthodeDeClasse() {
+		// Ici se trouve les instructions de la méthode
+	}
+}
+
+MaClasse.unePropriétéDeClasse // J'accède à la propriété de classe
+MaClasse.uneMéthodeDeClasse() // J'appelle la méthode de classe
+```
+
+Donc rien de plus simple, il suffit d'ajouter le mot-clé `static` pour passer d'une propriété ou méthode d'instance à une propriété ou méthode de classe.
+
+**:information_source:** Jusqu'à présent, je vous ai parlé de méthodes ou de propriétés **de classe** mais vous rencontrerez peut-être les expressions suivantes :
+- propriété ou méthode **de type** (*type properties* ou *type methods*) : dénomination officielle d'Apple.
+- propriété ou méthode **statique** : d'où le mot clé `static`.
+Sachez qu'elles sont toutes les trois équivalentes.
+
+#### Utilité des propriétés et méthodes de classe
+
+**:question:** Holà ! Tout doux mon garçon ! C'est formidable ton histoire mais ça sert à quoi ?
+
+A rien... :D !
+
+Non bien sûr que non et c'est même très pratique. Laissez moi vous montrer quelques cas d'utilisation.
+
+**Les constantes**
+
+Souvent dans une classe on va vouloir définir des constantes qui sont vrai pour toutes les instances de la classe. Par exemple, le type Float en a plusieurs :
+```swift
+Float.infinity // contient le plus grand nombre décimal pouvant être contenu dans un float
+Float.pi // Contient le nombre pi
+```
+Ça n'aurait pas de sens de devoir d'abord créer une instance de float avant d'accéder à ses valeurs. On préfère y avoir accès directement. Mais il faut bien le stocker quelque part et quoi de plus logique que de le stocker dans le type `Float` puisque `pi` et l'infini sont a priori décimaux.
+
+Par exemple, dans notre cas, cela va nous permettre de stocker le nombre maximum de section que peut contenir la route. En effet, le canva ayant une taille limité, on ne peut pas stocker plus de 77 sections. Donc nous allons utiliser une propriété de classe pour cela :
+
+```swift
+class Road {
+	static let maxLength = 77
+	// La suite de la classe...
+}
+```
+
+Petit exercice, je vous propose de modifier l'init de la classe `Road` pour contrôler que les instances créées ont pour longueur maximum 77.
+
+```swift
+// Ne regardez pas la correction tout de suite !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Road {
+    static let maxLength = 77
+    var sections = [RoadSection]()
+
+    init(length: Int) {
+        var length = length
+        if length > Road.maxLength {
+            length = Road.maxLength
+        }
+        for _ in 0..<length {
+            self.sections.append(RoadSection())
+        }
+    }
+}
+```
+
+**Les initialisations particulières**
+On peut utiliser les méthodes de classe pour initialiser des instances particulières facilement. Vous avez sans doute remarquez maintenant que la route que l'on crée fait des virages pour se poursuivre. On pourrait créer une méthode de classe `createStraightRoad` qui crée une route toute droite. Pour cela, il suffit de ne lui donner une longueur inférieur à 12 sections pour ne pas atteindre le premier virage.
+
+```swift
+class Road {
+	static func createStraightRoad() -> Road {
+			return Road(length: 11)
+	}
+	// (...)
+}
+
+Road.createStraightRoad() // Le canva affiche une ligne droite
+```
+
+Cette fonction renvoie bien une route droite de longueur 11.
+
+**Gérer plusieurs instances**
+Certaines méthodes de classe sont utilisées pour faire des calculs ou des modifications sur plusieurs instances en même temps. Par exemple, si on voulait combiner deux instances de `Road` en une seule pour avoir une plus grande route, on écrirait sans doute une méthode de classe.
+
+Autre exemple, les types `Float` et `Double` ont comme méthode de classe `maximum` qui permet d'obtenir la valeur absolue d'un nombre :
+
+```swift
+Double.maximum(2, 12) // Renvoie 12
+Float.maximum(3, 13) // Renvoie 13
+```
+
+#### En résumé
+- Les propriétés et méthodes de classe se déclarent avec le mot-clé `static`.
+- Par opposition à une propriété ou méthode d'instance, une propriété ou méthode de classe s'utilise à partir du nom de la classe.
+- Les propriétés de classe sont particulièrement utiles pour définir des constantes pour la classe.
+- Les méthodes de classe sont particulièrement utiles pour définir des initialisations particulières ou pour gérer plusieurs instances.
 
 ## Enrichissez vos objets avec l'héritage
 <!--
@@ -442,7 +1045,7 @@ Section 2 : Application avec RoadSectionType, réécriture de l’init de RoadSe
 
 ### Surchargez les méthodes
 
-Section 1 : Découverte du mot clé super avec l’écriture des init des sous-classe de road section  
+Section 1 : Découverte du mot clé super avec l’écriture des init des sous-classe de road section  (mention du mot-clé class qui permet aux sous-classes d’override)
 Exercice : Créez une fonction statique de Road : createRoadToSchool  
 Section 2 : Découverte du mot clé override avec l’override de la fonction drive dans SchoolBus et découverte du type check avec “as”  
 Exercice : écrire l’override de la fonction drive
@@ -458,6 +1061,8 @@ PARTIE 4
 Section 1 : Computed properties VS stored properties (ex: description de schoolbus)  
 Section 2 : Getter and setter  
 Section 3 : Property observance (didSet, willSet)
+
+Inclure un schéma des propriétés : stored VS computed / Instance VS Typed
 
 ### Plongez dans les coulisses de l'initialisation
 Section 1 : Convenience, Inherited and Designated initializer (application  avec RoadSection)  
