@@ -1034,21 +1034,918 @@ PARTIE 3
 -->
 
 ### Héritez de nouvelles connaissances
-Section 1 : Présentation générale de l'héritage (mise en scène avec peluches d’animaux)  
-Section 2 : Nouveau schéma de l'héritage  
-Exercice : Héritage par métier pour la classe Personne  
-Section 3 : Application à SchoolBus et création de HomeRoadSection et SchoolRoadSection
+Vous commencez maintenant à avoir une bonne idée de ce qu'est la POO. Et dans ce chapitre, nous allons découvrir ce qui en fait toute sa puissance : l'héritage !
+
+#### Introduction à l'héritage
+Comme c'est un chapitre important, je ne vais pas arriver à vous l'expliquer tout seul. C'est la raison pour laquelle je vous présente Bob mon assistant dans ce chapitre.
+
+[Image photo de Bob]
+
+Essayons de représenter Bob en orienté objet. Bob peut aboyer, courir, manger, dormir, il a une taille, un poids et une couleur.
+
+![](Images/P3/P3C1_2.png)
+
+Certes on pourrait le décrire plus précisément mais c'est déjà pas mal. Laissez moi maintenant vous présenter Raul.
+
+[Image photo de Raul]
+
+Raul et Bob sont évidemment très différents. Essayons de décrire Raul en orienté objet. Raul a une taille, un poids et une couleur. Il peut chanter, voler, manger, dormir.
+
+![](Images/P3/P3C1_3.png)
+
+Hmmm... Selon notre classification, il semblerait que les classes `Oiseau` et `Chien` ne sont pas si différentes. La plupart de leurs propriétés et methodes sont identiques. Donc par exemple, si on devait écrire l'implémentation des méthodes, on ferait deux fois la même chose. Or un développeur déteste se répéter ! On va donc utiliser l'héritage !
+
+
+L'héritage permet de créer un arbre de classe. Dans notre exemple, nous avons deux animaux qui partagent des caractéristiques communes. En fait, on aurait pu décrire une classe Animal comme ceci :
+
+![](Images/P3/P3C1_4.png)
+
+Oui mais le problème, c'est qu'on a été obligé d'enlever certaines méthodes comme `aboyer` ou `voler` car elles ne sont pas valables pour tous les animaux. Il faut que l'on puisse garder nos classes `Chien` et `Oiseau` pour gérer ces spécificités.
+
+Alors que fait-on ? Nous allons modifier `Chien` et `Oiseau` pour supprimer tout ce qui est commun et du coup peut être mis dans la classe `Animal`. Et on va dire que les classes `Oiseau` et `Chien` héritent de la classe `Animal`.
+
+![](Images/P3/P3C1_5.png)
+
+**:question:** Mais qu'est-ce que ça veut dire "hérite de" ?
+
+Et bien, très concrètement, lorsque la classe `Chien` hérite de la classe `Animal`, toutes les propriétés et méthodes de la classe `Animal` sont disponibles dans la classe `Chien`. C'est comme si je les avais écrit dans la classe Chien. Je peux écrire par exemple :
+
+```swift
+let bob = Chien()
+bob.taille = 120
+bob.poids = 30
+bob.manger()
+```
+Les propriétés et méthodes de l'exemple ci dessus ne sont pas définis dans la classe `Chien` mais dans la classe Animal et en héritant de cette classe, la classe `Chien` les récupère. L'héritage, c'est juste ça.
+
+**:warning:** Quand vous serez très à l'aise avec l'héritage, vous aurez envie de le faire partout parce que c'est très (presque trop) pratique. Faîtes attention, ce n'est pas parce que 2 classes possèdent des caractéristiques communes, même beaucoup, qu'il faut utiliser l'héritage. Par exemple, si je prends une maison, elle a aussi une taille, un poids et une couleur. Mais ça n'aurait pas de sens de créer une classe `Objet` dont hérite la classe `Maison` et la classe `Animal`. Parce que **dans la vraie vie**, une maison et un animal n'ont rien à voir. Ça peut vous paraître évident maintenant mais croyez moi, la tentation est grande de faire ce genre de tour de passe-passe. Votre code doit avant tout être intelligible et clair et pour cela mieux vaut ne pas tout mélanger.
+
+#### L'héritage en action
+Avant d'aborder l'implémentation de l'héritage, laissez moi vous donner un exemple d'héritage en iOS. Je vous l'ai dit en introduction, en iOS, tout est objet. Et la plupart d'entre eux utilise l'héritage ! C'est notamment très clair pour l'interface graphique. L'interface graphique est pleine de composants. Il peut y avoir des images, des boutons, des labels etc. Ces composants vont être disposées sur l'interface et ont donc beaucoup de choses en commun : leur taille, leur position, leur couleur, s'ils sont visibles ou non, s'ils réagissent au toucher ou non et beaucoup d'autres. C'est la raison pour laquelle ils héritent tous d'`UIView`, une classe qui gère tous ces aspects et permet donc à tous les composants de ne pas avoir à répéter toute cette logique. Il suffit qu'ils en héritent !
+
+**:information_source:** Le prochain cours contient tout une partie dédiée à UIView, une classe du coup incontournable d'iOS.
+
+Prenons un autre exemple, mais cette fois ci avec notre bus scolaire. En début de cours, nous avions créé ensemble le diagramme suivant :
+
+![](Images/P3/P3C1_6.png)
+
+En utilisant l'héritage, nous allons pouvoir modifier ce schéma et rajouter quelques classes :
+
+![](Images/P3/P3C1_7.png)
+
+Alors regardons un peu tout cela. Tout d'abord nous allons rajouter la classe `SchoolBus`. Cette classe hérite de la classe `Bus`. La classe `SchoolBus` définit un bus scolaire. La différence avec un bus classique, c'est que le bus scolaire va avoir une propriété en plus : `schoolName`. Car le bus scolaire est associé à une école. Par ailleurs, la méthode `drive` de `SchoolBus` va être légèrement différente de la méthode `drive` de Bus. Car le bus scolaire va s'arrêter à chaque maison pour récupérer les enfants et ensuite les déposer à l'école tandis que le bus simple roule seulement sur la route.
+
+Par ailleurs, nous avons deux autres nouvelles classes : `HomeRoadSection` et `SchoolRoadSection` qui héritent toutes les deux de `RoadSection`. Chacune de ces trois classes vont avoir des initialisations différentes qui vont nous permettre de dessiner sur le canva des sections de route avec ou sans maison et avec ou sans école. La classe `HomeRoadSection` a en plus une variable `children` qui va nous permettre de savoir combien d'enfants le bus va récupérer dans cette maison.
+
+#### Implémenter l'héritage
+Voici venu le moment que vous attendez tous ! Comment fait-on dans le code pour dire qu'une classe hérite d'une autre ? Et bien, comme pour beaucoup de choses avec Swift, c'est très simple !
+
+Essayons de créer notre classe `SchoolBus` qui hérite de `Bus`. Il suffit d'écrire la création de classe comme on a l'habitude de faire :
+
+```swift
+class SchoolBus {
+
+}
+```
+
+Et maintenant, pour appliquer l'héritage, **on ajoute <kbd>:</kbd> puis la classe dont on veut hériter** (`Bus` en l'occurence) :
+
+```swift
+class SchoolBus: Bus {
+
+}
+```
+
+Alors que l'implémentation de `SchoolBus` semble vide, je peux utiliser toutes les propriétés et méthodes de `Bus` :
+
+```swift
+var unBusScolaire = SchoolBus(driverName: "Joe")
+unBusScolaire.seats = 50
+unBusScolaire.drive(road: road)
+```
+
+C'est la beauté de l'héritage. Maintenant je vais rajouter un propriété spécifique à `SchoolBus` :
+
+```swift
+class SchoolBus {
+    var schoolName = ""
+}
+```
+La propriété `schoolName` sera disponible dans la classe `SchoolBus` mais pas pour les instances de `Bus`.
+
+Et voilà ! Je vous l'avez promis, l'héritage avec Swift, c'est simple.
+
+#### Exercice
+Héritage par métier pour la classe Personne  
+
+#### En résumé
+- Une classe (dite *fille*), peut hériter d'une autre classe (dite *mère*). Dans ce cas, toutes les propriétés et méthodes de la classe mère sont dispnibles dans la classe fille sans que la classe fille ait besoin de le rédéfinir.
+- L'héritage permet d'organiser son code grâce à un arbre d'héritage et d'éviter ainsi des répétitions.
+- Pour qu'une classe hérite d'une autre, on utilise les <kbd>:</kbd> suivi du nom de la classe mère :  
+```swift
+class Fille: Mere {
+}
+```
 
 ### Énumérez des cas
-Section 1 : Présentation des enums (use cases et syntaxe) et les enums avec types  
-Section 2 : Application avec RoadSectionType, réécriture de l’init de RoadSection
+Pour pouvoir aller plus loin, nous allons découvrir un ensemble un nouveau modèle de donnée nommé ! En Swift, il existe **trois modèles de données nommés** :
+- Les classes
+- Les structures
+- Les énumérations
+
+Ce cours fait la part belle aux classes donc normalement vous savez maintenant ce que c'est. Les structures ressemblent beaucoup aux classes et sont très utiles en Swift mais nous ne verrons leur utilisation qu'au prochain cours sur iOS. Et les énumérations, et bien c'est le sujet de ce chapitre !
+
+#### Découvrez les énumérations
+Comme les classes, les énumérations sont des modèles de donnée nommés. C'est à dire qu'il vont nous permettre de modéliser nos données en définissant un nouveau type. C'est ce qu'on a fait avec nos classes jusqu'à présent. On a créé un modèle de donnée simple à comprendre avec trois nouveaux types : un bus, une route et des sections de route. Les énumérations ont une mission similaire mais pour des usages un peu différents.
+
+Le rôle d'une énumération est très simple : les énumérations permettent d'énumérer des cas. Et il y a plein de moments où c'est utile. Laissez moi vous donner quelques exemples :
+1. Quand vous cherchez votre direction avec une boussole, il y a quatre cas possibles : nord, sud, est, west.
+2. Si vous attendez un enfant, il y a deux possibilités : c'est un garçon ou une fille.
+3. Si vous voulez présenter un message d’erreur à un utilisateur, vous pouvez définir plusieurs cas identifiables comme : vous n'êtes pas connecté, connexion internet faible ou vous n'avez pas l'autorisation.
+
+Avec les énumérations, on va pouvoir nommer tous ces cas. En reprenant les exemples précédents, cela donnerait :
+1. Type : Direction / Cas : nord, sud, est, ouest
+2. Type : Sexe / Cas : garçon, fille
+3. Type : Erreur / Cas : non connecté, signal faible, non autorisé
+
+On a donc un type générique qui contient différent cas. Sans plus attendre, je vous propose de vous montrer tout de suite comment déclarer ces 3 énumérations en Swift :
+
+```swift
+// 1
+enum Direction {
+    case nord
+    case sud
+    case est
+    case ouest
+}
+
+// 2
+enum Sexe {
+    case garçon
+    case fille
+}
+
+// 3
+enum Erreur {
+    case nonConnecté
+    case signalFaible
+    case nonAutorisé
+}
+```
+
+Comme vous pouvez le constater, cela ressemble aux déclarations de classe. Ici on a le mot-clé `enum` qui permet de déclarer l'énumération et ensuite le mot-clé `case` à l'intérieur qui permet à chaque fois d'ajouter un nouveau cas.
+
+**:information_source:** Il existe une syntaxe réduite où l'on peut tout écrire sur une seule ligne. Il suffit d'utiliser la <kbd>,</kbd> entre chaque cas :
+```swift
+// 1
+enum Direction {
+    case nord, sud, est, ouest
+}
+
+// 2
+enum Sexe {
+    case garçon, fille
+}
+
+// 3
+enum Erreur {
+    case nonConnecté, signalFaible, nonAutorisé
+}
+```  
+
+#### Utiliser les énumérations
+Pour utiliser une énumération, on utilise le nom de l'énumération suivi du <kbd>.</kbd> suivi du nom du cas. Par exemple :
+```swift
+var erreurDeConnexion = Erreur.nonConnecté
+```
+
+**:information_source:** Dans le cas où le type est déjà connu, on peut commencer directement au point. Par exemple :
+```swift
+var erreurDeConnexion = Erreur.nonConnecté
+erreurDeConnexion = .signalFaible // Le type est connu grâce à la déclaration précédente
+
+let dir: Direction = .nord // Le type est annoté
+```
+
+On utilise très souvent les énumérations avec les `switch`. C'est logique car le switch est une structure de contrôle qui permet de naviguer entre plusieurs cas. C'est ce que nous allons faire ici avec nos types de sections de route. Tout d'abord, je vous propose de créer une énumération qui décrit nos trois type de sections de route :
+
+```swift
+enum RoadSectionType {
+    case plain
+    case home
+    case school
+}
+```
+
+Maintenant, nous allons pouvoir ajouter à notre classe `RoadSection` la propriété type :
+```swift
+class RoadSection {
+    var type: RoadSectionType
+
+    init() {
+        canva.createRoadSection()
+    }
+}
+```
+
+Nous allons désormais modifier notre `init`. Nous allons créer une initialisation qui prends en compte le paramètre type. Cela va nous permettre de dessiner sur le canva la partie de route correspondant au type choisi :
+
+```swift
+init(type: RoadSectionType) {
+		self.type = type
+}
+```
+
+Rien de nouveau ici, j'utilise une initialisation avec paramètre comme on l'a vu dans les chapitres précédents. Je vais maintenant rajouter le switch :
+
+```swift
+init(type: RoadSectionType) {
+		self.type = type
+		switch type {
+		case .plain:
+				canva.createRoadSection()
+		case .home:
+				canva.createHomeRoadSection()
+		case .school:
+				canva.createSchoolRoadSection()
+		}
+}
+```
+
+Plusieurs choses à noter ici :  
+- Pour chaque cas, j'utilise la méthode approprié du canva pour dessiner la section.
+- Je fais le switch sur la variable `type` qui a pour type `RoadSectionType`. Je peux donc utiliser les cas directement avec le point sans rappeler RoadSectionType avant.
+- **Le switch en Swift doit être exhaustif**. Cela veut dire que tout les cas doivent être pris en compte dans un switch. C'est la raison pour laquelle vous avez systématiquement utilisé le mot-clé `default` jusqu'à présent qui permet de couvrir tous les autres cas. Ici, nous utilisons une énumération qui ne contient que trois cas. Nous couvrons ces trois cas avec le switch donc inutile d'utiliser `default`.
+
+**:warning:** Si vous écrivez un `switch` et que la variable que vous lui passez n'est pas une énumération, c'est bien souvent que vous feriez mieux de créer l'énumération correspondante. Votre modèle de donnée peut sans doute être amélioré.
+
+Avec cette nouvelle initialisation, nous pouvons maintenant créer facilement les sections de route du type de notre choix comme ceci :
+
+```swift
+RoadSection(type: .plain)
+RoadSection(type: .home)
+RoadSection(type: .school)
+```
+
+Dans le prochain chapitre, nous allons encore simplifié ceci avec l'héritage !
+
+#### La vérité sur les optionnels !
+
+![](Images/P3/P3C2_1.jpg)
+
+Merci Barack pour le teaser... En effet, je vais vous révéler la vérité sur les optionnels ! Vous êtes prêts ?
+
+Les optionnels... sont... tout simplement... des... **ÉNUMÉRATIONS** ! Eh oui ! Laissez moi vous montrez à quoi ils ressemblent :
+
+```swift
+enum Optional<T> {
+	case none
+	case some(T)
+}
+```
+
+**:warning:** Ne vous laissez pas perturbez par le `<T>`. C'est un générique, cela veut dire qu'à la place on peut mettre le type que l'on veut. On a déjà vu ça avec les dictionnaires par exemple. Souvenez vous on peut les noter : Array<T> ou T peut être un String, un Int ou n'importe quel type !
+
+Donc un optionnel, c'est deux cas. Soit rien (`none`) soit quelque chose d'un type précis. Et c'est exactement ce que vous connaissez des optionnels. Allons plus loin et jouons au jeu des équivalences :
+
+![](Images/P3/P3C2_2.png)
+
+Ces équivalences vous montre des utilisations assez avancées des énumérations (notamment à cause de cette histoire de <T>). Ne vous arrêtez pas à ça et prenez juste le temps de comprendre le fait que les optionnels sont des énumérations et ce que cela veut dire concrètement.
+
+J'espère que cela vous permettra de vous servir correctement des optionnels !
+
+#### Les valeurs brutes
+Jusqu'à présent nos énumérations sont des coquilles vides. Cela signifie qu'elles ne contiennent rien. Elles nous permettent de définir des cas mais les cas ne contiennent pas données. Sachez qu'en Swift, on peut associer à chaque cas une valeur. Reprenons un des exemples précédents :
+
+```swift
+enum Erreur {
+    case nonConnecté
+    case signalFaible
+    case nonAutorisé
+}
+```
+
+Cela pourrait être pratique que les cas contiennent un message d'erreur à afficher à notre utilisateur. Pour cela, nous allons préciser le type de la valeure brute contenue dans chaque cas et ensuite leur donner des valeurs. Voici la syntaxe :
+
+```swift
+enum Erreur: String {
+    case nonConnecté = "Vous n'êtes pas connecté."
+    case signalFaible = "Veuillez vérifiez votre connexion internet."
+    case nonAutorisé = "Vous n'êtes pas autorisé à effectuer cette action."
+}
+```
+
+Je définis donc d'abord que la valeure brute a pour type String et ensuite je l'attribue à chacun des cas. Ensuite, pour l'obtenir, j'utilise la propriété `rawValue`.
+
+```swift
+let erreurDeConnexion = Erreur.nonConnecté.rawValue // Cela affiche "Vous n'êtes pas connecté."
+```
+
+**:information_source:** On peut obtenir des valeurs brutes **implicites** :
+```swift
+// 1
+enum Direction: String {
+    case nord
+    case sud
+    case est
+    case ouest
+}
+
+// 2
+enum Planète: Int {
+    case mercure = 1, venus, terre, mars, jupiter, saturne, uranus, neptune
+}
+```
+Dans le premier cas, on a indiqué le type String pour les valeurs brutes. Puisqu'on a pas précisé de valeurs brutes, Swift va implicitement déclaré que la valeure brute de chaque cas correspond au nom du cas :
+```swift
+var dir = Direction.nord.rawValue // Contient "nord"
+```
+Dans le deuxième cas, on a indiqué le type entier pour les valeurs brutes. On ne précise la valeur que du premier cas. Swift va implicitement déclarer que les valeurs suivantes sont 2, puis 3, etc :
+```swift
+var terre = Planète.terre.rawValue // Contient 3
+```
+
+#### Exercice
+Ajouter une énumération à la classe Personne.
+
+
+#### En résumé
+- Les énumérations, comme les classes et les structures, sont des **modèles de données nommés**.
+- Les énumérations permettent d'énumérer des cas.
+- La syntaxe de création d'une énumération est la suivante :
+```swift
+enum NomDeLEnumeration {
+	case nomDuCas1
+	case nomDuCas2
+	case nomDuCas3
+}
+```
+- Pour utiliser une énumération, on utilise le nom de l'énumération suivi de <kbd>.</kbd> puis du nom du cas : `NomDeLEnumeration.nomDuCas1`.
+- On utilise très souvent les énumérations avec les `switch`.
+- **Les optionnels sont des énumérations**.
+- Les énumérations peuvent contenir des valeurs, appelées **valeurs brutes**. Ces valeurs doivent être du même type pour tous les cas d'une énumération. On les rajoute comme ceci :
+```swift
+enum NomDeLEnumeration: Type {
+	case nomDuCas1 = valeurBrute1
+	case nomDuCas2 = valeurBrute2
+	case nomDuCas3 = valeurBrute3
+}
+```
+La valeure brute est contenue dans la propriété `rawValue`.
+
 
 ### Surchargez les méthodes
+Dans le chapitre précédent, nous avons utilisé une énumération pour modifier l'initialisation de la classe `RoadSection`, ce qui nous a permis d'écrire ceci :
 
-Section 1 : Découverte du mot clé super avec l’écriture des init des sous-classe de road section  (mention du mot-clé class qui permet aux sous-classes d’override)
-Exercice : Créez une fonction statique de Road : createRoadToSchool  
-Section 2 : Découverte du mot clé override avec l’override de la fonction drive dans SchoolBus et découverte du type check avec “as”  
-Exercice : écrire l’override de la fonction drive
+```swift
+RoadSection(type: .plain)
+RoadSection(type: .home)
+RoadSection(type: .school)
+```
+
+C'est déjà bien mais ce n'est pas exactement l'objectif souhaité. A l'origine, nous souhaitions utiliser l'héritage pour initialiser différents type de section de route. On aimerait plutôt pouvoir écrire ceci :
+
+```swift
+RoadSection()
+HomeRoadSection()
+SchoolRoadSection()
+```
+Alors allons-y !
+
+#### Ça va être super !
+Je vous propose de commencer tout simplement par déclarer nos classes `HomeRoadSection` et `SchoolRoadSection` en les faisant hériter de `RoadSection` :
+
+```swift
+class HomeRoadSection: RoadSection {
+}
+
+class SchoolRoadSection: RoadSection {
+}
+```
+
+C'est un bon début. Maintenant nous allons les initialiser en dessinant sur le canva la section de route correspondante :
+
+```swift
+class HomeRoadSection: RoadSection {
+    init() {
+    }
+}
+
+class SchoolRoadSection: RoadSection {
+    init() {
+    }
+}
+```
+
+Et là réfléchissons un peu. Nous avons déjà fait le travail dans l'initialisation de `RoadSection` pour que la bonne section de canva soit dessinée en fonction de son type. Est-ce qu'il n'y aurait pas un moyen de réutiliser l'initialisation de `RoadSection` dans ses classes filles ?
+
+Vous vous en doutez, il y a moyen. Et le moyen, c'est `super` ! Oui le mot `super`. Le mot `super` dans une classe permet de faire référence à la classe mère de la classe dans laquelle on se trouve. C'est un peu l'équivalent du mot `self`. Sauf que `self` fais référence à soi-même alors que `super` fais référence à la classe mère.
+
+Donc ici, nous allons utiliser `super` pour récupérer l'initialisation de `RoadSection` :
+
+```swift
+class HomeRoadSection: RoadSection {
+    init() {
+        super.init(type: .home)
+    }
+}
+
+class SchoolRoadSection: RoadSection {
+    init() {
+        super.init(type: .school)
+    }
+}
+```
+
+Maintenant voyons ce qu'il se passe si j'écris ceci :
+
+```swift
+HomeRoadSection()
+```
+
+Je vais tout d'abord appeler l'initialisation de `HomeRoadSection`. Ensuite, je vais par le mot clé `super` appeler l'initialisation de `RoadSection` en lui passant le paramètre `.home`. Cela nous fait passer dans un switch qui avec ce paramètre appelle la méthode : `canva.createHomeRoadSection()`.
+
+Maintenant, je vous propose de rajouter la propriété `children` à la classe `HomeRoadSection` qui va nous permettre de savoir combien d'enfants habite la maison. J'en profite en même temps pour l'inclure dans notre initialisation.
+
+```swift
+class HomeRoadSection: RoadSection {
+    var children = 2
+
+    init(children: Int) {
+        super.init(type: .home)
+				self.children = children
+    }
+}
+```
+
+#### A la conduite !
+Nos sections de route sont maintenant très pratiques mais notre bus scolaire a encore triste mine :
+
+```swift
+class SchoolBus: Bus {
+    var schoolName = ""
+}
+```
+
+Pourtant nous avions de grands projets pour lui :
+
+![](Images/P3/P3C3_1.png)
+
+Nous voulions lui ajouter une fonction `drive`.
+
+**:question:** Mais `SchoolBus` hérite de `Bus` ?!
+
+Oui... Et ?
+
+**:question:** Du coup, il a déjà à disposition la fonction `drive` qui est définie dans `Bus` !
+
+Eh oui ! Bien vu ! Mais la fonction `drive` de `Bus` ne fait que conduire le long de la route sans s'arrêter. Alors que le bus scolaire lui doit s'arrêter à chaque maison, récupérer les enfants et ensuite s'arrêter à l'école.
+
+**:question:** On a qu'à changer la méthode drive directement dans `Bus`.
+
+Oui mais ce serait un peu faux. Un bus normal ne s'arrête pas devant les maisons et ne va pas à l'école.
+
+**:question:** Alors qu'est-ce qu'on fait ?
+
+Et bien on utilise l'**override** !
+
+**:question:** L'overqui ?
+
+L'override est une technique qui permet à une classe fille de réécrire une méthode de la classe mère.
+
+Imaginons que la méthode `drive` est un DVD sur lequel se trouve l'épisode 4 de Star Wars. Il existe deux façons de faire l'override :
+- Soit on grave sur le DVD l'épisode 3 (avant) et / ou l'épisode 5 (après) **en plus** de l'épisode 4.
+- Soit on efface tout et on met Bambi. ;)
+
+Autrement dit l'override permet à une classe fille de **compléter l'implémentation d'une méthode la classe mère** ou de la *réécrire complètement**. Dans les deux cas, comment fait-on ?
+
+On utilise tout simplement le mot-clé `override`. Regardons ça avec un exemple. Prenons la classe `Animal` suivante :
+
+```swift
+class Animal {
+    func saluer() {
+        print("Bonjour")
+    }
+
+		func seDécrire() {
+				print("Je suis un animal.")
+		}
+}
+```
+
+Maintenant prenons une classe fille `Chien` :
+
+```swift
+class Chien: Animal {
+
+}
+```
+
+Pour redéfinir les méthodes, il me faut rajouter le mot-clé `override` avant ma fonction :
+
+```swift
+class Chien: Animal {
+    override func saluer() {
+        print("Wouf !")
+    }
+
+		override func seDécrire() {
+				super.seDécrire()
+				print("Et pas n'importe lequel : un chien !")
+		}
+```
+
+Voyons un peu ce que j'ai fait ici. J'ai modifié la méthode `saluer`. Désormais elle n'affiche plus "Bonjour" mais "Wouf !". La méthode a été **entièrement modifié**, on ne réutilise rien de la méthode originale. En revanche, dans la méthode `seDécrire`, j'appelle la méthode `seDécrire` de la classe `Animal` en utilisant le mot clé `super` comme pour l'initialisation de tout à l'heure. Ensuite, je **complète** la méthode en rajoutant "Et pas n'importe lequel : un chien !". Du coup, si j'écris :
+
+```swift
+let unChien = Chien()
+unChien.seDécrire()
+```
+
+La console affiche :
+```console
+Je suis un animal.
+Et pas n'importe lequel : un chien !
+```
+
+#### Exercices
+
+Ce que nous avons appris dans ce chapitre va vous permettre d'améliorer notre programme !
+
+**Exercice 1**
+
+En vous inspirant de la fonction `createStraightRoad`, créez une fonction `createRoadToSchool` qui permet de créer une route ayant les caractéristiques suivantes :
+- Une longueur de route de 30
+- Toutes les 7 sections, une section contient une maison
+- La dernière section contient une école
+Pour cet exercice, vous utiliserez les classe `HomeRoadSection` et `SchoolRoadSection` que nous avons ajoutées dans ce chapitre.
+
+```swift
+// Ne regardez pas la correction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+static func createRoadToSchool() -> Road {
+		let road = Road()
+		for i in 0..<30 {
+				if i%7 == 1 {
+						road.sections.append(HomeRoadSection(children: 2))
+				} else {
+						road.sections.append(RoadSection())
+				}
+		}
+		road.sections.append(SchoolRoadSection())
+		return road
+}
+```
+**Exercice 2**
+
+En utilisant la technique de l'override, vous implémenterez la méthode `drive` de la classe `SchoolBus`. Le bus doit marquer un arrêt à toutes les maisons et à l'école.
+
+```swift
+// Ne regardez pas la correction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+override func drive(road: Road) {
+    for section in road.sections {
+        switch section.type {
+        case .standard:
+            moveForward()
+        case .home:
+						stop()
+            moveForward()
+        case .school:
+            stop()
+        }
+    }
+}
+```
+#### En résumé
+- Le mot-clé `super` permet d'accéder dans une classe fille à l'implémentation d'une méthode ou d'une initialisation de la classe mère.
+- Le mot-clé `override` permet de modifier dans une classe fille une méthode définie dans une classe mère soit en la complètant soit en la redéfinissant complètement.
+
+
+### Contrôlez vos types
+
+L'héritage, c'est bien mais ça à un petit défaut. On peut se mélanger un peu les types parfois. Laissez moi vous donner un exemple. Prenons les classes suivantes :
+
+```swift
+class Media {
+    var titre: String
+
+    init(titre: String) {
+        self.titre = titre
+    }
+}
+
+class Film: Media {
+    var réalisateur: String
+
+    init(titre: String, réalisateur: String) {
+        self.réalisateur = réalisateur
+        super.init(titre: titre)
+    }
+}
+
+class Chanson: Media {
+    var chanteur: String
+
+    init(titre: String, chanteur: String) {
+        self.chanteur = chanteur
+        super.init(titre: titre)
+    }
+}
+```
+
+Il y a donc trois classes. Les classes `Chanson` et `Film` héritent de la classe `Media`. Avec cette structure de donnée, je peux créer le tableau de médias suivants :
+
+```swift
+let librairie = [
+    Film(titre: "Un balai dans le placard", réalisateur: "Rémi Movie"),
+    Chanson(titre: "L'ombre de ta valise", chanteur: "Frank Patatra"),
+    Chanson(titre: "Toi et moi dans le couloir", chanteur: "Johnny Les Vacances"),
+    Film(titre: "A portée de main", réalisateur: "Stanley Kubik"),
+    Film(titre: "Pourquoi pas ?", réalisateur: "Alfred Plicploc"),
+    Chanson(titre: "De si bon matin", chanteur: "Alain Chausson")
+]
+```
+
+Ce tableau est parfaitement valable. En effet, il est du type `[Media]` et il ne contient que des médias. Mais à cause de l'héritage, il y a maintenant deux types de médias ! Comment faire pour les différencier ? Par exemple, comment faire si je veux compter le nombre de chansons dans le tableau ?
+
+#### Vérifier un type
+
+Pour cela, nous allons découvrir ensemble le mot clé `is`. Le mot clé `is` permet d'inspecter le type d'un objet. Avec cet outil, essayons de compter le nombre de chansons dans la librairie :
+
+```swift
+var nombreDeChansons = 0
+
+for media in librairie {
+    if media is Chanson { // Ici on contrôle que le media est bien une chanson
+        nombreDeChansons += 1
+    }
+}
+
+print("La librairie contient \(nombreDeChansons) chansons.")
+```
+
+Dans la boucle for, je ne sais pas si la variable `media` est du type `Chanson` ou du type `Film`. La déclaration `if media is Chanson` qui se traduit littéralement "si le média est une chanson" nous permet de vérifier le type du média. Si c'est le cas, on incrémente notre compteur.
+
+Le mot-clé `is` s'utilise donc avec la syntaxe `variable is Type`.
+
+#### Accéder à un sous-type
+En reprenant, notre exemple de librairie, j'aimerais maintenant afficher tous les chanteurs de toutes les chansons de la librairie. Essayons la même stratégie :
+
+```swift
+for media in librairie {
+    if media is Chanson {
+        print(media.chanteur) // ERREUR
+    }
+}
+```
+On a une erreur car même si on a contrôlé le type de media, Swift considère toujours que media est juste du type Media et pas du type Chanson. Et donc la propriété chanteur n'existe pas. C'est toute la rigueur de Swift, une même variable ne changera JAMAIS de type même si on prends beaucoup de précaution.
+
+Il va donc falloir créer une nouvelle variable et on va faire cela en utilisant l'opérateur `as` comme ceci :
+
+```swift
+for media in librairie {
+    if let chanson = media as? Chanson {
+        print(chanson.chanteur)
+    }
+}
+```
+
+Voyons ce qu'il se passe en détail :
+- Si la variable `media` est du type `Chanson` :
+    - Une nouvelle variable est créée : la variable `chanson` de type `Chanson` et qui contient les mêmes données que la variable `media`.
+		- On effectue les instructions à l'intérieur des accolades. La variable `chanson` y est disponible.
+- Si la variable `media` n'est pas du type `Chanson` :
+    - Aucune variable n'est créé.
+		- On ignore les instructions entre accolades.
+
+Il nous reste une question à voir, celle du point d'interrogation. Le point d'interrogation après le `as` signifie que cette opération peut échouer. En effet, la variable media peut ne âs être du type chanson.
+
+On peut également utiliser le point d'exclamation après le as si on est **absolument certain** du type de notre variable. Par exemple :
+
+```swift
+(librairie[1] as! Chanson).chanteur
+```
+
+Entre les parenthèses, on force l'évaluation de `librairie[1]` à `Chanson` car on sait que c'est une chanson. Toute l'expression entre parenthèse est donc considérée comme une variable de type `Chanson` dont on peut obtenir du coup la propriété `chanteur`.
+
+**:information_source:** Cela ne vous fait pas penser à quelque chose ? C'est très proche du déballage des optionnels :
+```swift
+// Vérification que l'optionnel n'est pas nul
+if optionnel != nil {
+	// Faire quelque chose
+}
+
+// Déclaration optionnelle
+if let déballé = optionnel {
+	print(déballé)
+}
+
+// Déballage forcé
+let déballé = optionnel!
+```
+C'est à peu près la même logique, du coup les syntaxes sont similaires !
+
+#### Utilisation
+
+Vous avez donc 3 méthodes pour vérifier les types : `is`, `as?` et `as!`. Alors, comment décider quelle méthode utiliser ? Suivez le guide !
+
+![](Images/P3/P3C4_1.png)
+
+#### Les types Any et AnyObject
+
+**Any**
+
+Il y a un types un petit peu particulier que nous allons découvrir maintenant : le type `Any`. Une variable de type `Any` peut accepter une valeur de n'importe quelle type :
+
+```swift
+let a: Any = 12 // Ça marche
+let b: Any = "Blob" // Ça marche aussi
+let c: Any = true  // Ça marche encore
+let d: Any = Bus() // Ça marche toujours !
+```
+
+Encore plus fort, une variable de type `Any` peut changer de valeur avec des valeurs de types différents.
+
+```swift
+var a: Any = 12
+a = "Blob"
+a = true
+a = Bus()
+```
+
+**:warning:** Non, je ne vous ai pas menti. Une variable ne change JAMAIS de type. Ici la variable `a` garde toujours le même type, seulement c'est le type `Any`. ;)
+
+**AnyObject**
+
+Le type `Any` a un petit frère que vous risquez de rencontrer : le type `AnyObject`. Quel est la différence ? Le type `AnyObject` fonctionne uniquement avec les instances d'une classe. Cela exclut notamment tous les types basiques qui sont des structures en Swift (et non des classes) comme `Int`, `Float`, `Double`, `Bool`, `String`. En résumé :
+
+```swift
+var a: AnyObject = 12 // Renvoie une erreur
+var a: Any = 12 // OK
+
+var b: AnyObject = Bus() // OK
+var b: Any = Bus() // OK
+```
+
+**Usages**
+
+**:question:** OK mais à quoi ça sert ?
+
+Il y a plusieurs usages. Le premier usage courant, c'est de pouvoir créer des **collections avec des types mixés** par exemple comme ceci :
+
+```swift
+var tableauMixé: [Any] = [12, "Blob", true, Bus()]
+```
+
+Dans ce tableau, je peux utiliser des valeurs de différents types grâce au type `Any`.
+
+Le deuxième cas courant d'utilisation, c'est quand **on ne sait pas le type d'un objet** que l'on va utiliser.
+
+Prenons l'exemple d'une requête réseau. Je souhaite récupérer l'âge d'un utilisateur. Le serveur peut me répondre de deux façons différentes :
+- Tout se passe bien, je reçois : `["age": 22]`. La réponse est donc du type : `[String: Int]`.
+- Il y a une erreur, je reçois : ["erreur": "Le serveur a planté !"]. La réponse est cette fois du type `[String: String]`.  
+Donc dans cet exemple, je peux recevoir une variable de deux types différents. Pour pouvoir gérer ces deux types, je vais déclarer que ma variable est du type : `[String: Any]`.
+
+**Vérification du type**
+
+La raison pour laquelle je vous parle des types `Any` et `AnyObject` maintenant, c'est qu'avec des variables de ce type, on va souvent avoir besoin de vérifier le type qu'elles ont réellement avant de pouvoir les utiliser. Les types `Any` et `AnyObject` sont donc un des cas d'usage très courant de la vérification des types.
+
+#### Exercice
+
+Notre méthode `drive` de `SchoolBus` permet au bus de s'arrêter à chaque maison. Mais il ne récupère pas encore d'enfants. Dans cet exercice, vous allez rectifier ça :
+- A chaque maison, le bus récupère les enfants. Pour cela vous utiliserez la propriété `occupiedSeats` de la classe `Bus` et la propriété `children` de la class `HomeRoadSection`.
+- Le bus ne peut pas récupérer plus d'enfants que sa capacité de places assises (défini par la propriété `seats`).
+
+```swift
+// Ne regardez pas la correction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+override func drive(road: Road) {
+    for section in road.sections {
+        switch section.type {
+        case .standard:
+            moveForward()
+        case .home:
+            if shouldPickChildren() {
+                pickChildren(from: section)
+                stop()
+            }
+            moveForward()
+        case .school:
+            stop()
+        }
+    }
+}
+
+func shouldPickChildren() -> Bool {
+		return occupiedSeats < seats
+}
+
+func pickChildren(from roadSection: RoadSection) {
+		if let section = roadSection as? HomeRoadSection {
+				occupiedSeats += section.children
+		}
+}
+```
+##### En résumé
+- Les deux cas d'usage les plus courants de la vérification des types sont : l'héritage et les types `Any` et `AnyObject`.
+- Pour vérifier un type, on a trois méthodes : `is`, `as?` et `as!`.
+- Pour choisir la méthode à utiliser, vous pouvez vous référer à ce schéma :  
+![](Images/P3/P3C4_1.png)
+- Les types `Any` et `AnyObject` permettent aux variables d'accepter des valeurs de n'importe qu'elle type (uniquement les instances de classe pour le type `AnyObject`). On les utilise lorsqu'on veut faire des collections de types mixés ou qu'on ne connaît pas le type d'une variable que l'on va utiliser.
 
 ## Allez plus loin
 <!--
