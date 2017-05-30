@@ -1469,11 +1469,11 @@ Maintenant, je vous propose de rajouter la propriété `children` à la classe `
 
 ```swift
 class HomeRoadSection: RoadSection {
-    var children = 2
+    var children: Int
 
     init(children: Int) {
-        super.init(type: .home)
 				self.children = children
+        super.init(type: .home)
     }
 }
 ```
@@ -1622,7 +1622,7 @@ static func createRoadToSchool() -> Road {
 				if i%7 == 1 {
 						road.sections.append(HomeRoadSection(children: 2))
 				} else {
-						road.sections.append(RoadSection())
+						road.sections.append(RoadSection(type: .plain))
 				}
 		}
 		road.sections.append(SchoolRoadSection())
@@ -1884,6 +1884,7 @@ La raison pour laquelle je vous parle des types `Any` et `AnyObject` maintenant,
 Notre méthode `drive` de `SchoolBus` permet au bus de s'arrêter à chaque maison. Mais il ne récupère pas encore d'enfants. Dans cet exercice, vous allez rectifier ça :
 - A chaque maison, le bus récupère les enfants. Pour cela vous utiliserez la propriété `occupiedSeats` de la classe `Bus` et la propriété `children` de la class `HomeRoadSection`.
 - Le bus ne peut pas récupérer plus d'enfants que sa capacité de places assises (défini par la propriété `seats`).
+- Arrivé à l'école, le bus dépose tous les enfants
 
 ```swift
 // Ne regardez pas la correction
@@ -1916,7 +1917,7 @@ Notre méthode `drive` de `SchoolBus` permet au bus de s'arrêter à chaque mais
 override func drive(road: Road) {
     for section in road.sections {
         switch section.type {
-        case .standard:
+        case .plain:
             moveForward()
         case .home:
             if shouldPickChildren() {
@@ -1925,19 +1926,24 @@ override func drive(road: Road) {
             }
             moveForward()
         case .school:
+            dropChildren()
             stop()
         }
     }
 }
 
 func shouldPickChildren() -> Bool {
-		return occupiedSeats < seats
+    return occupiedSeats < seats
 }
 
 func pickChildren(from roadSection: RoadSection) {
-		if let section = roadSection as? HomeRoadSection {
-				occupiedSeats += section.children
-		}
+    if let section = roadSection as? HomeRoadSection {
+        occupiedSeats += section.children
+    }
+}
+
+func dropChildren() {
+    occupiedSeats = 0
 }
 ```
 ##### En résumé
@@ -1955,16 +1961,634 @@ PARTIE 4
 -->
 
 ### Enrichissez vos propriétés
-Section 1 : Computed properties VS stored properties (ex: description de schoolbus)  
-Section 2 : Getter and setter  
-Section 3 : Property observance (didSet, willSet)
+Pour le moment, vous connaissez deux types de propriétés :
+- les propriétés d'instance
+- les propriétés de classe (ou statiques)
 
-Inclure un schéma des propriétés : stored VS computed / Instance VS Typed
+Qu'elles soient statique ou d'instance, toutes les propriétés que vous avez vues pour le moment sont ce qu'on appelle des **propriétés stockées**. Cela veut dire qu'elles sont associées à une valeure qui est stocké en mémoire.
+
+Il existe en Swift un autre type de propriété : les propriétés calculées. Et c'est ce que nous allons voir dans ce chapitre.
+
+#### Le concept des propriétés calculées
+
+Les propriétés calculées diffèrent des propriétées stockées ainsi :
+- les propriétés stockées sont associées à une valeur
+- les propriétés calculées sont associées à un calcul
+
+**:question:** Un calcul ? C'est-à-dire ?
+
+En fait, si on y réfléchit, une propriété admet deux actions :
+- une action pour récupérer la valeur contenue, on va appeler cette action **get** *(récupérer en anglais)*
+- une action pour modifier la valeur contenue, on va appeler cette action **set** *(modifier en anglais)*
+
+Dans une propriété stockée, ces actions ont lieu automatiquement. Dans une propriété calculée, on va pouvoir modifier ces actions **get** et **set**.
+
+#### Implémentation des propriétés calculées
+
+Rien de tel qu'un bon exemple pour voir comment tout ça fonctionne. Je vous présente la classe `Carré` suivante qui permet de définir un carré.
+
+```swift
+class Carré {
+    var longueur: Int = 1
+}
+```
+
+**:information_source:** Oui, je vous fait l'affront de vous rappeler qu'un carré, c'est simplement 4 côtés de même longueur. Donc cette classe suffit à définir un carré.
+
+J'aimerais bien rajouter une propriété `périmètre` à ma classe qui me permettrait d'obtenir le périmètre de la classe. Le périmètre d'un carré c'est 4 fois la longueur donc allons-y !
+
+```swift
+class Carré {
+    var longueur = 1
+    var périmètre = 4
+}
+```
+
+Hmm... C'est bien mais le problème, c'est que si je modifie la longueur de mon carré, mon périmètre ne sera plus exact. On voit apparaître la limite des propriétés stockées. Je vais donc vous montrer comment créer une propriété calculée. Transformons donc notre périmètre en propriété calculée.
+
+```swift
+class Carré {
+    var longueur = 1
+
+		var périmètre: Int {
+        get {
+            return 4
+        }
+        set {
+
+        }
+    }
+}
+```
+
+Voici la forme basique d'une propriété calculée. Pour l'instant elle a exactement le même rôle qu'avant. Détaillons un peu ce qui s'y trouve :
+- Tout d'abord il faut indiquer le type de la propriété. Comme je ne lui donne plus de valeur il faut lui préciser le type explicitement.
+- Ensuite j'ouvre des accolades un peu comme une fonction.
+- A l'intérieur des accolades, se trouve deux sorte de sous-fonctions :
+  - **get** : c'est l'action qui permet de récupérer une valeur, on appelle ça le **getter**. Elle se comporte exactement comme une fonction avec une valeur de retour de type `Int`. Pour l'instant, elle renvoie simplement 4.
+	- **set** : c'est l'action qui permet de modifier notre valeur, on appelle ça le **setter**. Pour l'instant cette fonction est vide. Tel quel, elle ne change rien à ce qu'il se passe lorsqu'on modifie la valeur de la variable `périmètre`.
+
+Commençons par modifier notre getter :
+
+```swift
+var périmètre: Int {
+		get {
+				return longueur * 4
+		}
+		set {
+
+		}
+}
+```
+
+De cette façon, le périmètre sera toujours égal à 4 fois la longueur :
+```swift
+let c = Carré()
+c.longueur = 4
+c.périmètre // Affiche 16
+```
+
+Le problème maintenant, c'est lorsqu'on modifie le périmètre :
+```swift
+let c = Carré()
+c.périmètre = 8
+c.longueur // Affiche 1
+```
+
+La longueur ne s'adapte pas quand le périmètre change pourtant les deux doivent toujours être reliées. Je vais donc modifier le setter pour qu'il modifie la longueur à chaque fois que le périmètre est modifié :
+
+```swift
+var périmètre: Int {
+    get {
+        return longueur * 4
+    }
+    set {
+        longueur = newValue / 4
+    }
+}
+```
+
+Le setter se comporte exactement comme une fonction qui a pour paramètre `newValue`. `newValue` contient la nouvelle valeur que l'on est en train de donner au périmètre. Par exemple, si j'écris :
+
+```swift
+let c = Carré()
+c.périmètre = 8
+```
+
+Dans ce cas, `newValue` vaut 8 et donc maintenant si j'affiche la longueur, j'obtiens bien 8 / 4 = 2 :
+
+```swift
+c.longueur // Affiche 2
+```
+
+**:information_source:** Dans le setter, la propriété `newValue` contient la nouvelle valeure. Et la propriété `périmètre` contient l'ancienne valeur. Cela peut être pratique si on souhaite comparer les deux valeurs.
+
+En résumé :
+- le getter se comporte comme une fonction avec une valeur de retour du type de la propriété. Il est appelé lorsqu'on veut récupérer la valeur de la propriété.
+- le setter se comporte comme une fonction avec un paramètre `newValue` du type de la propriété. Il est appelé lorsqu'on modifie la valeur de la propriété.
+
+#### Les propriétés calculées en lecture seule
+Parfois nous écrivons des propriétées que nous n'avons pas besoin de modifier. Nous ne pouvons pas pourtant en faire des constantes car leur valeur peut varier en fonction des autres valeurs. Par exemple, ajoutons une propriété `description` à notre `Carré`.
+
+```swift
+class Carré {
+    let description = "Je suis un carré"
+		(...)
+}
+```
+
+C'est bien mais c'est un peu générique. Essayons d'afficher plutôt : "Je suis un carré de longueur X". Il va nous falloir une propriété calculée :
+
+```swift
+var description: String {
+		get {
+				return "Je suis un carré de longueur \(longueur)"
+		}
+		set {
+
+		}
+}
+```
+
+Voilà qui fonctionne comme on le souhaite. Mais on veut aller plus loin. On ne veut pas que quelqu'un puisse modifier la description car il pourrait écrire n'importe quoi notre description ne serait plus vrai.
+
+On va transformer cette propriété calculée en **propriété calculée en lecture seule** comme ceci :
+
+```swift
+var description: String {
+		return "Je suis un carré de longueur \(longueur)"
+}
+```
+
+J'ai effacé le getter et le setter et je mets le contenu du getter directement dans les accolades. Cette syntaxe permet à Swift de savoir que la propriété n'a pas le droit d'être modifiée, on dit qu'elle est en lecture seule. Je ne peux donc plus écrire :
+
+```swift
+let c = Carré()
+c.description = "N'importe quoi" // error: 'description' is a get-only property
+```
+
+#### Quelques règles de propriétés calculées
+
+Maintenant que vous avez bien compris ce que sont les propriétés calculées, je vais vous annoncer quelques règles ou remarques à leur sujet.
+
+**1.** Les propriétés calculées ne sont **jamais constantes**. Autrement dit on ne peut pas les déclarer avec `let`. Leur valeur est calculée donc, par définition, elle est appelée à changer.
+
+**2.** Les propriétés calculées ont **toujours un getter**. Au minimum, une propriété, ça renvoie une valeur donc il faut toujours pouvoir le faire :
+
+```swift
+// OK il y a un getter
+var propriétéCalculée: Type {
+	get {
+		return quelqueChose
+	}
+	set {
+
+	}
+}
+
+// OK il y a un getter, le setter est optionnel
+var propriétéCalculée: Type {
+	get {
+		return quelqueChose
+	}
+}
+
+// OK la propriété est en lecture seule, le getter est directement dans les accolades
+var propriétéCalculée: Type {
+		return quelqueChose
+}
+
+// FAUX ! Il n'y a pas de getter, c'est interdit
+var propriétéCalculée: Type {
+	set {
+
+	}
+}
+
+// ARCHI FAUX ! Il n'y a rien du tout
+var propriétéCalculée: Type {
+}
+```
+
+Enfin je voudrais attirer votre attention sur la chose suivante. Les deux propriétées calculées ci dessous ne sont pas équivalentes :
+
+```swift
+// Le setter est omis, mais cette propriété est modifiable
+var propriétéCalculée: Type {
+	get {
+		return quelqueChose
+	}
+}
+
+// Le setter et le getter sont omis, cette propriété est en lecture seule et ne peux pas être modifiée
+var propriétéCalculée: Type {
+		return quelqueChose
+}
+```
+
+C'est tout les propriétés calculées !
+
+#### Observer les propriétés
+Il existe un moyen d'observer les propriétés en Swift. Observer les propriétés, mais qu'est-ce que c'est encore que c'est histoire ? Vous allez voir que c'est assez proche de ce qu'on a déjà vu.
+
+Observer une propriété permet d'effectuer une action lorsque la propriété est modifiée.
+
+**:question:** Hé mais c'est exactement comme un setter !
+
+Et oui exactement ! Dans notre exemple du carré, la méthode `set` nous permettait de modifier la longueur dès que le périmètre était modifié. Le seul souci là dedans, c'est que **`set` ne fonctionne qu'avec des propriétés calculées**.
+
+Il existe deux méthodes pour écouter des propriétés stockées :
+- willSet : cette méthode est appelée juste avant la modification de la propriété.
+- didSet : cette méthode est appelée juste après la modification de la propriété.
+
+Prenons un exemple et essayons d'observer la propriété longueur :
+
+```swift
+var longueur = 1 {
+    willSet {
+        print("Le carré va changer de taille")
+    }
+    didSet {
+        if oldValue > longueur {
+            print("Le carré a rapetissé")
+        } else {
+            print("Le carré a grandi")
+        }
+    }
+}
+```
+
+Dans la méthode willSet, on affiche que le carré va changer de taille car cette méthode est appelée avant la modification.  
+Dans la méthode didSet, on compare l'ancienne valeur contenue dans la variable `oldValue` à la nouvelle valeure contenue dans `longueur`. En fonction du résultat, on affiche que le carré a rapetissé ou grandi. Cette méthode est appelée après la modification.
+
+De façon similaire à `oldValue`, la méthode willSet a une variable `newValue` qui contient la nouvelle valeur. Le schéma ci-dessous résume cela :
+
+![](Images/P4/P4C1_1.png)
+
+Donc en résumé, pour observer la modification d'une propriété. On utilise :
+- set : pour les propriétés calculées
+- willSet et didSet : pour les propriétés stockées
+
+**:warning:** Il existe une petite exception. Les propriétées calculées peuvent être observées avec willSet et didSet dans une classe fille dans le cadre d'un héritage.
+
+#### Le cadeau
+Nous avons vu dans ce chapitre un certain nombre de notions assez avancées sur les propriétés. Pour vous récompensez pour votre persévérance et vous donner une vue d'ensemble des propriétés, je vous ai concocté le petit schéma. N'hésitez pas à y revenir en cas de doute.
+
+![](Images/P4/P4C1_1.png)
+
+**:information_source:** Pour que vous ne soyez pas perdu dans vos recherches sur internet. Voici un petit lexique des propriétés en anglais :
+- propriété : property
+- propriété d'instance : instance property
+- propriété de classe : static ou class property
+- propriété stocké : stored property
+- propriété calculée : computed property
+- propriété calculée en lecture seule : read-only computed property
+
+
+#### Exercices
+
+**Exercice 1**
+
+Observez la propriété `occupiedSeats` de `Bus`. Avant sa modification, faîtes afficher la phrase : "Il y a du mouvement dans le bus...". Après sa modification, faîtes afficher la phrase "X personnes viennent de monter !" ou "X personnes vienne de descendre !" selon si la valeur de la propriété augmente ou baisse.
+
+```swift
+// Ne regardez pas la correction !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var occupiedSeats = 0 {
+    willSet {
+        print("Il y a du mouvement dans le bus...")
+    }
+    didSet {
+        if oldValue < occupiedSeats {
+            print("\(occupiedSeats - oldValue) personnes viennent de monter !")
+        } else {
+            print("\(oldValue - occupiedSeats) personnes viennent de descendre !")
+        }
+    }
+}
+```
+
+**Exercice 2**
+
+Ajoutez une propriété calculée en lecture seule au Bus. Cette propriété s'appellera `description` et contient : "Je suis un bus conduit pas X avec Y personnes dedans.". X est le nom du chauffeur et Y le nombre de personnes dans le bus.
+
+```swift
+// Ne trichez pas !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var description: String {
+		return "Je suis un bus conduit par \(driverName) avec \(occupiedSeats) personnes dedans."
+}
+```
+
+#### En résumé
+- On peut diviser les propriétés en deux types : les propriétés **stockées** et **calculées**. Parmi, les propriétées calculées, on peut créer des propriétées calculées en lecture seule.
+- Une propriété calculée permet de modifier les getter et setter au moyen des méthodes `get` et `set`.
+- Une propriété calculée n'est **jamais constante** et a **toujours un getter**.
+- Une propriété stockée peut être observée grâce aux méthodes **willSet** et **didSet**.
 
 ### Plongez dans les coulisses de l'initialisation
-Section 1 : Convenience, Inherited and Designated initializer (application  avec RoadSection)  
-Section 2 : Required Initializer
+Nous avons vu dans les chapitres précédents que l'on peut initialiser une classe en utilisant le mot-clé `init`. Dans l'initialisation, on peut initialiser des propriétés et faire toute sorte de calcul pour préparer notre objet comme on le souhaite. Dans ce chapitre, nous allons voir que l'initialisation obéit à un certain nombre de règles que l'on va apprendre à respecter.
+
+#### La première règle
+
+Si vous ne retenez qu'une seule chose de ce chapitre, retenez la première règle ! La première règle de l'initialisation est la suivante :
+
+> A la fin de l'initialisation, toutes les propriétés stockées doivent être initialisées.
+
+On peut se le refaire encore une fois, ça vaut le coup :
+
+> A la fin de l'initialisation, toutes les propriétés stockées doivent être initialisées.
+
+Bien qu'est-ce que ça veut dire ? Cela veut dire que lorsque l'initialisation est terminée, toutes les propriétés stockées doivent avoir une valeur. Et pour faire cela, vous savez déjà comment faire. Vous avez trois options :
+- Soit vous déclarer votre propriété avec une valeur par défaut.
+- Soit vous déclarer votre propriété de type optionnelle, elle aura pour valeur `nil` par défaut.
+- Soit vous initialiser votre propriété dans l'initialiseur.
+
+**:warning:** On ne parle ici bien sûr que des propriétés stockées. Les propriétés calculées ne sont pas initialisées. Le calcul est effectué à chaque fois quand elles sont appelées.
+
+Cela veut dire que la première mission d'un initialiseur, c'est d'**initialiser toutes les propriétés stockées qui n'ont pas de valeur.**. Si il ne remplit pas cette mission, votre programme va planter !
+
+#### Initialisation pratique et désignée
+ll existe deux types d’initialiseur. Jusqu'à présent, tous les initialiseurs que vous avez rencontrés sont du type **désigné** (*designated*).. Les initialiseur désignés sont les initialiseurs principaux d'une classe.
+
+Nous allons découvrir maintenant un deuxième type d'initialiseur : les initialiseurs **pratiques** (*convenience*). Comme leur nom l'indique, ces initialiseurs ne sont pas primordiaux pour la classe mais ils sont pratiques. Leur rôle est de proposer une initialisation facile ou en tout cas plus facile que les initialisations prévues par les initialiseurs désignés.
+
+Prenons tout de suite un exemple dans notre programme. Reprenons notre classe `HomeRoadSection` :
+
+```swift
+class HomeRoadSection: RoadSection {
+    var children: Int
+
+    init(children: Int) {
+				self.children = children
+        super.init(type: .home)
+    }
+}
+```
+
+Cette classe définit un initialiseur qui a en paramètre `children`. C'est pratique. Mais parfois, nous n'avons pas avoir envie de préciser le nombre d'enfants dans la maison. Parfois on voudrait juste lui mettre une valeur par défaut. Nous allons donc définir un initialiseur **pratique** pour cela.
+
+L'initialiseur pratique se déclare avec le mot-clé `convenience` comme ceci :
+
+```swift
+convenience init() {
+    self.init(children: 2)
+}
+```
+
+Le mot-clé convenience permet d'indiquer la nature pratique de l'initialiseur. A l'intérieur de cette fonction, j'utilise l'initialisation désignée avec `children` en paramètre. Maintenant, je peux écrire `SchoolRoadSection()` pour initialiser une nouvelle section. C'est plus concis et plus facile comme ça.
+
+Il y a donc une différence d'intention entre les deux types d'initialiseur :
+- désigné : ce sont les initialisations principales
+- pratique : ils permettent des initialisations faciles pour certains cas courant
+
+#### Pratique, désigné : quelles règles ?
+
+Mais derrière cette différence d'intention se trouve une vraie réalité technique ! Cette réalité peut s'illustrer en deux règles :
+1. Un initialiseur désigné doit faire appel à un initialiseur désigné **d'une classe mère si existante**.
+2. Un initialiseur pratique doit faire appel à un initialiseur désigné **de la même classe**.
+
+Autrement dit, dans un initialiseur désigné, on doit trouver quelque part `super.init` : on appelle l'initialiseur désigné de la classe mère. Et dans un initialiseur pratique, on doit pouvoir lire `self.init` : on appelle un initialiseur désigné de la même classe.
+
+Pour bien comprendre tout ça, réessayons de créer un initialiseur pratique. Cette fois, faisons le avec la classe RoadSection. On pouvoir l'initaliser sans paramètre et obtenir que le canva dessine une section de route simple. Pour cela, nous allons créer l'initialiseur pratique suivant :
+
+```swift
+convenience init() {
+		self.init(type: .plain)
+}
+```
+
+Cet initialiseur est bien du type pratique puique je le déclare avec le mot-clé `convenience`. Et il appelle l'initialiseur désigné de la même classe.
+
+Pour bien comprendre tout ça, voici un schéma de l'initialisation de `RoadSection` et `HomeRoadSection` :
+
+![](Images/P4/P4C2_1.png)
+
+On voit bien dans ce schéma que les initialisations pratiques appellent les initialiseurs désignés de leur classe de façon **horizontale**. Tandis que les initialiseurs désignés appellent les initialiseurs désignés de la classe mère de façon **verticale**. Vous pouvez imaginer les initialiseurs désignés comme le tronc de l'initialisation de votre arbre de classe. Les initialisations pratiques n'en sont que les branches.
+
+**:warning:** Un initialiseur désigné ne peut faire appel qu'à un initialiseur **désigné** de la classe mère.
+
+**:information_source:** En revanche, un initialiseur pratique peut faire appel à un autre initialiseur pratique, à la condition que ce dernier appelle finalement un initialiseur désigné. Un peu comme ça : pratique 1 => pratique 2 => désigné.
+
+Vous verrez que dans le développement d'applications iPhone, vous serez souvent amené à créer des sous-classes de certaines classes proposées dans iOS. Vos sous-classes seront bien plus faciles à utiliser si vous maîtriser les deux types d'utilisation.
+
+#### Exercices
+Exercice sur la classe Personne
+
+#### En résumé
+- A la fin de l'initialisation, toutes les propriétés stockées doivent être initialisées.
+- Il existe deux types d'initialiseur :
+    - désigné : ce sont les initialisations principales
+    - pratique : ils permettent des initialisations faciles pour certains cas courant
+- Un initialiseur désigné doit faire appel à un initialiseur désigné **d'une classe mère si existante**. Un initialiseur pratique doit faire appel à un initialiseur désigné **de la même classe**.
 
 ### Protégez vos classes
-Section 1 : Présentation de l’access control (rappel de l’intérêt d’une classe)  
-Section 2 : Mise en pratique sur nos classes
+En cette fin de cours, je vous propose un retour aux sources : à quoi sert une classe ? Ne vous inquiétez pas, je ne vais pas me lancer dans de grands débats philosophiques. Non je vais simplement vous rappeler l'intérêt d'une classe !
+
+Au début de ce cours, je vous ai expliqué qu'une classe avait deux objectifs :
+- représenter un concept : c'est plus facile de manipuler un objet bus qu'un gros paquet de variables et de fonctions emmêlées.
+- cacher une implémentation : parfois nous n'avons pas besoin de savoir comment fonctionne précisément une méthode comme la méthode `drive` par exemple, on veut juste que le bus conduise sur la route !
+
+On a beaucoup parler des moyens pour arriver au premier objectif mais assez peu des outils qui servent le deuxième et c'est le moment de se rattraper !
+
+#### Le contrôle d'accès
+Le contrôle d'accès (ou access control en anglais) est un moyen de limiter l'accès aux constituants d'une classe, d'un module ou d'un fichier. Pour bien comprendre comment ça marche, il me faut vous expliquer d'abord ce qu'est un module et ce qu'est un fichier source.
+
+Commençons par le plus simple, un fichier source, c'est tout simplement un fichier. Si vous allez dans le navigateur de Xcode, vous verrez l'ensemble des fichiers d'un projet, chaque ligne correspond à un fichier source. Dans notre playground, vous avez tout écrit dans une unique fichier.
+
+Un module, c'est un petit paquet de fichier qui forme un tout. Donc cela peut-être une application iPhone ou un framework. Les sources du Playground forment également un module.
+
+Le concept de module et de fichier source est au coeur du système de contôle d'accès de Swift.
+
+#### Les niveaux de contrôle
+Avec le contrôle d'accès, on va pouvoir limiter l'accès aux classes et à leur contenu. Par exemple, on va pouvoir dire qu'une fonction dans une classe est uniquement accesible dans cette classe.
+
+Il y existe 4 niveaux de contrôle, du plus permissif au plus restritif :
+- Publique (*public*) : les éléments publiques sont accesibles partout depuis n'importe quel module et n'importe quel fichier.
+- Interne (*internal*) : les éléments internes sont accessibles dans tout les fichiers du module dans lequel ils se trouvent. En revanche, ils ne sont pas accesibles à l'extérieur de ce module.
+- Privé au fichier (*fileprivate*) : les éléments privés au fichier ne sont accessibles que dans le fichier dans lequel ils sont définis.
+- Privé (*private*) : les éléments privés ne sont accessibles que dans le contexte dans lequel ils sont définis. Par exemple, si une méthode est privée, elle ne pourra être utilisée qu'à l'intérieur de la classe dans laquelle elle se trouve.
+
+Par défaut tous les éléments sont au niveau : Interne. Donc tous les élements sont par défaut disponibles dans le module qui les contient.
+
+Voici un schéma qui résume les différents niveaux de contrôle d'accès.
+
+![](Images/P4/P4C3_1.png)
+
+#### Mise en pratique
+Assez de théorie, je sais que vous avez besoin de voir concrètement ce que ça donne ! Alors allons-y. Prenons notre classe SchoolBus :
+
+```swift
+class SchoolBus: Bus {
+    var schoolName = ""
+
+    override func drive(road: Road) {
+        // (...)
+    }
+
+    func shouldPickChildren() -> Bool {
+        // (...)
+    }
+
+    func pickChildren(from roadSection: RoadSection) {
+			 // (...)
+    }
+
+    func dropChildren() {
+			// (...)
+    }
+}
+```
+
+Nous avons donc 4 méthodes dans cette classe. Ces méthodes sont donc par défaut au niveau de contrôle interne et donc disponibles dans tout le module, en l'occurence ici le Playground. Or, les fonctions `shouldPickChildren`, `pickChildren` et `dropChildren` n'ont pas besoin d'être accessible partout dans le Playground. Elles sont uniquement utilisées à l'intérieur de la classe dans la méthode drive. Donc nous pouvons les marquer comme *privés* pour limiter leur utilisation à l'intérieur de la classe :
+
+```swift
+class SchoolBus: Bus {
+    var schoolName = ""
+
+    override func drive(road: Road) {
+        // (...)
+    }
+
+    private func shouldPickChildren() -> Bool {
+        // (...)
+    }
+
+    private func pickChildren(from roadSection: RoadSection) {
+			 // (...)
+    }
+
+    private func dropChildren() {
+			// (...)
+    }
+}
+```
+
+Maintenant si j'essaie d'utiliser ces fonctions en dehors de la classe, cela n'est pas possible :
+
+```swift
+var unBusScolaire = SchoolBus(driverName: "Joe")
+unBusScolaire.dropChildren() // ERREUR
+```
+
+Nous venons de protéger notre classe SchoolBus ! Si quelqu'un l'utilise désormais, il n'aura pas accès à ces méthodes et cela lui évitera de faire n'importe quoi avec. C'est la raison pour laquelle je vous recommande de toujours définir des niveaux de contrôle les plus strictes possibles.
+
+Au delà de la sécurité, le contrôle d'accès est très important pour la lisibilité du code. Le contrôle d'accès permet de rendre très clair son intention. Si un développeur doit lire le contenu de ma classe SchoolBus, il saura en un clin d'oeil que la classe ne contient qu'une fonction utilisable à l'extérieur et que les autres par conséquent sont uniquement utilisées dans la classe.
+
+J'insiste vraiment sur ce point, *la lisibilité du code c'est le plus important* ! Et le contrôle d'accès est un excellent outil à son service.
+
+Pour vous donner une preuve, je vous invite à aller jeter un oeil aux sources du Playground. Les sources du Playground sont considéré comme un module indépendant de ce dernier. Du coup, le contrôle d'accès y joue un rôle primordial. Même si vous ne comprendrez pas le détail des implémentations, je suis certain que le contrôle d'accès vous donnera déjà une idée du fonctionnement global de ces sources.
+
+Vous verrez dans le fichier `Canva.swift` que la classe est définie comme public. En effet, on en a besoin à dans le playground. Et seulement 5 fonctions sont définies comme public aussi ce sont celles que vous connaissez.
+
+#### Classe et contrôle d'accès
+
+Pour l'instant, nous avons vu seulement l'exemple d'une méthode privée. Mais sachez que l'on peut de la même manière modifier le contrôle d'accès des propriétés et des classes. Pour cela, il suffit d'écrire le mot-clé correspondant au niveau de contrôle souhaité devant la déclaration :
+
+```swift
+public class UneClassePublique {
+	internal var unePropriétéInterne = 0
+
+	fileprivate let uneConstantePrivéAuFichier = "Coucou"
+
+	private func uneFonctionPrivé() {
+
+	}
+}
+```
+
+Pour terminer ce chapitre, je vous donne deux petites règles :
+
+**1. Hiérarchie du contrôle**
+Un élément ne peux pas avoir un niveau plus permissif que celui qui le contient. Par exemple, je ne peux pas avoir une propriété au niveau public dans une classe au niveau privé :
+
+```swift
+private class MaClassePrivé {
+	public var maPropriétéPublic = 0 // Impossible
+}
+```
+
+**2. Contrôle par défaut**
+Le niveau de contrôle par défaut est *interne* comme je vous l'ai dit tout à l'heure. Mais tous les membres d'une classe (propriétés et méthodes) ont par défaut le niveau de contrôle de la classe dans laquelle ils sont définis. Donc si une classe a pour niveau `fileprivate`, tous ses membres auront par défaut le niveau de contrôle `fileprivate`. Par exemple :
+
+```swift
+fileprivate class MaClassePrivéAuFichier {
+	var unePropriétéImplicitementPrivéAuFichier = 0 // niveau de contrôle fileprivate
+	private var unePropriétéExplicitementPrivé = 0 // niveau de contrôle fileprivate
+
+}
+```
+
+#### Exercice
+
+Codevolve exercice à faire sur la classe Personne
+
+#### En résumé
+- Le contrôle d'accès permet de limiter l'accès à certains éléments d'un programme
+- Il existe 4 niveau de contrôle d'accès : public, interne, privé au fichier, privé
+- **Le contrôle d'accès permet d'améliorer la lisibilité du code en exprimant son intention concernant un élément du programme.**
+- Un élément ne peux pas avoir un niveau plus permissif que celui qui le contient.
+- Tous les membres d'une classe ont par défaut le niveau de contrôle de la classe dans laquelle ils sont définis.
