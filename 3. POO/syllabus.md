@@ -22,7 +22,7 @@ Bonjour et bienvenue dans ce cours sur la programmation orientée objet (ou POO 
 Dans ce cours, nous allons utiliser le Playground. Et vous allez voir que nous pouvons faire des choses très sophistiquées avec le Playground !  
 En utilisant la programmation orientée objet et la puissance du Playground, vous allez réaliser une animation qui décrit le comportement d'un bus scolaire.
 
-![Légende : C'est pas beau ?](Images/P1/P1C1_1.png)
+===============> [Légende : C'est pas beau ?] (Images/P1/P1C1_1.png)
 
 Pour cela, nous allons passer par plusieurs étapes :
 - Nous allons créer la route
@@ -89,7 +89,7 @@ P1C2
 -->
 La programmation orientée objet est une technique de programmation incontournable aujourd'hui comme nous l'avons vu dans le chapitre précédent. Pour bien comprendre ce qu'elle est et ce qui a fait son succès, il me semble pertinent de savoir d'où elle vient !
 
-![Embarquez pour un voyage dans l'histoire de la POO !](Images/P1/P1C2_1.jpg)
+===============> [Embarquez pour un voyage dans l'histoire de la POO !] (Images/P1/P1C2_1.jpg)
 
 #### Les débuts
 
@@ -97,7 +97,7 @@ Tout commence un matin de 1960. Ce jour-là Ivan Sutherland, un étudiant en th�
 
 Sutherland va créer pendant sa thèse le logiciel SketchPad. Ce logiciel permet à l'aide d'un stylet de lumière de dessiner avec l'aide de l'ordinateur des formes simples comme des triangles, carrés, cercles, etc. Ce projet a posé les bases de la création assistée par ordinateur (CAO).
 
-![SketchPad](Images/P1/P1C2_2.jpg)
+===============> [SketchPad] (Images/P1/P1C2_2.jpg)
 
 Mais ce projet fait aussi partie des exemples fondateurs de la POO. Pourquoi ? Et bien parce qu'en POO, on crée des objets qui contiennent des propriétés et une logique propre. Et souvent ces objets représentent des éléments concrets comme un utilisateur, un article ou un panier. Et dans le cas de SketchPad, Sutherland a créé des objets pour représenter un triangle, un carré, un rond, etc. Et c'est ce qui a permis à Sutherland de programmer SketchPad. Car dans son code au lieu de manipuler une variable hauteur et une autre variable largeur pour représenter un rectangle, il pouvait manipuler directement un objet rectangle dans son programme.
 
@@ -107,7 +107,7 @@ Son projet et quelques autres ont influencé le langage de programmation Simula 
 
 Dans les années 70s, l'entreprise Xerox à qui on doit l'invention de la souris et de l'interface graphique notamment planche sur l'ordinateur personnel ou _personnal computer_ et oui votre bon vieux PC :O ! Ils veulent créer un ordinateur que tout le monde pourrait facilement utiliser grâce à une interface graphique, une souris, des fenêtres, etc. Et pour représenter tous ces éléments à l'écran et soutenir la logique de leur affichage, une équipe emmenée par Alan Kay a créé le langage SmallTalk qui s'inspire beaucoup de Simula et qui pour beaucoup a posé les derniers jalons de de la POO telle qu'on l'utilise aujourd'hui !
 
-![Le Xerox Alto, l'un des tout premiers ordinateurs personnels](Images/P1/P1C2_3.jpg)
+===============> [Le Xerox Alto, l'un des tout premiers ordinateurs personnels] (Images/P1/P1C2_3.jpg)
 
 #### La généralisation
 
@@ -155,7 +155,7 @@ Et bien tout simplement, un objet c'est **un petit paquet de variables et de fon
 
 Prenons l'exemple du jeu "Qui est-ce ?".
 
-![Le jeu "Qui est-ce ?". Ça vous rappelle des souvenirs ?](Images/P1/P1C3_1.jpg)
+===============> [Le jeu "Qui est-ce ?". Ça vous rappelle des souvenirs ?] (Images/P1/P1C3_1.jpg)
 
 > **:information_source:** Dans ce jeu, chaque joueur a un plateau qui présentent 24 personnages. Chaque joueur choisit un personnage. Et chacun à son tour, les joueurs vont poser des questions pour deviner le joueur de l'autre.
 
@@ -197,12 +197,12 @@ L'objet Partie pourrait avoir une méthode `démarrer` pour lancer la partie, re
 
 Dans les méthodes des objets vont se dérouler la logique de notre programme. Cela veut dire qu'au lieu que notre programme soit une suite d'instructions, notre programme va être la combinaison de plusieurs objets qui vont interagir ensemble.
 
-![](Images/P1/P1C3_2.png)
+===============> (Images/P1/P1C3_2.png)
 
 #### À quoi ça sert ?
 Les objets sont extrêmement pratiques. Un programmeur sans objets, c'est comme un jedi sans sabre laser !
 
-![](Images/P1/P1C3_3.jpg)
+===============> (Images/P1/P1C3_3.jpg)
 
 ##### Cacher une implémentation
 Mettons que l'on ait un objet Voiture. Une voiture contient un mécanisme très compliqué. Le moteur qui brûle de l'essence. Cela crée de la chaleur. Cette énergie thermique est transformée en énergie mécanique. Le mouvement arrive jusqu'aux roues et la voiture avance. Toute cette logique est _abstraite_ dans une voiture, vous n'avez pas besoin de la connaître. On l'a déjà fait pour vous. La seule chose que vous avez à votre disposition pour effectuer cette action, c'est la pédale de l'accélérateur. Tout le reste est caché sous le capot et si le constructeur a bien fait son travail, vous n'avez pas à vous en occuper.
@@ -235,9 +235,9 @@ Pour cela, je vous propose sans plus attendre de découvrir le projet sur lequel
 
 Une fois le projet téléchargé, vous pouvez ouvrir le fichier `SchoolBusPlayground.playground`. Et vous devriez arriver sur ceci :
 
-![](Images/P1/P1C4_1.png)
+===============> (Images/P1/P1C4_1.png)
 
-> **:warning:** Si vous ne voyez pas exactement ça, placez-vous en mode assistant en utilisant ce bouton : ![](Images/P1/P1C4_2.png)
+> **:warning:** Si vous ne voyez pas exactement ça, placez-vous en mode assistant en utilisant ce bouton : ===============> (Images/P1/P1C4_2.png)
 
 Regardons un peu ce que l'on a. Nous avons tout d'abord sur la droite une étendue de pelouse sur laquelle se trouve un bus. Cela c'est notre **canva**. C'est sur ce canva que nous allons dessiner notre route et déplacer notre bus.
 
@@ -312,7 +312,7 @@ Si vous avez suivi le cours précédent comme suggéré, vous êtes déjà à l'
 
 Il est possible que dans le texte, vous voyiez plutôt ceci :
 
-![](Images/P1/P1C4_3.png)
+===============> (Images/P1/P1C4_3.png)
 
 Les commentaires en vert qui commencent par `/*:` sont un moyen d'écrire de la documentation dans le Playground. Cela est utile notamment pour agrémenter le code d'instructions facilement lisibles ce qui est bien pratique dans notre cas. Si vous voulez en savoir plus sur le format de la documentation, vous pouvez aller [ici](https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/).
 
@@ -330,7 +330,7 @@ Ces vues permettent d'avoir un rendu visuel animé ou non de ce que l'on souhait
 
 Si vous ouvrez le navigateur - le panneau de droite, vous trouverez les sources et ressources du projet.
 
-![](Images/P1/P1C4_4.png)
+===============> (Images/P1/P1C4_4.png)
 
 **Les sources**  
 Les sources d'un projet permettent de cacher une implémentation à l'utilisateur du Playground. Par exemple, ici, j'ai mis l'ensemble de ce qui concerne le canva et ces animations dans les sources.
@@ -373,7 +373,7 @@ Donc nous allons a priori avoir au moins 2 méthodes :
 
 L'analyse que nous venons de faire s'appelle un **diagramme de classe**.
 
-![](Images/P1/P1C4_5.png)
+===============> (Images/P1/P1C4_5.png)
 
 > **:warning:** Dans notre analyse, il y a quelques oublis volontaires pour ne pas gâcher la surprise de nos futures découvertes ;) !
 
@@ -402,7 +402,7 @@ PARTIE 2
 
 Je suppose que vous avez maintenant hâte de vous lancer dans le code orienté objet. Alors j'ai le plaisir de vous annoncer que...
 
-![](Images/P2/P2C1_1.jpg)
+===============> (Images/P2/P2C1_1.jpg)
 
 #### Déclarer une classe
 
@@ -443,7 +443,7 @@ Et voilà ! Il ne suffit de rien de plus pour créer nos classes ! Bien sûr, po
 
 Vous vous souvenez des types ? Vous en connaissez un petit paquet maintenant. Voici un petit schéma pour vous les remettre en tête.
 
-![](Images/P2/P2C1_2.png)
+===============> (Images/P2/P2C1_2.png)
 
 Jusqu'à présent, vous savez faire des programmes en manipulant les types ci-dessus. À partir de maintenant, vous allez aussi travailler avec les types que vous avez créés !
 
@@ -494,7 +494,7 @@ Prenons une métaphore pour bien comprendre. Lorsque vous faites des gaufres, vo
 
 Si vous m'avez suivi, le gaufrier représente la classe. Les instances sont les représentations concrètes de cette classe.
 
-![](Images/P2/P2C1_3.png)
+===============> (Images/P2/P2C1_3.png)
 
 De toute façon, si vous savez qu'une classe permet de définir un type, vous ne vous tromperez pas ;) !
 
@@ -520,7 +520,7 @@ var instance = MaClasse()
 ### Ajoutez des propriétés
 Nous avons désormais trois classes Bus, Road et RoadSection. Et... ça nous fait une belle jambe ! Il n'y a rien dedans donc elles ne servent a priori pas à grand-chose. Dans ce chapitre, nous allons découvrir les propriétés et nous allons créer les premières propriétés de nos classes. Et pour cela, nous allons reprendre ce diagramme :
 
-![](Images/P1/P1C4_5.png)
+===============> (Images/P1/P1C4_5.png)
 
 Nous allons donc écrire 3 propriétés pour la classe Bus et 1 pour la classe Road.
 
@@ -805,7 +805,7 @@ var road = Road(length: 20) // Vous devriez voir une route de 20 sections se des
 ### Définissez des méthodes
 Un objet, c'est ?
 
-![](Images/P2/P2C4_1.jpg)
+===============> (Images/P2/P2C4_1.jpg)
 
 Et un point pour le phoque ! Je vois qu'il y en a qui suivent ! Et pour l'instant nos objets sont surtout des petits paquets de variables. Alors nous allons maintenant parler des fonctions.
 
@@ -1045,7 +1045,7 @@ Comme c'est un chapitre important, je ne vais pas arriver à vous l'expliquer to
 
 Essayons de représenter Bob en orienté objet. Bob peut aboyer, courir, manger, dormir, il a une taille, un poids et une couleur.
 
-![](Images/P3/P3C1_2.png)
+===============> (Images/P3/P3C1_2.png)
 
 Certes on pourrait le décrire plus précisément, mais c'est déjà pas mal. Laissez-moi maintenant vous présenter Raul.
 
@@ -1053,20 +1053,20 @@ Certes on pourrait le décrire plus précisément, mais c'est déjà pas mal. La
 
 Raul et Bob sont évidemment très différents. Essayons de décrire Raul en orienté objet. Raul a une taille, un poids et une couleur. Il peut chanter, voler, manger, dormir.
 
-![](Images/P3/P3C1_3.png)
+===============> (Images/P3/P3C1_3.png)
 
 Hmmm... Selon notre classification, il semblerait que les classes `Dragon` et `Chien` ne sont pas si différentes. La plupart de leurs propriétés et méthodes sont identiques. Donc par exemple, si on devait écrire l'implémentation des méthodes, on ferait deux fois la même chose. Or un développeur déteste se répéter ! On va donc utiliser l'héritage !
 
 
 L'héritage permet de créer un arbre de classe. Dans notre exemple, nous avons deux animaux qui partagent des caractéristiques communes. En fait, on aurait pu décrire une classe Animal comme ceci :
 
-![](Images/P3/P3C1_4.png)
+===============> (Images/P3/P3C1_4.png)
 
 Oui, mais le problème, c'est qu'on a été obligé d'enlever certaines méthodes comme `aboyer` ou `voler`, car elles ne sont pas valables pour tous les animaux. Il faut que l'on puisse garder nos classes `Chien` et `Dragon` pour gérer ces spécificités.
 
 Alors que fait-on ? Nous allons modifier `Chien` et `Dragon` pour supprimer tout ce qui est commun et du coup peut être mis dans la classe `Animal`. Et on va dire que les classes `Dragon` et `Chien` héritent de la classe `Animal`.
 
-![](Images/P3/P3C1_5.png)
+===============> (Images/P3/P3C1_5.png)
 
 > **:question:** Mais qu'est-ce que ça veut dire "hérite de" ?
 
@@ -1089,11 +1089,11 @@ Avant d'aborder l'implémentation de l'héritage, laissez-moi vous donner un exe
 
 Prenons un autre exemple, mais cette fois-ci avec notre bus scolaire. En début de cours, nous avions créé ensemble le diagramme suivant :
 
-![](Images/P3/P3C1_6.png)
+===============> (Images/P3/P3C1_6.png)
 
 En utilisant l'héritage, nous allons pouvoir modifier ce schéma et rajouter quelques classes :
 
-![](Images/P3/P3C1_7.png)
+===============> (Images/P3/P3C1_7.png)
 
 Alors, regardons un peu tout cela. Tout d'abord nous allons rajouter la classe `SchoolBus`. Cette classe hérite de la classe `Bus`. La classe `SchoolBus` définit un bus scolaire. La différence avec un bus classique, c'est que le bus scolaire va avoir une propriété en plus : `schoolName`. Car le bus scolaire est associé à une école. Par ailleurs, la méthode `drive` de `SchoolBus` va être légèrement différente de la méthode `drive` de Bus. Car le bus scolaire va s'arrêter à chaque maison pour récupérer les enfants et ensuite les déposer à l'école tandis que le bus simple roule seulement sur la route.
 
@@ -1292,7 +1292,7 @@ Dans le prochain chapitre, nous allons encore simplifier ceci avec l'héritage !
 
 #### La vérité sur les optionnels !
 
-![](Images/P3/P3C2_1.jpg)
+===============> (Images/P3/P3C2_1.jpg)
 
 Merci Barack pour le teaser... En effet, je vais vous révéler la vérité sur les optionnels ! Vous êtes prêts ?
 
@@ -1309,7 +1309,7 @@ enum Optional<T> {
 
 Donc un optionnel, c'est deux cas. Soit rien (`none`) soit quelque chose d'un type précis. Et c'est exactement ce que vous connaissez des optionnels. Allons plus loin et jouons au jeu des équivalences :
 
-![](Images/P3/P3C2_2.png)
+===============> (Images/P3/P3C2_2.png)
 
 Ces équivalences vous montrent des utilisations assez avancées des énumérations (notamment à cause de cette histoire de <T>). Ne vous arrêtez pas à ça et prenez juste le temps de comprendre le fait que les optionnels sont des énumérations et ce que cela veut dire concrètement.
 
@@ -1490,7 +1490,7 @@ class SchoolBus: Bus {
 
 Pourtant nous avions de grands projets pour lui :
 
-![](Images/P3/P3C3_1.png)
+===============> (Images/P3/P3C3_1.png)
 
 Nous voulions lui ajouter une fonction `drive`.
 
@@ -1819,7 +1819,7 @@ Entre les parenthèses, on force l'évaluation de `librairie[1]` à `Chanson`, c
 
 Vous avez donc 3 méthodes pour vérifier les types : `is`, `as?` et `as!`. Alors, comment décider quelle méthode utiliser ? Suivez le guide !
 
-![](Images/P3/P3C4_1.png)
+===============> (Images/P3/P3C4_1.png)
 
 #### Les types Any et AnyObject
 
@@ -1951,7 +1951,7 @@ func dropChildren() {
 - Les deux cas d'usage les plus courants de la vérification des types sont : l'héritage et les types `Any` et `AnyObject`.
 - Pour vérifier un type, on a trois méthodes : `is`, `as?` et `as!`.
 - Pour choisir la méthode à utiliser, vous pouvez vous référer à ce schéma :  
-![](Images/P3/P3C4_1.png)
+===============> (Images/P3/P3C4_1.png)
 - Les types `Any` et `AnyObject` permettent aux variables d'accepter des valeurs de n'importe qu'elle type (uniquement les instances de classe pour le type `AnyObject`). On les utilise lorsqu'on veut faire des collections de types mixés ou qu'on ne connaît pas le type d'une variable que l'on va utiliser.
 
 ## Allez plus loin
@@ -2224,7 +2224,7 @@ Dans la méthode didSet, on compare l'ancienne valeur contenue dans la variable 
 
 De façon similaire à `oldValue`, la méthode willSet a une variable `newValue` qui contient la nouvelle valeur. Le schéma ci-dessous résume cela :
 
-![](Images/P4/P4C1_1.png)
+===============> (Images/P4/P4C1_1.png)
 
 Donc en résumé, pour observer la modification d'une propriété. On utilise :
 - set : pour les propriétés calculées
@@ -2235,7 +2235,7 @@ Donc en résumé, pour observer la modification d'une propriété. On utilise :
 #### Le cadeau
 Nous avons vu dans ce chapitre un certain nombre de notions assez avancées sur les propriétés. Pour vous récompenser pour votre persévérance et vous donner une vue d'ensemble des propriétés, je vous ai concocté le petit schéma. N'hésitez pas à y revenir en cas de doute.
 
-![](Images/P4/P4C1_1.png)
+===============> (Images/P4/P4C1_1.png)
 
 > **:information_source:** Pour que vous ne soyez pas perdu dans vos recherches sur internet. Voici un petit lexique des propriétés en anglais :
 - propriété : property
@@ -2426,7 +2426,7 @@ Cet initialiseur est bien du type pratique puique je le déclare avec le mot-cl�
 
 Pour bien comprendre tout ça, voici un schéma de l'initialisation de `RoadSection` et `HomeRoadSection` :
 
-![](Images/P4/P4C2_1.png)
+===============> (Images/P4/P4C2_1.png)
 
 On voit bien dans ce schéma que les initialisations pratiques appellent les initialiseurs désignés de leur classe de façon **horizontale**. Tandis que les initialiseurs désignés appellent les initialiseurs désignés de la classe mère de façon **verticale**. Vous pouvez imaginer les initialiseurs désignés comme le tronc de l'initialisation de votre arbre de classe. Les initialisations pratiques n'en sont que les branches.
 
@@ -2477,7 +2477,7 @@ Par défaut tous les éléments sont au niveau : Interne. Donc tous les élémen
 
 Voici un schéma qui résume les différents niveaux de contrôle d'accès.
 
-![](Images/P4/P4C3_1.png)
+===============> (Images/P4/P4C3_1.png)
 
 #### Mise en pratique
 Assez de théorie, je sais que vous avez besoin de voir concrètement ce que ça donne ! Alors, allons-y. Prenons notre classe SchoolBus :
@@ -2632,4 +2632,4 @@ L'énumération est avec les classes et les structures, les trois modèles de do
 
 En attendant, il ne me reste plus qu'à vous laisser avec le mot de la fin. Et le mot de la fin évidemment, c'est...
 
-![](Images/P5/P5C1_1.jpg)
+===============> (Images/P5/P5C1_1.jpg)
