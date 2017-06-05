@@ -16,7 +16,7 @@ P1C1
 -->
 Bonjour et bienvenue dans ce cours sur la programmation orientée objet (ou POO pour les intimes) ! Dans ce cours, nous allons découvrir toute la puissance de la POO et comment l'implémenter avec Swift !
 
-**:warning:** Vous ne pourrez pas suivre ce cours sans une bonne maîtrise des bases de Swift. Par chance, c'est justement le propos de [ce cours](https://openclassrooms.com/courses/apprenez-les-fondamentaux-de-swift) ! Donc suivez-le si besoin et revenez ici ensuite !
+> **:warning:** Vous ne pourrez pas suivre ce cours sans une bonne maîtrise des bases de Swift. Par chance, c'est justement le propos de [ce cours](https://openclassrooms.com/courses/apprenez-les-fondamentaux-de-swift) ! Donc suivez-le si besoin et revenez ici ensuite !
 
 #### Le bus scolaire
 Dans ce cours, nous allons utiliser le Playground. Et vous allez voir que nous pouvons faire des choses très sophistiquées avec le Playground !  
@@ -32,16 +32,17 @@ Pour cela, nous allons passer par plusieurs étapes :
 
 Vous êtes prêts ?
 
-**:question:** Euh oui... Mais... On ne va pas faire une application ?
+> **:question:** Euh oui... Mais... On ne va pas faire une application ?
 
 Oui je me doute que si vous êtes ici, c'est que vous avez hâte de faire une application ! Mais je vous demande encore un peu de patience parce que faire des applications iPhone demande une bonne maîtrise de Swift en général et de la POO en particulier.
 
-**:information_source:** Si vous êtes trop impatient, je vous ai quand même concocté un  [petit cours](https://openclassrooms.com/courses/introduction-a-ios-plongez-dans-le-developpement-mobile) dans lequel on fait une application à partir de 0. Mais si vous voulez devenir de vrai développeurs iOS, il faudra que vous vous attaquiez à la POO tôt ou tard !
+> **:information_source:** Si vous êtes trop impatient, je vous ai quand même concocté un  [petit cours](https://openclassrooms.com/courses/introduction-a-ios-plongez-dans-le-developpement-mobile) dans lequel on fait une application à partir de 0. Mais si vous voulez devenir de vrai développeurs iOS, il faudra que vous vous attaquiez à la POO tôt ou tard !
 
 Et puis réjouissez vous, dans ce cours vous allez déjà réalisé un programme visuel que vous pourrez montrer à vos amis ! ;)
 
 ##### La POO
-**:question:** Bon, c'est bien beau cette histoire de bus, mais pourquoi devons nous apprendre la programmation orienté objet ?
+
+> **:question:** Bon, c'est bien beau cette histoire de bus, mais pourquoi devons nous apprendre la programmation orienté objet ?
 
 Il y a de très nombreuses raisons. Mais je vous propose pour le moment ces deux là :
 
@@ -115,7 +116,7 @@ Leurs travaux ont été publiés largement en 1981 et ils ont donné naissance �
 - C++ : Le dérivé du C orienté objet
 - Eiffel : Cocorico ! Ce langage développé par le français Bertrand Meyer est du pur orienté objet.
 
-**:information_source:** Le langage Eiffel a été nommé bien sûr à partir de Gustave Eiffel, concepteur célèbre de la tour Eiffel car la tour a été montée dans les délais en respectant le budget. Et c'est la promesse du langage Eiffel pour les grands projets logiciels.
+> **:information_source:** Le langage Eiffel a été nommé bien sûr à partir de Gustave Eiffel, concepteur célèbre de la tour Eiffel car la tour a été montée dans les délais en respectant le budget. Et c'est la promesse du langage Eiffel pour les grands projets logiciels.
 
 #### Alors, alors...
 
@@ -133,7 +134,7 @@ P1C3
 ####
 -->
 
-**:question:** MAIS C'EST QUOI LA POO ?
+> **:question:** MAIS C'EST QUOI LA POO ?
 
 Alors nous y voilà ! Je pense que les parties précédentes vous ont un peu mis sur la piste mais dans ce chapitre nous allons voir en détail ce qu'est la POO.
 
@@ -141,7 +142,7 @@ Alors nous y voilà ! Je pense que les parties précédentes vous ont un peu mis
 
 Pour bien comprendre la POO, essayons de comprendre ce qu'est la programmation procédurale.
 
-**:question:** Attends, on ne sait déjà pas ce qu'est la POO ? Pourquoi tu me parles d'autre chose ?
+> **:question:** Attends, on ne sait déjà pas ce qu'est la POO ? Pourquoi tu me parles d'autre chose ?
 
 N'ayez crainte, je vous parle seulement de ce que vous savez déjà. En effet, aujourd'hui si vous deviez créer un programme, vous écririez une suite d'instructions les unes à la suite des autres. Eventuellement, vous créeriez des fonctions qui vous permettront de réutiliser du code et de simplifier la lecture de votre programme. Et bien on appelle çà de la **programmation procédurale** ! Vous voyez, rien de nouveau ;) !
 
@@ -156,7 +157,7 @@ Prenons l'exemple du jeu "Qui est-ce ?".
 
 ![Le jeu "Qui est-ce ?". Ça vous rappelle des souvenirs ?](Images/P1/P1C3_1.jpg)
 
-**:information_source:** Dans ce jeu, chaque joueur a un plateau qui présentent 24 personnages. Chaque joueur choisit un personnage. Et chacun à son tour, les joueurs vont poser des questions pour deviner le joueur de l'autre.
+> **:information_source:** Dans ce jeu, chaque joueur a un plateau qui présentent 24 personnages. Chaque joueur choisit un personnage. Et chacun à son tour, les joueurs vont poser des questions pour deviner le joueur de l'autre.
 
 Voici comment nous nous y prendrions si on voulait programmer ce jeu en orienté objet. Tout d'abord il faudrait décrire le jeu avec des objets. Alors quels objets avons nous ?
 
@@ -186,7 +187,7 @@ Enfin, on pourrait avoir un objet Partie qui aurait lui comme propriétés :
 
 Avec ces 4 objets : Personnage, Plateau, Joueur et Partie. Nous avons décrit très précisément les éléments qui composent le jeu. En programmation procédurale, ceci aurait été simplement une longue liste de variables. En POO, on peut classifier ces informations par objet.
 
-**:information_source:** Par ailleurs, vous constatez qu'un objet peut être quelque chose de très concret comme un personnage mais aussi de plus abstrait comme une partie. L'essentiel c'est que cela forme une unité qui ait du sens.
+> **:information_source:** Par ailleurs, vous constatez qu'un objet peut être quelque chose de très concret comme un personnage mais aussi de plus abstrait comme une partie. L'essentiel c'est que cela forme une unité qui ait du sens.
 
 Mais un objet, ce n'est pas que des propriétés. Comme je vous le disais plus haut, c'est aussi des fonctions. Les fonctions dans un objet, on les appelle les **méthodes**. Les méthodes, c'est ce que l'objet peut faire, ses actions.
 
@@ -230,17 +231,17 @@ Maintenant que vous avez une première idée du concept d'objet, nous allons pou
 
 Pour cela, je vous propose sans plus attendre de découvrir le projet sur lequel vous allez travailler. Le projet est disponible sur Github [ici](https://github.com/AmbroiseCollon/SchoolBusPlayground). Je vous invite à télécharger le projet sur votre mac.
 
-**:information_source:** Vous pouvez également travailler à partir d'un fork du projet si vous êtes à l'aise avec Git. Ce que je vous encourage à faire.
+> **:information_source:** Vous pouvez également travailler à partir d'un fork du projet si vous êtes à l'aise avec Git. Ce que je vous encourage à faire.
 
 Une fois le projet téléchargé, vous pouvez ouvrir le fichier `SchoolBusPlayground.playground`. Et vous devriez arriver sur ceci :
 
 ![](Images/P1/P1C4_1.png)
 
-**:warning:** Si vous ne voyez pas exactement ça. Placez vous en mode assistant en utilisant ce bouton : ![](Images/P1/P1C4_2.png)
+> **:warning:** Si vous ne voyez pas exactement ça. Placez vous en mode assistant en utilisant ce bouton : ![](Images/P1/P1C4_2.png)
 
 Regardons un peu ce que l'on a. Nous avons tout d'abord sur la droite une étendue de pelouse sur laquelle se trouve un bus. Cela c'est notre **canva**. C'est sur ce canva que nous allons dessiner notre route et déplacer notre bus.
 
-**:information_source:** Comme nous l'avons appris avec l'histoire de la POO, la POO çà se comprends bien quand c'est visuel. C'est la raison pour laquelle j'ai choisi de vous proposer un rendu visuel de notre programme.
+> **:information_source:** Comme nous l'avons appris avec l'histoire de la POO, la POO çà se comprends bien quand c'est visuel. C'est la raison pour laquelle j'ai choisi de vous proposer un rendu visuel de notre programme.
 
 Voyons maintenant ce qu'il se passe côté code. Tout d'abord nous avons quatre lignes de code que je vous invite à ignorer. Elles permettent seulement d'initialiser le canva. Ensuite la documentation nous présente 5 fonctions réparties en 2 catégories :
 - 3 qui concernent la route, ces fonctions permettent de dessiner des sections de route
@@ -300,12 +301,12 @@ canva.stopBus()
 ```
 Et voilà ! Vous savez utiliser toutes les fonctionnalités du canva. Nous allons construire tout notre programme à partir de ces 5 fonctions. N'hésitez pas à jouer un peu avec pour bien vous familiariser avec son fonctionnement.
 
-**:information_source:** A chaque changement dans votre code, le playground relance le canva. Si vous souhaitez le relancer manuellement pour revoir votre animation, vous pouvez utiliser le raccourci clavier : <kbd>cmd</kbd> +<kbd>R</kbd>.
+> **:information_source:** A chaque changement dans votre code, le playground relance le canva. Si vous souhaitez le relancer manuellement pour revoir votre animation, vous pouvez utiliser le raccourci clavier : <kbd>cmd</kbd> +<kbd>R</kbd>.
 
 #### Comprendre notre playground
 Si vous avez suivi le cours précédent comme suggéré, vous êtes déjà à l'aise avec un certain nombre de fonctionnalités du Playground mais dans ce cours nous poussons plus loin les capacités du Playground. Laissez moi en quelques mots vous en présenter les fonctionnalités dont nous allons profiter dans ce cours.
 
-**:information_source:** Elles ne vous seront pas précisément utiles dans ce cours. Mais le Playground est un des outils extrêmement pratique d'Xcode alors autant apprendre à le maîtriser. En effet, pour la suite de vos travaux sur iOS, je vous encourage grandement à inclure cet outil dans votre cycle de développement.
+> **:information_source:** Elles ne vous seront pas précisément utiles dans ce cours. Mais le Playground est un des outils extrêmement pratique d'Xcode alors autant apprendre à le maîtriser. En effet, pour la suite de vos travaux sur iOS, je vous encourage grandement à inclure cet outil dans votre cycle de développement.
 
 ##### La documentation
 
@@ -374,7 +375,7 @@ L'analyse que nous venons de faire s'appelle un **diagramme de classe**.
 
 ![](Images/P1/P1C4_5.png)
 
-**:warning:** Dans notre analyse, il y a quelques oublis volontaires pour ne pas gâcher la surprise de nos futures découvertes ;) !
+> **:warning:** Dans notre analyse, il y a quelques oublis volontaires pour ne pas gâcher la surprise de nos futures découvertes ;) !
 
 #### En résumé
 - Le projet contient un Playground dans lequel est présenté un canva. Ce canva a 5 fonctions qui nous permettent de :
@@ -432,9 +433,9 @@ class RoadSection {
 
 Et voilà ! Il ne suffit de rien de plus pour créer nos classes ! Bien sûr, pour le moment, elles sont relativement vides mais elles vont s'épaissir au fur et à mesure.
 
-**:information_source:** Vous remarquez que le nom d'une classe contrairement aux variables commence par une **majuscule**. C'est une convention que vous devez suivre.
+> **:information_source:** Vous remarquez que le nom d'une classe contrairement aux variables commence par une **majuscule**. C'est une convention que vous devez suivre.
 
-**:question:** Mais on en fait quoi de ces classes ?
+> **:question:** Mais on en fait quoi de ces classes ?
 
 Evidemment pour le moment ça ne paraît pas hyper impressionnant. Mais vous allez voir tout de suite que c'est plus puissant qu'il n'y parait.
 
@@ -446,7 +447,7 @@ Vous vous souvenez des types ? Vous en connaissez un petit paquet maintenant. Vo
 
 Jusqu'à présent, vous savez faire des programmes en manipulant les types ci-dessus. A partir de maintenant, vous allez aussi travailler avec les types que vous avez créé !
 
-**:question:** Comment ça les types que nous avons créé ?
+> **:question:** Comment ça les types que nous avons créé ?
 
 Eh oui ! Les classes Bus, Road et RoadSection sont des types. Exactement de la même façon que Int, String et Bool. Donc la bonne surprise de ce cours, c'est que vous savez maintenant créer des types !
 
@@ -487,7 +488,7 @@ var j = 1
 
 `i` et `j` sont des entiers précis. On dit qu'ils sont des instances de la classe Int. On peut faire une infinité d'instance à partir d'une classe. Toutes les instances de la classe auront les mêmes propriétés.
 
-**:x:** La classe Int n'est pas à proprement parler une classe mais une structure. Nous verrons ce modèle de donnée mais vous verrez que cela se comporte à 90% comme une classe. Vous pouvez retrouvez les propriétés et méthodes de la classe Int à cette [adresse](https://developer.apple.com/reference/swift/int).
+> **:x:** La classe Int n'est pas à proprement parler une classe mais une structure. Nous verrons ce modèle de donnée mais vous verrez que cela se comporte à 90% comme une classe. Vous pouvez retrouvez les propriétés et méthodes de la classe Int à cette [adresse](https://developer.apple.com/reference/swift/int).
 
 Prenons une métaphore pour bien comprendre. Lorsque vous faîtes des gaufres, vous utilisez un gaufrier. En fonction du gaufrier vont varier l'imprimé sur la gaufre, sa largeur, son épaisseur etc. Donc le gaufrier **définit** la gaufre. Et ensuite, vous pouvez faire autant de gaufres que vous le souhaitez, elles auront toutes une structure identique et ne va varier que ce que vous allez mettre dessus.
 
@@ -523,7 +524,7 @@ Nous avons désormais trois classes Bus, Road et RoadSection. Et... ça nous fai
 
 Nous allons donc écrire 3 propriétés pour la classe Bus et 1 pour la classe Road.
 
-**:information_source:** Nous ne rajouterons la propriété de la classe RoadSection que dans la prochaine partie sur l'héritage.
+> **:information_source:** Nous ne rajouterons la propriété de la classe RoadSection que dans la prochaine partie sur l'héritage.
 
 #### Créer une propriété
 
@@ -548,7 +549,7 @@ class Road {
 }
 ```
 
-**:information_source:** Souvenez-vous, pour créer un tableau vide, on utilise le type du tableau donc quelque chose qui ressemble à [Type] et ensuite l'initialisation classique du type avec les parenthèses. Donc pour créer un tableau vide d'entiers, j'écris : `[Int]()`. Ici on a donc créé un tableau vide d'objet de type `RoadSection`.
+> **:information_source:** Souvenez-vous, pour créer un tableau vide, on utilise le type du tableau donc quelque chose qui ressemble à [Type] et ensuite l'initialisation classique du type avec les parenthèses. Donc pour créer un tableau vide d'entiers, j'écris : `[Int]()`. Ici on a donc créé un tableau vide d'objet de type `RoadSection`.
 
 #### Accéder et modifier une propriété
 
@@ -582,7 +583,7 @@ unBus.occupiedSeats += 1
 
 #### Mutabilité des propriétés et des instances
 
-**:question:** Si une propriété se comporte comme une variable, est-ce que cela veut dire que nous pouvons créer des propriétés constantes avec `let` ?
+> **:question:** Si une propriété se comporte comme une variable, est-ce que cela veut dire que nous pouvons créer des propriétés constantes avec `let` ?
 
 Très bonne question ;) ! Et la réponse est oui ! Par exemple, on pourrait vouloir stocker une information supplémentaire sur notre bus comme le nombre de roues. On peut assez facilement admettre que ce nombre ne vas pas changer et donc on peut rajouter la propriété :
 
@@ -615,7 +616,7 @@ Je vous en prie. Essayez ! Alors ?
 
 Eh oui ! On peut créer des instances constantes. Mais qu'est-ce que cela signifie ?
 
-**:question:** Cela veut dire que je ne peux pas modifier les propriétés de l'instance `unBus` ?
+> **:question:** Cela veut dire que je ne peux pas modifier les propriétés de l'instance `unBus` ?
 
 On aurait pu s'attendre à ça en effet mais non. Si une instance est déclaré avec let, je peux continuer à modifier toutes ses propriétés (tant que ces dernières sont variables). Mais ce que je ne peux plus faire c'est assigner une nouvelle valeure à cette instance. Prenons un exemple pour clarifier tout ça :
 
@@ -642,7 +643,7 @@ Je vous propose de vous entraîner avec un petit exercice. Vous pouvez le lancer
 ### Initialisez les classes
 Nous avons maintenant des classes qui contiennent des propriétés. Nos classes permettent donc de stocker de l'information. Mais je ne suis pas tout à fait satisfait de nos propriétés pour l'instant.
 
-**:question:** Pourquoi ?
+> **:question:** Pourquoi ?
 
 Et bien car elles ont toutes des valeurs par défaut et parfois ça n'a pas vraiment de sens. Prenons par exemple la propriété `driverName`. Ce n'est pas logique que le nom du chauffeur soit par défaut Joe, il n'y a aucune statistique à ma connaissance qui le justifie...
 
@@ -653,7 +654,8 @@ Essayons donc de supprimer la valeur par défaut. Pour cela, je vais donc rempla
 ```swift
 var driverName: String
 ```
-**:information_source:** Petit rappel, si on supprime l'initialisation d'une variable, ce qui veut dire ne pas lui donner de valeur, on doit préciser son type car Swift du coup ne peux plus le déduire de sa valeur. Et une variable sans type, ça n'existe pas !
+
+> **:information_source:** Petit rappel, si on supprime l'initialisation d'une variable, ce qui veut dire ne pas lui donner de valeur, on doit préciser son type car Swift du coup ne peux plus le déduire de sa valeur. Et une variable sans type, ça n'existe pas !
 
 A ce moment là, on a une erreur qui dit :
 
@@ -663,15 +665,15 @@ error: class 'Bus' has no initializers
 
 Qu'est-ce que ça veut dire ? Pour bien comprendre, imaginons que l'on va créer une instance de la classe Bus. Lorsque l'on fait ça, le programme va regarder toutes les propriétés de la classe Bus et créé autant de variables correspondante. Toutes ces variables vont être mises dans un petit paquet et on a notre instance ! Mais donc, lorsque l'on créé une instance, on créé autant de variables qu'il y a de propriétés. Et **toutes ces variables doivent être prêtes à l'emploi**. Pas de souci pour celles qui ont des valeurs par défaut. Mais quand le programme va vouloir créer la variable `driverName`, il ne saura pas quelle valeur lui attribuer.
 
-**:question:** Pas grave, il n'a qu'à pas lui mettre de valeur !
+> **:question:** Pas grave, il n'a qu'à pas lui mettre de valeur !
 
 C'est filou ! Mais quelle est le type de notre variable ?
 
-**:question:** String ?
+> **:question:** String ?
 
 En effet, donc **cette variable n'est pas optionnelle** donc **on ne peux pas l'utiliser sans valeur**. Donc le programme va planter.
 
-**:question:** OK... Mais quelle rapport avec l'erreur affichée ?
+> **:question:** OK... Mais quelle rapport avec l'erreur affichée ?
 
 Le rapport, c'est que pour résoudre ce problème nous avons 2 solutions :
 - Soit je déclare ma variable `driverName` optionnelle et tout ira bien.
@@ -701,11 +703,11 @@ init() {
 
 Et voilà ! Nous n'avons plus d'erreur ! Vous pouvez tester en créant une instance, la propriété `driverName` aura pour valeur Joe.
 
-**:question:** Oui enfin il n'y a pas de quoi sauter au plafond...
+> **:question:** Oui enfin il n'y a pas de quoi sauter au plafond...
 
 Bah pourquoi ?
 
-**:question:** On a fait que déplacer le problème. La propriété `driverName` a toujours une valeur par défaut...
+> **:question:** On a fait que déplacer le problème. La propriété `driverName` a toujours une valeur par défaut...
 
 Hmm... Bien vu ! Mais vous ne m'aurez pas aussi facilement !
 
@@ -726,7 +728,7 @@ var unBus = Bus(name: "Jean")
 
 L'initialisation du bus a changé ! Maintenant Swift exige que nous passions des paramètres pour instancier un nouveau bus. Et de cette façon, on peut choisir pour chaque nouvelle instance du bus, le nom du chauffeur. Alors, heureux ?
 
-**:information_source:** Evidemment, comme pour une fonction, vous pouvez utiliser plusieurs paramètres, ajouter ou enlever des étiquettes etc. Tout comme une fonction !
+> **:information_source:** Evidemment, comme pour une fonction, vous pouvez utiliser plusieurs paramètres, ajouter ou enlever des étiquettes etc. Tout comme une fonction !
 
 #### Le mot-clé self
 Notre initialisation a désormais un paramètre qui s'appelle `name`. C'est bien mais ce n'est pas parfait. Pour que l'initialisation soit claire en général on préfère donner comme nom de paramètre, le nom exact de la propriété soit ici `driverName`. Alors modifions ça :
@@ -739,7 +741,7 @@ init(driverName: String) {
 
 Patatra ! Nous avons une erreur. L'erreur vient du fait que nous avons deux fois `driverName` et l'ordinateur ne sait plus si on parle de la propriété ou du paramètre. Heureusement, nous avons le vaillant mot clé `self` à notre secours !
 
-**:question:** Euh... qui ?
+> **:question:** Euh... qui ?
 
 Le mot-clé self permet dans une classe de faire référence à elle-même. Le plus simple, c'est que je vous montre :
 
@@ -753,7 +755,7 @@ init(driverName: String) {
 
 En écrivant ceci, Swift sait maintenant que `self.driverName`, c'est la propriété et `driverName` après le `=`, c'est le paramètre.
 
-**:warning:** Certaines personnes utilisent le mot-clé self à tort et à travers (notamment dans les méthodes que nous verrons dans le prochain chapitre), ce n'est pas une bonne pratique. N'utilisez self qu'en cas de besoin ! Donc dans les initialiseur et dans les blocs (nous verrons ça dans un prochain cours).
+> **:warning:** Certaines personnes utilisent le mot-clé self à tort et à travers (notamment dans les méthodes que nous verrons dans le prochain chapitre), ce n'est pas une bonne pratique. N'utilisez self qu'en cas de besoin ! Donc dans les initialiseur et dans les blocs (nous verrons ça dans un prochain cours).
 
 Voilà, nous avons désormais un initialiseur bien pratique pour notre classe Bus !
 
@@ -825,7 +827,7 @@ class Bus {
 ```
 Ici on définit donc la méthode `moveForward` de la classe `Bus`. Cette méthode appelle la méthode `moveBusForward` du canva et permet de faire avancer le bus.
 
-**:information_source:** Les méthodes sont rigoureusement des fonctions donc elles peuvent avoir des paramètres, valeurs de retour et tout ce que vous connaissez ou apprendrez plus tard sur les fonctions.
+> **:information_source:** Les méthodes sont rigoureusement des fonctions donc elles peuvent avoir des paramètres, valeurs de retour et tout ce que vous connaissez ou apprendrez plus tard sur les fonctions.
 
 #### Appeler une méthode  
 Pour appeler notre méthode, on va faire maintenant exactement la même chose que pour les propriétés, on va utiliser le `.` après l'instance :
@@ -877,11 +879,11 @@ unBus.drive(road: road) // Le bus avance jusqu'au bout de la route
 ### Découvrez les propriétés et méthodes de classe
 Ça y est ! Nos classes comment à ressembler à quelque chose. On a même enfin un bus qui roule le long de la route ! Elle est pas belle la vie ? Mais bon, je vous connais, vous en voulez encore. Alors dans ce chapitre je vais vous montrer quelque chose qui va nous être bien pratique : **les propriétés et méthodes de classe**.
 
-**:question:** Hé mais on connaît déjà ça !
+> **:question:** Hé mais on connaît déjà ça !
 
 Non.. pas tout à fait. Vous connnaissez en effet les propriétés et les méthodes. Mais la forme sous laquelle vous les connaissez pour l'instant s'appelle **les propriétés et méthodes d'instance** ! Pourquoi d'instance ? Parce qu'on les utilise sur des instances.
 
-**:warning:** Si la différence entre la classe et les instances n'est pas très clair pour vous, n'hésitez pas à prendre le temps de revenir au premier chapitre de cette partie.
+> **:warning:** Si la différence entre la classe et les instances n'est pas très clair pour vous, n'hésitez pas à prendre le temps de revenir au premier chapitre de cette partie.
 
 #### Créer et utiliser les propriétés et méthodes de classe
 Par exemple, la méthode `drive` que vous venez de créer dans le chapitre précédent, vous l'utilisez sur une instance : l'instance unBus en l'occurence :
@@ -914,14 +916,14 @@ MaClasse.uneMéthodeDeClasse() // J'appelle la méthode de classe
 
 Donc rien de plus simple, il suffit d'ajouter le mot-clé `static` pour passer d'une propriété ou méthode d'instance à une propriété ou méthode de classe.
 
-**:information_source:** Jusqu'à présent, je vous ai parlé de méthodes ou de propriétés **de classe** mais vous rencontrerez peut-être les expressions suivantes :
+> **:information_source:** Jusqu'à présent, je vous ai parlé de méthodes ou de propriétés **de classe** mais vous rencontrerez peut-être les expressions suivantes :
 - propriété ou méthode **de type** (*type properties* ou *type methods*) : dénomination officielle d'Apple.
 - propriété ou méthode **statique** : d'où le mot clé `static`.
 Sachez qu'elles sont toutes les trois équivalentes.
 
 #### Utilité des propriétés et méthodes de classe
 
-**:question:** Holà ! Tout doux mon garçon ! C'est formidable ton histoire mais ça sert à quoi ?
+> **:question:** Holà ! Tout doux mon garçon ! C'est formidable ton histoire mais ça sert à quoi ?
 
 A rien... :D !
 
@@ -1066,7 +1068,7 @@ Alors que fait-on ? Nous allons modifier `Chien` et `Dragon` pour supprimer tout
 
 ![](Images/P3/P3C1_5.png)
 
-**:question:** Mais qu'est-ce que ça veut dire "hérite de" ?
+> **:question:** Mais qu'est-ce que ça veut dire "hérite de" ?
 
 Et bien, très concrètement, lorsque la classe `Chien` hérite de la classe `Animal`, toutes les propriétés et méthodes de la classe `Animal` sont disponibles dans la classe `Chien`. C'est comme si je les avais écrit dans la classe Chien. Je peux écrire par exemple :
 
@@ -1078,12 +1080,12 @@ bob.manger()
 ```
 Les propriétés et méthodes de l'exemple ci dessus ne sont pas définis dans la classe `Chien` mais dans la classe Animal et en héritant de cette classe, la classe `Chien` les récupère. L'héritage, c'est juste ça.
 
-**:warning:** Quand vous serez très à l'aise avec l'héritage, vous aurez envie de le faire partout parce que c'est très (presque trop) pratique. Faîtes attention, ce n'est pas parce que 2 classes possèdent des caractéristiques communes, même beaucoup, qu'il faut utiliser l'héritage. Par exemple, si je prends une maison, elle a aussi une taille, un poids et une couleur. Mais ça n'aurait pas de sens de créer une classe `Objet` dont hérite la classe `Maison` et la classe `Animal`. Parce que **dans la vraie vie**, une maison et un animal n'ont rien à voir. Ça peut vous paraître évident maintenant mais croyez moi, la tentation est grande de faire ce genre de tour de passe-passe. Votre code doit avant tout être intelligible et clair et pour cela mieux vaut ne pas tout mélanger.
+> **:warning:** Quand vous serez très à l'aise avec l'héritage, vous aurez envie de le faire partout parce que c'est très (presque trop) pratique. Faîtes attention, ce n'est pas parce que 2 classes possèdent des caractéristiques communes, même beaucoup, qu'il faut utiliser l'héritage. Par exemple, si je prends une maison, elle a aussi une taille, un poids et une couleur. Mais ça n'aurait pas de sens de créer une classe `Objet` dont hérite la classe `Maison` et la classe `Animal`. Parce que **dans la vraie vie**, une maison et un animal n'ont rien à voir. Ça peut vous paraître évident maintenant mais croyez moi, la tentation est grande de faire ce genre de tour de passe-passe. Votre code doit avant tout être intelligible et clair et pour cela mieux vaut ne pas tout mélanger.
 
 #### L'héritage en action
 Avant d'aborder l'implémentation de l'héritage, laissez moi vous donner un exemple d'héritage en iOS. Je vous l'ai dit en introduction, en iOS, tout est objet. Et la plupart d'entre eux utilise l'héritage ! C'est notamment très clair pour l'interface graphique. L'interface graphique est pleine de composants. Il peut y avoir des images, des boutons, des labels etc. Ces composants vont être disposées sur l'interface et ont donc beaucoup de choses en commun : leur taille, leur position, leur couleur, s'ils sont visibles ou non, s'ils réagissent au toucher ou non et beaucoup d'autres. C'est la raison pour laquelle ils héritent tous d'`UIView`, une classe qui gère tous ces aspects et permet donc à tous les composants de ne pas avoir à répéter toute cette logique. Il suffit qu'ils en héritent !
 
-**:information_source:** Le prochain cours contient tout une partie dédiée à UIView, une classe du coup incontournable d'iOS.
+> **:information_source:** Le prochain cours contient tout une partie dédiée à UIView, une classe du coup incontournable d'iOS.
 
 Prenons un autre exemple, mais cette fois ci avec notre bus scolaire. En début de cours, nous avions créé ensemble le diagramme suivant :
 
@@ -1195,7 +1197,7 @@ enum Erreur {
 
 Comme vous pouvez le constater, cela ressemble aux déclarations de classe. Ici on a le mot-clé `enum` qui permet de déclarer l'énumération et ensuite le mot-clé `case` à l'intérieur qui permet à chaque fois d'ajouter un nouveau cas.
 
-**:information_source:** Il existe une syntaxe réduite où l'on peut tout écrire sur une seule ligne. Il suffit d'utiliser la <kbd>,</kbd> entre chaque cas :
+> **:information_source:** Il existe une syntaxe réduite où l'on peut tout écrire sur une seule ligne. Il suffit d'utiliser la <kbd>,</kbd> entre chaque cas :
 ```swift
 // 1
 enum Direction {
@@ -1219,7 +1221,7 @@ Pour utiliser une énumération, on utilise le nom de l'énumération suivi du <
 var erreurDeConnexion = Erreur.nonConnecté
 ```
 
-**:information_source:** Dans le cas où le type est déjà connu, on peut commencer directement au point. Par exemple :
+> **:information_source:** Dans le cas où le type est déjà connu, on peut commencer directement au point. Par exemple :
 ```swift
 var erreurDeConnexion = Erreur.nonConnecté
 erreurDeConnexion = .signalFaible // Le type est connu grâce à la déclaration précédente
@@ -1277,7 +1279,7 @@ Plusieurs choses à noter ici :
 - Je fais le switch sur la variable `type` qui a pour type `RoadSectionType`. Je peux donc utiliser les cas directement avec le point sans rappeler RoadSectionType avant.
 - **Le switch en Swift doit être exhaustif**. Cela veut dire que tout les cas doivent être pris en compte dans un switch. C'est la raison pour laquelle vous avez systématiquement utilisé le mot-clé `default` jusqu'à présent qui permet de couvrir tous les autres cas. Ici, nous utilisons une énumération qui ne contient que trois cas. Nous couvrons ces trois cas avec le switch donc inutile d'utiliser `default`.
 
-**:warning:** Si vous écrivez un `switch` et que la variable que vous lui passez n'est pas une énumération, c'est bien souvent que vous feriez mieux de créer l'énumération correspondante. Votre modèle de donnée peut sans doute être amélioré.
+> **:warning:** Si vous écrivez un `switch` et que la variable que vous lui passez n'est pas une énumération, c'est bien souvent que vous feriez mieux de créer l'énumération correspondante. Votre modèle de donnée peut sans doute être amélioré.
 
 Avec cette nouvelle initialisation, nous pouvons maintenant créer facilement les sections de route du type de notre choix comme ceci :
 
@@ -1304,7 +1306,7 @@ enum Optional<T> {
 }
 ```
 
-**:warning:** Ne vous laissez pas perturbez par le `<T>`. C'est un générique, cela veut dire qu'à la place on peut mettre le type que l'on veut. On a déjà vu ça avec les dictionnaires par exemple. Souvenez vous on peut les noter : Array<T> ou T peut être un String, un Int ou n'importe quel type !
+> **:warning:** Ne vous laissez pas perturbez par le `<T>`. C'est un générique, cela veut dire qu'à la place on peut mettre le type que l'on veut. On a déjà vu ça avec les dictionnaires par exemple. Souvenez vous on peut les noter : Array<T> ou T peut être un String, un Int ou n'importe quel type !
 
 Donc un optionnel, c'est deux cas. Soit rien (`none`) soit quelque chose d'un type précis. Et c'est exactement ce que vous connaissez des optionnels. Allons plus loin et jouons au jeu des équivalences :
 
@@ -1341,7 +1343,7 @@ Je définis donc d'abord que la valeure brute a pour type String et ensuite je l
 let erreurDeConnexion = Erreur.nonConnecté.rawValue // Cela affiche "Vous n'êtes pas connecté."
 ```
 
-**:information_source:** On peut obtenir des valeurs brutes **implicites** :
+> **:information_source:** On peut obtenir des valeurs brutes **implicites** :
 ```swift
 // 1
 enum Direction: String {
@@ -1493,23 +1495,23 @@ Pourtant nous avions de grands projets pour lui :
 
 Nous voulions lui ajouter une fonction `drive`.
 
-**:question:** Mais `SchoolBus` hérite de `Bus` ?!
+> **:question:** Mais `SchoolBus` hérite de `Bus` ?!
 
 Oui... Et ?
 
-**:question:** Du coup, il a déjà à disposition la fonction `drive` qui est définie dans `Bus` !
+> **:question:** Du coup, il a déjà à disposition la fonction `drive` qui est définie dans `Bus` !
 
 Eh oui ! Bien vu ! Mais la fonction `drive` de `Bus` ne fait que conduire le long de la route sans s'arrêter. Alors que le bus scolaire lui doit s'arrêter à chaque maison, récupérer les enfants et ensuite s'arrêter à l'école.
 
-**:question:** On a qu'à changer la méthode drive directement dans `Bus`.
+> **:question:** On a qu'à changer la méthode drive directement dans `Bus`.
 
 Oui mais ce serait un peu faux. Un bus normal ne s'arrête pas devant les maisons et ne va pas à l'école.
 
-**:question:** Alors qu'est-ce qu'on fait ?
+> **:question:** Alors qu'est-ce qu'on fait ?
 
 Et bien on utilise l'**override** !
 
-**:question:** L'overqui ?
+> **:question:** L'overqui ?
 
 L'override est une technique qui permet à une classe fille de réécrire une méthode de la classe mère.
 
@@ -1797,22 +1799,22 @@ On peut également utiliser le point d'exclamation après le as si on est **abso
 
 Entre les parenthèses, on force l'évaluation de `librairie[1]` à `Chanson` car on sait que c'est une chanson. Toute l'expression entre parenthèse est donc considérée comme une variable de type `Chanson` dont on peut obtenir du coup la propriété `chanteur`.
 
-**:information_source:** Cela ne vous fait pas penser à quelque chose ? C'est très proche du déballage des optionnels :
-```swift
-// Vérification que l'optionnel n'est pas nul
-if optionnel != nil {
-	// Faire quelque chose
-}
-
-// Déclaration optionnelle
-if let déballé = optionnel {
-	print(déballé)
-}
-
-// Déballage forcé
-let déballé = optionnel!
-```
-C'est à peu près la même logique, du coup les syntaxes sont similaires !
+> **:information_source:** Cela ne vous fait pas penser à quelque chose ? C'est très proche du déballage des optionnels :
+> ```swift
+> // Vérification que l'optionnel n'est pas nul
+> if optionnel != nil {
+> 	// Faire quelque chose
+> }
+>
+> // Déclaration optionnelle
+> if let déballé = optionnel {
+> 	print(déballé)
+> }
+>
+> // Déballage forcé
+> let déballé = optionnel!
+> ```
+> C'est à peu près la même logique, du coup les syntaxes sont similaires !
 
 #### Utilisation
 
@@ -1842,7 +1844,7 @@ a = true
 a = Bus()
 ```
 
-**:warning:** Non, je ne vous ai pas menti. Une variable ne change JAMAIS de type. Ici la variable `a` garde toujours le même type, seulement c'est le type `Any`. ;)
+> **:warning:** Non, je ne vous ai pas menti. Une variable ne change JAMAIS de type. Ici la variable `a` garde toujours le même type, seulement c'est le type `Any`. ;)
 
 **AnyObject**
 
@@ -1858,7 +1860,7 @@ var b: Any = Bus() // OK
 
 **Usages**
 
-**:question:** OK mais à quoi ça sert ?
+> **:question:** OK mais à quoi ça sert ?
 
 Il y a plusieurs usages. Le premier usage courant, c'est de pouvoir créer des **collections avec des types mixés** par exemple comme ceci :
 
@@ -1975,7 +1977,7 @@ Les propriétés calculées diffèrent des propriétées stockées ainsi :
 - les propriétés stockées sont associées à une valeur
 - les propriétés calculées sont associées à un calcul
 
-**:question:** Un calcul ? C'est-à-dire ?
+> **:question:** Un calcul ? C'est-à-dire ?
 
 En fait, si on y réfléchit, une propriété admet deux actions :
 - une action pour récupérer la valeur contenue, on va appeler cette action **get** *(récupérer en anglais)*
@@ -1993,7 +1995,7 @@ class Carré {
 }
 ```
 
-**:information_source:** Oui, je vous fait l'affront de vous rappeler qu'un carré, c'est simplement 4 côtés de même longueur. Donc cette classe suffit à définir un carré.
+> **:information_source:** Oui, je vous fait l'affront de vous rappeler qu'un carré, c'est simplement 4 côtés de même longueur. Donc cette classe suffit à définir un carré.
 
 J'aimerais bien rajouter une propriété `périmètre` à ma classe qui me permettrait d'obtenir le périmètre de la classe. Le périmètre d'un carré c'est 4 fois la longueur donc allons-y !
 
@@ -2081,7 +2083,7 @@ Dans ce cas, `newValue` vaut 8 et donc maintenant si j'affiche la longueur, j'ob
 c.longueur // Affiche 2
 ```
 
-**:information_source:** Dans le setter, la propriété `newValue` contient la nouvelle valeure. Et la propriété `périmètre` contient l'ancienne valeur. Cela peut être pratique si on souhaite comparer les deux valeurs.
+> **:information_source:** Dans le setter, la propriété `newValue` contient la nouvelle valeure. Et la propriété `périmètre` contient l'ancienne valeur. Cela peut être pratique si on souhaite comparer les deux valeurs.
 
 En résumé :
 - le getter se comporte comme une fonction avec une valeur de retour du type de la propriété. Il est appelé lorsqu'on veut récupérer la valeur de la propriété.
@@ -2193,7 +2195,7 @@ Il existe un moyen d'observer les propriétés en Swift. Observer les propriét�
 
 Observer une propriété permet d'effectuer une action lorsque la propriété est modifiée.
 
-**:question:** Hé mais c'est exactement comme un setter !
+> **:question:** Hé mais c'est exactement comme un setter !
 
 Et oui exactement ! Dans notre exemple du carré, la méthode `set` nous permettait de modifier la longueur dès que le périmètre était modifié. Le seul souci là dedans, c'est que **`set` ne fonctionne qu'avec des propriétés calculées**.
 
@@ -2229,14 +2231,14 @@ Donc en résumé, pour observer la modification d'une propriété. On utilise :
 - set : pour les propriétés calculées
 - willSet et didSet : pour les propriétés stockées
 
-**:warning:** Il existe une petite exception. Les propriétées calculées peuvent être observées avec willSet et didSet dans une classe fille dans le cadre d'un héritage.
+> **:warning:** Il existe une petite exception. Les propriétées calculées peuvent être observées avec willSet et didSet dans une classe fille dans le cadre d'un héritage.
 
 #### Le cadeau
 Nous avons vu dans ce chapitre un certain nombre de notions assez avancées sur les propriétés. Pour vous récompensez pour votre persévérance et vous donner une vue d'ensemble des propriétés, je vous ai concocté le petit schéma. N'hésitez pas à y revenir en cas de doute.
 
 ![](Images/P4/P4C1_1.png)
 
-**:information_source:** Pour que vous ne soyez pas perdu dans vos recherches sur internet. Voici un petit lexique des propriétés en anglais :
+> **:information_source:** Pour que vous ne soyez pas perdu dans vos recherches sur internet. Voici un petit lexique des propriétés en anglais :
 - propriété : property
 - propriété d'instance : instance property
 - propriété de classe : static ou class property
@@ -2367,7 +2369,7 @@ Bien qu'est-ce que ça veut dire ? Cela veut dire que lorsque l'initialisation e
 - Soit vous déclarer votre propriété de type optionnelle, elle aura pour valeur `nil` par défaut.
 - Soit vous initialiser votre propriété dans l'initialiseur.
 
-**:warning:** On ne parle ici bien sûr que des propriétés stockées. Les propriétés calculées ne sont pas initialisées. Le calcul est effectué à chaque fois quand elles sont appelées.
+> **:warning:** On ne parle ici bien sûr que des propriétés stockées. Les propriétés calculées ne sont pas initialisées. Le calcul est effectué à chaque fois quand elles sont appelées.
 
 Cela veut dire que la première mission d'un initialiseur, c'est d'**initialiser toutes les propriétés stockées qui n'ont pas de valeur.**. Si il ne remplit pas cette mission, votre programme va planter !
 
@@ -2429,9 +2431,9 @@ Pour bien comprendre tout ça, voici un schéma de l'initialisation de `RoadSect
 
 On voit bien dans ce schéma que les initialisations pratiques appellent les initialiseurs désignés de leur classe de façon **horizontale**. Tandis que les initialiseurs désignés appellent les initialiseurs désignés de la classe mère de façon **verticale**. Vous pouvez imaginer les initialiseurs désignés comme le tronc de l'initialisation de votre arbre de classe. Les initialisations pratiques n'en sont que les branches.
 
-**:warning:** Un initialiseur désigné ne peut faire appel qu'à un initialiseur **désigné** de la classe mère.
+> **:warning:** Un initialiseur désigné ne peut faire appel qu'à un initialiseur **désigné** de la classe mère.
 
-**:information_source:** En revanche, un initialiseur pratique peut faire appel à un autre initialiseur pratique, à la condition que ce dernier appelle finalement un initialiseur désigné. Un peu comme ça : pratique 1 => pratique 2 => désigné.
+> **:information_source:** En revanche, un initialiseur pratique peut faire appel à un autre initialiseur pratique, à la condition que ce dernier appelle finalement un initialiseur désigné. Un peu comme ça : pratique 1 => pratique 2 => désigné.
 
 Vous verrez que dans le développement d'applications iPhone, vous serez souvent amené à créer des sous-classes de certaines classes proposées dans iOS. Vos sous-classes seront bien plus faciles à utiliser si vous maîtriser les deux types d'utilisation.
 
