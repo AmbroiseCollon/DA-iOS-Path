@@ -1053,16 +1053,16 @@ Raul et Bob sont évidemment très différents. Essayons de décrire Raul en ori
 
 ![](Images/P3/P3C1_3.png)
 
-Hmmm... Selon notre classification, il semblerait que les classes `Oiseau` et `Chien` ne sont pas si différentes. La plupart de leurs propriétés et methodes sont identiques. Donc par exemple, si on devait écrire l'implémentation des méthodes, on ferait deux fois la même chose. Or un développeur déteste se répéter ! On va donc utiliser l'héritage !
+Hmmm... Selon notre classification, il semblerait que les classes `Dragon` et `Chien` ne sont pas si différentes. La plupart de leurs propriétés et methodes sont identiques. Donc par exemple, si on devait écrire l'implémentation des méthodes, on ferait deux fois la même chose. Or un développeur déteste se répéter ! On va donc utiliser l'héritage !
 
 
 L'héritage permet de créer un arbre de classe. Dans notre exemple, nous avons deux animaux qui partagent des caractéristiques communes. En fait, on aurait pu décrire une classe Animal comme ceci :
 
 ![](Images/P3/P3C1_4.png)
 
-Oui mais le problème, c'est qu'on a été obligé d'enlever certaines méthodes comme `aboyer` ou `voler` car elles ne sont pas valables pour tous les animaux. Il faut que l'on puisse garder nos classes `Chien` et `Oiseau` pour gérer ces spécificités.
+Oui mais le problème, c'est qu'on a été obligé d'enlever certaines méthodes comme `aboyer` ou `voler` car elles ne sont pas valables pour tous les animaux. Il faut que l'on puisse garder nos classes `Chien` et `Dragon` pour gérer ces spécificités.
 
-Alors que fait-on ? Nous allons modifier `Chien` et `Oiseau` pour supprimer tout ce qui est commun et du coup peut être mis dans la classe `Animal`. Et on va dire que les classes `Oiseau` et `Chien` héritent de la classe `Animal`.
+Alors que fait-on ? Nous allons modifier `Chien` et `Dragon` pour supprimer tout ce qui est commun et du coup peut être mis dans la classe `Animal`. Et on va dire que les classes `Dragon` et `Chien` héritent de la classe `Animal`.
 
 ![](Images/P3/P3C1_5.png)
 
@@ -2592,3 +2592,43 @@ Codevolve exercice à faire sur la classe Personne
 - **Le contrôle d'accès permet d'améliorer la lisibilité du code en exprimant son intention concernant un élément du programme.**
 - Un élément ne peux pas avoir un niveau plus permissif que celui qui le contient.
 - Tous les membres d'une classe ont par défaut le niveau de contrôle de la classe dans laquelle ils sont définis.
+
+### En conclusion !
+
+Félicitations ! Vous venez de terminer ce cours sur la programmation orienté objet ! Vous pouvez être fier de vous ! Grâce aux connaissances acquises dans ce cours, vous allez pouvoir désormais attaquer sereinement la programmation d'application iPhone. En effet, si vous en êtes là, c'est que vous avez compris que la programmation orientée objet est au coeur du développement iOS.
+
+Prenons donc un peu le temps de résumer ce que nous avons vu ensemble. Tout d'abord nous avons pris le temps de définir le principe de programmation orientée objet en l'opposant à la programmation procédurale. Nous avons notamment découvert ensemble que l'histoire de l'invention de la programmation orientée objet était intimement liée à l'arrivée des interfaces graphiques de nos ordinateurs.
+
+Au delà de la théorie, nous avons surtout parlé de pratique. Dans ce cours, nous avons appris à utiliser un outil fondamental : les classes. Vous savez maintenant qu'une classe c'est un petit paquet de variables et de fonctions qui forment un tout cohérent. Vous avez également compris que les classes nous permettent de créer nos propre types, ce qui rends notre programme à la fois beaucoup plus clair et beaucoup plus facile à utiliser. On a fait la différence entre une classe qui est un modèle, un moule et les instances qui sont des représentations concrètes de cette classe, les objets que le moule a pour mission de créer.
+
+Si on doit résumer ce que vous savez sur les classes, je pense que cela peut se compter sur les doigts d'une main. Oui en 5 points :
+
+**1. Les propriétés**
+Vous savez que les propriétés sont des variables contenues dans la classe. Il y en a de plusieurs types différents :
+- Les propriétés d'instances qui se rapporte aux instances et les propriétés de classe ou statiques qui se rapportent à la classe.
+- Les propriétés stockées qui sont associées à une valeure et les propriétés calculées qui sont associée à un calcul via les méthodes `get` et `set` ou en lecture seule.
+
+Enfin nous avons vu que les propriétés pouvaient être observées avec `set` pour les propriétés calculées et avec `willSet` et `didSet` pour les propriétés stockées.
+
+**2. Les méthodes**
+Les méthodes sont des fonctions contenues dans la classe. Il y a deux types de méthodes : les méthodes d'instances qui se rapportent aux instances et les méthodes de classe qui se rapportent à la classe.
+
+**3. L'initialisation**
+Vous connaissez la règle d'or de l'initialisation :
+> A la fin de l'initialisation, toutes les propriétés stockées doivent être initialisées
+
+On a vu comment créer nos propres initialiseurs avec le mot-clé `init` ainsi que la différence entre les initialiseurs désignés qui sont les initialiseurs principaux et les initialiseurs pratique qui permettent de faciliter l'initialisation de cas courants.
+
+**4. L'héritage**
+Une classe peut hériter d'une autre. Cela signifie que toutes les propriétés et méthodes de la classe mère sont disponibles dans la classe fille. On a vu comment mettre à profit cette qualité des classes, notamment grâce aux mot-clés `super` et `override` qui nous permettent surchargez des méthodes.
+
+**5. Le contrôle d'accès**
+Enfin, vous savez également limiter l'accès à vos classes selon 4 niveaux de contrôle : public, interne, privé au fichier et privé. C'est l'un des deux objectifs principaux de la POO : cacher une implémentation. Vous allez donc utiliser très souvent le contrôle d'accès et ce d'autant plus que cela va grandement servir la lisibilité de vos classes. Et la clarté du code vous le savez, c'est le plus important !
+
+Voilà les 5 points principaux que nous avons vu à propos de nos classes : les propriétés, les méthodes, l'initialisation, l'héritage et le contrôle d'accès. Et dans ce cours, nous avons même pris le temps de faire deux petits détour pour venir à bout de notre bus scolaire : l'énumération et la vérification des types.
+
+L'énumération est avec les classes et les structures, les trois modèles de donnée nommé de Swift. Autrement dit, ce sont les trois moyens que nous avons en Swift de créer un type ! Vous en maîtrisez donc déjà 2 sur 3. Promis, je vous ne laisserais pas comme ça longtemps. Dans le prochain cours sur Swift, vous saurez tout sur les structures et vous verrez qu'elles sont en fait très proches des classes. Dans ce cours, nous allons créer une application de quiz ! Je vous donne donc rendez-vous pour ce prochain cours sur le développement iOS !
+
+En attendant, il ne me reste plus qu'à vous laisser avec le mot de la fin. Et le mot de la fin évidemment, c'est...
+
+![](Images/P5/P5C1_1.jpg)
