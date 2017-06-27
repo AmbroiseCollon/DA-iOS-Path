@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="405px" viewBox="0 0 700 405" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Optionnal and enums</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Optionnal-and-enums">
+            <text id="let-x:-String?-=-nil" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0201974027" fill="#D3A017">
+                <tspan x="18" y="48">let x: String? = nil</tspan>
+                <tspan x="18" y="72"></tspan>
+                <tspan x="18" y="96">let x: String? = “hello”</tspan>
+                <tspan x="18" y="120"></tspan>
+                <tspan x="18" y="144">var y = x!</tspan>
+                <tspan x="18" y="168"></tspan>
+                <tspan x="18" y="192"></tspan>
+                <tspan x="18" y="216"></tspan>
+                <tspan x="18" y="240"></tspan>
+                <tspan x="18" y="264">let x: String? = ""</tspan>
+                <tspan x="18" y="288">if let y = x {</tspan>
+                <tspan x="18" y="312">	// fais quelque chose avec y</tspan>
+                <tspan x="18" y="336">}</tspan>
+            </text>
+            <text id="Est-équivalent-à" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" letter-spacing="-0.0181776602" fill="#918973">
+                <tspan x="193" y="34">Est équivalent à</tspan>
+            </text>
+            <text id="let-x-=-Optional&lt;Str" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0201974027" fill="#D3A017">
+                <tspan x="368" y="48">let x = Optional&lt;String&gt;.none</tspan>
+                <tspan x="368" y="72"></tspan>
+                <tspan x="368" y="96">let x = Optional&lt;String&gt;.some(“hello”)</tspan>
+                <tspan x="368" y="120"></tspan>
+                <tspan x="368" y="144">switch x {</tspan>
+                <tspan x="368" y="168">	case some(let value): y = value</tspan>
+                <tspan x="368" y="192">	case none: // renvoie une erreur</tspan>
+                <tspan x="368" y="216">}</tspan>
+                <tspan x="368" y="240"></tspan>
+                <tspan x="368" y="264">switch x {</tspan>
+                <tspan x="368" y="288">	case .some(let y):</tspan>
+                <tspan x="368" y="312">            // fais quelque chose avec y</tspan>
+                <tspan x="368" y="336">	case .none: </tspan>
+                <tspan x="368" y="360">            break</tspan>
+                <tspan x="368" y="384">}</tspan>
+            </text>
+            <g id="Group" transform="translate(178.000000, 40.000000)" stroke="#918973" stroke-linecap="square" fill="#918973">
+                <path d="M0.5,1.5 L161.5,1.5" id="Line"></path>
+                <path id="Line-decoration-1" d="M161.5,1.5 L150.7,-1.5 L150.7,4.5 L161.5,1.5 Z"></path>
+                <path d="M0.5,1.5 L161.5,1.5" id="Line" transform="translate(81.000000, 1.500000) scale(-1, 1) translate(-81.000000, -1.500000) "></path>
+                <path id="Line-decoration-1" d="M161.5,1.5 L150.7,-1.5 L150.7,4.5 L161.5,1.5 Z"></path>
+            </g>
+            <g id="Group" transform="translate(107.000000, 136.000000)" stroke="#918973" stroke-linecap="square" fill="#918973">
+                <path d="M0.719135802,3.5 L232.280864,3.5" id="Line"></path>
+                <path id="Line-decoration-1" d="M232.280864,3.5 L221.480864,0.5 L221.480864,6.5 L232.280864,3.5 Z"></path>
+                <path d="M0.719135802,3.5 L232.280864,3.5" id="Line" transform="translate(116.500000, 3.500000) scale(-1, 1) translate(-116.500000, -3.500000) "></path>
+                <path id="Line-decoration-1" d="M232.280864,3.5 L221.480864,0.5 L221.480864,6.5 L232.280864,3.5 Z"></path>
+            </g>
+            <g id="Group" transform="translate(207.000000, 89.000000)" stroke="#918973" stroke-linecap="square" fill="#918973">
+                <path d="M0.410493827,1.5 L132.589506,1.5" id="Line"></path>
+                <path id="Line-decoration-1" d="M132.589506,1.5 L121.789506,-1.5 L121.789506,4.5 L132.589506,1.5 Z"></path>
+                <path d="M0.410493827,1.5 L132.589506,1.5" id="Line" transform="translate(66.500000, 1.500000) scale(-1, 1) translate(-66.500000, -1.500000) "></path>
+                <path id="Line-decoration-1" d="M132.589506,1.5 L121.789506,-1.5 L121.789506,4.5 L132.589506,1.5 Z"></path>
+            </g>
+            <g id="Group" transform="translate(183.000000, 257.000000)" stroke="#918973" stroke-linecap="square" fill="#918973">
+                <path d="M0.5,1.5 L161.5,1.5" id="Line"></path>
+                <path id="Line-decoration-1" d="M161.5,1.5 L150.7,-1.5 L150.7,4.5 L161.5,1.5 Z"></path>
+                <path d="M0.5,1.5 L161.5,1.5" id="Line" transform="translate(81.000000, 1.500000) scale(-1, 1) translate(-81.000000, -1.500000) "></path>
+                <path id="Line-decoration-1" d="M161.5,1.5 L150.7,-1.5 L150.7,4.5 L161.5,1.5 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="579px" viewBox="0 0 700 579" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Properties résumé</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Properties-résumé">
+            <rect id="Rectangle" stroke="#979797" stroke-width="3" x="39.5" y="17.5" width="622" height="537"></rect>
+            <rect id="Rectangle" fill="#D9CAA0" x="41" y="19" width="619" height="57"></rect>
+            <rect id="Rectangle" fill="#D9CAA0" x="41" y="19" width="110" height="534"></rect>
+            <path d="M41,76.5 L660,76.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <path d="M41,236 L660,236" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <path d="M41,395 L660,395" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <path d="M151.5,19 L151.5,553" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <path d="M406,19 L406,553" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <text id="var-propriété:-Type" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415" fill="#918973">
+                <tspan x="189" y="264">var propriété: Type {</tspan>
+                <tspan x="189" y="283">    get {</tspan>
+                <tspan x="189" y="302">        return quelqueChose</tspan>
+                <tspan x="189" y="321">    }</tspan>
+                <tspan x="189" y="340">    set {</tspan>
+                <tspan x="189" y="359">    }</tspan>
+                <tspan x="189" y="378">}</tspan>
+            </text>
+            <text id="var-propriété:-Type" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415" fill="#918973">
+                <tspan x="189" y="462">var propriété: Type {</tspan>
+                <tspan x="189" y="481">        return quelqueChose</tspan>
+                <tspan x="189" y="500">}</tspan>
+            </text>
+            <text id="static-var-propriété" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415" fill="#918973">
+                <tspan x="440" y="462">static var propriété: Type {</tspan>
+                <tspan x="440" y="481">        return quelqueChose</tspan>
+                <tspan x="440" y="500">}</tspan>
+            </text>
+            <text id="static-var-propriété" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415" fill="#918973">
+                <tspan x="440" y="264">static var propriété: Type {</tspan>
+                <tspan x="440" y="283">    get {</tspan>
+                <tspan x="440" y="302">        return quelqueChose</tspan>
+                <tspan x="440" y="321">    }</tspan>
+                <tspan x="440" y="340">    set {</tspan>
+                <tspan x="440" y="359">    }</tspan>
+                <tspan x="440" y="378">}</tspan>
+            </text>
+            <text id="Propriété…" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415" fill="#F5F3EE">
+                <tspan x="57.4320333" y="54">Propriété…</tspan>
+            </text>
+            <text id="de-classe" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.0748051926" fill="#D3A017">
+                <tspan x="491.646194" y="54">de classe</tspan>
+            </text>
+            <text id="stockée-(observable" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.05984415" fill="#D3A017">
+                <tspan x="60.9623842" y="131">stockée</tspan>
+                <tspan x="132.037616" y="131" font-size="16"></tspan>
+                <tspan x="57.2002366" y="155" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300">(observable </tspan>
+                <tspan x="49.1988311" y="174" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300">avec willSet et </tspan>
+                <tspan x="72.561017" y="193" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300">didSet)</tspan>
+            </text>
+            <text id="d’instance" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.0748051926" fill="#D3A017">
+                <tspan x="231.917971" y="54">d’instance</tspan>
+            </text>
+            <text id="calculée-(observable" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.05984415" fill="#D3A017">
+                <tspan x="58.9464079" y="302">calculée</tspan>
+                <tspan x="134.053592" y="302" font-size="16"></tspan>
+                <tspan x="57.2002366" y="326" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300">(observable </tspan>
+                <tspan x="66.2341424" y="345" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300">avec set)</tspan>
+            </text>
+            <text id="calculée-en-lecture" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.05984415" fill="#D3A017">
+                <tspan x="58.9464078" y="439.415039">calculée </tspan>
+                <tspan x="51.9652364" y="463.415039">en lecture </tspan>
+                <tspan x="72.4015635" y="487.415039">seule</tspan>
+                <tspan x="81.3462508" y="511.415039" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300">(non </tspan>
+                <tspan x="59.3838303" y="530.415039" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300">modifiable)</tspan>
+            </text>
+            <text id="var-propriété-=-vale" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415" fill="#918973">
+                <tspan x="203.373129" y="150">var propriété = valeur</tspan>
+                <tspan x="256.54797" y="169" font-family="SFUIDisplay-Light, SF UI Display" font-weight="300">(ou let) </tspan>
+            </text>
+            <text id="static-var-propriété" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415" fill="#918973">
+                <tspan x="436.199771" y="150">static var propriété = valeur</tspan>
+                <tspan x="511.04797" y="169" font-family="SFUIDisplay-Light, SF UI Display" font-weight="300">(ou let)</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

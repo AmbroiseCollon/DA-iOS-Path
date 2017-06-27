@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="405px" viewBox="0 0 700 405" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Types Summary</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Types-Summary">
+            <text id="Types-basiques" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" letter-spacing="-0.0834879279" fill="#D3A017">
+                <tspan x="31.3490639" y="45">Types basiques</tspan>
+            </text>
+            <text id="Tableau" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" letter-spacing="-0.0834879279" fill="#D3A017">
+                <tspan x="31" y="267">Tableau</tspan>
+            </text>
+            <text id="Dictionnaire" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" letter-spacing="-0.0834879279" fill="#D3A017">
+                <tspan x="31" y="326">Dictionnaire</tspan>
+            </text>
+            <text id="Optionnel" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" letter-spacing="-0.0834879279" fill="#D3A017">
+                <tspan x="31" y="387">Optionnel</tspan>
+            </text>
+            <text id="Int" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.0834879279" fill="#918973">
+                <tspan x="35.2370483" y="106">Int</tspan>
+            </text>
+            <text id="Float" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.0834879279" fill="#918973">
+                <tspan x="146.425028" y="106">Float</tspan>
+            </text>
+            <text id="Double" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.0834879279" fill="#918973">
+                <tspan x="288.259741" y="106">Double</tspan>
+            </text>
+            <text id="1" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D9CAA0">
+                <tspan x="44.4927945" y="162">1</tspan>
+            </text>
+            <text id="1.4" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D9CAA0">
+                <tspan x="161.13146" y="164">1.4</tspan>
+            </text>
+            <text id="1.4897" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D9CAA0">
+                <tspan x="292.172099" y="164">1.4897</tspan>
+            </text>
+            <text id="[Type]" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757">
+                <tspan x="249.034648" y="265" fill="#918973">[</tspan>
+                <tspan x="257.070543" y="265" fill="#D9CAA0">Type</tspan>
+                <tspan x="309.929457" y="265" fill="#918973">]</tspan>
+            </text>
+            <text id="Type?" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757">
+                <tspan x="243.989607" y="382" fill="#D9CAA0">Type</tspan>
+                <tspan x="296.848521" y="382" fill="#918973">?</tspan>
+            </text>
+            <text id="[Type1:-Type2]" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757">
+                <tspan x="204" y="325" fill="#918973">[</tspan>
+                <tspan x="212.035895" y="325" fill="#D9CAA0">Type1</tspan>
+                <tspan x="275.420939" y="325" fill="#918973">:</tspan>
+                <tspan x="281.699022" y="325" fill="#D9D9D9"> </tspan>
+                <tspan x="287.610894" y="325" fill="#D9CAA0">Type2</tspan>
+                <tspan x="354.548184" y="325" fill="#918973">]</tspan>
+            </text>
+            <text id="String" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.0834879279" fill="#918973">
+                <tspan x="459.182593" y="106">String</tspan>
+            </text>
+            <text id="“Bonjour“" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D9CAA0">
+                <tspan x="443.426117" y="164">“Bonjour“</tspan>
+            </text>
+            <text id="Bool" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.0834879279" fill="#918973">
+                <tspan x="613.151839" y="106">Bool</tspan>
+            </text>
+            <text id="true-false" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D9CAA0">
+                <tspan x="620.386705" y="147">true</tspan>
+                <tspan x="616.472517" y="177">false</tspan>
+            </text>
+            <path d="M31,177.75 L31,178 L31.5,178 L390.5,178 L391,178 L391,177 L390.5,177 L32,177 L32,162.5 L32,162 L31,162 L31,162.5 L31,177.5 L31,177.75 Z M392,177.5 L392,178 L391,178 L391,177.5 L391,162.5 L391,162 L392,162 L392,162.5 L392,177.5 Z" id="Combined-Shape" stroke="#D8D8D8" stroke-linecap="square"></path>
+            <text id="Types-numériques" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D8D8D8">
+                <tspan x="113.270698" y="207">Types numériques</tspan>
+            </text>
+            <text id="ou" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D8D8D8">
+                <tspan x="377.403802" y="265">ou</tspan>
+            </text>
+            <text id="ou" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757" fill="#D8D8D8">
+                <tspan x="377.403802" y="325">ou</tspan>
+            </text>
+            <text id="Array&lt;Type&gt;" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757">
+                <tspan x="489" y="265" fill="#918973">Array&lt;</tspan>
+                <tspan x="559.835002" y="265" letter-spacing="-0.0579777285" fill="#D9CAA0">Type</tspan>
+                <tspan x="612.740298" y="265" letter-spacing="-0.0579777285" fill="#918973">&gt;</tspan>
+            </text>
+            <text id="Dictionary&lt;Type1,-Ty" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.0695732757">
+                <tspan x="419.134508" y="325" fill="#918973">Dictionary&lt;</tspan>
+                <tspan x="541.757874" y="325" letter-spacing="-0.0579777285" fill="#D9CAA0">Type1</tspan>
+                <tspan x="604.590544" y="325" letter-spacing="-0.0579777285" fill="#918973">,</tspan>
+                <tspan x="610.880223" y="325" letter-spacing="-0.0579777285" fill="#D9D9D9"> </tspan>
+                <tspan x="616.80369" y="325" letter-spacing="-0.0579777285" fill="#D9CAA0">Type2</tspan>
+                <tspan x="683.798958" y="325" letter-spacing="-0.0579777285" fill="#918973">&gt;</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

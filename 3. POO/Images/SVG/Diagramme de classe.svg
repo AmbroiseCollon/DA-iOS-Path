@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="391px" viewBox="0 0 700 391" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Diagramme de classe</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Diagramme-de-classe">
+            <g id="Classe" transform="translate(51.000000, 97.000000)">
+                <rect id="Rectangle-3" fill="#D3A017" fill-rule="evenodd" x="0" y="0" width="151" height="268"></rect>
+                <rect id="Rectangle-4" fill="#F5F3EE" fill-rule="evenodd" x="6" y="36" width="139" height="226"></rect>
+                <text id="moveForward()-stop()" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" letter-spacing="-0.04039481" fill="#D3A017">
+                    <tspan x="18.5765311" y="205">moveForward()</tspan>
+                    <tspan x="53.7056571" y="226">stop()</tspan>
+                    <tspan x="51.7966553" y="247">drive()</tspan>
+                </text>
+                <text id="Bus" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" letter-spacing="-0.0561039038" fill="#F5F3EE">
+                    <tspan x="56.1134527" y="27">Bus</tspan>
+                </text>
+                <text id="driverName-seats-occ" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="31.5852748" y="83">driverName</tspan>
+                    <tspan x="55.2235456" y="104">seats</tspan>
+                    <tspan x="18.8929374" y="125">occupiedSeats</tspan>
+                </text>
+                <text id="Propriétés" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="37" y="58">Propriétés</tspan>
+                </text>
+                <text id="Méthodes" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="35" y="179">Méthodes</tspan>
+                </text>
+            </g>
+            <g id="Classe" transform="translate(499.000000, 97.000000)">
+                <rect id="Rectangle-3" fill="#D3A017" fill-rule="evenodd" x="0" y="0" width="151" height="268"></rect>
+                <rect id="Rectangle-4" fill="#F5F3EE" fill-rule="evenodd" x="6" y="36" width="139" height="226"></rect>
+                <text id="moveForward()-stop()" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" letter-spacing="-0.04039481" fill="#D3A017">
+                    <tspan x="73.0636544" y="205">/</tspan>
+                </text>
+                <text id="Bus" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" letter-spacing="-0.0561039038" fill="#F5F3EE">
+                    <tspan x="9.06613983" y="27">RoadSection</tspan>
+                </text>
+                <text id="driverName-seats-occ" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="58.8947545" y="83">type</tspan>
+                </text>
+                <text id="Propriétés" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="37" y="58">Propriétés</tspan>
+                </text>
+                <text id="Méthodes" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="35" y="179">Méthodes</tspan>
+                </text>
+            </g>
+            <g id="Classe" transform="translate(275.000000, 97.000000)">
+                <rect id="Rectangle-3" fill="#D3A017" fill-rule="evenodd" x="0" y="0" width="151" height="268"></rect>
+                <rect id="Rectangle-4" fill="#F5F3EE" fill-rule="evenodd" x="6" y="36" width="139" height="226"></rect>
+                <text id="moveForward()-stop()" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" letter-spacing="-0.04039481" fill="#D3A017">
+                    <tspan x="73.0636544" y="205">/</tspan>
+                </text>
+                <text id="Bus" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" letter-spacing="-0.0561039038" fill="#F5F3EE">
+                    <tspan x="48.6219734" y="27">Road</tspan>
+                </text>
+                <text id="driverName-seats-occ" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="43.8847238" y="83">sections</tspan>
+                </text>
+                <text id="Propriétés" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="37" y="58">Propriétés</tspan>
+                </text>
+                <text id="Méthodes" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" letter-spacing="-0.0403948091" fill="#D3A017">
+                    <tspan x="35" y="179">Méthodes</tspan>
+                </text>
+            </g>
+            <text id="Diagramme-de-classes" font-family="SFUIDisplay-Light, SF UI Display" font-size="40" font-weight="300" letter-spacing="-0.04039481" fill="#D3A017">
+                <tspan x="159.439104" y="59">Diagramme de classes</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

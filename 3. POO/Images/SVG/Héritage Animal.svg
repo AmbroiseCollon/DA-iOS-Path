@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="488px" viewBox="0 0 700 488" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Héritage Animal</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Héritage-Animal">
+            <rect id="Rectangle-3" fill="#D3A017" x="275" y="28" width="151" height="201.092641"></rect>
+            <text id="Animal" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.04039481" fill="#F5F3EE">
+                <tspan x="307.171966" y="57">Animal</tspan>
+            </text>
+            <rect id="Rectangle-4" fill="#F5F3EE" x="281" y="64" width="139" height="160.590567"></rect>
+            <text id="taille-poids-couleur" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0269298721" fill="#D3A017">
+                <tspan x="331.659891" y="90">taille</tspan>
+                <tspan x="327.334903" y="114">poids</tspan>
+                <tspan x="319.10988" y="138">couleur</tspan>
+                <tspan x="350.5" y="162"></tspan>
+                <tspan x="317.988016" y="186">manger</tspan>
+                <tspan x="323.232157" y="210">dormir</tspan>
+            </text>
+            <rect id="Rectangle-3" fill="#D3A017" x="133" y="342" width="151" height="118"></rect>
+            <text id="Chien" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.04039481" fill="#F5F3EE">
+                <tspan x="171.106358" y="371">Chien</tspan>
+            </text>
+            <rect id="Rectangle-4" fill="#F5F3EE" x="139" y="384" width="139" height="69"></rect>
+            <text id="aboyer-courir" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0269298721" fill="#D3A017">
+                <tspan x="179.488993" y="413">aboyer</tspan>
+                <tspan x="184.60618" y="437">courir</tspan>
+            </text>
+            <rect id="Rectangle-3" fill="#D3A017" x="417" y="342" width="151" height="119"></rect>
+            <text id="Dragon" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.04039481" fill="#F5F3EE">
+                <tspan x="445.951263" y="371">Dragon</tspan>
+            </text>
+            <rect id="Rectangle-4" fill="#F5F3EE" x="423" y="384" width="139" height="69"></rect>
+            <text id="cracher-du-feu-voler" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0269298721" fill="#D3A017">
+                <tspan x="431.985384" y="413">cracher du feu</tspan>
+                <tspan x="472.235293" y="437">voler</tspan>
+            </text>
+            <path d="M491.5,335.5 L376.5,237.5" id="Line" stroke="#918973" stroke-width="3" fill="#918973" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M376.5,237.5 L382.774294,246.788338 L386.665945,242.221605 L376.5,237.5 Z" stroke="#918973" stroke-width="3" fill="#918973" stroke-linecap="square"></path>
+            <path d="M324.5,335.5 L209.5,237.5" id="Line" stroke="#918973" stroke-width="3" fill="#918973" stroke-linecap="square" transform="translate(267.000000, 286.500000) scale(-1, 1) translate(-267.000000, -286.500000) "></path>
+            <path id="Line-decoration-1" d="M209.5,237.5 L215.774294,246.788338 L219.665945,242.221605 L209.5,237.5 Z" stroke="#918973" stroke-width="3" fill="#918973" stroke-linecap="square"></path>
+            <text id="Hérite-de" transform="translate(447.708892, 279.708892) rotate(41.000000) translate(-447.708892, -279.708892) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.02692987" fill="#918973">
+                <tspan x="409.700194" y="286.708892">Hérite de</tspan>
+            </text>
+            <text id="Hérite-de" transform="translate(249.929027, 281.314788) rotate(-41.000000) translate(-249.929027, -281.314788) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.02692987" fill="#918973">
+                <tspan x="211.920329" y="288.314788">Hérite de</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

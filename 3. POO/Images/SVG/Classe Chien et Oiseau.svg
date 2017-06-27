@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="301px" viewBox="0 0 700 301" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Classe Chien et Oiseau</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Classe-Chien-et-Oiseau">
+            <g id="Group" transform="translate(133.000000, 17.000000)">
+                <rect id="Rectangle-3" fill="#D3A017" x="0" y="0" width="151" height="268"></rect>
+                <text id="Chien" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.04039481" fill="#F5F3EE">
+                    <tspan x="38.1063581" y="29">Chien</tspan>
+                </text>
+                <rect id="Rectangle-4" fill="#F5F3EE" x="6" y="36" width="139" height="226"></rect>
+                <text id="taille-poids-couleur" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0269298721" fill="#D3A017">
+                    <tspan x="56.6598912" y="65">taille</tspan>
+                    <tspan x="52.3349028" y="89">poids</tspan>
+                    <tspan x="44.1098796" y="113">couleur</tspan>
+                    <tspan x="75.5" y="137"></tspan>
+                    <tspan x="46.4889927" y="161">aboyer</tspan>
+                    <tspan x="42.9880162" y="185">manger</tspan>
+                    <tspan x="48.2321568" y="209">dormir</tspan>
+                    <tspan x="51.6061802" y="233">courir</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(417.000000, 17.000000)">
+                <rect id="Rectangle-3" fill="#D3A017" x="0" y="0" width="151" height="268"></rect>
+                <text id="Dragon" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.04039481" fill="#F5F3EE">
+                    <tspan x="28.4512626" y="29">Dragon</tspan>
+                </text>
+                <rect id="Rectangle-4" fill="#F5F3EE" x="6" y="36" width="139" height="226"></rect>
+                <text id="taille-poids-couleur" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0269298721" fill="#D3A017">
+                    <tspan x="56.6598912" y="65">taille</tspan>
+                    <tspan x="52.3349028" y="89">poids</tspan>
+                    <tspan x="44.1098796" y="113">couleur</tspan>
+                    <tspan x="75.5" y="137"></tspan>
+                    <tspan x="14.9853841" y="161">cracher du feu</tspan>
+                    <tspan x="42.9880162" y="185">manger</tspan>
+                    <tspan x="48.2321568" y="209">dormir</tspan>
+                    <tspan x="55.2352934" y="233">voler</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="857px" height="551px" viewBox="0 0 857 551" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Type check</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Type-check">
+            <path d="M185.5,196.5 L328.5,115.5" id="Line" stroke="#D9D9D9" stroke-width="4" stroke-linecap="square"></path>
+            <path d="M178.5,281.5 L610.5,485.5" id="Line" stroke="#D9D9D9" stroke-width="4" stroke-linecap="square"></path>
+            <ellipse id="Oval-9" fill="#D3A017" cx="108.5" cy="237" rx="89.5" ry="93"></ellipse>
+            <text id="Je-suis-absolument-c" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" letter-spacing="-0.0748051852" fill="#F5F3EE">
+                <tspan x="78.9717791" y="191">Je suis </tspan>
+                <tspan x="53.6347681" y="215" font-family="SFUIDisplay-Bold, SF UI Display" font-weight="bold">absolument </tspan>
+                <tspan x="28.4750045" y="239" font-family="SFUIDisplay-Bold, SF UI Display" font-weight="bold">certain </tspan>
+                <tspan x="97.1636724" y="239">du type de </tspan>
+                <tspan x="37.2494185" y="263">la variable que je </tspan>
+                <tspan x="71.2877952" y="287">contrôle.</tspan>
+            </text>
+            <text id="NON" transform="translate(248.938747, 327.676209) rotate(26.000000) translate(-248.938747, -327.676209) " font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" letter-spacing="-0.0748051852" fill="#D9D9D9">
+                <tspan x="227.438747" y="334.676209">NON</tspan>
+            </text>
+            <text id="OUI" transform="translate(244.490381, 147.892305) rotate(-30.000000) translate(-244.490381, -147.892305) " font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" letter-spacing="-0.0748051852" fill="#D9D9D9">
+                <tspan x="227.990381" y="154.892305">OUI</tspan>
+            </text>
+            <rect id="Rectangle-14" fill="#D9CAA0" x="327" y="32" width="222" height="118"></rect>
+            <text id="as!" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" letter-spacing="-0.0748051852" fill="#918973">
+                <tspan x="425" y="64">as!</tspan>
+            </text>
+            <text id="(media-as!-Chanson)." font-family="Helvetica" font-size="15" font-weight="normal" fill="#F5F3EE">
+                <tspan x="337" y="119">(media as! Chanson).chanteur</tspan>
+            </text>
+            <rect id="Rectangle-14" fill="#D9CAA0" x="586" y="402" width="253" height="118"></rect>
+            <text id="as?" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" letter-spacing="-0.0700000003" fill="#918973">
+                <tspan x="697" y="433">as?</tspan>
+            </text>
+            <text id="if-let-chanson-=-med" font-family="SFUIDisplay-Regular, SF UI Display" font-size="15" font-weight="normal" letter-spacing="-0.0561038926" fill="#F5F3EE">
+                <tspan x="597" y="460">if let chanson = media as? Chanson {</tspan>
+                <tspan x="597" y="478">    print(chanson.chanteur)</tspan>
+                <tspan x="597" y="496">}</tspan>
+            </text>
+            <path d="M310.5,343.5 L594.5,240.5" id="Line" stroke="#D9D9D9" stroke-width="4" stroke-linecap="square"></path>
+            <rect id="Rectangle-14" fill="#D9CAA0" x="586" y="185" width="211" height="118"></rect>
+            <text id="is" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" letter-spacing="-0.0748051852" fill="#918973">
+                <tspan x="684" y="212">is</tspan>
+            </text>
+            <text id="if-media-is-Chanson" font-family="SFUIDisplay-Regular, SF UI Display" font-size="16" font-weight="normal" letter-spacing="-0.0598441511" fill="#F5F3EE">
+                <tspan x="597" y="245">if media is Chanson {</tspan>
+                <tspan x="597" y="264"></tspan>
+                <tspan x="597" y="283">}</tspan>
+            </text>
+            <ellipse id="Oval-10" fill="#D3A017" cx="441" cy="436.5" rx="98" ry="69.5"></ellipse>
+            <ellipse id="Oval-10" fill="#D3A017" cx="440" cy="264.5" rx="98" ry="69.5"></ellipse>
+            <text id="J’ai-besoin-d’accéde" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" letter-spacing="-0.0748051852" fill="#F5F3EE">
+                <tspan x="396.530569" y="407">J’ai besoin </tspan>
+                <tspan x="377.780472" y="431">d’</tspan>
+                <tspan x="394.339846" y="431" font-family="SFUIDisplay-Bold, SF UI Display" font-weight="bold">accéder à la </tspan>
+                <tspan x="369.237113" y="455" font-family="SFUIDisplay-Bold, SF UI Display" font-weight="bold">variable </tspan>
+                <tspan x="446.640039" y="455">sous un </tspan>
+                <tspan x="388.563382" y="479">certain type.</tspan>
+            </text>
+            <text id="J’ai-juste-besoin-de" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" letter-spacing="-0.0748051852" fill="#F5F3EE">
+                <tspan x="372.771586" y="236">J’ai juste besoin </tspan>
+                <tspan x="383.082523" y="260">de savoir si la </tspan>
+                <tspan x="370.261821" y="284">variable est d’un </tspan>
+                <tspan x="387.563382" y="308">certain type.</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

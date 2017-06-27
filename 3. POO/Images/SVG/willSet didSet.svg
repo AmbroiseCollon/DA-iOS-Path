@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="235px" viewBox="0 0 700 235" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>willSet didSet</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="willSet-didSet">
+            <g id="Group" transform="translate(382.000000, 18.000000)">
+                <rect id="Rectangle" fill="#D9CAA0" x="0" y="0" width="255" height="199.567477"></rect>
+                <text id="didSet" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" letter-spacing="-0.112207785" fill="#918973">
+                    <tspan x="86.0153343" y="45">didSet</tspan>
+                </text>
+                <text id="Ancienne-valeure-con" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415">
+                    <tspan x="10.3364127" y="153" fill="#F5F3EE">Ancienne</tspan>
+                    <tspan x="78.2014095" y="153" font-family="SFUIDisplay-Regular, SF UI Display" font-weight="normal" fill="#F5F3EE"> valeure contenue dans :</tspan>
+                    <tspan x="90.7276579" y="172" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" fill="#D3A017">oldValue</tspan>
+                </text>
+                <text id="Nouvelle-valeure-con" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415">
+                    <tspan x="12.4848502" y="93" fill="#F5F3EE">Nouvelle</tspan>
+                    <tspan x="75.052972" y="93" font-family="SFUIDisplay-Regular, SF UI Display" font-weight="normal" fill="#F5F3EE"> valeure contenue dans :</tspan>
+                    <tspan x="79.1071118" y="112" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" fill="#D3A017">la propriété</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(64.000000, 18.000000)">
+                <rect id="Rectangle" fill="#D9CAA0" x="0" y="0.0887994588" width="255" height="199.567477"></rect>
+                <text id="willSet" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" letter-spacing="-0.112207785" fill="#918973">
+                    <tspan x="86.3810085" y="45">willSet</tspan>
+                </text>
+                <text id="Nouvelle-valeure-con" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.05984415">
+                    <tspan x="12.9848502" y="93" fill="#F5F3EE">Nouvelle</tspan>
+                    <tspan x="75.552972" y="93" font-family="SFUIDisplay-Regular, SF UI Display" font-weight="normal" fill="#F5F3EE"> valeure contenue dans :</tspan>
+                    <tspan x="86.0206266" y="112" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" fill="#D3A017">newValue</tspan>
+                </text>
+                <text id="Ancienne-valeure-con" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="16" font-weight="500" letter-spacing="-0.0748051852">
+                    <tspan x="10.5757892" y="153" fill="#F5F3EE">Ancienne</tspan>
+                    <tspan x="78.3210977" y="153" font-family="SFUIDisplay-Regular, SF UI Display" font-weight="normal" fill="#F5F3EE"> valeure contenue dans :</tspan>
+                    <tspan x="79.696878" y="172" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" fill="#D3A017">la propriété</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="235px" viewBox="0 0 700 235" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Classe Animal</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Classe-Animal">
+            <rect id="Rectangle-3" fill="#D3A017" x="275" y="17" width="151" height="201.092641"></rect>
+            <text id="Animal" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.04039481" fill="#F5F3EE">
+                <tspan x="307.171966" y="46">Animal</tspan>
+            </text>
+            <rect id="Rectangle-4" fill="#F5F3EE" x="281" y="53" width="139" height="160.590567"></rect>
+            <text id="taille-poids-couleur" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0269298721" fill="#D3A017">
+                <tspan x="331.659891" y="79">taille</tspan>
+                <tspan x="327.334903" y="103">poids</tspan>
+                <tspan x="319.10988" y="127">couleur</tspan>
+                <tspan x="350.5" y="151"></tspan>
+                <tspan x="317.988016" y="175">manger</tspan>
+                <tspan x="323.232157" y="199">dormir</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

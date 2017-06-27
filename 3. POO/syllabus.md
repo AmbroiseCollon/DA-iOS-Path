@@ -40,7 +40,7 @@ Oui je me doute que si vous êtes ici, c'est que vous avez hâte de faire une ap
 
 Et puis réjouissez-vous, dans ce cours vous allez déjà réalisé un programme visuel que vous pourrez montrer à vos amis ! ;)
 
-##### La POO
+#### La POO
 
 > **:question:** Bon, c'est bien beau cette histoire de bus, mais pourquoi devons-nous apprendre la programmation orientée objet ?
 

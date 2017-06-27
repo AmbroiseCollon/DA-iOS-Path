@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="391px" viewBox="0 0 700 391" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F3EE;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Procédural VS OO</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Procédural-VS-OO">
+            <g id="Procédural" transform="translate(18.000000, 14.000000)">
+                <text font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.0673246831" fill="#D3A017">
+                    <tspan x="92.4264672" y="29">Procédural</tspan>
+                </text>
+                <g id="Group-2" transform="translate(0.000000, 50.000000)">
+                    <rect id="Rectangle" fill="#D3A016" x="0" y="0" width="319" height="313.832031"></rect>
+                    <rect id="Rectangle-2" fill="#F5F3EE" x="21" y="22" width="265" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F3EDED" x="21" y="54" width="200" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F3EDED" x="21" y="86" width="245" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F5F3EE" x="21" y="116" width="180" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F5F3EE" x="21" y="146" width="265" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F5F3EE" x="21" y="178" width="250" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F5F3EE" x="21" y="210" width="265" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F5F3EE" x="21" y="240" width="250" height="18"></rect>
+                    <rect id="Rectangle-2" fill="#F5F3EE" x="21" y="270" width="180" height="18"></rect>
+                </g>
+            </g>
+            <g id="Orientée-Objet" transform="translate(363.000000, 14.000000)">
+                <text font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" letter-spacing="-0.0673246831" fill="#D3A017">
+                    <tspan x="68.7647298" y="29">Orientée Objet</tspan>
+                </text>
+                <g id="Group" transform="translate(0.000000, 50.000000)">
+                    <rect id="Rectangle" fill="#D9CAA0" x="0" y="0" width="319" height="313.832031"></rect>
+                    <path d="M94.5,78.5 L130.5,152.5" id="Line" stroke="#918973" stroke-width="3" stroke-linecap="square"></path>
+                    <path d="M250.5,84.5 L250.5,269.5" id="Line" stroke="#918973" stroke-width="3" stroke-linecap="square"></path>
+                    <path d="M208.5,65.5 L97.5,65.5" id="Line" stroke="#918973" stroke-width="3" stroke-linecap="square"></path>
+                    <g id="Module" transform="translate(20.000000, 22.000000)">
+                        <rect id="Rectangle-3" fill="#D3A017" x="0" y="0" width="115" height="73"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="4.57209033" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="12.2802548" width="75.4464443" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="19.9884192" width="92.4218943" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="27.2148234" width="67.9017999" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="34.4412276" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="42.149392" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="49.8575565" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="57.0839606" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="64.3103648" width="67.9017999" height="4.3358425"></rect>
+                    </g>
+                    <g id="Module" transform="translate(180.000000, 228.000000)">
+                        <rect id="Rectangle-3" fill="#D3A017" x="0" y="0" width="115" height="73"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="4.57209033" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="12.2802548" width="75.4464443" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="19.9884192" width="92.4218943" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="27.2148234" width="67.9017999" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="34.4412276" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="42.149392" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="49.8575565" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="57.0839606" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="64.3103648" width="67.9017999" height="4.3358425"></rect>
+                    </g>
+                    <g id="Module" transform="translate(180.000000, 22.000000)">
+                        <rect id="Rectangle-3" fill="#D3A017" x="0" y="0" width="115" height="73"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="4.57209033" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="12.2802548" width="75.4464443" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="19.9884192" width="92.4218943" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="27.2148234" width="67.9017999" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="34.4412276" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="42.149392" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="49.8575565" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="57.0839606" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="64.3103648" width="67.9017999" height="4.3358425"></rect>
+                    </g>
+                    <g id="Module" transform="translate(73.000000, 125.000000)">
+                        <rect id="Rectangle-3" fill="#D3A017" x="0" y="0" width="115" height="73"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="4.57209033" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="12.2802548" width="75.4464443" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="19.9884192" width="92.4218943" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="27.2148234" width="67.9017999" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="34.4412276" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="42.149392" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="49.8575565" width="99.9665387" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="57.0839606" width="94.3080554" height="4.3358425"></rect>
+                        <rect id="Rectangle-2" fill="#F5F3EE" x="7.04547216" y="64.3103648" width="67.9017999" height="4.3358425"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
