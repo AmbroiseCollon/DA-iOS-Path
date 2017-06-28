@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="389px" viewBox="0 0 700 389" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #EDEFF2;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P1C1_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P1C1_2">
+            <text id="Echelle-d’importance" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#576B82">
+                <tspan x="108.447998" y="30">Echelle d’importance des choses de la vie </tspan>
+                <tspan x="552.552002" y="30" font-family="AppleColorEmoji, Apple Color Emoji" font-weight="normal">😅</tspan>
+            </text>
+            <rect id="Rectangle-3" fill="#C0C4C9" x="85" y="290" width="50" height="30"></rect>
+            <rect id="Rectangle-3" fill="#C0C4C9" x="218" y="262" width="50" height="58"></rect>
+            <rect id="Rectangle-3" fill="#C0C4C9" x="351" y="262" width="50" height="58"></rect>
+            <rect id="Rectangle-3" fill="#5B8EC9" x="483" y="128" width="50" height="192"></rect>
+            <path d="M57.5,319.5 L57.5,48.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M57.5,48.5 L54.5,59.3 L60.5,59.3 L57.5,48.5 Z" stroke="#979797" stroke-linecap="square"></path>
+            <path d="M57.5,319.5 L628.5,319.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M628.5,319.5 L617.7,316.5 L617.7,322.5 L628.5,319.5 Z" stroke="#979797" stroke-linecap="square"></path>
+            <text id="Manger" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" fill="#C0C4C9">
+                <tspan x="209.918945" y="358">Manger</tspan>
+            </text>
+            <text id="Faire-une-animation" font-family="SFUIDisplay-Regular, SF UI Display" font-size="15" font-weight="normal" fill="#C0C4C9">
+                <tspan x="47.1105957" y="347">Faire une animation </tspan>
+                <tspan x="88.638916" y="365">en iOS</tspan>
+            </text>
+            <text id="Dormir" font-family="SFUIDisplay-Regular, SF UI Display" font-size="20" font-weight="normal" fill="#C0C4C9">
+                <tspan x="346.4375" y="358">Dormir</tspan>
+            </text>
+            <text id="Maîtriser-le-modèle" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#576B82">
+                <tspan x="451.200684" y="345">Maîtriser le </tspan>
+                <tspan x="439.573486" y="375">modèle MVC</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
