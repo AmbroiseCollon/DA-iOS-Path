@@ -1,4 +1,4 @@
-## Préparez votre application
+## Préparez la structure de votre application
 
 ### Tirez le meilleur de ce cours
 
@@ -14,7 +14,7 @@ Vous êtes prêts ? Alors allons-y !
 
 Dans ce cours, nous allons donc réaliser l'application OpenQuizz. Et sans plus de suspens, laissez moi vous la montrer :
 
-![](Images/P1C1_1.png)
+![](Images/P1/P1C1_1.png)
 
 Dans l'application OpenQuizz, le joueur va pouvoir faire des parties de 10 questions. Il peut répondre par vrai ou par faux à chaque question en faisant glisser la question vers la droite ou vers la gauche. Il marque un point à chaque bonne réponse. Au bout de 10 questions, la partie s'arrête et le joueur peut lancer une nouvelle partie.
 
@@ -30,7 +30,7 @@ Heureusement, il existe une solution simple pour que le développement reste un 
 
 Pour insister sur ce point, voici un petit schéma qui parle de lui-même :
 
-![](Images/P1C1_2.png)
+![](Images/P1/P1C1_2.png)
 
 #### Approche
 
@@ -44,17 +44,17 @@ Alors sans plus attendre, créons ensemble le projet Xcode de notre application 
 > **:information_source:** La création d'un projet Xcode est déjà détaillée complètement dans [ce cours](https://openclassrooms.com/courses/introduction-a-ios-plongez-dans-le-developpement-mobile/creez-votre-projet). C'est la raison pour laquelle je ne fais ici qu'un bref rappel.
 
 1/ Ouvrez Xcode et choisissez *Create a new Xcode Project*
-![](Images/P1C1_3.png)
+![](Images/P1/P1C1_3.png)
 2/ Remplissez les **options** de votre projet :
 
 > **:information_source:** Pour le nom de l'organisation, vous pouvez choisir votre nom et pour l'*organization identifier*, vous pouvez adopter la convention suivante `fr.nomprenom`.  
 Soyez certains de bien choisir le langage Swift et de choisir *Universal* car on va adapter notre application à toutes les tailles d'écrans.
 
-![](Images/P1C1_4.png)
+![](Images/P1/P1C1_4.png)
 
 3/ Choisissez **Single View Application** pour créer une application d'une seule page.
 
-![](Images/P1C1_5.png)
+![](Images/P1/P1C1_5.png)
 
 4/ Choisissez l'emplacement où vous souhaitez sauvegarder votre projet.
 
@@ -69,24 +69,24 @@ Dans ce chapitre, nous allons apprendre à gérer les images que l'on souhaite a
 #### Le dossier d'images
 Pour cela, je vous invite à télécharger les images à [cette adresse](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/Assets.zip). Ouvrez le dossier et voyons ensemble ce qu'il comporte :
 
-![](Images/P1C2_1.png)
+![](Images/P1/P1C2_1.png)
 
 Nous avons donc 3 images différentes, de trois formats différents. Et un dossier `Icons` qui contient l'icône de l'application en différentes tailles.
 
 #### Découvrir les assets
 Pour l'instant, si vous lancez votre application et qu'ensuite, vous simulez l'appui sur le bouton *Home* du simulateur, vous verrez que notre icône d'application ressemble à ceci :
 
-![](Images/P1C2_2.png)
+![](Images/P1/P1C2_2.png)
 
 C'est l'icône par défaut d'une application. Nous allons changer ça en chargeant dans notre projet l'icône que nous avons trouvée dans le dossier. Allons-y !
 
 Les images dans un projet Xcode, on appelle ça des *assets*. Et pour ajouter de nouveaux *assets*, il faut aller dans le dossier dédié `Assets.xcassets` :
 
-![](Images/P1C2_3.png)
+![](Images/P1/P1C2_3.png)
 
 En ouvrant ce dossier, vous voyez en haut à gauche l'inscription `App Icon`. Cliquez dessus et vous voyez s'afficher ceci :
 
-![](Images/P1C2_4.png)
+![](Images/P1/P1C2_4.png)
 
 Dans ce dossier, vous avez toutes les tailles d'icônes que le logiciel réclame.
 
@@ -98,7 +98,7 @@ D'autre part, dans iOS, l'icône de l'application est utilisée à divers endroi
 
 Voyons un peu à quoi elles correspondent :
 
-![](Images/P1C2_5.png)
+![](Images/P1/P1C2_5.png)
 
 Dans le schéma ci-dessus, j'ai pris l'exemple de l'icône de l'application *Message* affichée tour dans : une notification, dans les réglages de l'iPhone, dans la recherche et sur l'icône de l'application elle-même.
 
@@ -112,11 +112,11 @@ Avec l'arrivée de l'iPhone 4, Apple a créé l'écran Retina. Cet écran a une 
 
 Ce changement a posé un problème. On ne peut plus parler de la taille d'une image en nombre de pixels, car cela dépend de l'écran. Du coup, Apple a créé une autre unité : le point *(pt)*. Et selon l'écran, un point est automatiquement transformé avec le bon nombre de pixels.
 
-![Une image de 10 x 10 points selon les trois résolutions d'écrans](Images/P1C2_6.png)
+![Une image de 10 x 10 points selon les trois résolutions d'écrans](Images/P1/P1C2_6.png)
 
 Du coup, il faut fournir toutes les images qui vont être affichées par l'application en trois tailles différentes. Et pour cela il existe une convention spécifique. Prenons un fichier `image.jpg`. Voilà comment nous allons le nommer pour les différentes tailles d'écran :
 
-![](Images/P1C2_7.png)
+![](Images/P1/P1C2_7.png)
 
 On ajoute **@2x** et **@3x** à la fin du nom du fichier pour spécifier le niveau de résolution de l'image. C'est ce qui a été fait dans le dossier d'images que vous avez téléchargé.
 
@@ -125,22 +125,22 @@ On ajoute **@2x** et **@3x** à la fin du nom du fichier pour spécifier le nive
 #### Changer l'icône de l'application
 On va pouvoir maintenant simplement glisser-déposer nos icônes depuis notre dossier vers les *assets*. Comme ceci :
 
-![](Images/P1C2_8.gif)
+![](Images/P1/P1C2_8.gif)
 
 > **:warning:** Pendant cette étape, vérifiez bien que vous glisser la bonne image au bon endroit. Si vous vous trompez et que les tailles ne correspondent pas, Xcode vous le signalera par un warning :  
-![](Images/P1C2_9.png)  
+![](Images/P1/P1C2_9.png)  
 Pas d'inquiétude, il vous suffit de réparer votre erreur en glissant la bonne icône là où vous vous êtes trompé.
 
 Et voilà, nous avons maintenant une belle icône d'application :
 
-![](Images/P1C2_10.png)
+![](Images/P1/P1C2_10.png)
 
 > **:information_source:** Vous noterez que l'arrondi des angles se fait automatiquement.
 
 #### Charger les images
 En plus de l'icône, notre application va également afficher des images. Pour les rajouter, il suffit de les glisser par paquet de trois (pour les trois résolutions d'écrans) dans les *assets* comme ceci :
 
-![](Images/P1C2_11.gif)
+![](Images/P1/P1C2_11.gif)
 
 **Grâce à la convention de nommage**, Xcode reconnaît que ces trois fichiers représentent tous la même image en trois résolutions différentes. Il les groupe tous automatiquement sous le même nom `Icon Correct` qui est le nom du fichier sans l'extension.
 
@@ -168,18 +168,18 @@ Celle que nous avons pour notre application s'appelle *Balham* et vous pouvez la
 #### Ajouter la police
 Une fois la police téléchargée, vous avez un fichier `Balham.otf`. Vous allez maintenant glisser ce fichier dans le navigateur d'Xcode (avec les autres fichiers) comme ceci :
 
-![](Images/P1C3_1.gif)
+![](Images/P1/P1C3_1.gif)
 
 Ensuite, dans la fenêtre qui s'affiche, **cochez les options comme indiqué ci-dessous sinon votre police ne sera pas prise en compte**. Et cliquez sur *finish*.
 
-![](Images/P1C3_2.png)
+![](Images/P1/P1C3_2.png)
 
 Et voilà ! Votre police est ajoutée !
 
 #### Le fichier plist
 Dans le navigateur, vous avez le fichier `Info.plist` :
 
-![](Images/P1C3_3.png)
+![](Images/P1/P1C3_3.png)
 
 Ce fichier est un dictionnaire qui contient un certain nombre d'informations sur votre projet comme le nom de votre application, les orientations supportées par votre application, etc. Ce sont un peu **les paramètres de votre projet**.
 
@@ -187,15 +187,15 @@ Il vous arrivera assez régulièrement de devoir modifier ces paramètres ou d'e
 
 Pour cela, il vous faut placer votre souris au-dessus de la dernière ligne de ce fichier. Les boutons `+` et `-` apparaissent :
 
-![](Images/P1C3_4.png)
+![](Images/P1/P1C3_4.png)
 
 Cliquez sur `+`. Une nouvelle ligne apparait avec une liste déroulante. Choisissez dedans : *Fonts provided by application*.
 
-![](Images/P1C3_5.png)
+![](Images/P1/P1C3_5.png)
 
 Cliquez ensuite sur le petit triangle de droite pour dérouler la ligne et inscrivez en face de *Item 0* le **nom exact du fichier** comme ceci :
 
-![](Images/P1C3_6.png)
+![](Images/P1/P1C3_6.png)
 
 Xcode sait maintenant qu'il doit prendre en compte ce fichier comme un fichier de police. Nous avons une police toute belle et prête à l'emploi dans notre application ! Nous allons pouvoir l'utiliser dans les prochains chapitres de ce cours.
 
@@ -215,7 +215,7 @@ La page de lancement, c'est une **image fixe** que vous voyez **lorsque vous ouv
 
 Voici les pages de lancement de quelques applications célèbres :
 
-![](Images/P1C4_1.png)
+![](Images/P1/P1C4_1.png)
 
 > **:warning:** Amusez-vous à regarder les pages de lancement de vos applications préférées. Mais soyons clair dès qu'il y a la moindre animation ou le moindre mouvement sur la page de lancement, ce n'est plus la page de lancement. Car la page de lancement, ça ne bouge pas !
 
@@ -226,7 +226,7 @@ Le premier s'appelle `Main.storyboard`, c'est dans ce fichier que nous allons de
 
 Ouvrez le fichier, vous arrivez sur ceci :
 
-![](Images/P1C4_2.png)
+![](Images/P1/P1C4_2.png)
 
 Dans cette image, je vous ai rappelé les principales sections de l'interface builder.
 
@@ -237,48 +237,48 @@ Nous allons maintenant modifier la couleur de fond de notre interface.
 
 Pour cela, nous allons d'abord cliquer sur la vue principale puis cliquer dans l'inspecteur d'attribut à droite sur le carré blanc. On voit apparaitre alors le sélecteur de couleur :
 
-![](Images/P1C4_3.png)
+![](Images/P1/P1C4_3.png)
 
 Nous devons respecter pour cette application la charte graphique qui nous a été fournie ce qui inclut les images (OK), la police (OK) et les couleurs (pas encore OK...). Donc je vous propose de voir comment **créer une palette de couleur que nous allons pouvoir facilement réutiliser**.
 
 Voici la palette de l'application OpenQuizz :
 
-![](Images/P1C4_4.png)
+![](Images/P1/P1C4_4.png)
 
 Pour recréer cette palette dans Xcode, il faut commencer par cliquer sur l'onglet palette (le 3e onglet) dans le sélecteur de couleur :
 
-![](images/P1C4_5.png)
+![](Images/P1/P1C4_5.png)
 
 Ensuite, cliquez sur la roue dentée et choisissez *new* :
 
-![](Images/P1C4_6.png)
+![](Images/P1/P1C4_6.png)
 
 Vous pouvez à nouveau cliquer sur la roue dentée puis choisir *Rename...* pour renommer votre nouvelle palette et l'appeler OpenQuizz.
 
 Ensuite, pour ajouter des couleurs dans votre palette, il suffit de sélectionner la couleur souhaitée avec la pipette et de cliquer sur le bouton `+` comme ceci :
 
-![](Images/P1C4_7.gif)
+![](Images/P1/P1C4_7.gif)
 
 Ensuite il vous suffit de double cliquer sur le nom de votre couleur pour le changer. Vous pouvez répéter l'opération pour toutes les couleurs de la palette ci-dessus. À la fin votre palette doit ressembler à ceci :
 
-![](Images/P1C4_8.png)
+![](Images/P1/P1C4_8.png)
 
 #### Construction de l'interface
 On va tout de suite utiliser notre nouvelle palette pour changer la couleur de fond. Je vous laisse le faire. Choisissez la couleur *Dark Blue*.
 
 Et maintenant, nous allons rajouter une image (le gros point d'interrogation) au milieu de notre interface. Pour cela, je vous invite à aller en bas à droite de l'écran, dans la bibliothèque des objets. Et vous allez choisir le dernier onglet : la bibliothèque des médias.
 
-![](Images/P1C4_9.png)
+![](Images/P1/P1C4_9.png)
 
 Ici vous retrouvez les images que nous avons ajoutées dans les *assets* précédemment. Vous n'avez plus qu'à glisser le point d'interrogation vers le centre de l'interface :
 
-![](Images/P1C4_10.gif)
+![](Images/P1/P1C4_10.gif)
 
 > **:information_source:** Vous pouvez utiliser les guides bleues pour placer correctement l'image.
 
 Nous n'avons plus qu'à lancer l'application et admirer le résultat !
 
-![](Images/P1C4_11.gif)
+![](Images/P1/P1C4_11.gif)
 
 À l'ouverture de l'application, on peut voir notre page de lancement. Et ensuite apparaît notre application (une page blanche pour le moment).
 
@@ -290,11 +290,11 @@ Nous n'avons plus qu'à lancer l'application et admirer le résultat !
 ### Découvrez le modèle MVC
 Nous avons fait tous les préparatifs de notre application. Et maintenant que vous vous êtes un peu échauffés, nous allons pouvoir attaquer le chapitre **le plus important** de ce cours : la découverte du MVC ! Est-ce que vous êtes prêts ?
 
-![](Images/P1C5_1.jpg)
+![](Images/P1/P1C5_1.jpg)
 
 Vous n’avez pas l'air tout à fait prêt... Est-ce que vous êtes *vraiment* prêts ?
 
-![](Images/P1C5_2.jpg)
+![](Images/P1/P1C5_2.jpg)
 
 Je préfère ! Alors, allons-y !
 
@@ -327,7 +327,7 @@ La bonne nouvelle, c'est que parmi les dizaines de *design pattern* existant, le
 #### MVC, pour Modèle Vue Contrôleur
 Bon alors qu'est-ce que le MVC ? Le MVC est d'abord un sigle qui signifie **Modèle Vue Contrôleur**. Avec le MVC, nous allons donc séparer notre programme en trois parties comme ceci :
 
-![](Images/P1C5_3.png)
+![](Images/P1/P1C5_3.png)
 
 Alors qui fait quoi ?
 - Le **modèle** : c'est ce que fait l'application. C'est la logique, le cerveau de l'application.
@@ -358,13 +358,13 @@ Cela veut dire que d'une part le modèle n'a aucune idée de ce à quoi ressembl
 
 Donc tous les échanges se font via le contrôleur. Lui seul est autorisé à parler avec la vue et avec le modèle.
 
-![](Images/P1C5_4.png)
+![](Images/P1/P1C5_4.png)
 
 Comme le suggère le schéma ci-dessus, le contrôleur s'adresse directement au modèle et à la vue. Il peut leur demander ce qu'il veut. Comme sur la route, on peut aller des pointillés vers la ligne pleine mais pas dans l'autre sens.
 
 Mais alors que fait-on si le modèle a de nouvelles données à faire afficher sur l'interface ? Et comment fait-on si la vue a besoin d'informer le contrôleur que l'utilisateur a touché l'écran ? Le modèle et la vue ont-ils le droit de s'addresser au contrôleur ?
 
-![](Images/P1C5_5.png)
+![](Images/P1/P1C5_5.png)
 
 La réponse est oui... mais pas n'importe comment ! Et nous allons voir tout au long de ce cours et des suivants quels sont les moyens qu'ont le modèle et la vue de s'addresser au contrôleur.
 
@@ -375,7 +375,7 @@ C'était pas mal de théorie mais cela était nécessaire parce que le MVC est v
 Nous allons créer trois groupes : `Model`, `View` et `Controller`.
 
 > **:information_source:** Rappel : pour créer un groupe, il vous de faire un clic droit dans le navigateur de fichiers et de choisir l'option *New Group* :  
-![](Images/P1C5_6.png)
+![](Images/P1/P1C5_6.png)
 
 Remplissons maintenant nos groupes :
 - Le *Model* ne contient rien pour le moment. Nous le remplirons dès le prochain chapitre.
@@ -386,7 +386,7 @@ Remplissons maintenant nos groupes :
 
 Une fois tout cela effectué, votre architecture de dossier doit ressembler à ceci :
 
-![](Images/P1C5_7.png)
+![](Images/P1/P1C5_7.png)
 
 #### Le plan de ce cours
 Notre application est fin prête et nous allons pouvoir nous attaquer au coeur de celle-ci dans de bonnes conditions.

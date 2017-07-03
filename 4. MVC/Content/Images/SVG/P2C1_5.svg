@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="352px" viewBox="0 0 700 352" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #EDEFF2;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P2C1_5</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P2C1_5">
+            <text id="let-s-=-RectangleStr" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" fill="#F6A623">
+                <tspan x="62.0556641" y="46">let s = RectangleStruct(largeur: 10, hauteur: 5)</tspan>
+            </text>
+            <text id="let-c-=-RectangleCla" font-family="SFUIDisplay-Light, SF UI Display" font-size="30" font-weight="300" fill="#F6A623">
+                <tspan x="59.1044922" y="214">let c = RectangleClass(largeur: 10, hauteur: 5)</tspan>
+            </text>
+            <g id="Group-5" transform="translate(28.000000, 236.000000)">
+                <g id="Group">
+                    <ellipse id="Oval-3" fill="#C0C4C9" cx="78" cy="44" rx="78" ry="44"></ellipse>
+                    <text id="c" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                        <tspan x="69.5620117" y="53">c</tspan>
+                    </text>
+                </g>
+                <g id="Group-2" transform="translate(476.000000, 0.000000)">
+                    <rect id="Rectangle-6" fill="#5B8EC9" x="0" y="0" width="156" height="88"></rect>
+                    <text id="largeur-=-10-hauteur" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                        <tspan x="16.4333496" y="38">largeur = 10</tspan>
+                        <tspan x="17.8066406" y="68">hauteur = 5</tspan>
+                    </text>
+                </g>
+                <text id="Cette-adresse-est-co" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                    <tspan x="169.420898" y="36">Cette adresse</tspan>
+                    <tspan x="171.071289" y="60">est constante</tspan>
+                </text>
+                <g id="Group-3" transform="translate(306.000000, 0.000000)">
+                    <rect id="Rectangle-7" fill="#C8EDA0" x="0" y="0" width="156" height="88" rx="39"></rect>
+                    <text id="Adresse-x0937861298" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                        <tspan x="18.4206543" y="45">Adresse</tspan>
+                        <tspan x="32.7712402" y="86" font-size="15">x0937861298</tspan>
+                    </text>
+                </g>
+                <path d="M462.5,45.5 L481.5,45.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+                <path id="Line-decoration-1" d="M481.5,45.5 L470.7,42.5 L470.7,48.5 L481.5,45.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+                <path d="M156.5,42.5 L312.5,42.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+                <path id="Line-decoration-1" d="M312.5,42.5 L301.7,39.5 L301.7,45.5 L312.5,42.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            </g>
+            <g id="Group-4" transform="translate(28.000000, 68.000000)">
+                <g id="Group" transform="translate(0.000000, 3.000000)">
+                    <ellipse id="Oval-3" fill="#C0C4C9" cx="78" cy="44" rx="78" ry="44"></ellipse>
+                    <text id="s1" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                        <tspan x="63.2302246" y="53">s1</tspan>
+                    </text>
+                </g>
+                <g id="Group-2" transform="translate(476.000000, 0.000000)">
+                    <rect id="Rectangle-6" fill="#5B8EC9" x="0" y="0" width="156" height="88"></rect>
+                    <text id="largeur-=-10-hauteur" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                        <tspan x="16.4333496" y="38">largeur = 10</tspan>
+                        <tspan x="17.8066406" y="68">hauteur = 5</tspan>
+                    </text>
+                </g>
+                <path d="M156.5,45.5 L487.5,45.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+                <path id="Line-decoration-1" d="M487.5,45.5 L476.7,42.5 L476.7,48.5 L487.5,45.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+                <text id="Ces-données-sont-con" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                    <tspan x="178.270508" y="40">Ces données sont constantes</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
