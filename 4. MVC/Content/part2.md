@@ -1,7 +1,7 @@
 ## Développez  le modèle de l’application
 
 ### Structurez les questions
-Dans cette partie, nous allons développer le modèle de notre application. Le modèle c'est la logique de l'application, son cerveau. C'est aussi ici que nous allons faire appel à des ressources en base de donnée ou sur internet.
+Dans cette partie, nous allons développer le modèle de notre application. Le modèle c'est la logique de l'application, son cerveau. C'est aussi ici que nous allons faire appel à des ressources en base de données ou sur internet.
 
 Allons-y !
 
@@ -148,7 +148,7 @@ c2.hauteur // 8
 
 Les deux hauteurs ont la même valeur ! Donc quand j'ai modifié ma deuxième instance, la première a été modifiée également. C'est toute la différence entre le type par référence et le type par valeur.
 
-Avec la structure, quand j'écris `var s2 = s1`, le programme **copie toutes les valeurs** de `s1` et les mets dans un nouvel objet qui est affecté à `s2`. Donc `s1` et `s2` représentent des objets différents. Donc quand `s2` modifie ses propriétés, `s1` n’est pas affecté.  
+Avec la structure, quand j'écris `var s2 = s1`, le programme **copie toutes les valeurs** de `s1` et les met dans un nouvel objet qui est affecté à `s2`. Donc `s1` et `s2` représentent des objets différents. Donc quand `s2` modifie ses propriétés, `s1` n’est pas affecté.  
 
 ![](Images/P2/P2C1_3.png)
 
@@ -213,7 +213,7 @@ mutating func doublerLaTaille() {
 #### Utilisation
 C'est le moment de la grande question : quand dois-je utiliser une structure plutôt qu'une classe ? Je vous propose une réponse simple :
 
-> Si votre modèle de donnée sert principalement à **stocker des données** et qu'il effectue **peu de logique**, choisissez une structure.
+> Si votre modèle de données sert principalement à **stocker des données** et qu'il effectue **peu de logique**, choisissez une structure.
 
 Donc si vous n'avez pas ou très peu de méthodes, une structure fera sans doute mieux l'affaire. C'est la raisons pour laquelle j'ai choisi une structure pour notre type `Question`.
 
@@ -272,7 +272,7 @@ Ce n'est donc pas plus compliqué que ça ! Donc si on fait le travail inverse :
 
 > **:warning:** Vous noterez que les paramètres sont toujours entre parenthèses tandis que la valeur de retour n'en a pas. Si la fonction n'a pas de valeur de retour ou pas de paramètre, on laisse des parenthèses vides.
 
-Le type question est donc un type et par conséquent il peut être utiliser n'importe où : comme type d'une variable, comme paramètre ou valeur de retour d'une fonction, comme type d'un tableau etc. Je vous propose de jouer un peu avec dans le Playground. Copiez les 4 fonctions suivantes :
+Le type question est donc un type et par conséquent il peut être utilisé n'importe où : comme type d'une variable, comme paramètre ou valeur de retour d'une fonction, comme type d'un tableau etc. Je vous propose de jouer un peu avec dans le Playground. Copiez les 4 fonctions suivantes :
 ```swift
 func ajouteDeux(x: Int) -> Int {
     return x + 2
@@ -306,7 +306,7 @@ for maFonction in mesFonctions {
 A chaque tour du tableau, c'est une fonction différente qui est utilisée et `a` vaut 16 à la fin.
 
 #### Une autre façon de renvoyer une valeur de retour
-Il y a une question que vous ne m'avez pas encore posé !
+Il y a une question que vous ne m'avez pas encore posée !
 
 > **:question:** Pourquoi la fonction `get` de `QuestionManager` a une fonction en paramètre ?
 
@@ -371,7 +371,7 @@ Vous voyez ? Nous avons réussi à utiliser cette méthode `get`. Ce n'était pa
 ### Améliorez le chargement avec les fermetures
 Dans ce chapitre, nous allons améliorer notre méthode `refresh` du chapitre précédent. Et nous allons faire cela avec les fermetures !
 
-**Une fermeture** (en anglais *closures*) en Swift **permet d'utiliser une fonction sans l'avoir déclaré avant**. Une fermeture, c'est du coup une fonction qui n'a pas de nom. Nous allons essayer de remplacer notre fonction `receiveQuestions` par une fermeture.
+**Une fermeture** (en anglais *closure*) en Swift **permet d'utiliser une fonction sans l'avoir déclaré avant**. Une fermeture, c'est du coup une fonction qui n'a pas de nom. Nous allons essayer de remplacer notre fonction `receiveQuestions` par une fermeture.
 
 #### Syntaxe
 Les fermetures ont une syntaxe un peu particulière. L'animation suivante vous montre la différence de syntaxe entre une fermeture et une fonction.
@@ -412,7 +412,7 @@ QuestionManager.shared.get() { (questions) in
 }
 ```
 
-Enfin, comme cette fonction n'admet pas d'autres paramètre que la fermeture, on peut même supprimer les parenthèses.
+Enfin, comme cette fonction n'admet pas d'autres paramètres que la fermeture, on peut même supprimer les parenthèses.
 
 ```swift
 QuestionManager.shared.get { (questions) in
@@ -469,9 +469,9 @@ Seulement, nous avons besoin ici de lui dire que les questions ont été chargé
 - Il y a les notifications utilisateurs qui s'affiche sous la forme d'un message sur l'écran verrouillé de l'iPhone. Elles peuvent être accompagnées d'un son et d'une pastille rouge sur l'icône de l'application. Vous les voyez quand vous recevez un texto par exemple.
 - Les notifications dans le modèle MVC et c'est cela dont nous allons parler ici.
 
-Les notifications fonctionnent **comme une radio**. N'importe quel objet peut décider de devenir émetteur et n'importe qui peut décider de devenir récepteur. Comme à la radio, un animateur ne peux pas savoir qui sont les personnes qui suivent son émission. Et de la même façon, les recepteurs ne savent pas où se trouve l'émetteur et qui il est. C'est la raison pour laquelle on appelle cela une technique de **communication aveugle**. On ne sait pas qui parle et qui écoute.
+Les notifications fonctionnent **comme une radio**. N'importe quel objet peut décider de devenir émetteur et n'importe qui peut décider de devenir récepteur. Comme à la radio, un animateur ne peut pas savoir qui sont les personnes qui suivent son émission. Et de la même façon, les recepteurs ne savent pas où se trouve l'émetteur et qui il est. C'est la raison pour laquelle on appelle cela une technique de **communication aveugle**. On ne sait pas qui parle et qui écoute.
 
-Dans notre cas, c'est donc le modèle qui va émettre pour déclarer : "Les questions sont chargées" et le contrôleur qui va écouter. Comme la communication est aveugle, le modèle peut s'adresser au contrôleur sans même savoir que le contrôleur existe.
+Dans notre cas, c'est donc le modèle qui va émettre pour déclarer : "Les questions sont chargées" et c'est le contrôleur qui va écouter. Comme la communication est aveugle, le modèle peut s'adresser au contrôleur sans même savoir que le contrôleur existe.
 
 ![](Images/P2/P2C4_2.png)
 
