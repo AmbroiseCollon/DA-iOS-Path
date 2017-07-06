@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="375px" viewBox="0 0 700 375" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #EDEFF2;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P3C1_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P3C1_2">
+            <path d="M24.5,19.5 L666.5,19.5" id="Line" stroke="#576B82" fill="#576B82" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M666.5,19.5 L655.7,16.5 L655.7,22.5 L666.5,19.5 Z" stroke="#576B82" fill="#576B82" stroke-linecap="square"></path>
+            <path d="M24.5,19.5 L24.5,334.5" id="Line" stroke="#576B82" fill="#576B82" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M24.5,334.5 L27.5,323.7 L21.5,323.7 L24.5,334.5 Z" stroke="#576B82" fill="#576B82" stroke-linecap="square"></path>
+            <text id="(0,-0)" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#5B8EC9">
+                <tspan x="28.4467773" y="45">(0, 0)</tspan>
+            </text>
+            <text id="y" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#5B8EC9">
+                <tspan x="17.4936523" y="355">y</tspan>
+            </text>
+            <text id="x" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#5B8EC9">
+                <tspan x="676.201172" y="25">x</tspan>
+            </text>
+            <circle id="Oval-5" stroke="#576B82" fill="#C0C4C9" cx="24.5" cy="19.5" r="3.5"></circle>
+            <circle id="Oval-5" stroke="#576B82" fill="#C0C4C9" cx="222.5" cy="110.5" r="3.5"></circle>
+            <circle id="Oval-5" stroke="#576B82" fill="#C0C4C9" cx="474.5" cy="110.5" r="3.5"></circle>
+            <circle id="Oval-5" stroke="#576B82" fill="#C0C4C9" cx="222.5" cy="242.5" r="3.5"></circle>
+            <text id="(193,-86)" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#F48794">
+                <tspan x="233.017822" y="98">(193, 86)</tspan>
+            </text>
+            <text id="(445,-86)" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#F48794">
+                <tspan x="485.344971" y="98">(445, 86)</tspan>
+            </text>
+            <text id="(193,-218)" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#F48794">
+                <tspan x="233.256592" y="230">(193, 218)</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
