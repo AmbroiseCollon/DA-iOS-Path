@@ -14,6 +14,8 @@ Commençons avec la classe la plus simple : `Question`. Vous allez créer un nou
 
 > **:information_source:** Vous pouvez aussi utiliser le raccourci clavier <kbd>cmd + N</kbd>.
 
+> it also helps keep the same folder structure as the groups created in the previous lesson. the current beta version of xcode 9 appears to do this for you! other versions do not.
+
 Choisissez ensuite l'option *Swift File* et cliquez sur *Next* :
 
 ![](Images/P2/P2C1_1.png)
@@ -148,6 +150,8 @@ c2.hauteur // 8
 
 Les deux hauteurs ont la même valeur ! Donc quand j'ai modifié ma deuxième instance, la première a été modifiée également. C'est toute la différence entre le type par référence et le type par valeur.
 
+> Perhaps it would be better to say "So when I modified my second reference to the instance", this reinforces the idea that a class variable is not actually an instance of the object , But the address of it.
+
 Avec la structure, quand j'écris `var s2 = s1`, le programme **copie toutes les valeurs** de `s1` et les mets dans un nouvel objet qui est affecté à `s2`. Donc `s1` et `s2` représentent des objets différents. Donc quand `s2` modifie ses propriétés, `s1` n’est pas affecté.  
 
 ![](Images/P2/P2C1_3.png)
@@ -268,11 +272,17 @@ func envoyer(message: String) -> Bool { (...) } // (String) -> Bool
 func annuler() { (...) } // () -> ()
 func saluer(personne: String) // (String) -> ()
 ```
+
+> maybe add the return type Void in one of your example: func annuler() -> Void { (...) } () -> Void
+
+> just so learners don't panic when they see it!
+
 Ce n'est donc pas plus compliqué que ça ! Donc si on fait le travail inverse : le type `([Question]) -> ()` décrit une fonction qui prend en paramètre un tableau de questions et qui ne renvoie pas de valeur.
 
-> **:warning:** Vous noterez que les paramètres sont toujours entre parenthèses tandis que la valeur de retour n'en a pas. Si la fonction n'a pas de valeur de retour ou pas de paramètre, on laisse des parenthèses vides.
+> **:warning:** Vous noterez que les paramètres sont toujours entre parenthèses tandis que la valeur de retour n'en a pas. Si la fonction n'a pas de valeur de retour ou pas de paramètre, on laisse des parenthèses vides. maybe mention Void here also
 
 Le type question est donc un type et par conséquent il peut être utilisé n'importe où : comme type d'une variable, comme paramètre ou valeur de retour d'une fonction, comme type d'un tableau etc. Je vous propose de jouer un peu avec dans le Playground. Copiez les 4 fonctions suivantes :
+
 ```swift
 func ajouteDeux(x: Int) -> Int {
     return x + 2
@@ -360,13 +370,18 @@ Vous voyez ? Nous avons réussi à utiliser cette méthode `get`. Ce n'était pa
 
 #### Exercice
 [Codevolve]  
-1/ Trouvez les types des fonctions suivantes  
+1/ Trouvez les types des fonctions suivantes
+
+> functions to find missing?
+
 2/ Utiliser les types fonctions (à trouver)
 
 #### En résumé
-- Les fonctions ont des types, on appelle cela le **type fonction**.
+- Les fonctions ont (are not have, well can have!) des types, on appelle cela le **type fonction**.
 - Le type fonction a pour syntaxe : `(TypeParam1, TypeParam1, TypeParam1) -> TypeRetour`.
 - On peut utiliser les types fonction pour passer des fonctions en paramètre d'autres fonctions notamment.
+
+> might be an advanced topic for this level but could be worth metioning Retain Cycles, Leaks and Zombies when passing methods form one class to another. Things like weakfy/strongify even if it doesn't apply here could be an extra reading/point of intrest kind of thing.
 
 ### Améliorez le chargement avec les fermetures
 Dans ce chapitre, nous allons améliorer notre méthode `refresh` du chapitre précédent. Et nous allons faire cela avec les fermetures !
@@ -458,6 +473,8 @@ Nous avons maintenant une belle classe `Game` qui va gérer toute la logique de 
 
 Dans le premier cas, notre modèle renvoie le score mis à jour à partir de la réponse à la question. Mais dans le deuxième cas, on doit attendre le chargement des questions. Alors comment le modèle va-t-il pouvoir prévenir le contrôleur que les questions sont chargées et que la partie peut débuter ? C'est ce que nous allons voir dans ce chapitre !
 
+> maybe explain here that a closure could do this, but is only one way of doing it i.e. refresh method could have a closure block! but there are other ways such as notifications.
+
 #### Les notifications dans le MVC
 Nous avons vu dans le chapitre sur le MVC que le **modèle ne pouvait pas s'adresser directement au contrôleur**. Il ne doit même pas savoir que le contrôleur existe.
 
@@ -478,6 +495,8 @@ Dans notre cas, c'est donc le modèle qui va émettre pour déclarer : "Les ques
 #### Implémenter les notifications
 
 Nous allons donc envoyer notre notification dans la méthode `refresh` une fois que les questions sont chargées. Pour envoyer une notification en iOS, il faut utiliser trois types du framework *Foundation* : `Notification.Name`, `Notification` et `NotificationCenter`. Si `Notification` est un train, `Notification.Name` c'est son nom et `NotificationCenter` c'est la gare. C'est le `NotificationCenter` qui a le rôle d'envoyer et de recevoir des notifications.
+
+> it might be because I'm english but I found the train analogies a bit confusing here, even though you then go back to the better radio analogy after, that makes more sense to me!
 
 Commençons par créer le nom de notre notification. Ce nom c'est un peu comme la fréquence de ma radio. **Tous ceux qui veulent écouter ma radio devront utiliser le même nom** :
 ```swift
