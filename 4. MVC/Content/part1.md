@@ -110,6 +110,8 @@ Pour répondre à cette question, il faut comprendre rapidement comment fonction
 
 Avec l'arrivée de l'iPhone 4, Apple a créé l'écran Retina. Cet écran a une résolution deux fois meilleure que l'écran des iPhones précédents. Cela veut dire que **sur un même espace, mettons 1 cm2, l'écran affiche 2 fois plus de pixels**. Depuis, ils ont encore amélioré l'écran et les écrans des iPhone 6s Plus et 7 Plus (les plus grands iPhone) ont une résolution 3 fois meilleure.
 
+> maybe indicate here that, for iPhone 1x is largely redundant seeing as  only support 4S which only need 2x/3x it is only some ipads that need 1x. 
+
 Ce changement a posé un problème. On ne peut plus parler de la taille d'une image en nombre de pixels, car cela dépend de l'écran. Du coup, Apple a créé une autre unité : le point *(pt)*. Et selon l'écran, un point est automatiquement transformé avec le bon nombre de pixels.
 
 ![Une image de 10 x 10 points selon les trois résolutions d'écrans](Images/P1/P1C2_6.png)
@@ -154,11 +156,15 @@ Vous pouvez répéter l'opération pour les deux autres images. Et voilà notre 
 - Les iPhone et iPad ont des **écrans de trois résolutions différentes** : 1x, 2x et 3x. Pour cette raison, il faut fournir toutes les images, en 3 résolutions pour qu'elles s'affichent correctement sur tous les écrans.
 - Il faut **respecter la convention de nommage** pour qu'Xcode puisse comprendre de quelle résolution il s'agit.
 
+> respecting the Image Naming Convention is no longer a necessity since the introduction of asset catalogs, It does however speedup the import process. you can just drag in your images then set them up to be the 2x / 3x of another asset. 
+
 ### Gérez les polices
 Parmi ce qui fait le bon design d'une application, il y a :
 - les images : on l'a vu dans le chapitre précédent.
 - les couleurs : on va voir ça dans le prochain chapitre.
 - les polices : c'est ce que l'on va voir maintenant !
+
+> Note here that System fonts automatically react to accessibility features like bold text and larger type. Apps using custom fonts should implement the same behavior by checking whether accessibility features are enabled and registering for notifications when they change.  
 
 #### Télécharger la police
 Dans Xcode, il y a déjà un certain nombre de polices que vous pouvez utiliser sans avoir besoin de les installer. Mais la plupart des applications créent leur propre police ou utilisent des polices trouvées sur le web. Donc il va falloir que vous sachiez installer ces polices spéciales.
@@ -201,6 +207,9 @@ Xcode sait maintenant qu'il doit prendre en compte ce fichier comme un fichier d
 
 #### En résumé
 - Pour installer une police dans un projet, il vous suffit de la glisser avec les autres fichiers dans le navigateur d'Xcode. N'oubliez pas de cocher la case *Add to targets* pour qu'Xcode la prenne en compte.
+
+> maybe note here that if you forget you can always add it to the target in the Utilities Panel. 
+
 - Ensuite, dans le fichier `Info.plist`, vous devez ajouter la ligne : *Fonts provided by application*. Et inscrire dessous le nom exact de votre fichier de police.
 - Le fichier `Info.plist` contient les paramètres de votre projet.
 
@@ -240,6 +249,34 @@ Pour cela, nous allons d'abord cliquer sur la vue principale puis cliquer dans l
 ![](Images/P1/P1C4_3.png)
 
 Nous devons respecter pour cette application la charte graphique qui nous a été fournie ce qui inclut les images (OK), la police (OK) et les couleurs (pas encore OK...). Donc je vous propose de voir comment **créer une palette de couleur que nous allons pouvoir facilement réutiliser**.
+
+> note: I often find it useful to have an extension on UIColor with my app's current palette something like the following:
+
+```swift
+extension UIColor {
+    
+    class var darkBlue: UIColor {
+        return #colorLiteral(red: 0.3387611508, green: 0.4062900543, blue: 0.4977657199, alpha: 1)
+    }
+    
+    class var lightBlue: UIColor {
+        return #colorLiteral(red: 0.3484743834, green: 0.5449183583, blue: 0.7609451413, alpha: 1)
+    }
+    
+    class var red: UIColor {
+        return #colorLiteral(red: 0.9370372891, green: 0.5220213532, blue: 0.5718917251, alpha: 1)
+    }
+    
+    class var green: UIColor {
+        return #colorLiteral(red: 0.7733676434, green: 0.9104281068, blue: 0.6270965338, alpha: 1)
+    }
+    
+    class var gray: UIColor {
+        return #colorLiteral(red: 0.7484757304, green: 0.7645956278, blue: 0.7770348787, alpha: 1)
+    }
+}
+```
+
 
 Voici la palette de l'application OpenQuizz :
 
@@ -402,3 +439,7 @@ Un des avantages du modèle MVC, c'est que l'on peut travailler sur chaque parti
 	- Le **contrôleur** : interprète et formate les informations du modèle pour les passer à vue.
 	- La **vue** : l'interface de l'application.
 - **Le modèle et la vue ne peuvent JAMAIS communiquer.**
+
+> Perhaps consider introducing here the MVVC model that helps View Controllers not have too much code and is mostly prefered by most dev teams. Even if not in details so the student can research himself.
+
+> also the folder structure demonstrated here becomes hard to navigate even in medium sized projects. maybe worth noting that this structure works well but better within a 'feature' folder super-structure.
