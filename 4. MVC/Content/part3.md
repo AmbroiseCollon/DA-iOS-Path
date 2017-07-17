@@ -80,6 +80,14 @@ myButton.removeFromSuperview()
 
 Et le bouton ne sera plus visible à l'écran.
 
+Pour votre information, je vous mentionne ici quelques autres méthodes qui pourront vous être utiles pour gérer la hiérarchie de vos vues :
+
+```swift
+func insertSubview(_ view: UIView, belowSubview siblingSubview: UIView)
+func insertSubview(_ view: UIView, aboveSubview siblingSubview: UIView)
+func bringSubview(toFront view: UIView)
+func sendSubview(toBack view: UIView)
+```
 > **:warning:** Dans toute cette section sur la hiérarchie, ne faîtes pas la confusion avec l'héritage ! Ici, il s'agit juste de savoir **quelle vue est inclus dans quelle vue** et non qui hérite de qui.
 
 #### En résumé
@@ -89,7 +97,7 @@ Et le bouton ne sera plus visible à l'écran.
 ```swift
 var superview: UIView
 var subviews: [UIView]
-func addSubvie(_ view: UIView)
+func addSubview(_ view: UIView)
 func removeFromSuperview()
 ```
 
@@ -219,7 +227,7 @@ En double-cliquant dessus vous pouvez changer le titre de ce bouton. Et vous all
 
 Je vous l'invite à redimensionner le bouton pour qu'il ait une taille confortable.
 
-> **:information_source:** Apple suggère une taille minum de 40 * 40 points pour un bouton. Afin que l'on puisse le taper facilement.
+> **:information_source:** Apple suggère une taille minum de 44 * 44 points pour un bouton. Afin que l'on puisse le taper facilement.
 
 Ensuite dans l'**inspecteur d'attribut** sur la droite, vous avez **toutes les propriétés de `UIButton`** que vous pouvez modifier avec *Interface Builder*. Si vous défilez vers le bas, vous avez également toutes les propriétés de `UIView` car `UIButton` hérite, comme on l'a vu, de `UIView`. Dans ces propriétés, je vous propose de passer `Text Color` en blanc. Nous allons également modifier la police avec la propriété `font`. Pour cela suivez les étapes effectuées dans l'image ci-dessous :
 

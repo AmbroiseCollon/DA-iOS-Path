@@ -108,7 +108,9 @@ Dans le schéma ci-dessus, j'ai pris l'exemple de l'icône de l'application *Mes
 
 Pour répondre à cette question, il faut comprendre rapidement comment fonctionne un écran. Un écran, c'est une grille de pixels, chaque pixel étant un petit carré de couleur uniforme.
 
-Avec l'arrivée de l'iPhone 4, Apple a créé l'écran Retina. Cet écran a une résolution deux fois meilleure que l'écran des iPhones précédents. Cela veut dire que **sur un même espace, mettons 1 cm2, l'écran affiche 2 fois plus de pixels**. Depuis, ils ont encore amélioré l'écran et les écrans des iPhone 6s Plus et 7 Plus (les plus grands iPhone) ont une résolution 3 fois meilleure.
+Avec l'arrivée de l'iPhone 4, Apple a créé l'écran Retina. Cet écran a une résolution deux fois meilleure que l'écran des iPhones précédents. Cela veut dire que **sur un même espace, mettons 1 cm2, l'écran affiche 2 fois plus de pixels**. Depuis, ils ont encore amélioré l'écran et les écrans des iPhone 6s Plus et 7 Plus (les plus grands iPhone) ont une résolution 3 fois meilleure (on les appelle *Retina HD*).
+
+> **:information_source:** Apple ne supporte plus les anciens modèles d'iPhone, iPod Touch et iPad avec iOS 11. Les modèles supportés ont désormais tous au moins l'écran Retina. Cela veut dire que si vous faîtes des applications pour iOS 11, seulement les tailles 2x et 3x seront nécessaires.
 
 Ce changement a posé un problème. On ne peut plus parler de la taille d'une image en nombre de pixels, car cela dépend de l'écran. Du coup, Apple a créé une autre unité : le point *(pt)*. Et selon l'écran, un point est automatiquement transformé avec le bon nombre de pixels.
 
@@ -152,7 +154,7 @@ Vous pouvez répéter l'opération pour les deux autres images. Et voilà notre 
 	- De l'appareil : iPhone ou iPad
 	- Du contexte dans lequel l'icône est utilisée dans iOS : notifications, réglages, etc.
 - Les iPhone et iPad ont des **écrans de trois résolutions différentes** : 1x, 2x et 3x. Pour cette raison, il faut fournir toutes les images, en 3 résolutions pour qu'elles s'affichent correctement sur tous les écrans.
-- Il faut **respecter la convention de nommage** pour qu'Xcode puisse comprendre de quelle résolution il s'agit.
+- Je vous invite à **respecter la convention de nommage** pour faciliter l'importation des images.
 
 ### Gérez les polices
 Parmi ce qui fait le bon design d'une application, il y a :
@@ -173,6 +175,8 @@ Une fois la police téléchargée, vous avez un fichier `Balham.otf`. Vous allez
 Ensuite, dans la fenêtre qui s'affiche, **cochez les options comme indiqué ci-dessous sinon votre police ne sera pas prise en compte**. Et cliquez sur *finish*.
 
 ![](Images/P1/P1C3_2.png)
+
+> **:information_source:** Si vous n'avez pas cocher la case *Add to targets*, vous pouvez rattraper votre erreur après coût en cliquant sur le nom du fichier de police dans le navigateur de fichiers. Puis dans les utilitaires à droite, vous pouvez cocher la case OpenQuizz dans la section *Target Membership*.
 
 Et voilà ! Votre police est ajoutée !
 
@@ -322,7 +326,11 @@ Apple a choisi par défaut le très populaire patron de conception MVC pour les 
 
 La bonne nouvelle, c'est que parmi les dizaines de *design pattern* existant, le MVC est assez simple et pour autant assez puissant.
 
-> **:information_source:** Le MVC a ses limites. Si vous sentez que les bugs s'accumulent, c'est soit que vous n'êtes pas rigoureux dans l'application du MVC soit que votre application est devenue trop grosse et que vous avez besoin de passer à une architecture plus solide. Mais dans vos premiers mois voire vos premières années de développement iOS, le MVC devrait suffire. ;)
+> **:information_source:** Le MVC a ses limites. Si vous sentez que les bugs s'accumulent, c'est soit que vous n'êtes pas rigoureux dans l'application du MVC soit que votre application est devenue trop grosse et que vous avez besoin de passer à une architecture plus solide. Dans ce deuxième cas, gardez en tête les architectures suivantes qui sont plus élaborées :
+- MVP
+- MVVM
+- VIPER
+Mais dans vos premiers mois de développement iOS, le MVC devrait largement suffire. ;)
 
 #### MVC, pour Modèle Vue Contrôleur
 Bon alors qu'est-ce que le MVC ? Le MVC est d'abord un sigle qui signifie **Modèle Vue Contrôleur**. Avec le MVC, nous allons donc séparer notre programme en trois parties comme ceci :
