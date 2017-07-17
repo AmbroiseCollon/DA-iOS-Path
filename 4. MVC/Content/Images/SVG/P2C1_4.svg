@@ -4,7 +4,7 @@
     <title>P2C1_4</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="P2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="P2C1_4">
             <text id="var-c2-=-c1" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#F6A623">
                 <tspan x="270.557861" y="53">var c2 = c1</tspan>
@@ -41,7 +41,7 @@
                 <tspan x="208.266602" y="104">à cette adresse</tspan>
             </text>
             <text id="Donne-moi-tes-donnée" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
-                <tspan x="8" y="173">Donne moi </tspan>
+                <tspan x="8" y="173">Donne-moi </tspan>
                 <tspan x="8" y="197">tes données</tspan>
             </text>
             <g id="Group-3" transform="translate(353.000000, 68.000000)">

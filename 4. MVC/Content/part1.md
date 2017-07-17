@@ -64,10 +64,10 @@ Nous allons pouvoir maintenant travailler à partir de ce projet. Et ce, dès le
 
 ### Gérez les images
 
-Dans ce chapitre, nous allons apprendre à gérer les images que l'on souhaite afficher dans une application iPhone.
+Notre dévoué designer nous a préparé un joli petit design pour notre application. Dans les chapitres de cette partie, nous allons préparer notre application pour que nous puissions facilement intégrer le design prévu par la suite. Cette partie permet donc surtout de préparer le terrain en apprenant au passage quelques techniques incontournables d'iOS. Et la première d'entre elles, c'est la gestion des images dans une application. Voyons ça ensemble dans ce chapitre !
 
 #### Le dossier d'images
-Pour cela, je vous invite à télécharger les images à [cette adresse](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/Assets.zip). Ouvrez le dossier et voyons ensemble ce qu'il comporte :
+Notre designer a préparé pour vous les images que l'on va afficher dans notre application. Je vous invite à les télécharger à [cette adresse](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/Assets.zip). Ouvrez le dossier et voyons ensemble ce qu'il comporte :
 
 ![](Images/P1/P1C2_1.png)
 
@@ -157,10 +157,7 @@ Vous pouvez répéter l'opération pour les deux autres images. Et voilà notre 
 - Je vous invite à **respecter la convention de nommage** pour faciliter l'importation des images.
 
 ### Gérez les polices
-Parmi ce qui fait le bon design d'une application, il y a :
-- les images : on l'a vu dans le chapitre précédent.
-- les couleurs : on va voir ça dans le prochain chapitre.
-- les polices : c'est ce que l'on va voir maintenant !
+Maintenant que nous avons de belles images prêtes à l'emploi, nous allons pouvoir passer à la suite. Notre designer a choisi une police précise pour les textes de l'application et nous allons donc devoir l'installer pour pouvoir l'utiliser dans notre application. C'est parti !
 
 #### Télécharger la police
 Dans Xcode, il y a déjà un certain nombre de polices que vous pouvez utiliser sans avoir besoin de les installer. Mais la plupart des applications créent leur propre police ou utilisent des polices trouvées sur le web. Donc il va falloir que vous sachiez installer ces polices spéciales.
@@ -243,7 +240,7 @@ Pour cela, nous allons d'abord cliquer sur la vue principale puis cliquer dans l
 
 ![](Images/P1/P1C4_3.png)
 
-Nous devons respecter pour cette application la charte graphique qui nous a été fournie ce qui inclut les images (OK), la police (OK) et les couleurs (pas encore OK...). Donc je vous propose de voir comment **créer une palette de couleur que nous allons pouvoir facilement réutiliser**.
+Nous devons respecter pour cette application la charte graphique qui nous a été fournie par notre designer ce qui inclut les images (OK), la police (OK) et les couleurs (pas encore OK...). Donc je vous propose de voir comment **créer une palette de couleur que nous allons pouvoir facilement réutiliser**.
 
 Voici la palette de l'application OpenQuizz :
 

@@ -60,7 +60,7 @@ En Swift, il existe des modèles de données nommés. Ces modèles ont en commun
 - les énumérations
 - les structures
 
-Vous connaissez les deux premiers et dans ce chapitre, nous allons étudier le dernier !
+Vous connaissez les deux premiers (enseignés dans [ce cours](https://openclassrooms.com/courses/approfondissez-swift-avec-la-programmation-orientee-objet)) et dans ce chapitre, nous allons étudier le dernier !
 
 Une structure ressemble à 90% à une classe. Les différences sont donc assez subtiles, mais suffisantes pour qu'on s'y intéresse.
 
