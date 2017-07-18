@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="621px" viewBox="0 0 700 621" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #EDEFF2;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P2C1_3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P2C1_3">
+            <text id="var-s2-=-s1" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#F6A623">
+                <tspan x="272.232666" y="53">var s2 = s1</tspan>
+            </text>
+            <g id="Group" transform="translate(67.000000, 72.000000)">
+                <ellipse id="Oval-3" fill="#C0C4C9" cx="78" cy="44" rx="78" ry="44"></ellipse>
+                <text id="s1" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                    <tspan x="63.2302246" y="53">s1</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(67.000000, 211.000000)">
+                <ellipse id="Oval-3" fill="#C0C4C9" cx="78" cy="44" rx="78" ry="44"></ellipse>
+                <text id="s2" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                    <tspan x="60.4702148" y="53">s2</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(477.000000, 72.000000)">
+                <rect id="Rectangle-6" fill="#5B8EC9" x="0" y="0" width="156" height="88"></rect>
+                <text id="largeur-=-10-hauteur" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                    <tspan x="16.4333496" y="38">largeur = 10</tspan>
+                    <tspan x="17.8066406" y="68">hauteur = 5</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(477.000000, 211.000000)">
+                <rect id="Rectangle-6" fill="#5B8EC9" x="0" y="0" width="156" height="88"></rect>
+                <text id="largeur-=-10-hauteur" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                    <tspan x="16.4333496" y="38">largeur = 10</tspan>
+                    <tspan x="17.8066406" y="68">hauteur = 5</tspan>
+                </text>
+            </g>
+            <path d="M223.5,114.5 L478.5,114.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M478.5,114.5 L467.7,111.5 L467.7,117.5 L478.5,114.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M144.5,212.5 L144.5,157.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M144.5,157.5 L141.5,168.3 L147.5,168.3 L144.5,157.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M133.5,212.5 L155.5,212.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <path d="M222.5,256.5 L477.5,256.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square" transform="translate(350.000000, 256.500000) scale(-1, 1) translate(-350.000000, -256.500000) "></path>
+            <path id="Line-decoration-1" d="M477.5,256.5 L466.7,253.5 L466.7,259.5 L477.5,256.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <text id="Voilà-ta-propre-copi" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                <tspan x="264.236328" y="223">Voilà ta propre copie </tspan>
+                <tspan x="279.099609" y="247">de mes données</tspan>
+            </text>
+            <polyline id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square" points="633 160 657.392642 186.5 633 213"></polyline>
+            <path id="Line-decoration-1" d="M633,213 L642.521532,207.085574 L638.106995,203.022094 L633,213 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <text id="Voilà-mes-données" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                <tspan x="258.027344" y="109">Voilà mes données</tspan>
+            </text>
+            <text id="Je-te-fais-une-copie" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                <tspan x="461.624023" y="192">Je te fais une copie</tspan>
+            </text>
+            <g id="Group" transform="translate(62.000000, 372.000000)">
+                <ellipse id="Oval-3" fill="#C0C4C9" cx="78" cy="44" rx="78" ry="44"></ellipse>
+                <text id="s1" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                    <tspan x="63.2302246" y="53">s1</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(62.000000, 511.000000)">
+                <ellipse id="Oval-3" fill="#C0C4C9" cx="78" cy="44" rx="78" ry="44"></ellipse>
+                <text id="s2" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                    <tspan x="60.4702148" y="53">s2</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(472.000000, 372.000000)">
+                <rect id="Rectangle-6" fill="#5B8EC9" x="0" y="0" width="156" height="88"></rect>
+                <text id="largeur-=-10-hauteur" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                    <tspan x="16.4333496" y="38">largeur = 10</tspan>
+                    <tspan x="17.8066406" y="68">hauteur = 5</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(472.000000, 511.000000)">
+                <rect id="Rectangle-6" fill="#5B8EC9" x="0" y="0" width="156" height="88"></rect>
+                <text id="largeur-=-10-hauteur" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                    <tspan x="16.4333496" y="38">largeur = 10</tspan>
+                    <tspan x="17.6540527" y="68">hauteur = 8</tspan>
+                </text>
+            </g>
+            <path d="M218.5,414.5 L473.5,414.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M473.5,414.5 L462.7,411.5 L462.7,417.5 L473.5,414.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <text id="Je-contiens-toujours" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                <tspan x="248.076172" y="408">Je contiens toujours</tspan>
+                <tspan x="275.214844" y="432">mes données</tspan>
+            </text>
+            <text id="s2.hauteur-=-8" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#F6A623">
+                <tspan x="242.436523" y="352">s2.hauteur = 8</tspan>
+            </text>
+            <text id="Je-modifie-uniquemen" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                <tspan x="243.274414" y="549">Je modifie uniquement</tspan>
+                <tspan x="282.214844" y="573">mes données</tspan>
+            </text>
+            <path d="M217.5,556.5 L472.5,556.5" id="Line" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M472.5,556.5 L461.7,553.5 L461.7,559.5 L472.5,556.5 Z" stroke="#576B82" stroke-width="3" stroke-linecap="square"></path>
+            <text id="Donne-moi-tes-donnée" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#576B82">
+                <tspan x="28" y="177">Donne-moi </tspan>
+                <tspan x="28" y="201">tes données</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

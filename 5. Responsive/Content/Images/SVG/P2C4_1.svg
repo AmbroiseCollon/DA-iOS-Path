@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="375px" viewBox="0 0 700 375" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #EDEFF2;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P2C4_1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="205" height="399"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P2C4_1">
+            <g id="Contrôleur" transform="translate(248.000000, -12.000000)">
+                <g id="Rectangle-5">
+                    <use fill="#5B8EC9" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#576B82" stroke-width="4" x="2" y="2" width="201" height="395"></rect>
+                </g>
+                <path d="M12,12.5 L12,407.5" id="Line" stroke="#576B82" stroke-width="4" stroke-linecap="square" stroke-dasharray="10,10,10,10"></path>
+                <path d="M194,12.5 L194,407.5" id="Line" stroke="#576B82" stroke-width="4" stroke-linecap="square" stroke-dasharray="10,10,10,10"></path>
+                <text font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                    <tspan x="25.4890137" y="167">Contrôleur</tspan>
+                </text>
+            </g>
+            <g id="Modèle" transform="translate(30.000000, 76.000000)">
+                <ellipse id="Oval-2" fill="#C0C4C9" cx="93.5" cy="116.5" rx="93.5" ry="116.5"></ellipse>
+                <text font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                    <tspan x="38.2485352" y="129">Modèle</tspan>
+                </text>
+            </g>
+            <g id="Vue" transform="translate(483.000000, 76.000000)">
+                <ellipse id="Oval-2" fill="#C0C4C9" cx="93.5" cy="116.5" rx="93.5" ry="116.5"></ellipse>
+                <text font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#FFFFFF">
+                    <tspan x="64.3361816" y="129">Vue</tspan>
+                </text>
+            </g>
+            <path d="M243,198 L297,198 L297,217 L243,217 L243,222 L205,207 L243,192 L243,198 Z" id="Combined-Shape" fill="#C8EDA0"></path>
+            <path d="M442,198 L496,198 L496,217 L442,217 L442,222 L404,207 L442,192 L442,198 Z" id="Combined-Shape" fill="#C8EDA0" transform="translate(450.000000, 207.000000) scale(-1, 1) translate(-450.000000, -207.000000) "></path>
+            <path d="M148,117.261712 C148,117.261712 164.521391,90.8900955 218.830122,73.7617117 C273.138854,56.6333279 313,63.2617117 313,63.2617117" id="Line" stroke="#E6BD7B" stroke-width="4" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M313,63.2617117 L302.2,60.2617117 L302.2,66.2617117 L313,63.2617117 Z" stroke="#E6BD7B" stroke-width="4" stroke-linecap="square"></path>
+            <text id="?" font-family="SFUIDisplay-Light, SF UI Display" font-size="35" font-weight="300" fill="#F6A623">
+                <tspan x="197.194336" y="68">?</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
