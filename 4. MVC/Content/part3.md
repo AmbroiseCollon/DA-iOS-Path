@@ -308,9 +308,340 @@ Nous avons maintenant tous les éléments nécessaires dans notre interface ! El
 	- Aller dans l'**inspecteur de taille** pour modifier les paramètres `x`, `y`, `width` et `height` directement.
 - Pour ajouter une image, le plus simple est d'aller la chercher directement dans la **bibliothèque des média**.
 
-### Sous-classez UIView  
-Objectif : Ecrire une vue customisée  
-Section 1 : Pourquoi sous-classer ?  
-Section 2 : Créer la sous-classe avec Xcode  
-Section 3 : Ajouter les outlets  
-Section 4 : Ajouter les propriétés et méthodes  
+### Sous-classez UIView
+Nous avons maintenant une belle interface ! Et avant de passer à la suite, nous allons la rendre pratique à utiliser ! Dans ce chapitre, nous allons apprendre à créer notre propre vue customisée.
+
+#### Pourquoi faire une vue customisée ?
+Si on regarde notre vue question, elle est assez compliquée. Non seulement, c'est une vue qui en contient deux autres : le label et l'icône. Mais en plus, si on se fie à l'image ci-dessous, cette vue va s'afficher de trois façons différentes :
+- L'utilisateur réponds **faux** à la question : le fond devient rouge et la croix rouge apparait
+- L'utilisateur réponds **vrai** à la question : le fond devient vert et le symbole validé apparaît
+- L'utilisateur **n'a pas encore répondu** à la question : le fond est gris et le symbole est caché
+
+![](Images/P3/P3C4_1.png)
+
+Donc pour que cette vue soit plus simple à gérer pour notre contrôleur tout à l'heure, nous allons créer une vue customisée. Et pour créer une vue customisée avec iOS, on crée une sous-classe de `UIView`. Vous risquez d'avoir souvent besoin de faire cela donc c'est le bon moment pour le découvrir ! Vous êtes partant ?
+
+![](Images/P3/P3C4_2.jpg)
+
+Parfait ! Bravo pour votre enthousiasme !
+
+#### Créons la sous-classe
+
+Nous allons créer une classe `QuestionView` qui va hériter de `UIView`. Pour cela, il faut créer un nouveau fichier.
+
+> **:information_source:** Vous connaissez maintenant l'opération : allez dans File > New > File... ou utilisez le raccourci <kbd>cmd + n</kbd>.
+
+Mais cette fois-ci, vous allez choisir la première option *Cocoa Touch Class* :
+
+![](Images/P3/P3C4_3.png)
+
+Cliquez sur *Next*. Cette option nous permet de créer un fichier qui est directement une sous-classe de la classe que l'on souhaite. Cela permet de gagner un peu de temps. Dans le champ *Subclass of*, vous allez donc choisir `UIView`. Et au-dessus, vous allez nommer votre classe `QuestionView`.
+
+![](Images/P3/P3C4_4.png)
+
+Cliquez sur *Next* et sauvegardez votre fichier en choisissant le groupe `View` puisque nous travaillons toujours dans la partie vue du MVC. Vous avez maintenant un fichier `QuestionView.swift` qui contient le code suivant :
+
+```swift
+class QuestionView: UIView {
+
+    /*
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
+    */
+
+}
+```
+
+Il s'agit bien de la déclaration d'une classe `QuestionView` qui hérite de `UIView`.
+
+> **:information_source:** Dans la classe, vous avez un commentaire qui vous suggère de faire l'override d'une méthode `draw`. Pour votre information, cette méthode permet de dessiner des vues de toutes formes mais nous n'en avons pas besoin pour le moment. Vous pouvez supprimer tout le contenu de la classe.
+
+#### Connecter la classe
+
+Maintenant que notre classe est créée, nous allons la connecter avec notre vue dans le storyboard. Nous allons faire ça en deux étapes :
+1. Nous allons changer la classe de notre vue dans le storyboard
+2. Nous allons connecter le label et l'icône à notre classe
+
+##### Changer la classe de notre vue
+Retournons dans le storyboard. Notre vue grise qui contient les questions est à l'origine une `UIView` que nous avons glissée depuis la bibliothèque des composants. Il est temps d'en faire une `QuestionView` !
+
+Pour cela, il faut aller dans l'inspecteur d'identité. C'est un des onglets que nous n'avons pas encore vu dans le panneau des utilitaires à droite.
+
+![](Images/P3/P3C4_5.png)
+
+Dans cet onglet, on peut vérifier après avoir sélectionner la vue que la classe actuelle de notre vue est bien `UIView`. Pour modifier cela, il suffit d'écrire notre nouvelle classe dans le premier champ de texte comme ceci :
+
+![](Images/P3/P3C4_6.png)
+
+Et voilà notre vue a maintenant pour classe `QuestionView` ! Cela va nous permettre de connecter le label et l'icône à notre classe.
+
+##### Connecter le label et l'icône
+Notre classe contient deux vues : le label et l'icône. Nous allons en faire des propriétés de notre classe `QuestionView`. Vous savez déjà créer des propriétés :
+
+```swift
+var label: UILabel?
+var icon: UIImageView?
+```
+
+On utilise ici les optionnels car on ne sait pas la valeur de ces deux propriétés.
+
+Notre objectif avec cette classe est de simplifier l'utilisation de la vue. Dans le cadre de cette simplification, les personnes qui utilisent cette classe n'ont pas besoin de savoir son contenu. Donc nous allons marquer ces propriétés privées.
+
+```swift
+private var label: UILabel?
+private var icon: UIImageView?
+```
+
+Maintenant faisons la connection ! **Une connection entre une propriété et une vue avec Xcode s'appelle un Outlet**.
+
+> **:information_source:** Nous allons créer d'autres *outlet* dans la partie suivante et [ce cours](https://openclassrooms.com/courses/introduction-a-ios-plongez-dans-le-developpement-mobile/connectez-le-code-et-le-storyboard) détaille ce qu'est un *outlet* donc je ne vais pas aller plus loin.
+
+Donc pour faire la connection, nous allons rajouter ce qu'on appelle un décorateur :
+
+```swift
+@IBOutlet private var label: UILabel?
+@IBOutlet private var icon: UIImageView?
+```
+
+Le mot-clé `@IBOutlet` notifie Xcode que ces propriétés sont suceptibles d'être connectée à une vue dans Interface Builder. En reconnaissant ce mot-clé, Xcode rajoute un petit rond à côté de nos propriétés :
+
+![](Images/P3/P3C4_7.png)
+
+C'est ce petit rond qui va nous permettre de faire la connection.
+
+Pour cela, nous allons retourner dans le storyboard. Et nous allons nous placer en mode assistant. En mode assistant, pour choisir le fichier à afficher sur la droite, vous pouvez naviguer comme ceci :
+
+![](Images/P3/P3C4_8.gif)
+
+Choisissez le fichier `QuestionView.swift`. Et nous allons maintenant faire la connection entre la propriété et la vue correspondante. Pour cela, nous allons glisser depuis le petit rond vers la vue comme ceci :
+
+![](Images/P3/P3C4_9.gif)
+
+Et voilà ! Notre classe est maintenant complètement connectée au storyboard. Il ne nous reste qu'une toute petite amélioration.
+
+##### Le type optionnel déballé
+
+Comme nos propriétés sont connectées à des vues qui existent dans le storyboard, on est certain que ces propriétés n'auront pas pour valeur `nil`. Donc au lieu de leur donner un type optionnel, on va leur donner un type **optionnel déballé** :
+
+```swift
+@IBOutlet private var label: UILabel!
+@IBOutlet private var icon: UIImageView!
+```
+
+En remplaçant, le point d'interrogation par un point d'exclamation, on indique qu'on ne connait pas la valeur de nos optionnels, mais qu'on est certain qu'elle ne vaut pas `nil`. A chaque fois que la propriété va être utilisée, l'optionnel va être implicitement déballé.
+
+> **:warning:** Lorsque vous utilisez le type optionnel déballé, il faut être sûr que la propriété ait une valeur ! Sinon lorsque vous allez l'utiliser, le programme va planter.
+
+Le type optionnel déballé nous permet donc de ne pas donner de valeur à notre propriété tout en n'ayant pas à la déballer à chaque fois que l'on souhaite l'utiliser.
+
+#### En Résumé
+- Pour faire une vue customisée, on crée une sous-classe de `UIView`.
+- Pour créer une sous-classe de `UIView`, on choisit *Cocoa Touch Class* dans le menu *Nouveau fichier* d'Xcode.
+- Une connection entre une propriété et une vue dans le storyboard s'appelle un `Outlet`. Pour pouvoir créer un `Outlet` dans une vue customisée, il faut :
+	- Avoir connectée la classe et la vue via l'inspecteur d'identité dans les utilitaires
+	- Créer les propriétés correspondantes aux vues
+	- Ajouter le décorateur `@IBOutlet`.
+	- Glisser le petit rond vers la vue.
+- Le type optionnel déballé permet de déclarer une propriété dont on ne connaît pas la valeur mais dont on est certain qu'elle existe. Cela évite de devoir déballer l'optionnel à chaque fois qu'on souhaite l'utiliser.
+
+### Implémentez la classe QuestionView
+Notre classe est désormais créée et connectée. Nous allons pouvoir l'implémenter. Cette classe va avoir seulement deux propriétés publiques. Tout le reste va être privé. Ces deux propriétés sont :
+- `style` : qui va avoir trois valeurs possibles : réponse correcte, réponse fausse et pas de réponse.
+- `title` : cette propriété représente le titre de la question affichée.
+
+#### La propriété title
+Créons la propriété `title` de type `String`.
+
+```swift
+var title = ""
+```
+
+Rien de bien sorcier pour le moment. Dès que cette propriété est modifiée, on va vouloir modifier le texte de notre label pour qu'il affiche la valeur de `title`. Comment fait-on lorsqu'on veut effectuer une action quand une propriété est modifiée ?
+
+> **:question:** On utilise l'observation des propriétés ?
+
+Bravo ! Je vois que vous avez suivi [le cours sur le sujet](https://openclassrooms.com/courses/approfondissez-swift-avec-la-programmation-orientee-objet/enrichissez-vos-proprietes) ! On va donc observer notre propriété `title` :
+
+```swift
+var title = "" {
+	didSet {
+		// On modifie le titre ici
+	}
+}
+```
+
+Cette syntaxe devrait vous être familière. Lorsque la propriété sera modifiée, le contenu de la méthode `didSet` sera executé. Nous souhaitons modifier le texte du label. Pour cela, nous allons tout simplement utiliser la propriété `text` de `UILabel`.
+
+```swift
+var title = "" {
+	didSet {
+		label.text = title
+	}
+}
+```
+
+De cette façon, dès que `title` est modifié le texte du label le sera aussi.
+
+#### La propriété style
+La propriété `style` va définir l'apparence générale de la vue. Il y a trois possibilités : réponse correcte, réponse incorrecte et pas de réponse. Qui dit plusieurs choix dis ?
+
+> **:question:** Enumération ?
+
+Bravo ! Vous êtes en forme aujourd'hui ;) ! Nous allons donc créer une énumération `Style` à l'intérieur de notre classe `QuestionView`.
+
+```swift
+class QuestionView: UIView {
+	enum Style {
+		case correct, incorrect, standard
+	}
+	// (...)
+}
+```
+
+A chaque cas de l'énumération, nous allons faire correspondre les apparences suivantes :
+
+![](Images/P3/P3C5_1.png)
+
+Nous allons maintenant créer la propriété `style` de type `Style` :
+
+```swift
+var style: Style = .standard
+```
+
+Et de la même façon nous allons utiliser l'observation des propriétés pour modifier l'apparence. Mais cette fois-ci, le code à executer est plus gros qu'une simple ligne donc nous allons l'extraire dans une fonction privée à part :
+
+```swift
+var style: Style = .standard {
+	didSet {
+		setStyle(style)
+	}
+}
+
+private func setStyle(_ style: Style) {
+}
+```
+
+À chaque fois que la propriété `style` est modifiée, la fonction `setStyle` est appelée avec en paramètre le style à afficher.
+
+#### La fonction setStyle
+
+Écrivons le code de cette fonction. Tout d'abord nous allons faire un switch sur les différents cas :
+
+```swift
+private func setStyle(_ style: Style) {
+	switch style {
+		case .correct:
+		case .incorrect:
+		case .standard:
+	}
+}
+```
+
+Dans chacun des cas, il y a trois paramètre susceptible de changer :
+- la couleur de fond de la vue (vert, rouge ou gris)
+- l'image de l'icône (validé ou erreur)
+- la visibilité ou non de l'icone (dans le style standard, l'icône n'est pas visible)
+
+##### La couleur de fond
+Pour changer la couleur de fond, on utilise la propriété `backgroundColor` de `UIView`. Comme `QuestionView` hérite de `UIView` nous avons accès directement à cette propriété.
+
+`backgroundColor` est de type `UIColor`. `UIColor` est la classe qui permet de gérer les couleurs. Elle a plusieurs initialiseurs. Parmis les plus pratiques, vous avez :
+
+```swift
+UIColor(white: CGFloat, alpha: CGFloat)
+UIColor(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+```
+Le premier permet de créer une nuance de gris :
+- Le paramètre `white` est une valeur comprise entre 0 et 1. Plus la valeur est grande, plus la couleur est claire.
+- Le paramètre `alpha` permet de gérer la transparence de la couleur entre 0 et 1.
+	- 0 : la couleur est complètement transparente
+	- 1 : la couleur est complètement opaque
+
+Le deuxième permet de créer toutes les couleurs à partir des couleurs primaires rouge, vert et bleu. Les trois paramètres `red`, `green` et `blue` doivent avoir des valeurs comprises entre 0 et 1. Le paramètre `alpha` a le même rôle que précédemment.
+
+En informatique, la notation RVB des couleurs se fait sur **255 tons**. Par exemple, nos trois couleurs ont pour valeur RVB :
+
+![](Images/P3/P3C5_2.png)
+
+Donc pour obtenir des valeurs entre 1 et 0, on divise par 255 :
+
+```swift
+UIColor(red: 243.0/255.0, green: 135.0/255.0, blue: 148.0/255.0, alpha: 1) // Le rouge
+```
+Vous savez maintenant manier `UIColor` ! On va pouvoir modifier la couleur de fond de notre vue :
+
+```swift
+private func setStyle(_ style: Style) {
+	switch style {
+	case .correct:
+		backgroundColor = UIColor(red: 200.0/255.0, green: 236.0/255.0, blue: 160.0/255.0, alpha: 1) // Vert
+	case .incorrect:
+		backgroundColor = UIColor(red: 243.0/255.0, green: 135.0/255.0, blue: 148.0/255.0, alpha: 1) // Rouge
+	case .standard:
+		backgroundColor = UIColor(red: 191.0/255.0, green: 196.0/255.0, blue: 201.0/255.0, alpha: 1) // Gris
+	}
+}
+```
+
+##### L'image
+Nous allons maintenant modifier notre image. La classe `UIImageView` a une propriété `image` de type `UIImage`. C'est cette propriété qui permet de modifier l'image qu'affiche une `UIImageView`.
+
+La classe `UIImage` a un initialiseur qui prends en paramètre le nom de l'image :
+
+```swift
+UIImage(named: String)
+```
+
+Le nom a indiqué est le nom que l'on a choisi pour l'image dans l'*asset catalog* :
+
+![](Images/P3/P3C5_3.png)
+
+Donc par exemple pour que notre icon affiche le signe validé vert, nous allons écrire :
+
+```swift
+icon.image = UIImage(named: "Icon Correct")
+```
+
+On crée ainsi une instance de `UIImage` à partir du nom du fichier et on assigne cette valeur à la propriété `image` de notre `UIImageView`.
+
+Xcode propose une autre façon bien pratique de créer une instance de `UIImage`. Si on commence à taper le nom de l'image recherchée, Xcode nous la suggère directement :
+
+![](Images/P3/P3C5_4.gif)
+
+> **:warning:** Pour qu'Xcode suggère l'image, il faut bien sûr l'avoir rajouter au préalable dans l'*assets catalog*.
+
+Cet façon de faire est bien pratique car elle affiche une vignette de l'image en question ce qui est plus clair. Les deux lignes suivantes sont donc équivalentes :
+
+![](Images/P3/P3C5_5.png)
+
+Nous allons donc faire cela pour les deux cas `correct` et `incorrect`. Et notre code ressemble maintenant à ceci :
+
+![](Images/P3/P3C5_6.png)
+
+##### La visibilité de l'image
+Il ne nous reste plus qu'à cacher l'image dans le cas `standard` (quand la vue est grise). Pour cela, nous allons utiliser la propriété `isHidden` de type `Bool` de `UIView`. Quand la propriété est à `true`, la vue est cachée et donc n'apparaît pas à l'écran et inversement. Comme `UIImageView` hérite de `UIView`, nous avons accès à cette propriété pour l'icône. Nous allons donc pouvoir l'utiliser et notre code ressemble finalement à ceci :
+
+![](Images/P3/P3C5_7.png)
+
+Dans les deux premiers cas, l'image est affichée. Dans le dernier, elle est cachée.
+
+C'est tout pour notre classe ! D'une vue assez complexe, nous en avons fait une vue très simple à utiliser dans notre contrôleur tout à l'heure. Nous allons pouvoir choisir entre les trois styles que nous venons de définir sans avoir à rentrer dans le détail de la construction de cette vue.
+
+A la fin de ce chapitre, votre classe doit ressembler à ceci :
+
+![](Images/P3/P3C5_8.png)
+
+#### En Résumé
+- Pour changer le texte qu'affiche un `UILabel`, on utilise la propriété `text` de type `String`.
+- Pour changer la couleur de fond d'une vue, on utilise la propriété `backgroundColor` de `UIView` de type `UIColor`. Pour initialiser `UIColor`, on utilise le plus souvent cette méthode :  
+```swift
+UIColor(red: 200.0/255.0, green: 236.0/255.0, blue: 160.0/255.0, alpha: 1)
+```
+- Pour changer l'image qu'affiche une `UIView`, on utilise la propriété `image` de type `UIImage`. Pour initialiser `UIImage`, on utilise le nom du fichier image :  
+```swift
+UIImage(named: "Icon Correct")
+```
+- Pour cacher une vue, on utilise la propriété `isHidden` de `UIView` de type `Bool`.
