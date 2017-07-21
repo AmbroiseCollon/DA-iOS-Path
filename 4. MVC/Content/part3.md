@@ -230,7 +230,7 @@ Je vous l'invite à redimensionner le bouton pour qu'il ait une taille confortab
 
 > **:information_source:** Apple suggère une taille minimum de 44 * 44 points pour un bouton. Afin que l'on puisse le taper facilement.
 
-Ensuite dans l'**inspecteur d'attribut** sur la droite, vous avez **toutes les propriétés de `UIButton`** que vous pouvez modifier avec *Interface Builder*. Si vous défilez vers le bas, vous avez également toutes les propriétés de `UIView`, car `UIButton` hérite, comme on l'a vu, de `UIView`. Dans ces propriétés, je vous propose de passer `Text Color` en blanc. Nous allons également modifier la police avec la propriété `font`. Pour cela, suivez les étapes effectuées dans l'image ci-dessous :
+Ensuite dans l'**inspecteur d'attributs** sur la droite, vous avez **toutes les propriétés de `UIButton`** que vous pouvez modifier avec *Interface Builder*. Si vous défilez vers le bas, vous avez également toutes les propriétés de `UIView`, car `UIButton` hérite, comme on l'a vu, de `UIView`. Dans ces propriétés, je vous propose de passer `Text Color` en blanc. Nous allons également modifier la police avec la propriété `font`. Pour cela, suivez les étapes effectuées dans l'image ci-dessous :
 
 ![](Images/P3/P3C3_2.gif)
 
@@ -250,6 +250,14 @@ Dans l'inspecteur d'attributs, vous trouvez en haut la propriété *style*. Cett
 Vos attributs de l'indicateur d'activité devraient ressembler à ceci :
 
 ![](Images/P3/P3C3_3bis.png)
+
+Vous avez noté que l'indicateur d'activité et le bouton se superposent. Ce n'est pas très esthétique. La raison c'est que nous allons afficher l'un ou l'autre mais pas les deux en même temps. Donc en attendant de faire cela dans le contrôleur, je vous propose de cacher l'indicateur d'activité.
+
+Pour cela, il suffit d'aller dans l'inspecteur d'attribut et de cocher la case *Hidden*.
+
+![](Images/P3/P3C3_3ter.png)
+
+Ainsi notre indicateur d'activité au lancement de l'application.
 
 #### Ajouter un label
 Nous allons maintenant afficher le score de la partie en cours. Une partie c'est 10 questions, donc le score aura pour format : *X / 10*.

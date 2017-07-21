@@ -48,7 +48,7 @@ Alors sans plus attendre, créons ensemble le projet Xcode de notre application 
 2/ Remplissez les **options** de votre projet :
 
 > **:information_source:** Pour le nom de l'organisation, vous pouvez choisir votre nom et pour l'*organization identifier*, vous pouvez adopter la convention suivante `fr.nomprenom`.  
-Soyez certains de bien choisir le langage Swift et de choisir *Universal* car on va adapter notre application à toutes les tailles d'écrans.
+Soyez certains de bien choisir le langage Swift et de choisir *Universal* car dans le prochain cours sur iOS, on va adapter notre application OpenQuizz à toutes les tailles d'écrans.
 
 ![](Images/P1/P1C1_4.png)
 

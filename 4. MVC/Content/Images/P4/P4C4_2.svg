@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="256px" viewBox="0 0 700 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #EDEFF2;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P4C4_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="553" height="256"></rect>
+    </defs>
+    <g id="P4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P4C4_2">
+            <text id="Bord-droit-de-l’écra" transform="translate(63.000000, 128.500000) rotate(270.000000) translate(-63.000000, -128.500000) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#5B8EC9">
+                <tspan x="-20.1542969" y="135.5">Bord droit de l’écran</tspan>
+            </text>
+            <text id="Bord-gauche-de-l’écr" transform="translate(639.000000, 128.000000) rotate(90.000000) translate(-639.000000, -128.000000) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#5B8EC9">
+                <tspan x="542.710938" y="135">Bord gauche de l’écran</tspan>
+            </text>
+            <g id="Group-2" transform="translate(74.000000, 0.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#576B82" xlink:href="#path-1"></use>
+                <g mask="url(#mask-2)" id="Group">
+                    <g transform="translate(-60.000000, 32.000000)">
+                        <g transform="translate(286.000000, 15.000000)">
+                            <rect id="Rectangle" fill="#C0C4C9" x="0" y="0" width="100" height="100"></rect>
+                            <text id="La-Papouasie-est-ell" font-family="Balham" font-size="12" font-weight="normal" fill="#FFFFFF">
+                                <tspan x="16.3892562" y="39">La Papouasie </tspan>
+                                <tspan x="12.1052562" y="50">est elle un pays </tspan>
+                                <tspan x="13.8332562" y="61">d’Asie du Sud-</tspan>
+                                <tspan x="37.9472562" y="72">Est ?</tspan>
+                            </text>
+                        </g>
+                        <g transform="translate(465.237244, 68.237244) rotate(15.000000) translate(-465.237244, -68.237244) translate(415.237244, 18.237244)">
+                            <rect id="Rectangle" fill="#C0C4C9" x="0" y="0" width="100" height="100"></rect>
+                            <text id="La-Papouasie-est-ell" font-family="Balham" font-size="12" font-weight="normal" fill="#FFFFFF">
+                                <tspan x="16.3892562" y="39">La Papouasie </tspan>
+                                <tspan x="12.1052562" y="50">est elle un pays </tspan>
+                                <tspan x="13.8332562" y="61">d’Asie du Sud-</tspan>
+                                <tspan x="37.9472562" y="72">Est ?</tspan>
+                            </text>
+                        </g>
+                        <g transform="translate(206.237244, 68.237244) rotate(-15.000000) translate(-206.237244, -68.237244) translate(156.237244, 18.237244)">
+                            <rect id="Rectangle" fill="#C0C4C9" x="0" y="0" width="100" height="100"></rect>
+                            <text id="La-Papouasie-est-ell" font-family="Balham" font-size="12" font-weight="normal" fill="#FFFFFF">
+                                <tspan x="16.3892562" y="39">La Papouasie </tspan>
+                                <tspan x="12.1052562" y="50">est elle un pays </tspan>
+                                <tspan x="13.8332562" y="61">d’Asie du Sud-</tspan>
+                                <tspan x="37.9472562" y="72">Est ?</tspan>
+                            </text>
+                        </g>
+                        <g transform="translate(602.301270, 68.301270) rotate(30.000000) translate(-602.301270, -68.301270) translate(552.301270, 18.301270)">
+                            <rect id="Rectangle" fill="#C0C4C9" x="0" y="0" width="100" height="100"></rect>
+                            <text id="La-Papouasie-est-ell" font-family="Balham" font-size="12" font-weight="normal" fill="#FFFFFF">
+                                <tspan x="16.3892562" y="39">La Papouasie </tspan>
+                                <tspan x="12.1052562" y="50">est elle un pays </tspan>
+                                <tspan x="13.8332562" y="61">d’Asie du Sud-</tspan>
+                                <tspan x="37.9472562" y="72">Est ?</tspan>
+                            </text>
+                        </g>
+                        <g transform="translate(68.301270, 68.301270) rotate(-30.000000) translate(-68.301270, -68.301270) translate(18.301270, 18.301270)">
+                            <rect id="Rectangle" fill="#C0C4C9" x="0" y="0" width="100" height="100"></rect>
+                            <text id="La-Papouasie-est-ell" font-family="Balham" font-size="12" font-weight="normal" fill="#FFFFFF">
+                                <tspan x="16.3892562" y="39">La Papouasie </tspan>
+                                <tspan x="12.1052562" y="50">est elle un pays </tspan>
+                                <tspan x="13.8332562" y="61">d’Asie du Sud-</tspan>
+                                <tspan x="37.9472562" y="72">Est ?</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+                <g id="Echelle" mask="url(#mask-2)">
+                    <g transform="translate(0.000000, 178.000000)">
+                        <text id="0" stroke="none" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300">
+                            <tspan x="270.033203" y="33" fill="#FFFFFF">0</tspan>
+                        </text>
+                        <text id="-π/6" stroke="none" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300">
+                            <tspan x="1.18847656" y="33" fill="#FFFFFF">-π/6</tspan>
+                        </text>
+                        <text id="π/6" stroke="none" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300">
+                            <tspan x="521.956055" y="33" fill="#FFFFFF">π/6</tspan>
+                        </text>
+                        <path d="M1,7 L552,7" id="Line" stroke="#F48794" stroke-width="2" stroke-linecap="square"></path>
+                        <path d="M1,0.5 L1,13.5" id="Line" stroke="#F48794" stroke-width="2" stroke-linecap="square"></path>
+                        <path d="M552,1.5 L552,14.5" id="Line" stroke="#F48794" stroke-width="2" stroke-linecap="square"></path>
+                        <path d="M276,0.5 L276,13.5" id="Line" stroke="#F48794" stroke-width="2" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
