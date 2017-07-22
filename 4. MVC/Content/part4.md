@@ -756,6 +756,8 @@ Et voilà ! Nous indiquons à l'utilisateur que la partie est terminée ! C'est 
 
 ![](Images/P4/P4C4_6.gif)
 
+> **:information_source:** Vous noterez que lorsque la partie est terminée, on ne peut en effet plus déplacer la vue.
+
 A la fin, le code de notre fonction ressemble donc à ceci :
 
 ```swift
@@ -797,13 +799,317 @@ let combinedTransform = transform1.concatenating(transform2)
 ```
 
 ### Animez l’interface
-Section 1 : Implémentation sans animation (En plusieurs exercices)  
-Section 2 : Présentation générale de l’animation en iOS (cf cours Stanford)  
-Section 3 : Faire disparaître la question  
-Section 4 : Faire apparaître la question  
+C'est le moment de la touche finale de notre application ! Le coup de pinceau génial ! La cerise sur le gateau ! Le clou du spectacle !
 
+> **:question:** Tu t'emballes...
+
+Oui. Pardon. Mais c'est parce que dans ce chapitre, nous allons parler des animations ! Et je trouve ça personnellement très amusant. Nous allons apprendre à animer nos vues pour donner à notre application une finition vraiment professionnel.
+
+Vous êtes prêt ?
+
+![](Images/P4/P4C5_1.jpg)
+
+#### Les animations en iOS
+
+Il existe de nombreux moyens de faire des animations en iOS. Voici la plupart d'entre eux :
+- `UIView Animation` pour animer les propriétés des vues
+- `Core Animation`pour animer des vues mais avec bien plus de possibilités
+- `SceneKit` pour des animations en 3D
+- `SpriteKit` pour des jeux en 2D
+- `Dynamic Animation` pour des animations avec des règles physiques comme la gravité, les collisions etc.
+
+Nous n'aborderons pas toutes ces techniques ensemble car ce serait trop long. Et puis, si vous ne programmez pas des jeux, les deux premiers couvrent 99% de vos besoins. Et le premier en couvre à lui tout seul 80%.
+
+Donc nous allons nous concentrer dans ce chapitre sur `UIView Animation`. `UIView Animation` comme son nom l'indique permet d'animer les propriétés des vues et en particulier :
+- `frame` : nous avons vu cette propriété ensemble, elle permet de placer les vues
+- `transform` : nous venons de la voir
+- `alpha` : cette propriété permet de modifier l'opacité de la vue. En l'animant, on peut faire apparaître ou disparaître doucement notre vue.
+- `backgroundColor` : on peut animer le changement de la couleur de fond
+
+Dans ce chapitre, nous allons principalement animer la propriété `transform`. Mais vous pouvez vous amuser à animer les autres. Nous allons réaliser l'animation suivante :
+
+![](Images/P4/P4C5_2.gif)
+
+Cette animation a lieu en deux temps :
+- Lorsqu'on lâche la vue, la vue glisse vers la droite où vers la gauche selon l'endroit où nous l'avons lâcher.
+- Ensuite, elle réapparaît au milieu avec une animation comme si elle arrivaît par le fond avec un effet "boing".
+
+#### Créer une animation
+Pour créer une animation, on utilise la méthode de classe `animate` de `UIView`. Cette méthode a plusieurs variantes, mais celle qui nous intéresse pour l'instant est la suivante :
+
+```swift
+UIView.animate(withDuration: TimeInterval, animations: () -> Void, completion: (Bool) -> Void)
+```
+Cette méthode prends en paramètre une durée de type `TimeInterval`. Rien de bien sorcier ici, il suffit de lui passer un nombre décimal. Cela corresponds à la durée en secondes de l'animation.
+
+Puis elle prends deux autres paramètres qui sont des f...
+
+> **:question:** Des float ?
+
+Mais non ! Regardez leur type, ce sont des fer..
+
+> **:question:** Des fermetures !!
+
+Bravo ! Les animations sont un très bon moyen de pratiquer les fermetures. *Il est pas bien fait ce cours... ?* :D
+
+Dans la première fermeture, nous allons modifier les propriétés que l'on souhaite animer. Dans l'autre, on va pouvoir effectuer une action quand l'animation est terminée.
+
+#### Faire disparaître la vue
+Pour faire disparaître la vue, on va la faire glisser vers la droite si la réponse est vraie et inversement si la réponse est fausse. Pour être certain qu'elle quitte l'écran, nous allons la faire glisser d'une distance égale à la largeur de l'écran. On commence donc par obtenir la largeur de l'écran :
+
+```swift
+let screenWidth = view.frame.width
+```
+
+Puis on va créer une translation vers la droite ou vers la gauche en fonction de la réponse choisie :
+```swift
+var translationTransform: CGAffineTransform
+if questionView.style == .correct {
+	translationTransform = CGAffineTransform(translationX: screenWidth, y: 0)
+} else {
+	translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
+}
+```
+
+Maintenant, nous allons créer l'animation :
+
+```swift
+UIView.animate(withDuration: 0.3, animations: {
+	self.questionView.transform = translationTransform
+}, completion: nil)
+```
+
+Je précise une durée de 0,3 secondes. Puis dans la fermeture `animations`, je modifie la propriété `transform`. Et `UIView` va s'occuper tout seul d'animer le changement de cette propriété.
+
+> **:information_source:** Vous notez que j'utilise le mot-clé `self`. On est obligé de l'utiliser pour faire référence à une propriété ou une méthode dans une fermeture.
+
+Pour l'instant, je n'ai pas rédigé de code dans la fermeture `completion` mais nous allons corriger ça tout de suite !
+
+```swift
+UIView.animate(withDuration: 0.3, animations: {
+	self.questionView.transform = translationTransform
+}, completion: { (success) in
+	if success {
+		self.showQuestionView()
+	}
+})
+```
+
+La fermeture question a un paramètre `success` de type `Bool` qui permet de vérifier que l'animation s'est bien déroulé. Si c'est le cas, j'appelle la fonction `showQuestionView` que je vais créer tout de suite et qui contient le code suivant :
+
+```swift
+private func showQuestionView() {
+    questionView.transform = .identity
+    questionView.style = .standard
+
+    switch game.state {
+    case .ongoing:
+        questionView.title = game.currentQuestion.title
+    case .over:
+        questionView.title = "Game Over"
+    }
+}
+```
+
+Dans cette fonction, j'ai simplement copié le code que nous avons rédigé dans le chapitre précédent et dont le seul but est de repositionner et mettre à jour la question.
+
+Si je lance maintenant le simulateur, je vois bien que la vue disparaît sur le côté et à la fin de l'animation, elle revient au centre avec une nouvelle question :
+
+![](Images/P4/P4C5_3.gif)
+
+#### Faire apparaître la question
+
+Nous allons maintenant animer le retour de la question. Nous allons procéder ainsi :
+- Nous allons placer la vue au centre de l'écran et réduire sa taille pour qu'on ne la voit plus.
+- Nous allons animer son retour à sa taille normal avec un petit effet "boing".
+
+Nous allons faire tout cela juste après l'animation précédente donc dans la méthode `showQuestionView`. Nous ramenons déjà la vue au centre de l'écran avec la ligne :
+
+```swift
+questionView.transform = .identity
+```
+
+Nous devons maintenant réduire sa taille. Et pour cela, nous allons utiliser un troisième initialiseur de `CGAffineTransform` :
+
+```swift
+CGAffineTransform(scaleX: CGFloat, y: CGFloat)
+```
+
+Cette transformation prends en paramètre deux échelles d'agrandissement en largeur sur les x et en hauteur sur les y. Si on veut doubler la largeur et tripler la hauteur, on écrit 2 et 3. Ici, on veut réduire la taille donc on va écrire :
+
+```swift
+questionView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+```
+
+La vue est maintenant de retour au centre et toute petite, tellement qu'on ne la voit plus. Nous allons animer son retour à sa taille normale. Pour obtenir l'effet "boing" souhaité, nous allons utiliser une autre version de la méthode `animate` :
+
+```swift
+UIView.animate(withDuration: TimeInterval, delay: TimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: [UIViewAnimationOption], animations: () -> Void, completion: (Bool) -> Void)
+```
+
+Cette méthode permet d'animer les propriétés de la vue en les faisant osciller autour de la valeur d'arrivée. Laissez moi vous expliquer cela avec ces deux animations :
+
+![](Images/P4/P4C5_4.gif)
+
+Dans la première animation, la vue va du point de départ au point d'arrivée simplement. Dans la deuxième, elle va plus rapidement au point d'arrivée et ensuite elle oscille autour du point d'arrivée avant de trouver sa position finale. On appelle cela une animation *spring*.
+
+Et c'est ce que nous allons faire ici. Parcourons un peu les paramètres de cette grosse méthode :
+- *duration* : La durée de l'animation comme tout à l'heure
+- *delay* : Cela permet de décaler le démarrage de l'animation. Nous n'en avons pas besoin ici.
+- *damping* : Ce paramètre peut être choisi entre 0 et 1. Plus on est proche de 0, plus il y aura d'oscillations autour de la valeur d'arrivée.
+- *initialVelocity* : Cela permet de choisir la vitesse de départ de la vue lors de l'animation. Plus elle sera rapide, plus les oscillations seront grandes.
+- *options* : Ici, on peut préciser des options pour notre animation. Ici, nous n'allons pas en avoir besoin mais vous pouvez allez regarder les options disponibles [ici](https://developer.apple.com/documentation/uikit/uiviewanimationoptions).
+- *animations* et *completion* : les mêmes fermetures que pour la méthode utilisée précédemment.
+
+Avec toutes ces informations, nous allons pouvoir utiliser notre méthode :
+
+```swift
+UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+	self.questionView.transform = .identity
+}, completion:nil)
+```
+
+> **:information_source:** Après plusieurs essais, j'ai choisi les paramètres `duration`, `damping` et `velocity` ainsi. Mais je vous invite à les modifier pour voir comment l'animation réagit !
+
+A l'intérieur du bloc `animation`, je ramène la vue à sa taille d'origine en lui appliquant la transformation identité. Notre animation est terminée et notre vue question réapparaît maintenant avec un joli petit effet !
+
+![](Images/P4/P4C5_2.gif)
+
+Et voilà ! Notre application est complètement finalisée ! Et c’est du travail de pro !
+
+#### ViewController.swift
+
+Pour que vous vous y retrouviez, voici l'intégralité de notre contrôleur !
+
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+    @IBOutlet weak var newGameButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var questionView: QuestionView!
+
+    var game = Game()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let name = Notification.Name(rawValue: "QuestionsLoaded")
+        NotificationCenter.default.addObserver(self, selector: #selector(questionsLoaded), name: name, object: nil)
+
+        startNewGame()
+
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragQuestionView(_:)))
+        questionView.addGestureRecognizer(panGestureRecognizer)
+    }
+
+    @IBAction func startNewGame() {
+        activityIndicator.isHidden = false
+        newGameButton.isHidden = true
+
+        questionView.title = "Loading..."
+        questionView.style = .standard
+
+        scoreLabel.text = "0 / 10"
+
+        game.refresh()
+    }
+
+    func questionsLoaded() {
+        activityIndicator.isHidden = true
+        newGameButton.isHidden = false
+        questionView.title = game.currentQuestion.title
+    }
+
+    func dragQuestionView(_ sender: UIPanGestureRecognizer) {
+        if game.state == .ongoing {
+            switch sender.state {
+            case .began, .changed:
+                transformQuestionViewWith(gesture: sender)
+            case .ended, .cancelled:
+                answerQuestion()
+            default:
+                break
+            }
+        }
+    }
+
+    private func transformQuestionViewWith(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: questionView)
+
+        let translationTransform = CGAffineTransform(translationX: translation.x, y: translation.y)
+
+        let translationPercent = translation.x/(view.frame.width / 2)
+        let rotationAngle = (CGFloat.pi / 3) * translationPercent
+        let rotationTransform = CGAffineTransform(rotationAngle: rotationAngle)
+
+        let transform = translationTransform.concatenating(rotationTransform)
+        questionView.transform = transform
+
+        if translation.x > 0 {
+            questionView.style = .correct
+        } else {
+            questionView.style = .incorrect
+        }
+    }
+
+    private func answerQuestion() {
+        switch questionView.style {
+        case .correct:
+            game.answerCurrentQuestion(with: true)
+        case .incorrect:
+            game.answerCurrentQuestion(with: false)
+        case .standard:
+            break
+        }
+
+        scoreLabel.text = "\(game.score) / 10"
+
+        let screenWidth = view.frame.width
+        var translationTransform: CGAffineTransform
+        if questionView.style == .correct {
+            translationTransform = CGAffineTransform(translationX: screenWidth, y: 0)
+        } else {
+            translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
+        }
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.questionView.transform = translationTransform
+        }, completion: { (success) in
+            if success {
+                self.showQuestionView()
+            }
+        })
+    }
+
+    private func showQuestionView() {
+        questionView.transform = .identity
+        questionView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+
+        questionView.style = .standard
+
+        switch game.state {
+        case .ongoing:
+            questionView.title = game.currentQuestion.title
+        case .over:
+            questionView.title = "Game Over"
+        }
+
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            self.questionView.transform = .identity
+        }, completion:nil)
+    }
+}
+```
+
+#### En résumé
+- Il existe de nombreux moyens de faire des animations en iOS. Mais ce que vous utiliserez dans la plupart des cas, ce sont les `UIView Animation`.
+- Les `UIView Animation` permette d'animer facilement certaines propriétés de UIView comme `frame`, `alpha`, `transform` et `backgroundColor`.
+- Pour créer une `UIView Animation`, on utilise l'une des variantes de la méthode de classe `animate` de `UIView`.
+- Les animations *spring* permettent de créer un effet d'oscillation autour de la valeur d'arrivée de l'animation.
 
 ### Conclusion
+
 Section 1 : Résumé  
 Section 2 : Emmenez cette application plus loin (donner des idées d’améliorations)  
 Section 3 : Vers le prochain cours  
