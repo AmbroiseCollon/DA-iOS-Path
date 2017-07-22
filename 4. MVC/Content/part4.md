@@ -29,7 +29,7 @@ override func didReceiveMemoryWarning() {
 }
 ```
 
-La première méthode est appelée lorsque **le contrôleur a fini d'être chargée** donc dans notre cas au lancement de l'application. Nous allons en avoir besoin dans le prochain chapitre pour faire quelques initialisations.
+La première méthode est appelée lorsque **le contrôleur a fini d'être chargé** donc dans notre cas au lancement de l'application. Nous allons en avoir besoin dans le prochain chapitre pour faire quelques initialisations.
 
 La deuxième méthode est appelée lorsque le contrôleur doit retenir trop d'informations et qu'**il n'a plus de place en mémoire** pour les stocker. Dans ce cas, il faut libérer de la place. Nous ne rencontrerons pas ce problème donc vous pouvez supprimer la méthode.
 
@@ -51,19 +51,19 @@ Cela veut dire que dans notre modèle MVC, le contrôleur s'adresse à la vue vi
 > **:question:** Comment on crée les outlets ?
 
 Vous avez deux options :
-- soit vous faîtes comme pour `QuestionView` précédemment en écrivant la propriété et le décorateur `@IBOutlet`.
+- soit vous faites comme pour `QuestionView` précédemment en écrivant la propriété et le décorateur `@IBOutlet`.
 - soit vous laissez Xcode faire cela pour vous en utilisant le **control drag**. Et c'est ce que nous allons faire.
 
-Placez vous en mode assistant avec le storyboard à gauche et le contrôleur à droite. Laissez la touche <kbd>ctrl</kbd> enfoncée et glissez depuis le bouton vers le code comme ceci :
+Placez-vous en mode assistant avec le storyboard à gauche et le contrôleur à droite. Laissez la touche <kbd>ctrl</kbd> enfoncée et glissez depuis le bouton vers le code comme ceci :
 
 ![](Images/P4/P4C1_4.gif)
 
-Lorsque vous relachez la souris, une popup vous demande plus d'information sur la connexion que vous souhaitez créer. Il y a plusieurs paramètres :
+Lorsque vous relâchez la souris, une popup vous demande plus d'information sur la connexion que vous souhaitez créer. Il y a plusieurs paramètres :
 - *Connection* : le type de connexion que vous souhaitez créer. Ici, on veut bien un *Outlet*.
 - *Object* : Vers où pointe la connexion, c'est bien le `ViewController`.
 - *Name* : Le nom de la propriété que l'on veut créer. Ici nous allons écrire : `newGameButton`.
 - *Type* : Le type de la propriété que l'on veut créer. C'est bien `UIButton`.
-- *Storage* : C'est une notion assez avancée de programmation et vous n'aurez jamais besoin de changer ce paramètre donc ignorons le pour le moment.
+- *Storage* : C'est une notion assez avancée de programmation et vous n'aurez jamais besoin de changer ce paramètre donc ignorons-le pour le moment.
 
 On peut ensuite cliquer sur `connect` et le code suivant est généré :
 
@@ -94,7 +94,7 @@ Si vous choisissez les noms ci-dessous, vous devrez obtenir le code suivant :
 Tous nos outlets sont créés ! Nous pouvons désormais manipuler nos vues dans le contrôleur.
 
 ##### Les outlets collections
-Pour votre information, il existe un autre type d'outlet que nous n'utiliserons pas ensemble mais qui sont très simples : les **outlets collections**. Comme leur nom, le suggère ils fonctionnent comme les outlets mais pour plusieurs vues à la fois.
+Pour votre information, il existe un autre type d'outlet que nous n'utiliserons pas ensemble, mais qui est très simple : les **outlets collections**. Comme leur nom le suggère, ils fonctionnent comme les outlets, mais pour plusieurs vues à la fois.
 
 Par exemple, si on crée une application calculatrice, on pourrait créer un outlet pour chaque bouton de 0 à 9 comme ceci :
 
@@ -111,7 +111,7 @@ Par exemple, si on crée une application calculatrice, on pourrait créer un out
 @IBOutlet weak var nineButton: UIButton!
 ```
 
-C'est un peut redondant et peu pratique à utiliser. On va donc utiliser une outlet collection :
+C'est un peu redondant et peu pratique à utiliser. On va donc utiliser une outlet collection :
 
 ```swift
 @IBOutlet var numbersButton: [UIButton]!
@@ -119,10 +119,10 @@ C'est un peut redondant et peu pratique à utiliser. On va donc utiliser une out
 
 La propriété créée est un tableau qui contient tous les boutons.
 
-Pour créer une outlet collection, il suffit de choisir ce type de connection dans la popup après le control drag. Puis pour remplir le tableau, il faut faire un control drag depuis chaque bouton vers la propriété `numbersButton`.
+Pour créer une outlet collection, il suffit de choisir ce type de connexion dans la popup après le control drag. Puis pour remplir le tableau, il faut faire un control drag depuis chaque bouton vers la propriété `numbersButton`.
 
 #### Les actions
-Nous voulons non seulement contrôler les vues. Mais aussi recevoir des informations de leur part. Par exemple, comment faire pour executer du code lorsque le bouton est tapé ?
+Nous voulons non seulement contrôler les vues. Mais aussi recevoir des informations de leur part. Par exemple, comment faire pour exécuter du code lorsque le bouton est tapé ?
 
 ##### Les actions et le MVC
 Nous devons donc aborder l'épineuse question de la communication de la vue vers le contrôleur. La vue a-t-elle le droit de communiquer avec le contrôleur ?
@@ -141,8 +141,8 @@ Pour créer une action, on va faire comme pour les outlets. On va effectuer un c
 Il y a nouveau plusieurs paramètres ici :
 - *Connection* et *Object* : même chose que pour les outlets.
 - *Name* : le **nom de la méthode** que nous allons créer. Ici je vous propose `startNewGame`.
-- *Type* : Nous allons créer une méthode. Cette méthode peut avoir des paramètres comme l'évènement et la vue dont vient l'action, appelé le *sender*. Si on souhaite avoir le sender en paramètre de la méthode, on peut choisir ici le **type du sender**.
-- *Event* : Une action est associée à un **évènement**. Cette évènement représente le geste que doit réaliser l'utilisateur pour que l'action ait lieu. Par défaut, pour un bouton, cet évènement est *Touch Up Inside*. Cela signifie un touché vers le haut à l'intérieur du bouton, c'est-à-dire le moment où le doigt quitte le bouton. Je vous invite à regarder la liste pour voir les autres types d'évènement possibles.
+- *Type* : Nous allons créer une méthode. Cette méthode peut avoir des paramètres comme l'évènement et la vue dont vient l'action, appelée le *sender*. Si on souhaite avoir le sender en paramètre de la méthode, on peut choisir ici le **type du sender**.
+- *Event* : Une action est associée à un **évènement**. Cet évènement représente le geste que doit réaliser l'utilisateur pour que l'action ait lieu. Par défaut, pour un bouton, cet évènement est *Touch Up Inside*. Cela signifie un touché vers le haut à l'intérieur du bouton, c'est-à-dire le moment où le doigt quitte le bouton. Je vous invite à regarder la liste pour voir les autres types d'évènements possibles.
 - *Arguments* : Comme expliqué précédemment, la méthode peut avoir des **paramètres**. Ici on décide si on en a besoin ou non. J'ai choisi *None* pour aucun paramètre. Pour information, les autres possibilités sont le sender seul ou le sender et l'évènement.
 
 Vous pouvez cliquer sur *connect* et Xcode génère le code suivant :
@@ -168,11 +168,11 @@ Nous allons donc :
 - Cacher le bouton : cela permet d'empêcher l'utilisateur de lancer un nouveau chargement.
 - Afficher l'indicateur d'activité : pour notifier l'utilisateur que le chargement est en cours
 - Remettre le score à zéro
-- Remettre la vue question dans le style `standard` : son style a pu avoir été modifiée plus tôt si l'utilisateur était en train de jouer.
+- Remettre la vue question dans le style `standard` : son style a pu avoir été modifié plus tôt si l'utilisateur était en train de jouer.
 - Afficher "*Loading...*" dans la vue question.
 
 ##### Cacher le bouton et afficher l'indicateur d'activité
-Come toutes les vues, les classes `UIButton` et `UIActivityIndicatorView` héritent de `UIView`. Elles ont donc accès à la propriété `isHidden` que nous avons vue dans la partie précédente. Nous avons donc simplement à écrire :
+Comme toutes les vues, les classes `UIButton` et `UIActivityIndicatorView` héritent de `UIView`. Elles ont donc accès à la propriété `isHidden` que nous avons vue dans la partie précédente. Nous avons donc simplement à écrire :
 
 ```swift
 @IBAction func startNewGame() {
@@ -191,7 +191,7 @@ questionView.title = "Loading..."
 questionView.style = .standard
 ```
 
-Vous voyez en quoi avoir créer une vue customisée nous rends les choses faciles ici !
+Vous voyez en quoi avoir créé une vue customisée nous rend les choses faciles ici !
 
 ##### Le label score
 
@@ -223,16 +223,16 @@ Nous avons maintenant une belle interface de chargement lorsqu'on clique sur le 
 
 #### En Résumé
 - Pour contrôler les vues, le contrôleur utilise les outlets qui sont des connexions entre une propriété du contrôleur et une vue.
-- Pour envoyer un message au contrôleur, les vues peuvent utiliser les actions qui sont des connexions entre une méthode du contrôleur et une vue, asssociées à un évènement.
+- Pour envoyer un message au contrôleur, les vues peuvent utiliser les actions qui sont des connexions entre une méthode du contrôleur et une vue, associées à un évènement.
 - Pour créer ces connexions, on utilise le control drag depuis la vue vers le code du contrôleur.
 
 ### Connectez le contrôleur et le modèle
-Nous avons fait la moitié du travail. La vue et le contrôleur sont connectés mais le modèle et le contrôleur ne communique pas encore. Ce ne sera plus vrai à la fin de ce chapitre !
+Nous avons fait la moitié du travail. La vue et le contrôleur sont connectés, mais le modèle et le contrôleur ne communiquent pas encore. Ce ne sera plus vrai à la fin de ce chapitre !
 
 ![](Images/P4/P4C2_1.jpg)
 
 #### La propriété game
-Dans le chapitre précédent, on a vu que le contrôleur peut manipuler les vues grâce à des outlets. Cela prends la forme de propriétés. Ici, nous allons faire exactement la même chose. Nous allons créer une propriété `game` de type `Game` :
+Dans le chapitre précédent, on a vu que le contrôleur peut manipuler les vues grâce à des outlets. Cela prend la forme de propriétés. Ici, nous allons faire exactement la même chose. Nous allons créer une propriété `game` de type `Game` :
 
 ```swift
 var game = Game()
@@ -240,14 +240,14 @@ var game = Game()
 
 Cette propriété va nous permettre de gérer la partie en nous appuyant sur le travail qui a été fait dans le modèle.
 
-Donc si on reprends, notre modèle MVC, on voit que pour accèder au modèle, le contrôleur utilise les propriétés :
+Donc si on reprend notre modèle MVC, on voit que pour accéder au modèle, le contrôleur utilise les propriétés :
 
 ![](Images/P4/P4C2_2.png)
 
 Nous allons maintenant utiliser notre propriété `game` pour lancer une nouvelle partie en téléchargeant de nouvelles questions.
 
 #### Charger les questions
-Pour télécharger de nouvelles questions, nous allons utiliser la méthode `refresh` de la classe `Game` que nous avons créé ensemble. Et nous allons faire cela, lorsque l'utilisateur appuie sur le bouton pour lancer une nouvelle partie. Donc on va rajouter l'appel à la méthode `refresh` dans la méthode `startNewGame`.
+Pour télécharger de nouvelles questions, nous allons utiliser la méthode `refresh` de la classe `Game` que nous avons créée ensemble. Et nous allons faire cela, lorsque l'utilisateur appuie sur le bouton pour lancer une nouvelle partie. Donc on va rajouter l'appel à la méthode `refresh` dans la méthode `startNewGame`.
 
 ```swift
 @IBAction func startNewGame() {
@@ -270,7 +270,7 @@ Revenons un peu sur le fonctionnement de cette méthode :
 	- Elle stocke les questions dans la propriété `questions` de la classe `Game`
 	- Elle envoie une notification pour prévenir qui veut que les questions sont chargées.
 
-Les notifications sont un des moyens qu'a le modèle de s'addresser au contrôleur. Nous avons déjà géré l'envoi de la notification mais pas la réception.
+Les notifications sont un des moyens qu'a le modèle de s'adresser au contrôleur. Nous avons déjà géré l'envoi de la notification, mais pas la réception.
 
 ![](Images/P4/P4C2_3.png)
 
@@ -280,7 +280,7 @@ C'est ce que nous allons faire ici !
 Pour recevoir une notification, il faut se brancher à l'émission de radio que l'on souhaite. Et nous voulons faire cela dès que le contrôleur est chargé pour ne pas rater de message.
 
 ##### Le nom de la notification
-Lorsque le contrôleur vient de finir de se charger, la méthode `viewDidLoad` est appelée. C'est dans cette méthode que nous allons se brancher à la notification.
+Lorsque le contrôleur vient de finir de se charger, la méthode `viewDidLoad` est appelée. C'est dans cette méthode que nous allons nous brancher à la notification.
 
 Pour rappel, les notifications ont des noms. Ces noms permettent d'identifier chaque notification de façon unique. Pour savoir quelle notification écouter, nous allons commencer par obtenir son nom :
 
@@ -302,14 +302,14 @@ let name = Notification.Name(rawValue: "QuestionsLoaded")
 NotificationCenter.default.addObserver(self, selector: <vide>, name: name, object: nil)
 ```
 
-Alors commentons un peu cette ligne. Tout d'abord on récupère l'instance `default` du `NotificationCenter` sur laquelle on appele la fonction `addObserver`. Cette fonction prends quatre paramètres :
+Alors, commentons un peu cette ligne. Tout d'abord on récupère l'instance `default` de  `NotificationCenter` sur laquelle on appelle la fonction `addObserver`. Cette fonction prend quatre paramètres :
 - *observer* : ici celui qui doit observer la notification, c'est le contrôleur. Donc on écrit `self` pour faire référence à soi-même.
 - *selector* : on va voir ça dans un instant.
 - *name* : le nom de la notification à observer, on lui passe donc la variable `name` que nous venons de créer.
 - *object* : cette propriété permet de préciser l'objet dont on accepte la notification. Cela fonctionne comme un filtre. Ici, on ne cherche pas à savoir d'où vient la notification, donc on écrit `nil`.
 
 ##### Le sélecteur
-Revenons sur cet étrange paramètre *selector*. Il est du type `Selector`. Ce type permet de passer une fonction en paramètre. C'est cette fonction qui sera executée quand le contrôleur recevra la notification.
+Revenons sur cet étrange paramètre *selector*. Il est du type `Selector`. Ce type permet de passer une fonction en paramètre. C'est cette fonction qui sera exécutée quand le contrôleur recevra la notification.
 
 Commençons donc par créer une fonction :
 
@@ -318,7 +318,7 @@ func questionsLoaded() {
 }
 ```
 
-Pour passer cette fonction dans le sélecteur, il y a une syntaxe bien particulière. On écrit `#selector` et le nom de la fonction entre parenthèse. Finalement, on obtient :
+Pour passer cette fonction dans le sélecteur, il y a une syntaxe bien particulière. On écrit `#selector` et le nom de la fonction entre parenthèses. Finalement, on obtient :
 
 ```swift
 override func viewDidLoad() {
@@ -332,7 +332,7 @@ func questionsLoaded() {
 ```
 Ça y est ! Notre contrôleur observe maintenant la notification et dès que les questions seront chargées, il sera prévenu et pourra exécuter la méthode `questionsLoaded`.
 
-> **:information_source:** On utilise principalement les sélecteurs pour les notifications. C'est un héritage d'Objective-C. Dans les autres cas, on préfère utiliser les fermetures que nous avons vus précédemment.
+> **:information_source:** On utilise principalement les sélecteurs pour les notifications. C'est un héritage d'Objective-C. Dans les autres cas, on préfère utiliser les fermetures que nous avons vu précédemment.
 
 #### Implémenter questionsLoaded
 
@@ -376,7 +376,7 @@ Et voilà, nous n'avons plus qu'à tester dans le simulateur !
 
 ![](Images/P4/P4C2_4.gif)
 
-Il ne nous reste qu'une petite chose à faire. Lorsque l'utilisateur lance l'application, il s'attends à pouvoir jouer tout de suite. Donc nous allons lancer une partie dès la méthode `viewDidLoad` :
+Il ne nous reste qu'une petite chose à faire. Lorsque l'utilisateur lance l'application, il s'attend à pouvoir jouer tout de suite. Donc nous allons lancer une partie dès la méthode `viewDidLoad` :
 
 ```swift
 override func viewDidLoad() {
@@ -390,7 +390,7 @@ override func viewDidLoad() {
 #### En résumé
 - Le contrôleur peut faire appel au modèle via ses propriétés.
 - Le modèle peut communiquer avec le contrôleur via des notifications. Pour observer une notification, on utilise la méthode `addObserver` de la classe `NotificationCenter`.
-- Les sélécteurs permettent de passer en paramètre une fonction avec la syntaxe suivante : `#selector(nomDeLaFonction)`.
+- Les sélecteurs permettent de passer en paramètre une fonction avec la syntaxe suivante : `#selector(nomDeLaFonction)`.
 
 ### Travaillez votre gestuelle
 Notre application commence à prendre une bonne forme ! Nous pouvons maintenant lancer une nouvelle partie en chargeant de nouvelles questions. Mais nous ne pouvons pas y répondre. Donc le jeu est pour l'instant assez limité... Pour répondre aux questions, l'utilisateur va devoir glisser la question à gauche ou à droite :
@@ -408,11 +408,11 @@ On fait déjà énormément de choses avec `UIGestureRecognizer` donc je n'abord
 
 ##### Quand utiliser UIGestureRecognizer ?
 
-> **:question:** Mais je sais déjà interpréter les gestes ?
+> **:question:**, Mais je sais déjà interpréter les gestes ?
 
 Ah bon... ?
 
-> **:question:** Mais oui ! On vient de voir avec les actions que je peux répondre à l'appui sur le bouton !
+> **:question:**, Mais oui ! On vient de voir avec les actions que je peux répondre à l'appui sur le bouton !
 
 Bien vu ! Tous les composants par défaut que je vous ai présenté ont pour la plupart des gestes prédéfinis. Donc pour ceux-là, vous n'aurez pas besoin de `UIGestureRecognizer`.
 
@@ -420,13 +420,13 @@ Pour tous les autres cas, vous en aurez besoin. Simple, non ?
 
 ##### Les sous-classes de UIGestureRecognizer
 
-En fait, on ne va pas utiliser `UIGestureRecognizer` directement mais ses sous-classes. Ces sous-classes définissent chacune un geste simple. L'application compagnon de ce cours vous permet de jouer avec toutes ces sous-classes. Si ce n'est pas déjà fait, il n'est pas trop tard pour [la télécharger](Lien de téléchargement) !
+En fait, on ne va pas utiliser `UIGestureRecognizer` directement, mais ses sous-classes. Ces sous-classes définissent chacune un geste simple. L'application compagnon de ce cours vous permet de jouer avec toutes ces sous-classes. Si ce n'est pas déjà fait, il n'est pas trop tard pour [la télécharger](Lien de téléchargement) !
 
 Pour ceux qui ne peuvent pas, voici un tableau qui donne les sous-classes principales de `UIGestureRecognizer` :
 
 ![](Images/P4/P4C3_2.png)
 
-> **:information_source:** Toutes les classes ci-dessus qui s'utilisent avec un doigt ont une propriété `numberOfTouches` qui permet de choisir le nombre de doigt nécessaire pour que le geste soit reconnu. La plupart du temps on laissera cette valeur à `1`, mais vous savez maintenant que vous pouvez modifier cela si besoin.
+> **:information_source:** Toutes les classes ci-dessus qui s'utilisent avec un doigt ont une propriété `numberOfTouches` qui permet de choisir le nombre de doigts nécessaire pour que le geste soit reconnu. La plupart du temps on laissera cette valeur à `1`, mais vous savez maintenant que vous pouvez modifier cela si besoin.
 
 Dans ce cours, nous allons utiliser `UIPanGestureRecognizer` pour faire glisser notre vue à droite ou à gauche.
 
@@ -472,13 +472,13 @@ Et voilà notre geste est reconnu ! Il nous faut maintenant implémenter la mét
 
 ##### Les états des gestes
 `UIGestureRecognizer` a une propriété `state` qui décrit l'état du geste. Elle va nous être utile pour savoir où en est le geste. Cette propriété est de type `UIGestureRecognizerState` qui est une énumération qui a donc plusieurs cas :
-- `possible` : C'est le cas par défaut le gesture recognizer attends de détecter un geste.
+- `possible` : C'est le cas par défaut. Le gesture recognizer attend de détecter un geste.
 - `began` : Le gesture recognizer vient de détecter le geste.
 - `changed` : La valeur vient de changer et le geste se poursuit.
 - `ended` : Le geste est terminé, l'utilisateur a lâché l'écran.
 - `cancelled` : Un autre geste vient interrompre le geste en cours.
 
-> **:information_source:** Il existe d'autres états mais dont nous n'avons pas besoin ici.
+> **:information_source:** Il existe d'autres états, mais dont nous n'avons pas besoin ici.
 
 Voici ce que nous allons faire :
 - Lorsque le geste est en cours (`began` et `changed`), nous allons modifier la position de notre vue question pour qu'elle suive le doigt.
@@ -551,7 +551,7 @@ Et voilà ! Notre geste est prêt à être interprété ! La suite, au prochain 
 Nous avons ajouté un geste à notre vue question. Mais pour le moment, ce geste n'est pas interprété. Dans ce chapitre, nous allons interpréter le geste pour déplacer notre vue question et permettre à l'utilisateur d'y répondre. Et nous allons commencer par récupérer les informations de notre geste.
 
 #### Récupérer les informations du geste
-Notre geste a été passé en paramètre dans la méthode `transformQuestionViewWith`. Nous allons récupérer les informations qu'il contient pour déplacer notre vue en fonction du geste. La classe `UIPanGestureRecognizer` a une méthode `translation(in: UIView)`. Cette méthode prends en paramètre la vue dont on veut obtenir le déplacement. Et renvoie un `CGPoint` qui représente le déplacement.
+Notre geste a été passé en paramètre dans la méthode `transformQuestionViewWith`. Nous allons récupérer les informations qu'il contient pour déplacer notre vue en fonction du geste. La classe `UIPanGestureRecognizer` a une méthode `translation(in: UIView)`. Cette méthode prend en paramètre la vue dont on veut obtenir le déplacement. Et renvoie un `CGPoint` qui représente le déplacement.
 
 Récupérons donc cette translation :
 
@@ -582,7 +582,7 @@ questionView.transform = CGAffineTransform(translationX: translation.x, y: trans
 ```
 
 Prenons une pause pour bien assimiler ce qu'il vient de se passer :
-1. On récupère **la translation effectuée par le doigt sur l'écran** dans la première ligne. Cette translation a pour type `CGPoint` qui est une structure que nous avons vu et qui a deux propriétés `x` et `y`.
+1. On récupère **la translation effectuée par le doigt sur l'écran** dans la première ligne. Cette translation a pour type `CGPoint` qui est une structure que nous avons vue et qui a deux propriétés `x` et `y`.
 2. On crée une transformation de notre vue question. Cette transformation est de type translation. On lui donne les paramètres de la translation de notre doigt.
 
 Ainsi **la translation du doigt sur l'écran et la translation de la vue correspondent**. Si on lance le simulateur, on peut voir que maintenant la vue suit notre doigt (la souris) :
@@ -590,7 +590,7 @@ Ainsi **la translation du doigt sur l'écran et la translation de la vue corresp
 ![](Images/P4/P4C4_1.gif)
 
 #### La rotation
-Allons plus loin avec cette propriété `transform` et amusons nous. Nous allons appliquer une rotation à la vue selon les règles suivantes :
+Allons plus loin avec cette propriété `transform` et amusons-nous. Nous allons appliquer une rotation à la vue selon les règles suivantes :
 - Plus on est loin du centre, plus la rotation est forte
 - Vers la droite, la vue est tournée vers la droite et inversement
 
@@ -598,7 +598,7 @@ Pour que la rotation ait un effet satisfaisant, nous allons appliquer une rotati
 
 ![](Images/P4/P4C4_2.png)
 
-> **:information_source:** Libre à vous de choisir d'autres valeurs, après plusieurs essais, j'ai trouvé l'animation réussi avec ces valeurs mais chacun ses goûts !
+> **:information_source:** Libre à vous de choisir d'autres valeurs, après plusieurs essais, j'ai trouvé l'animation réussie avec ces valeurs, mais chacun ses goûts !
 
 Nous allons commencer par récupérer la largeur de l'écran :
 
@@ -616,13 +616,13 @@ let rotationAngle = (CGFloat.pi / 6) * translationPercent
 ```
 Je calcule d'abord où je suis par rapport au bord de l'écran. La valeur `translationPercent` peut varier entre `-100%` et `+100%`. Et ensuite j'applique ce pourcentage à π/6.
 
-Maintenant nous allons pouvoir créer notre transformation en utilisant cette angle de rotation. Nous allons utiliser un autre initialiseur de `CGAffineTransform` :
+Maintenant nous allons pouvoir créer notre transformation en utilisant cet angle de rotation. Nous allons utiliser un autre initialiseur de `CGAffineTransform` :
 
 ```swift
 let rotationTransform = CGAffineTransform(rotationAngle: rotationAngle)
 ```
 
-##### Combiner les transformation
+##### Combiner les transformations
 Nous avons maintenant une transformation de rotation et une transformation de translation. Il faut combiner les deux pour obtenir la transformation complète que l'on veut affecter à notre vue. Et pour cela, nous allons utiliser la méthode `concatenating` de `CGAffineTransform` :
 
 ```swift
@@ -642,8 +642,8 @@ Pour compléter cette animation, il nous reste une petite chose à faire. Il fau
 - Si elle est à gauche, il faut afficher le style réponse incorrecte (en rouge)
 
 Et on va faire ça facilement grâce à notre belle `QuestionView` ! Il nous suffit de savoir si la vue est à droite ou à gauche. Et pour cela nous allons regarder la valeur `x` de notre translation :
-- Si elle est positive : la vue est à droite.
-- Si elle est négative la vue est à gauche.
+- Si elle est positive, la vue est à droite.
+- Si elle est négative, la vue est à gauche.
 
 On écrit donc :
 
@@ -655,7 +655,7 @@ if translation.x > 0 {
 }
 ```
 
-Et voilà, nous avons crée une nouveau geste beau et pratique !
+Et voilà, nous avons créé une nouveau geste beau et pratique !
 
 ![](Images/P4/P4C4_4.gif)
 
@@ -683,12 +683,12 @@ private func transformQuestionViewWith(gesture: UIPanGestureRecognizer) {
 ```
 
 #### Répondre à la question
-Notre geste est bien beau mais lorsqu'on lâche la vue, il ne se passe rien. Et c'est parce que nous n'avons pas implémenté la deuxième méthode que nous avions préparé : `answerQuestion`. Alors allons-y !
+Notre geste est bien beau, mais lorsqu'on lâche la vue, il ne se passe rien. Et c'est parce que nous n'avons pas implémenté la deuxième méthode que nous avions préparée : `answerQuestion`. Alors, allons-y !
 
 ##### Envoyer la réponse au modèle
-Tout d'abord nous allons envoyer la réponse au modèle qui va se charger de mettre à jour le score. Nous allons utiliser la méthode `answerCurrentQuestion` que nous avions préparé dans la classe `Game`.
+Tout d'abord nous allons envoyer la réponse au modèle qui va se charger de mettre à jour le score. Nous allons utiliser la méthode `answerCurrentQuestion` que nous avions préparée dans la classe `Game`.
 
-Cette question prends en paramètre la réponse de l'utilisateur : vrai ou faux. Nous allons déduire cette réponse du style de la vue question :
+Cette question prend en paramètre la réponse de l'utilisateur : vrai ou faux. Nous allons déduire cette réponse du style de la vue question :
 
 ```swift
 private func answerQuestion() {
@@ -799,11 +799,11 @@ let combinedTransform = transform1.concatenating(transform2)
 ```
 
 ### Animez l’interface
-C'est le moment de la touche finale de notre application ! Le coup de pinceau génial ! La cerise sur le gateau ! Le clou du spectacle !
+C'est le moment de la touche finale de notre application ! Le coup de pinceau génial ! La cerise sur le gâteau ! Le clou du spectacle !
 
 > **:question:** Tu t'emballes...
 
-Oui. Pardon. Mais c'est parce que dans ce chapitre, nous allons parler des animations ! Et je trouve ça personnellement très amusant. Nous allons apprendre à animer nos vues pour donner à notre application une finition vraiment professionnel.
+Oui. Pardon. Mais c'est parce que dans ce chapitre, nous allons parler des animations ! Et je trouve ça personnellement très amusant. Nous allons apprendre à animer nos vues pour donner à notre application une finition vraiment professionnelle.
 
 Vous êtes prêt ?
 
@@ -813,10 +813,10 @@ Vous êtes prêt ?
 
 Il existe de nombreux moyens de faire des animations en iOS. Voici la plupart d'entre eux :
 - `UIView Animation` pour animer les propriétés des vues
-- `Core Animation`pour animer des vues mais avec bien plus de possibilités
+- `Core Animation`pour animer des vues, mais avec bien plus de possibilités
 - `SceneKit` pour des animations en 3D
 - `SpriteKit` pour des jeux en 2D
-- `Dynamic Animation` pour des animations avec des règles physiques comme la gravité, les collisions etc.
+- `Dynamic Animation` pour des animations avec des règles physiques comme la gravité, les collisions, etc.
 
 Nous n'aborderons pas toutes ces techniques ensemble car ce serait trop long. Et puis, si vous ne programmez pas des jeux, les deux premiers couvrent 99% de vos besoins. Et le premier en couvre à lui tout seul 80%.
 
@@ -832,7 +832,7 @@ Dans ce chapitre, nous allons principalement animer la propriété `transform`. 
 
 Cette animation a lieu en deux temps :
 - Lorsqu'on lâche la vue, la vue glisse vers la droite où vers la gauche selon l'endroit où nous l'avons lâcher.
-- Ensuite, elle réapparaît au milieu avec une animation comme si elle arrivaît par le fond avec un effet "boing".
+- Ensuite, elle réapparaît au milieu avec une animation comme si elle arrivait par le fond avec un effet "boing".
 
 #### Créer une animation
 Pour créer une animation, on utilise la méthode de classe `animate` de `UIView`. Cette méthode a plusieurs variantes, mais celle qui nous intéresse pour l'instant est la suivante :
@@ -840,9 +840,9 @@ Pour créer une animation, on utilise la méthode de classe `animate` de `UIView
 ```swift
 UIView.animate(withDuration: TimeInterval, animations: () -> Void, completion: (Bool) -> Void)
 ```
-Cette méthode prends en paramètre une durée de type `TimeInterval`. Rien de bien sorcier ici, il suffit de lui passer un nombre décimal. Cela corresponds à la durée en secondes de l'animation.
+Cette méthode prend en paramètre une durée de type `TimeInterval`. Rien de bien sorcier ici, il suffit de lui passer un nombre décimal. Cela correspond à la durée en secondes de l'animation.
 
-Puis elle prends deux autres paramètres qui sont des f...
+Puis elle prend deux autres paramètres qui sont des f...
 
 > **:question:** Des float ?
 
@@ -850,12 +850,12 @@ Mais non ! Regardez leur type, ce sont des fer..
 
 > **:question:** Des fermetures !!
 
-Bravo ! Les animations sont un très bon moyen de pratiquer les fermetures. *Il est pas bien fait ce cours... ?* :D
+Bravo ! Les animations sont un très bon moyen de pratiquer les fermetures. *Il n’est pas bien fait ce cours... ?* :D
 
 Dans la première fermeture, nous allons modifier les propriétés que l'on souhaite animer. Dans l'autre, on va pouvoir effectuer une action quand l'animation est terminée.
 
 #### Faire disparaître la vue
-Pour faire disparaître la vue, on va la faire glisser vers la droite si la réponse est vraie et inversement si la réponse est fausse. Pour être certain qu'elle quitte l'écran, nous allons la faire glisser d'une distance égale à la largeur de l'écran. On commence donc par obtenir la largeur de l'écran :
+Pour faire disparaître la vue, on va la faire glisser vers la droite si la réponse est vraie et inversement si la réponse est fausse. Pour être certains qu'elle quitte l'écran, nous allons la faire glisser d'une distance égale à la largeur de l'écran. On commence donc par obtenir la largeur de l'écran :
 
 ```swift
 let screenWidth = view.frame.width
@@ -879,7 +879,7 @@ UIView.animate(withDuration: 0.3, animations: {
 }, completion: nil)
 ```
 
-Je précise une durée de 0,3 secondes. Puis dans la fermeture `animations`, je modifie la propriété `transform`. Et `UIView` va s'occuper tout seul d'animer le changement de cette propriété.
+Je précise une durée de 0,3 seconde. Puis dans la fermeture `animations`, je modifie la propriété `transform`. Et `UIView` va s'occuper tout seul d'animer le changement de cette propriété.
 
 > **:information_source:** Vous notez que j'utilise le mot-clé `self`. On est obligé de l'utiliser pour faire référence à une propriété ou une méthode dans une fermeture.
 
@@ -895,7 +895,7 @@ UIView.animate(withDuration: 0.3, animations: {
 })
 ```
 
-La fermeture question a un paramètre `success` de type `Bool` qui permet de vérifier que l'animation s'est bien déroulé. Si c'est le cas, j'appelle la fonction `showQuestionView` que je vais créer tout de suite et qui contient le code suivant :
+La fermeture question a un paramètre `success` de type `Bool` qui permet de vérifier que l'animation s'est bien déroulée. Si c'est le cas, j'appelle la fonction `showQuestionView` que je vais créer tout de suite et qui contient le code suivant :
 
 ```swift
 private func showQuestionView() {
@@ -920,8 +920,8 @@ Si je lance maintenant le simulateur, je vois bien que la vue disparaît sur le 
 #### Faire apparaître la question
 
 Nous allons maintenant animer le retour de la question. Nous allons procéder ainsi :
-- Nous allons placer la vue au centre de l'écran et réduire sa taille pour qu'on ne la voit plus.
-- Nous allons animer son retour à sa taille normal avec un petit effet "boing".
+- Nous allons placer la vue au centre de l'écran et réduire sa taille pour qu'on ne la voie plus.
+- Nous allons animer son retour à sa taille normale avec un petit effet "boing".
 
 Nous allons faire tout cela juste après l'animation précédente donc dans la méthode `showQuestionView`. Nous ramenons déjà la vue au centre de l'écran avec la ligne :
 
@@ -935,7 +935,7 @@ Nous devons maintenant réduire sa taille. Et pour cela, nous allons utiliser un
 CGAffineTransform(scaleX: CGFloat, y: CGFloat)
 ```
 
-Cette transformation prends en paramètre deux échelles d'agrandissement en largeur sur les x et en hauteur sur les y. Si on veut doubler la largeur et tripler la hauteur, on écrit 2 et 3. Ici, on veut réduire la taille donc on va écrire :
+Cette transformation prend en paramètre deux échelles d'agrandissement en largeur sur les x et en hauteur sur les y. Si on veut doubler la largeur et tripler la hauteur, on écrit 2 et 3. Ici, on veut réduire la taille donc on va écrire :
 
 ```swift
 questionView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -947,7 +947,7 @@ La vue est maintenant de retour au centre et toute petite, tellement qu'on ne la
 UIView.animate(withDuration: TimeInterval, delay: TimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: [UIViewAnimationOption], animations: () -> Void, completion: (Bool) -> Void)
 ```
 
-Cette méthode permet d'animer les propriétés de la vue en les faisant osciller autour de la valeur d'arrivée. Laissez moi vous expliquer cela avec ces deux animations :
+Cette méthode permet d'animer les propriétés de la vue en les faisant osciller autour de la valeur d'arrivée. Laissez-moi vous expliquer cela avec ces deux animations :
 
 ![](Images/P4/P4C5_4.gif)
 
@@ -958,7 +958,7 @@ Et c'est ce que nous allons faire ici. Parcourons un peu les paramètres de cett
 - *delay* : Cela permet de décaler le démarrage de l'animation. Nous n'en avons pas besoin ici.
 - *damping* : Ce paramètre peut être choisi entre 0 et 1. Plus on est proche de 0, plus il y aura d'oscillations autour de la valeur d'arrivée.
 - *initialVelocity* : Cela permet de choisir la vitesse de départ de la vue lors de l'animation. Plus elle sera rapide, plus les oscillations seront grandes.
-- *options* : Ici, on peut préciser des options pour notre animation. Ici, nous n'allons pas en avoir besoin mais vous pouvez allez regarder les options disponibles [ici](https://developer.apple.com/documentation/uikit/uiviewanimationoptions).
+- *options* : Ici, on peut préciser des options pour notre animation. Ici, nous n'allons pas en avoir besoin, mais vous pouvez allez regarder les options disponibles [ici](https://developer.apple.com/documentation/uikit/uiviewanimationoptions).
 - *animations* et *completion* : les mêmes fermetures que pour la méthode utilisée précédemment.
 
 Avec toutes ces informations, nous allons pouvoir utiliser notre méthode :
@@ -1104,7 +1104,7 @@ class ViewController: UIViewController {
 
 #### En résumé
 - Il existe de nombreux moyens de faire des animations en iOS. Mais ce que vous utiliserez dans la plupart des cas, ce sont les `UIView Animation`.
-- Les `UIView Animation` permette d'animer facilement certaines propriétés de UIView comme `frame`, `alpha`, `transform` et `backgroundColor`.
+- Les `UIView Animation` permettent d'animer facilement certaines propriétés de UIView comme `frame`, `alpha`, `transform` et `backgroundColor`.
 - Pour créer une `UIView Animation`, on utilise l'une des variantes de la méthode de classe `animate` de `UIView`.
 - Les animations *spring* permettent de créer un effet d'oscillation autour de la valeur d'arrivée de l'animation.
 
@@ -1122,7 +1122,7 @@ Au fur et à mesure de nos avancées dans ce cours, nous avons conçu ce schéma
 
 La règle principale à retenir, c'est que **le modèle et la vue ne peuvent pas communiquer directement**. Ils ne sont même pas au courant de l'existence l'un de l'autre. Ils communiquent **via le contrôleur**.
 
-Le contrôleur a le droit lui de s'addresser directement au modèle et à la vue :
+Le contrôleur a le droit lui de s'adresser directement au modèle et à la vue :
 - **via les propriétés** pour le modèle
 - **via les outlets** pour la vue.
 
@@ -1144,12 +1144,12 @@ Vous avez approfondi vos connaissances de Swift en découvrant les notions suiva
 ##### iOS
 Nous avons vu surtout de nombreuses techniques propres à iOS :
 - `UIView` : nous avons vu en long en large et en travers cette classe :
-	- Plusieurs de ses propriétés comme `isHidden`, `backgroundColor` etc.
-	- Le système de hiréarchie d'une vue
+	- Plusieurs de ses propriétés comme `isHidden`, `backgroundColor`, etc.
+	- Le système de hiérarchie d'une vue
 	- Le système de coordonnées avec `frame`, `bounds` et les classes `CGFloat`, `CGPoint`, `CGSize` et `CGRect`
 	- La plupart de ses sous-classes. Ce sont les composants par défaut en iOS.
 	- Créer une vue customisée en préparant notre propre sous-classe de UIView.
-- Nous avons également vue **les notifications** comme mode de communication.
+- Nous avons également vu **les notifications** comme mode de communication.
 - Interpréter les **gestes** sur l'écran tactile avec `UIGestureRecognizer`
 - Créer des **animations** avec `UIView Animation`.
 
@@ -1164,21 +1164,21 @@ Enfin, nous avons vu plusieurs techniques d'Xcode :
 - Le **control-drag** pour relier le contrôleur et les vues du storyboard
 
 #### Aller plus loin
-Bien sûr il reste énormément de choses que vous aurez le loisir de découvrir si vous le souhaiter ! Mais à partir de maintenant, vous avez un niveau suffisant pour commencer à explorer ce vaste domaine par vous même ! Et je vous encourage fortement à le faire ! D'ailleurs dans l'activité qui termine ce cours, vous devez d'une part montrer que vous avez suivi le cours en ayant développé l'application mais aussi **l'améliorer avec la(les) modification(s) de votre choix**.
+Bien sûr il reste énormément de choses que vous aurez le loisir de découvrir si vous le souhaitez ! Mais à partir de maintenant, vous avez un niveau suffisant pour commencer à explorer ce vaste domaine par vous même ! Et je vous encourage fortement à le faire ! D'ailleurs dans l'activité qui termine ce cours, vous devez d'une part montrer que vous avez suivi le cours en ayant développé l'application, mais aussi **l'améliorer avec la(les) modification(s) de votre choix**.
 
 Si vous n'êtes pas inspiré, voici quelques idées :
-- Créer une animations lorsque le score augmente
+- Créer une animation lorsque le score augmente
 - Créer une animation spécifique pour la fin de partie
 - Créer un geste pour lancer une nouvelle partie
 - Modifier le design de l'application
 - etc.
 
 #### La suite ?
-Pour poursuivre votre apprentissage avec iOS, nous allons continuer notre travail sur OpenQuizz. En effet, cette application fonctionne très bien mais elle est souvent moche...
+Pour poursuivre votre apprentissage avec iOS, nous allons continuer notre travail sur OpenQuizz. En effet, cette application fonctionne très bien, mais elle est souvent moche...
 
 > **:question:** Pardon ?!
 
-Et oui, nous ne la faisons fonctioner uniquement sur un iPhone 7. Mais faîtes l'expérience de lancer l'application sur iPhone 7 plus, un iPhone 4S ou un iPad. Vous verrez que l'interface ne s'adapte pas du tout aux différentes tailles d'écran. Et si on veut utiliser cette application en mode paysage au lieu du mode portrait ? Qu'est-ce que ça donnerait ? Donc oui, sur la plupart des écrans, notre application n'est pas très belle...
+Eh oui, nous ne la faisons fonctionner uniquement sur un iPhone 7. Mais faîtes l'expérience de lancer l'application sur iPhone 7 plus, un iPhone 4S ou un iPad. Vous verrez que l'interface ne s'adapte pas du tout aux différentes tailles d'écran. Et si on veut utiliser cette application en mode paysage au lieu du mode portrait ? Qu'est-ce que ça donnerait ? Donc oui, sur la plupart des écrans, notre application n'est pas très belle...
 
 Mais rassurez-vous, c'est un problème que nous allons résoudre dans **le prochain cours sur iOS qui traite justement des applications réactives** (*responsive* en anglais) ! Je vous y retrouve très vite !
 
