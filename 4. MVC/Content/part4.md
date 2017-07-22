@@ -1109,7 +1109,79 @@ class ViewController: UIViewController {
 - Les animations *spring* permettent de créer un effet d'oscillation autour de la valeur d'arrivée de l'animation.
 
 ### Conclusion
+Félicitations ! Vous êtes arrivés à la fin de ce cours et vous avez conçu de A à Z une application relativement sophistiquée ! Ce cours était riche et tout n'était pas trivial donc bravo pour avoir assimiler toutes ces connaissances. Vous maîtrisez maintenant une grande partie des techniques fondamentales d'iOS.
 
-Section 1 : Résumé  
-Section 2 : Emmenez cette application plus loin (donner des idées d’améliorations)  
-Section 3 : Vers le prochain cours  
+#### Le MVC
+Résumons un peu ce que nous avons vu ensemble. Et commençons par le plus important de loin : le **MVC**. Le MVC c'est donc un schéma de conception qui vous permet d'architecturer votre code. Car une application sans architecture, ça ne tient pas debout !
+
+> **:information_source:** Le MVC est la plus simple architecture que vous puissiez utiliser en iOS et donc pas la plus robuste. Mais elle reste extrêmement répandue et vous suffira largement pendant tout votre apprentissage d'iOS. Et si vous vous y tenez avec beaucoup de rigueur, vous arriverez très facilement à intégrer des architectures plus complexes.
+
+Au fur et à mesure de nos avancées dans ce cours, nous avons conçu ce schéma du MVC.
+
+![](Images/P4/P4C5_1.png)
+
+La règle principale à retenir, c'est que **le modèle et la vue ne peuvent pas communiquer directement**. Ils ne sont même pas au courant de l'existence l'un de l'autre. Ils communiquent **via le contrôleur**.
+
+Le contrôleur a le droit lui de s'addresser directement au modèle et à la vue :
+- **via les propriétés** pour le modèle
+- **via les outlets** pour la vue.
+
+Mais l'inverse n'est pas vrai, la vue et le modèle ne peuvent pas s'adresser directement au contrôleur :
+- Le modèle s'adresse au contrôleur **via les notifications**
+- La vue s'adresse au contrôleur **via les actions**
+
+Dans les prochains cours sur iOS, nous continuerons à utiliser et à explorer le modèle MVC et nous apprendrons ensemble à utiliser d'autres modes de communications entre ces différents blocs. On fera même interagir plusieurs MVC ensemble !
+
+#### Les techniques
+Dans ce cours, nous avons appris de nombreuses techniques de développement.
+
+##### Swift
+Vous avez approfondi vos connaissances de Swift en découvrant les notions suivantes :
+- Les **structures**
+- Les **fermetures** et le **type fonction**
+- Le **type optionnel déballé**
+
+##### iOS
+Nous avons vu surtout de nombreuses techniques propres à iOS :
+- `UIView` : nous avons vu en long en large et en travers cette classe :
+	- Plusieurs de ses propriétés comme `isHidden`, `backgroundColor` etc.
+	- Le système de hiréarchie d'une vue
+	- Le système de coordonnées avec `frame`, `bounds` et les classes `CGFloat`, `CGPoint`, `CGSize` et `CGRect`
+	- La plupart de ses sous-classes. Ce sont les composants par défaut en iOS.
+	- Créer une vue customisée en préparant notre propre sous-classe de UIView.
+- Nous avons également vue **les notifications** comme mode de communication.
+- Interpréter les **gestes** sur l'écran tactile avec `UIGestureRecognizer`
+- Créer des **animations** avec `UIView Animation`.
+
+##### Xcode
+Enfin, nous avons vu plusieurs techniques d'Xcode :
+- Comment gérer les **images** avec l'`asset catalog`
+- Comment gérer les **polices**, ce qui nous a permis de découvrir le fichier `info.plist`
+- Comment créer une **palette de couleur**
+- Comment modifier l'**icône** d'une application
+- La **page de lancement**
+- Manipuler le **storyboard** pour créer une interface
+- Le **control-drag** pour relier le contrôleur et les vues du storyboard
+
+#### Aller plus loin
+Bien sûr il reste énormément de choses que vous aurez le loisir de découvrir si vous le souhaiter ! Mais à partir de maintenant, vous avez un niveau suffisant pour commencer à explorer ce vaste domaine par vous même ! Et je vous encourage fortement à le faire ! D'ailleurs dans l'activité qui termine ce cours, vous devez d'une part montrer que vous avez suivi le cours en ayant développé l'application mais aussi **l'améliorer avec la(les) modification(s) de votre choix**.
+
+Si vous n'êtes pas inspiré, voici quelques idées :
+- Créer une animations lorsque le score augmente
+- Créer une animation spécifique pour la fin de partie
+- Créer un geste pour lancer une nouvelle partie
+- Modifier le design de l'application
+- etc.
+
+#### La suite ?
+Pour poursuivre votre apprentissage avec iOS, nous allons continuer notre travail sur OpenQuizz. En effet, cette application fonctionne très bien mais elle est souvent moche...
+
+> **:question:** Pardon ?!
+
+Et oui, nous ne la faisons fonctioner uniquement sur un iPhone 7. Mais faîtes l'expérience de lancer l'application sur iPhone 7 plus, un iPhone 4S ou un iPad. Vous verrez que l'interface ne s'adapte pas du tout aux différentes tailles d'écran. Et si on veut utiliser cette application en mode paysage au lieu du mode portrait ? Qu'est-ce que ça donnerait ? Donc oui, sur la plupart des écrans, notre application n'est pas très belle...
+
+Mais rassurez-vous, c'est un problème que nous allons résoudre dans **le prochain cours sur iOS qui traite justement des applications réactives** (*responsive* en anglais) ! Je vous y retrouve très vite !
+
+Mais en attendant, il faut terminer ce cours. Et le mot de la fin, bien sûr c'est :
+
+![](Images/P4/P4C5_2.jpg)
