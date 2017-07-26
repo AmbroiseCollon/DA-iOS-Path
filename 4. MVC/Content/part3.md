@@ -425,6 +425,7 @@ Donc pour faire la connexion, nous allons rajouter ce qu'on appelle un décorate
 @IBOutlet private var label: UILabel?
 @IBOutlet private var icon: UIImageView?
 ```
+> These should be weak as they are coming from a nib
 
 Le mot-clé `@IBOutlet` notifie Xcode que ces propriétés sont susceptibles d'être connectées à une vue dans Interface Builder. En reconnaissant ce mot-clé, Xcode rajoute un petit rond à côté de nos propriétés :
 
@@ -435,6 +436,7 @@ C'est ce petit rond qui va nous permettre de faire la connexion.
 Pour cela, nous allons retourner dans le storyboard. Et nous allons nous placer en mode assistant. En mode assistant, pour choisir le fichier à afficher sur la droite, vous pouvez naviguer comme ceci :
 
 ![](Images/P3/P3C4_8.gif)
+> Is "Automatic" not better for beginers? as it shows only the current View Controllers, if the instance of QuestionView is selected it should show up in the automatic folder.
 
 Choisissez le fichier `QuestionView.swift`. Et nous allons maintenant faire la connexion entre la propriété et la vue correspondante. Pour cela, nous allons glisser depuis le petit rond vers la vue comme ceci :
 
@@ -653,6 +655,8 @@ C'est tout pour notre classe ! D'une vue assez complexe, nous en avons fait une 
 À la fin de ce chapitre, votre classe doit ressembler à ceci :
 
 ![](Images/P3/P3C5_8.png)
+
+> why not use color literals as you did for images?
 
 #### En Résumé
 - Pour changer le texte qu'affiche un `UILabel`, on utilise la propriété `text` de type `String`.

@@ -15,6 +15,9 @@ Dans ce chapitre, nous allons commencer par connecter le contrôleur et la vue.
 
 Concrètement le contrôleur, c'est le fichier `ViewController.swift` qui a été créé automatiquement par Xcode au début du projet.
 
+> Technically, I beleve, acording to pure MVC, the iOS view controller is not "the" controller but it controllers a single view. however, most of the time one of the lowest view controllers acts as the (MVC) controller as well as controlling its view components. Note that in most cases abstracting out a pure MVC controller class over complicates the code for no reason. so best to stick to iOS view controller as presented here.
+> **note** Whilst you would most likely loose most beginers with this information it could help an MVC purist trying his hand at iOS.  
+
 Dans ce fichier, nous avons une classe `ViewController` qui hérite de `UIViewController`. Cette classe contient déjà deux méthodes :
 
 ```swift
@@ -32,6 +35,8 @@ override func didReceiveMemoryWarning() {
 La première méthode est appelée lorsque **le contrôleur a fini d'être chargé** donc dans notre cas au lancement de l'application. Nous allons en avoir besoin dans le prochain chapitre pour faire quelques initialisations.
 
 La deuxième méthode est appelée lorsque le contrôleur doit retenir trop d'informations et qu'**il n'a plus de place en mémoire** pour les stocker. Dans ce cas, il faut libérer de la place. Nous ne rencontrerons pas ce problème donc vous pouvez supprimer la méthode.
+
+> possibaly go through the whole view controller lifecycle here. Most beginers that have asked me for help often get confused on the actual order of things. although there is enough to say to make a lesson just on that subject! maybe just introduce the main ones (viewDidLoad, viewWillAppear, viewWillLayoutSubviews, viewDidLayoutSubviews, viewDidAppear, viewWillDisappear, viewDidDisappear)
 
 #### Les outlets
 
@@ -153,6 +158,8 @@ Vous pouvez cliquer sur *connect* et Xcode génère le code suivant :
 ```
 
 Notre action est créée. La méthode `startNewGame` va être appelée à chaque fois que l'on clique sur le bouton.
+
+> When naming button response method I prefer to detail the event rather than the intent of the action. So didTapNewGameButton() says what happend. startNewGame method would not nesesaerally happen only on the press of a button and should therefor not be the button action.
 
 #### Implémenter startNewGame
 Il ne nous reste plus qu'à implémenter notre méthode `startNewGame`. Réfléchissons un peu à ce qu'elle fait. Elle lance une nouvelle partie donc :
@@ -386,6 +393,7 @@ override func viewDidLoad() {
 	startNewGame() // On lance une partie tout de suite
 }
 ```
+> note here that as of ios 11 selectors will need to be declared as @objc as it requires the objective interface
 
 #### En résumé
 - Le contrôleur peut faire appel au modèle via ses propriétés.
@@ -703,6 +711,7 @@ private func answerQuestion() {
 }
 ```
 
+> note that the method game.answerCurrentQuestion returns the score value. This should be handled even if only by _ =
 Si la vue question est dans le style `correct`, l'utilisateur réponds vrai à la question et inversement.
 
 ##### Mettre à jour le score
@@ -711,6 +720,8 @@ La méthode `answerCurrentQuestion` met à jour le score de la partie. Donc nous
 ```swift
 scoreLabel.text = "\(game.score) / 10"
 ```
+> note thae game.score is private in the file attached in privious lesson.
+> answerCurrentQuestion return's the score to update the label with
 
 ##### Afficher la nouvelle question
 Enfin, il faut afficher la question suivante. Pour cela, nous allons commencer par replacer la vue question à sa place d'origine. Pour cela, nous allons utiliser une instance spéciale de `CGAffineTransform` : `identity`. Cette transformation est la **transformation identité** et permet donc de ramener la vue à son état d'origine.
@@ -818,6 +829,8 @@ Il existe de nombreux moyens de faire des animations en iOS. Voici la plupart d'
 - `SpriteKit` pour des jeux en 2D
 - `Dynamic Animation` pour des animations avec des règles physiques comme la gravité, les collisions, etc.
 
+> Metal could have a mention at this point.
+
 Nous n'aborderons pas toutes ces techniques ensemble car ce serait trop long. Et puis, si vous ne programmez pas des jeux, les deux premiers couvrent 99% de vos besoins. Et le premier en couvre à lui tout seul 80%.
 
 Donc nous allons nous concentrer dans ce chapitre sur `UIView Animation`. `UIView Animation` comme son nom l'indique permet d'animer les propriétés des vues et en particulier :
@@ -860,8 +873,10 @@ Pour faire disparaître la vue, on va la faire glisser vers la droite si la rép
 ```swift
 let screenWidth = view.frame.width
 ```
+> note this is not always correct depending on where we are in the lifecycle. UIScreen.main.bounds.size
 
 Puis on va créer une translation vers la droite ou vers la gauche en fonction de la réponse choisie :
+
 ```swift
 var translationTransform: CGAffineTransform
 if questionView.style == .correct {
