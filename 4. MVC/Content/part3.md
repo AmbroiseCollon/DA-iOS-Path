@@ -257,7 +257,7 @@ Pour cela, il suffit d'aller dans l'inspecteur d'attribut et de cocher la case *
 
 ![](Images/P3/P3C3_3ter.png)
 
-Ainsi notre indicateur d'activité au lancement de l'application.
+Ainsi notre indicateur d'activité sera caché au lancement de l'application.
 
 #### Ajouter un label
 Nous allons maintenant afficher le score de la partie en cours. Une partie c'est 10 questions, donc le score aura pour format : *X / 10*.

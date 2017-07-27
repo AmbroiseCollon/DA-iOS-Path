@@ -266,7 +266,7 @@ func double(a: Int) -> Int { (...) } // (Int) -> Int
 func multiplie(a: Int, b: Int) -> Int { (...) } // (Int, Int) -> Int
 func envoyer(message: String) -> Bool { (...) } // (String) -> Bool
 func annuler() { (...) } // () -> ()
-func annuler() -> Void { (...) } // () -> Void
+func annuler() { (...) } // () -> Void
 func saluer(personne: String) // (String) -> ()
 ```
 Ce n'est donc pas plus compliqué que ça ! Donc si on fait le travail inverse : le type `([Question]) -> ()` décrit une fonction qui prend en paramètre un tableau de questions et qui ne renvoie pas de valeur.

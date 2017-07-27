@@ -8,11 +8,11 @@
     </defs>
     <g id="P4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="P4C4_2">
-            <text id="Bord-droit-de-l’écra" transform="translate(63.000000, 128.500000) rotate(270.000000) translate(-63.000000, -128.500000) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#5B8EC9">
-                <tspan x="-20.1542969" y="135.5">Bord droit de l’écran</tspan>
+            <text id="Bord-gauche-de-l’écr" transform="translate(63.000000, 128.500000) rotate(270.000000) translate(-63.000000, -128.500000) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#5B8EC9">
+                <tspan x="-33.2890625" y="135.5">Bord gauche de l’écran</tspan>
             </text>
-            <text id="Bord-gauche-de-l’écr" transform="translate(639.000000, 128.000000) rotate(90.000000) translate(-639.000000, -128.000000) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#5B8EC9">
-                <tspan x="542.710938" y="135">Bord gauche de l’écran</tspan>
+            <text id="Bord-droit-de-l’écra" transform="translate(639.000000, 128.000000) rotate(90.000000) translate(-639.000000, -128.000000) " font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#5B8EC9">
+                <tspan x="555.845703" y="135">Bord droit de l’écran</tspan>
             </text>
             <g id="Group-2" transform="translate(74.000000, 0.000000)">
                 <mask id="mask-2" fill="white">

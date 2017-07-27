@@ -122,7 +122,7 @@
                     </text>
                     <text id="Description" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" fill="#FFFFFF">
                         <tspan x="238" y="28">Permet de sélectionner une catégorie </tspan>
-                        <tspan x="238" y="52">parmie une petite liste de choix.</tspan>
+                        <tspan x="238" y="52">parmi une petite liste de choix.</tspan>
                     </text>
                 </g>
                 <g id="Composant/2_lines" transform="translate(0.000000, 162.000000)">
