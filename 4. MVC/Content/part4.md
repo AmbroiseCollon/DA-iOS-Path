@@ -138,7 +138,7 @@ Pour créer une action, on va faire comme pour les outlets. On va effectuer un c
 
 ![](Images/P4/P4C1_6.png)
 
-Il y a nouveau plusieurs paramètres ici :
+Il y à nouveau plusieurs paramètres ici :
 - *Connection* et *Object* : même chose que pour les outlets.
 - *Name* : le **nom de la méthode** que nous allons créer. Ici je vous propose `startNewGame`.
 - *Type* : Nous allons créer une méthode. Cette méthode peut avoir des paramètres comme l'évènement et la vue dont vient l'action, appelée le *sender*. Si on souhaite avoir le sender en paramètre de la méthode, on peut choisir ici le **type du sender**.
@@ -166,8 +166,8 @@ Nous allons nous concentrer sur les points 2 et 3 dans le prochain chapitre car 
 
 Nous allons donc :
 - Cacher le bouton : cela permet d'empêcher l'utilisateur de lancer un nouveau chargement.
-- Afficher l'indicateur d'activité : pour notifier l'utilisateur que le chargement est en cours
-- Remettre le score à zéro
+- Afficher l'indicateur d'activité : pour notifier l'utilisateur que le chargement est en cours.
+- Remettre le score à zéro.
 - Remettre la vue question dans le style `standard` : son style a pu avoir été modifié plus tôt si l'utilisateur était en train de jouer.
 - Afficher "*Loading...*" dans la vue question.
 
@@ -268,7 +268,7 @@ Revenons un peu sur le fonctionnement de cette méthode :
 2. Elle va chercher de nouvelles questions sur internet
 3. Quand les questions sont chargées :
 	- Elle stocke les questions dans la propriété `questions` de la classe `Game`
-	- Elle envoie une notification pour prévenir qui veut que les questions sont chargées.
+	- Elle envoie une notification pour prévenir que les questions sont chargées.
 
 Les notifications sont un des moyens qu'a le modèle de s'adresser au contrôleur. Nous avons déjà géré l'envoi de la notification, mais pas la réception.
 
@@ -332,14 +332,14 @@ func questionsLoaded() {
 ```
 Ça y est ! Notre contrôleur observe maintenant la notification et dès que les questions seront chargées, il sera prévenu et pourra exécuter la méthode `questionsLoaded`.
 
-> **:information_source:** On utilise principalement les sélecteurs pour les notifications. C'est un héritage d'Objective-C. Dans les autres cas, on préfère utiliser les fermetures que nous avons vu précédemment.
+> **:information_source:** On utilise principalement les sélecteurs pour les notifications. C'est un héritage d'Objective-C. Dans les autres cas, on préfère utiliser les fermetures que nous avons vues précédemment.
 
 #### Implémenter questionsLoaded
 
 Il ne nous reste plus qu'à implémenter la méthode `questionsLoaded`. Lorsque les questions sont chargées, nous allons faire plusieurs choses :
 1. Cacher l'indicateur d'activité : le chargement est terminé, il peut disparaître.
-2. Montrer le bouton : la partie a commencé, l'utilisateur peut décider d'en charger tout de suite une nouvelle s'il n'aime pas la première question qu'on lui propose par exemple.
-3. Afficher la première question de la partie
+2. Montrer le bouton : la partie a commencé, l'utilisateur peut décider d'en charger tout de suite une nouvelle s'il n'aime pas la première question qu'on lui propose.
+3. Afficher la première question de la partie.
 
 ##### Cacher l'indicateur d'activité et montrer le bouton
 Vous commencez à être habitué maintenant à cacher et à montrer des choses grâce à la propriété `isHidden`. Donc je vous laisse essayer et je vous donne la correction :
@@ -414,7 +414,7 @@ Ah bon... ?
 
 > **:question:**, Mais oui ! On vient de voir avec les actions que je peux répondre à l'appui sur le bouton !
 
-Bien vu ! Tous les composants par défaut que je vous ai présenté ont pour la plupart des gestes prédéfinis. Donc pour ceux-là, vous n'aurez pas besoin de `UIGestureRecognizer`.
+Bien vu ! Tous les composants par défaut que je vous ai présentés ont pour la plupart des gestes prédéfinis. Donc pour ceux-là, vous n'aurez pas besoin de `UIGestureRecognizer`.
 
 Pour tous les autres cas, vous en aurez besoin. Simple, non ?
 
@@ -703,7 +703,7 @@ private func answerQuestion() {
 }
 ```
 
-Si la vue question est dans le style `correct`, l'utilisateur réponds vrai à la question et inversement.
+Si la vue question est dans le style `correct`, l'utilisateur répond "vrai" à la question et inversement.
 
 ##### Mettre à jour le score
 La méthode `answerCurrentQuestion` met à jour le score de la partie. Donc nous pouvons ensuite afficher le score mis à jour :
@@ -831,7 +831,7 @@ Dans ce chapitre, nous allons principalement animer la propriété `transform`. 
 ![](Images/P4/P4C5_2.gif)
 
 Cette animation a lieu en deux temps :
-- Lorsqu'on lâche la vue, la vue glisse vers la droite où vers la gauche selon l'endroit où nous l'avons lâcher.
+- Lorsqu'on lâche la vue, la vue glisse vers la droite où vers la gauche selon l'endroit où nous l'avons lâchée.
 - Ensuite, elle réapparaît au milieu avec une animation comme si elle arrivait par le fond avec un effet "boing".
 
 #### Créer une animation
@@ -954,7 +954,7 @@ Cette méthode permet d'animer les propriétés de la vue en les faisant oscille
 Dans la première animation, la vue va du point de départ au point d'arrivée simplement. Dans la deuxième, elle va plus rapidement au point d'arrivée et ensuite elle oscille autour du point d'arrivée avant de trouver sa position finale. On appelle cela une animation *spring*.
 
 Et c'est ce que nous allons faire ici. Parcourons un peu les paramètres de cette grosse méthode :
-- *duration* : La durée de l'animation comme tout à l'heure
+- *duration* : La durée de l'animation comme tout à l'heure.
 - *delay* : Cela permet de décaler le démarrage de l'animation. Nous n'en avons pas besoin ici.
 - *damping* : Ce paramètre peut être choisi entre 0 et 1. Plus on est proche de 0, plus il y aura d'oscillations autour de la valeur d'arrivée.
 - *initialVelocity* : Cela permet de choisir la vitesse de départ de la vue lors de l'animation. Plus elle sera rapide, plus les oscillations seront grandes.
@@ -1109,7 +1109,7 @@ class ViewController: UIViewController {
 - Les animations *spring* permettent de créer un effet d'oscillation autour de la valeur d'arrivée de l'animation.
 
 ### Conclusion
-Félicitations ! Vous êtes arrivés à la fin de ce cours et vous avez conçu de A à Z une application relativement sophistiquée ! Ce cours était riche et tout n'était pas trivial donc bravo pour avoir assimiler toutes ces connaissances. Vous maîtrisez maintenant une grande partie des techniques fondamentales d'iOS.
+Félicitations ! Vous êtes arrivés à la fin de ce cours et vous avez conçu de A à Z une application relativement sophistiquée ! Ce cours était riche et tout n'était pas trivial donc bravo pour avoir assimilé toutes ces connaissances. Vous maîtrisez maintenant une grande partie des techniques fondamentales d'iOS.
 
 #### Le MVC
 Résumons un peu ce que nous avons vu ensemble. Et commençons par le plus important de loin : le **MVC**. Le MVC c'est donc un schéma de conception qui vous permet d'architecturer votre code. Car une application sans architecture, ça ne tient pas debout !
@@ -1124,11 +1124,11 @@ La règle principale à retenir, c'est que **le modèle et la vue ne peuvent pas
 
 Le contrôleur a le droit lui de s'adresser directement au modèle et à la vue :
 - **via les propriétés** pour le modèle
-- **via les outlets** pour la vue.
+- **via les outlets** pour la vue
 
 Mais l'inverse n'est pas vrai, la vue et le modèle ne peuvent pas s'adresser directement au contrôleur :
-- Le modèle s'adresse au contrôleur **via les notifications**
-- La vue s'adresse au contrôleur **via les actions**
+- Le modèle s'adresse au contrôleur **via les notifications**.
+- La vue s'adresse au contrôleur **via les actions**.
 
 Dans les prochains cours sur iOS, nous continuerons à utiliser et à explorer le modèle MVC et nous apprendrons ensemble à utiliser d'autres modes de communications entre ces différents blocs. On fera même interagir plusieurs MVC ensemble !
 
@@ -1143,7 +1143,7 @@ Vous avez approfondi vos connaissances de Swift en découvrant les notions suiva
 
 ##### iOS
 Nous avons vu surtout de nombreuses techniques propres à iOS :
-- `UIView` : nous avons vu en long en large et en travers cette classe :
+- `UIView` : nous avons vu en long en large et en travers cette classe, et…
 	- Plusieurs de ses propriétés comme `isHidden`, `backgroundColor`, etc.
 	- Le système de hiérarchie d'une vue
 	- Le système de coordonnées avec `frame`, `bounds` et les classes `CGFloat`, `CGPoint`, `CGSize` et `CGRect`
