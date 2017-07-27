@@ -206,7 +206,7 @@ Apple fournit avec le framework *UIKit*, plusieurs composants qui sont prêts à
 
 > **:information_source:** Comme je suis sympa, je vous ai fait une petite application qui vous présente les principaux composants à votre disposition en iOS. Je vous invite fortement à la [télécharger](https://github.com/AmbroiseCollon/Discovering-UIKit-Components) et à jouer avec, c'est le meilleur moyen de les découvrir !
 
-Vous apprendrez à utiliser la plupart d'entre eux par vous-même au fur et à mesure de votre besoin. Une fois qu'on en a utilisé un ou deux, c'est assez facile. Ici, je vais seulement vous les présenter pour que vous les connaissiez et ayez le réflexe d'aller les utiliser le jour où vous en aurez besoin.
+Vous apprendrez à utiliser la plupart d'entre eux par vous-même au fur et à mesure de votre besoin. Une fois qu'on en a utilisé un ou deux, c'est assez facile. Ici, je vais seulement vous les présenter pour que vous les connaissiez et ayiez le réflexe d'aller les utiliser le jour où vous en aurez besoin.
 
 En plus de l'application, je vous ai résumé la liste des composants dans ce tableau :
 
@@ -234,7 +234,7 @@ Ensuite dans l'**inspecteur d'attributs** sur la droite, vous avez **toutes les 
 
 ![](Images/P3/P3C3_2.gif)
 
-> **:information_source:** A retenir que lorsque vous souhaitez utiliser une police de votre choix, il faut donc choisir *custom*.
+> **:information_source:** A retenir que lorsque vous souhaitez utiliser une police de votre choix, il faut choisir *custom*.
 
 Maintenant nous allons changer la couleur de fond du bouton. Et pour cela, nous allons faire comme pour la couleur de fond de la vue principale, les deux sont des `UIView` et donc les deux ont une propriété *background* que vous trouverez en descendant dans l'inspecteur d'attribut. Cette fois-ci, je vous suggère de choisir le bleu clair. Votre bouton doit maintenant ressembler à ceci :
 
@@ -615,11 +615,11 @@ La classe `UIImage` a un initialiseur qui prend en paramètre le nom de l'image 
 UIImage(named: String)
 ```
 
-Le nom a indiqué est le nom que l'on a choisi pour l'image dans l'*asset catalog* :
+Le nom à indiquer est le nom que l'on a choisi pour l'image dans l'*asset catalog* :
 
 ![](Images/P3/P3C5_3.png)
 
-Donc par exemple pour que notre icône affiche le signe validé vert, nous allons écrire :
+Donc pour que notre icône affiche le signe validé vert, nous allons écrire :
 
 ```swift
 icon.image = UIImage(named: "Icon Correct")
