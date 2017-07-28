@@ -140,7 +140,7 @@ Pour créer une action, on va faire comme pour les outlets. On va effectuer un c
 
 Il y a nouveau plusieurs paramètres ici :
 - *Connection* et *Object* : même chose que pour les outlets.
-- *Name* : le **nom de la méthode** que nous allons créer. Ici je vous propose `startNewGame`.
+- *Name* : le **nom de la méthode** que nous allons créer. Ici je vous propose `didTapNewGameButton`.
 - *Type* : Nous allons créer une méthode. Cette méthode peut avoir des paramètres comme l'évènement et la vue dont vient l'action, appelée le *sender*. Si on souhaite avoir le sender en paramètre de la méthode, on peut choisir ici le **type du sender**.
 - *Event* : Une action est associée à un **évènement**. Cet évènement représente le geste que doit réaliser l'utilisateur pour que l'action ait lieu. Par défaut, pour un bouton, cet évènement est *Touch Up Inside*. Cela signifie un touché vers le haut à l'intérieur du bouton, c'est-à-dire le moment où le doigt quitte le bouton. Je vous invite à regarder la liste pour voir les autres types d'évènements possibles.
 - *Arguments* : Comme expliqué précédemment, la méthode peut avoir des **paramètres**. Ici on décide si on en a besoin ou non. J'ai choisi *None* pour aucun paramètre. Pour information, les autres possibilités sont le sender seul ou le sender et l'évènement.
@@ -148,11 +148,26 @@ Il y a nouveau plusieurs paramètres ici :
 Vous pouvez cliquer sur *connect* et Xcode génère le code suivant :
 
 ```swift
-@IBAction func startNewGame() {
+@IBAction func didTapNewGameButton() {
 }
 ```
 
-Notre action est créée. La méthode `startNewGame` va être appelée à chaque fois que l'on clique sur le bouton.
+Notre action est créée. La méthode `didTapNewGameButton` va être appelée à chaque fois que l'on clique sur le bouton.
+
+Pour différencier l'action et la logique qu'elle implique, je vous recommande de créer deux méthodes séparées. Nous allons donc rajouter une méthode `startNewGame` privée à notre classe :
+
+```swift
+private func startNewGame() {
+}
+```
+
+Cette méthode va pouvoir être appelée n'importe où dans le code et notamment dans la méthode `didTapNewGameButton` :
+
+```swift
+@IBAction func didTapNewGameButton() {
+	startNewGame()
+}
+```
 
 #### Implémenter startNewGame
 Il ne nous reste plus qu'à implémenter notre méthode `startNewGame`. Réfléchissons un peu à ce qu'elle fait. Elle lance une nouvelle partie donc :
@@ -175,7 +190,7 @@ Nous allons donc :
 Comme toutes les vues, les classes `UIButton` et `UIActivityIndicatorView` héritent de `UIView`. Elles ont donc accès à la propriété `isHidden` que nous avons vue dans la partie précédente. Nous avons donc simplement à écrire :
 
 ```swift
-@IBAction func startNewGame() {
+private func startNewGame() {
 	activityIndicator.isHidden = false
 	newGameButton.isHidden = true
 }
@@ -204,7 +219,7 @@ scoreLabel.text = "0 / 10"
 Et voilà ! Votre méthode `startNewGame` doit ressembler à ceci :
 
 ```swift
-@IBAction func startNewGame() {
+private func startNewGame() {
 	activityIndicator.isHidden = false
 	newGameButton.isHidden = true
 
@@ -250,7 +265,7 @@ Nous allons maintenant utiliser notre propriété `game` pour lancer une nouvell
 Pour télécharger de nouvelles questions, nous allons utiliser la méthode `refresh` de la classe `Game` que nous avons créée ensemble. Et nous allons faire cela, lorsque l'utilisateur appuie sur le bouton pour lancer une nouvelle partie. Donc on va rajouter l'appel à la méthode `refresh` dans la méthode `startNewGame`.
 
 ```swift
-@IBAction func startNewGame() {
+private func startNewGame() {
 	activityIndicator.isHidden = false
 	newGameButton.isHidden = true
 
@@ -600,10 +615,10 @@ Pour que la rotation ait un effet satisfaisant, nous allons appliquer une rotati
 
 > **:information_source:** Libre à vous de choisir d'autres valeurs, après plusieurs essais, j'ai trouvé l'animation réussie avec ces valeurs, mais chacun ses goûts !
 
-Nous allons commencer par récupérer la largeur de l'écran :
+Nous allons commencer par récupérer la largeur de l'écran. Pour cela, on utilise la classe `UIScreen` et sa propriété de classe `main`. De cette propriété, on peut récupérer la propriété bounds que vous connaissez :
 
 ```swift
-var screenWidth = view.frame.width
+var screenWidth = UIScreen.main.bounds.width
 ```
 
 J'utilise la vue principale de notre contrôleur et j'accède à sa largeur via sa propriété `frame`.
@@ -611,7 +626,7 @@ J'utilise la vue principale de notre contrôleur et j'accède à sa largeur via 
 Avec cette information, nous allons pouvoir calculer l'angle en fonction de la translation de la vue :
 
 ```swift
-let translationPercent = translation.x/(view.frame.width / 2)
+let translationPercent = translation.x/(UIScreen.main.bounds.width / 2)
 let rotationAngle = (CGFloat.pi / 6) * translationPercent
 ```
 Je calcule d'abord où je suis par rapport au bord de l'écran. La valeur `translationPercent` peut varier entre `-100%` et `+100%`. Et ensuite j'applique ce pourcentage à π/6.
@@ -667,7 +682,7 @@ private func transformQuestionViewWith(gesture: UIPanGestureRecognizer) {
 
 	let translationTransform = CGAffineTransform(translationX: translation.x, y: translation.y)
 
-	let translationPercent = translation.x/(view.frame.width / 2)
+	let translationPercent = translation.x/(UIScreen.main.bounds.width / 2)
 	let rotationAngle = (CGFloat.pi / 3) * translationPercent
 	let rotationTransform = CGAffineTransform(rotationAngle: rotationAngle)
 
@@ -858,7 +873,7 @@ Dans la première fermeture, nous allons modifier les propriétés que l'on souh
 Pour faire disparaître la vue, on va la faire glisser vers la droite si la réponse est vraie et inversement si la réponse est fausse. Pour être certains qu'elle quitte l'écran, nous allons la faire glisser d'une distance égale à la largeur de l'écran. On commence donc par obtenir la largeur de l'écran :
 
 ```swift
-let screenWidth = view.frame.width
+let screenWidth = UIScreen.main.bounds.width
 ```
 
 Puis on va créer une translation vers la droite ou vers la gauche en fonction de la réponse choisie :
@@ -1003,7 +1018,11 @@ class ViewController: UIViewController {
         questionView.addGestureRecognizer(panGestureRecognizer)
     }
 
-    @IBAction func startNewGame() {
+		@IBAction func didTapNewGameButton() {
+			startNewGame()
+		}
+
+    private func startNewGame() {
         activityIndicator.isHidden = false
         newGameButton.isHidden = true
 
@@ -1039,7 +1058,7 @@ class ViewController: UIViewController {
 
         let translationTransform = CGAffineTransform(translationX: translation.x, y: translation.y)
 
-        let translationPercent = translation.x/(view.frame.width / 2)
+        let translationPercent = translation.x/(UIScreen.main.bounds.width / 2)
         let rotationAngle = (CGFloat.pi / 3) * translationPercent
         let rotationTransform = CGAffineTransform(rotationAngle: rotationAngle)
 
@@ -1065,7 +1084,7 @@ class ViewController: UIViewController {
 
         scoreLabel.text = "\(game.score) / 10"
 
-        let screenWidth = view.frame.width
+        let screenWidth = UIScreen.main.bounds.width
         var translationTransform: CGAffineTransform
         if questionView.style == .correct {
             translationTransform = CGAffineTransform(translationX: screenWidth, y: 0)

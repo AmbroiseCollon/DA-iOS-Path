@@ -606,6 +606,12 @@ private func setStyle(_ style: Style) {
 }
 ```
 
+Pour créer une couleur, Xcode propose également une fonctionnalité bien pratique les *color literal*. Si vous commencez à taper *color* dans Xcode, vous pouvez sélectionner la première suggestion : *Color Literal*. Ensuite, vous n'avez plus qu'à choisir la couleur de votre choix et la couleur s'affiche sous la forme d'un petit carré de couleur directement dans le code.
+
+![](Images/P3/P3C5_2bis.gif)
+
+C'est pratique mais parfois vous aurez besoin de `UIColor` donc c'est utile de connaître les deux options !
+
 ##### L'image
 Nous allons maintenant modifier notre image. La classe `UIImageView` a une propriété `image` de type `UIImage`. C'est cette propriété qui permet de modifier l'image qu'affiche une `UIImageView`.
 
@@ -627,7 +633,7 @@ icon.image = UIImage(named: "Icon Correct")
 
 On crée ainsi une instance de `UIImage` à partir du nom du fichier et on assigne cette valeur à la propriété `image` de notre `UIImageView`.
 
-Xcode propose une autre façon bien pratique de créer une instance de `UIImage`. Si on commence à taper le nom de l'image recherchée, Xcode nous la suggère directement :
+Comme pour les couleurs précédemment, Xcode propose une autre façon bien pratique de créer une instance de `UIImage`. Si on commence à taper le nom de l'image recherchée, Xcode nous la suggère directement :
 
 ![](Images/P3/P3C5_4.gif)
 

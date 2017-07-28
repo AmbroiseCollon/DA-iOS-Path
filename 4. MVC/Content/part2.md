@@ -241,6 +241,8 @@ Et on commence très fort ce chapitre avec déjà un exercice ! En effet, vous s
 
 Une fois l'exercice terminé, vous pouvez télécharger le fichier [Game.swift](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/Game.swift) et le glisser dans votre modèle (c'est la même opération que ce qu'on a fait avec la police Balham).
 
+> **:warning:** Le fichier est un tout petit peu différent que celui que vous avez créé dans l'exercice. La raison est simple, une fonction ne doit faire qu'une seule chose ! C'est un bon principe pour maintenir un code propre. Donc j'ai extrait quelques fonction privé pour simplifier la lecture du code. Je vous invite à y jeter un oeil.
+
 #### QuestionManager
 Notre quizz va charger ses questions depuis internet. Plus précisément, nous allons charger nos questions depuis la base de données de questions gratuites : [Open Triva Database](https://opentdb.com). Les requêtes réseau ne sont pas au programme de ce chapitre donc je l'ai fait pour vous. Vous pouvez donc télécharger le fichier : [QuestionManager.swift](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/QuestionManager.swift). Vous pouvez ensuite glisser ce fichier dans votre modèle.
 
@@ -360,9 +362,51 @@ Ensuite, en ajoutant un `print(questions)` dans la méthode `receiveQuestions`, 
 Vous voyez ? Nous avons réussi à utiliser cette méthode `get`. Ce n'était pas si dur finalement ! Notre méthode `refresh` est maintenant complète et permet de remettre à zéro les paramètres de la partie, de charger les questions et de relancer la partie.
 
 #### Exercice
-[Codevolve]  
-1/ Trouvez les types des fonctions suivantes  
-2/ Utiliser les types fonctions (à trouver)
+
+##### 1/ Trouvez les types des fonctions suivantes
+
+```swift
+func ajouterDeux(a: Int) -> Int { (...) }
+func additioner(a: Int, b: Int) -> Int { (...) }
+func envoyerMail(message: String, destinataire: String) -> Bool { (...) }
+func cocherLaCase(aCoché: Bool) { (...) }
+func verrouiller()
+func composerNumero(_ numero: Int)
+```
+
+Vous pouvez trouver la correction [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/TrouvezLesTypes.txt).
+
+##### 2/ Utiliser les types fonctions
+Dans cet exercice, on cherche à calculer la somme d'un tableau d'entier selon les règles suivantes :
+- si le nombre est pair, on le divise par deux avant de l'aditionner aux autres
+- si le nombre est impair, on ajoute un puis on le divise par deux avant de l'additioner aux autres
+
+Le code suivant vous est déjà fourni :
+
+```swift
+func diviserNombrePairParDeux(x: Int) -> Int {
+    return x / 2
+}
+
+func diviserNombreImpairParDeux(x: Int) -> Int {
+    return (x + 1) / 2
+}
+
+func obtenirDivision(x: Int) -> (Int) -> (Int) {
+	// complétez cette fonction
+}
+
+let tableau = [2, 12, 3, 14, 76, 19, 7, 22]
+var somme = 0
+
+for nombre in tableau {
+	// complétez cette boucle
+}
+```
+
+Vous devez compléter la fonction `obtenirDivision`. Cette fonction renvoie une des deux fonctions au dessus en fonction de la parité de son paramètre `x`. Vous noterez que le type de retour de cette fonction corresponds bien au type des deux fonctions du dessus. Ensuite, vous devez utiliser la fonction `obtenirDivision` pour compléter la boucle.
+
+Une fois l'exercice terminé, vous pouvez aller lire la correction [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/DivisionPairImpair.swift).
 
 #### En résumé
 - Les fonctions sont des types, on appelle cela le **type fonction**.
