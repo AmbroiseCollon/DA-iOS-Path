@@ -1,0 +1,47 @@
+=> func ajouterDeux(a: Int) -> Int { (...) }
+{ (a: Int) -> Int in
+// Corps de la fermeture
+}
+
+=> func additioner(a: Int, b: Int) -> Int { (...) }
+{ (a: Int, b: Int) -> Int in
+// Corps de la fermeture
+}
+
+=> func envoyerMail(message: String, destinataire: String) -> Bool { (...) }
+{ (message: String, destinataire: String) -> Bool in
+// Corps de la fermeture
+}
+
+=> func cocherLaCase(aCoché: Bool) { (...) }
+{ (aCoché: Bool) -> Void in
+// Corps de la fermeture
+}
+
+OU
+
+{ (aCoché: Bool) in
+// Corps de la fermeture
+}
+
+=> func verrouiller() { (...) }
+{ () -> Void in
+// Corps de la fermeture
+}
+
+OU
+
+{
+// Corps de la fermeture
+}
+
+=> func composerNumero(_ numero: Int) { (...) }
+{ (numero: Int) -> Void in
+// Corps de la fermeture
+}
+
+OU
+
+{ (numero: Int) in
+// Corps de la fermeture
+}

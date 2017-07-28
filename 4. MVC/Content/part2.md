@@ -370,8 +370,8 @@ func ajouterDeux(a: Int) -> Int { (...) }
 func additioner(a: Int, b: Int) -> Int { (...) }
 func envoyerMail(message: String, destinataire: String) -> Bool { (...) }
 func cocherLaCase(aCoché: Bool) { (...) }
-func verrouiller()
-func composerNumero(_ numero: Int)
+func verrouiller() { (...) }
+func composerNumero(_ numero: Int) { (...) }
 ```
 
 Vous pouvez trouver la correction [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/TrouvezLesTypes.txt).
@@ -485,7 +485,20 @@ Maintenant que vous savez utiliser les fermetures, voyons dans quel cas vous all
 Dans ce cours, nous verrons un autre exemple de l'utilisation des fermetures lorsque nous créerons nos animations.
 
 #### Exercice
-Codevolve, créer des closures  
+
+Transformez les déclarations de fonctions suivantes en fermetures :
+
+```swift
+func ajouterDeux(a: Int) -> Int { (...) }
+func additioner(a: Int, b: Int) -> Int { (...) }
+func envoyerMail(message: String, destinataire: String) -> Bool { (...) }
+func cocherLaCase(aCoché: Bool) { (...) }
+func verrouiller() { (...) }
+func composerNumero(_ numero: Int) { (...) }
+```
+
+Vous pouvez trouver la correction [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+4+-+MVC/ExerciceFermetures.txt).
+
 
 #### En résumé
 - Une fermeture permet de créer une fonction sans la déclarer.
