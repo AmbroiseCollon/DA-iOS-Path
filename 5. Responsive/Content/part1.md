@@ -11,12 +11,12 @@ Bienvenue dans ce cours sur la création d'application responsive en iOS ! Nous 
 #### Prérequis
 Dans ce cours, nous allons travailler sur l'application OpenQuizz. Si vous avez suivi le cours précédent, vous connaissez bien cette application pour l'avoir conçu de A à Z !
 
-> **:information_source:** En effet, ce cours fait partie d'un [parcours](https://openclassrooms.com/paths/developpeur-se-dapplication-ios) sur le développement iOS. A moins que vous ayez déjà une bonne connaissance de Swift et du développement en iOS (en particulier de l'interface builder), je vous invite en prendre les cours dans l'ordre suivant :
+> **:information_source:** En effet, ce cours fait partie d'un [parcours](https://openclassrooms.com/paths/developpeur-se-dapplication-ios) sur le développement iOS. À moins que vous ayez déjà une bonne connaissance de Swift et du développement en iOS (en particulier de l'interface builder), je vous invite en prendre les cours dans l'ordre suivant :
 - Cours [1](https://openclassrooms.com/courses/introduction-a-ios-plongez-dans-le-developpement-mobile) : Introduction à iOS. *Dans ce cours, vous allez faire votre première application mobile à partir de zéro !*
 - Cours [2](https://openclassrooms.com/courses/apprenez-les-fondamentaux-de-swift) et [3](https://openclassrooms.com/courses/approfondissez-swift-avec-la-programmation-orientee-objet) : Swift. *Avec ces deux cours, vous saurez tout du langage Swift !*
 - Cours [4](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc) : Développer une application iPhone avec le modèle MVC. *C'est dans ce cours que l'on crée l'application OpenQuizz.*
 
-Si vous ne connaissez pas l'application mais que vous avez les compétences nécessaires pour suivre le cours, pas de panique ! Nous allons voir ensemble ce qu'est OpenQuizz pour que vous ne soyez pas perdu.
+Si vous ne connaissez pas l'application, mais que vous avez les compétences nécessaires pour suivre le cours, pas de panique ! Nous allons voir ensemble ce qu'est OpenQuizz pour que vous ne soyez pas perdu.
 
 #### L'application OpenQuizz
 
@@ -26,7 +26,7 @@ Dans ce jeu, l'utilisateur peut répondre à 10 questions par vrai ou faux. Pour
 
 ![](Images/P1/P1C1.gif)
 
-A chaque bonne réponse, il marque un point ! A la fin des 10 questions, la partie se termine.
+À chaque bonne réponse, il marque un point ! À la fin des 10 questions, la partie se termine.
 
 Pour relancer une partie l'utilisateur peut cliquer sur `New Game` recharger de nouvelles questions.
 
@@ -48,17 +48,17 @@ L'interface est composée de 4 éléments :
 - Un bouton `New Game` pour relancer la partie.
 - Un indicateur d'activité positionné derrière le bouton pour notifier l'utilisateur que les questions sont en cours de chargement.
 
-> **:warning:** Dans ce cours, nous allons travailler sur toutes ces vues donc assurez vous que vous avez bien compris la structure de cette interface.
+> **:warning:** Dans ce cours, nous allons travailler sur toutes ces vues donc assurez-vous que vous avez bien compris la structure de cette interface.
 
 #### Le problème
 
 > **:question:** Bon on a compris qu'elle était belle ton appli... C'est quoi le problème ?
 
-J'y viens ! **Notre interface n'est belle pour l'instant que sur un iPhone 7 (ou 6). Sur les autres tailles d'iPhone, l'interface ne s'adapte pas.** Vous ne me croyez pas ? Laissez moi vous montrer.
+J'y viens ! **Notre interface n'est belle pour l'instant que sur un iPhone 7 (ou 6). Sur les autres tailles d'iPhone, l'interface ne s'adapte pas.** Vous ne me croyez pas ? Laissez-moi vous montrer.
 
-Ouvrez le storyboard. Et cliquez en haut pour vous placez en mode assistant.
+Ouvrez le storyboard. Et cliquez en haut pour vous placer en mode assistant.
 
-A la place du *ViewController* qui devrait s'afficher sur la gauche par défaut, nous allons afficher le **mode aperçu**. Pour cela cliquez en haut sur *Automatic* puis glissez en bas dans la liste déroulante jusqu'à *Preview* et choisissez `Main.storyboard (Preview)`.
+À la place du *ViewController* qui devrait s'afficher sur la gauche par défaut, nous allons afficher le **mode aperçu**. Pour cela cliquez en haut sur *Automatic* puis glissez en bas dans la liste déroulante jusqu'à *Preview* et choisissez `Main.storyboard (Preview)`.
 
 ![](Images/P1/P1C1_3.gif)
 
@@ -83,7 +83,7 @@ Et encore, nous n'avons même pas essayé de regarder ce que cela donne sur un i
 
 Dans ce cours, nous allons donc apprendre à adapter notre interface à toutes les tailles d'écran de l'iPhone et iPad et pour les deux orientations paysage et portrait.
 
-> **:x:** Et c'est essentiel car **Apple n'accepte pas sur l'App Store les applications qui ne sont pas responsive** car elles n'offrent pas une expérience équivalente aux utilisateurs quel que soit leur appareil.
+> **:x:** Et c'est essentiel, car **Apple n'accepte pas sur l'App Store les applications qui ne sont pas responsive**, car elles n'offrent pas une expérience équivalente aux utilisateurs quel que soit leur appareil.
 
 #### La solution
 
@@ -111,7 +111,7 @@ Dans chaque famille il y a 4 tailles différentes, que je vous résume dans le s
 
 Ce schéma résume les 8 tailles existantes dans la famille iOS avec la liste exhaustive de tous les appareils iOS associés. Inutile que vous connaissiez tout cela par coeur. Sachez seulement qu'il y a 4 tailles par famille. Et ces 8 tailles, vous pouvez toutes les visualiser dans le storyboard !
 
-> **:information_source:** Les noms *iPad Pro Small* et *iPad Pro Big* ne sont pas les noms officiels des produits Apple. Il y a justes deux iPad Pro différents par leur tailles et il y a eu deux générations de cette gamme.
+> **:information_source:** Les noms *iPad Pro Small* et *iPad Pro Big* ne sont pas les noms officiels des produits Apple. Il y a juste deux iPad Pro différents par leurs tailles et il y a eu deux générations de cette gamme.
 
 #### Visualiser les tailles dans le storyboard
 
@@ -123,7 +123,7 @@ Cliquez dessus pour révéler le sélecteur de taille.
 
 ![](Images/P1/P1C2_3.png)
 
-Ici vous pouvez sélectionner la taille à laquelle vous souhaitez afficher les interfaces de votre storyboard. Par défaut, la taille est celle de l'iPhone 7 (*4,7 pouces*) mais vous pouvez modifier ça à votre guise.
+Ici vous pouvez sélectionner la taille à laquelle vous souhaitez afficher les interfaces de votre storyboard. Par défaut, la taille est celle de l'iPhone 7 (*4,7 pouces*), mais vous pouvez modifier ça à votre guise.
 
 Je vous invite à jouer un peu avec. Il y a trois réglages possibles :
 - la **taille**
@@ -136,9 +136,9 @@ La taille de l'écran permet de choisir tou simplement la taille d'écran que l'
 
 ![](Images/P1/P1C2_4.png)
 
-> **:question:** Il y a bien quatre tailles pour l'iPhone mais il n'y a que trois tailles pour l'iPad ! Ils en ont oublié une ?
+> **:question:** Il y a bien quatre tailles pour l'iPhone, mais il n'y a que trois tailles pour l'iPad ! Ils en ont oublié une ?
 
-Bien vu ! La taille de l'iPad Mini (*7,9 pouces*) ne peut pas être visualisée. Pourquoi ? Et bien car cette taille garde exactement les proportions de l'iPad normal (*9,7 pouces*). Donc on peut développer pour l'iPad et iOS s'occupe automatiquement de mettre à l'échelle l'interface pour l'iPad Mini. Pratique !
+Bien vu ! La taille de l'iPad Mini (*7,9 pouces*) ne peut pas être visualisée. Pourquoi ? Et bien, car cette taille garde exactement les proportions de l'iPad normal (*9,7 pouces*). Donc on peut développer pour l'iPad et iOS s'occupe automatiquement de mettre à l'échelle l'interface pour l'iPad Mini. Pratique !
 
 ##### L'orientation
 
@@ -147,14 +147,14 @@ On peut décider d'afficher l'orientation paysage ou portrait.
 ![](Images/P1/P1C2_5.png)
 
 ##### L'adaptation
-Si vous choisissez l'un des iPad dans le sélécteur, un troisième réglage est disponible : l'adaptation.
+Si vous choisissez l'un des iPad dans le sélecteur, un troisième réglage est disponible : l'adaptation.
 
 ![](Images/P1/P1C2_6.png)
 
 En effet sur l'iPad, on peut afficher deux applications l'une à côté de l'autre. Apple appelle cela [Split View](https://support.apple.com/fr-fr/HT207522). Du coup l'application ne prendra plus tout l'écran, il faut donc prévoir la variation de la taille de l'interface dans ce cas. Et c'est avec le réglage *Adaptation* qu'on peut le visualiser.
 
 #### En résumé
-- Il a 8 tailles d'écran différentes pour les appareils iOS, 4 pour l'iPad et 4 pour l'iPhone et l'iPode Touch
+- Il a 8 tailles d'écran différentes pour les appareils iOS, 4 pour l'iPad et 4 pour l'iPhone et l'iPod touch
 - Comme avec le mode aperçu dans le chapitre précédent, le sélecteur de taille vous permet donc de visualiser ce que donne votre application sur différents appareils directement dans le storyboard. Et vous pouvez voir que dès que l'on quitte l'iPhone 7, ça n'est pas très probant !
 
 Dès le prochain chapitre, nous allons commencer à résoudre ce problème !
