@@ -6,7 +6,7 @@
 
 Bienvenue dans ce cours sur la création d'application responsive en iOS ! Nous allons apprendre à adapter une interface à toutes les tailles d'écran existantes en iOS !
 
-![](Images/P1/P1C1_0.jpg)
+==> (Images/P1/P1C1_0.jpg)
 
 #### Prérequis
 Dans ce cours, nous allons travailler sur l'application OpenQuizz. Si vous avez suivi le cours précédent, vous connaissez bien cette application pour l'avoir conçu de A à Z !
@@ -24,7 +24,7 @@ L'application OpenQuizz est comme son nom l'indique un **jeu de quizz**.
 
 Dans ce jeu, l'utilisateur peut répondre à 10 questions par vrai ou faux. Pour cela, il peut glisser la question vers la droite ou la gauche pour donner sa réponse.
 
-![](Images/P1/P1C1.gif)
+==> (Images/P1/P1C1.gif)
 
 À chaque bonne réponse, il marque un point ! À la fin des 10 questions, la partie se termine.
 
@@ -38,7 +38,7 @@ Ouvrez le projet avec Xcode et lancez l'application pour vous familiariser un pe
 
 Une fois que c'est fait, je vous propose de regarder comment est construite l'interface en ouvrant le fichier `Main.storyboard`. Nous allons exclusivement travailler sur ce dossier dans ce cours.
 
-![](Images/P1/P1C2.png)
+==> (Images/P1/P1C2.png)
 
 L'interface est composée de 4 éléments :
 - Une vue question : la vue grise qui contient deux sous-vues :
@@ -60,19 +60,19 @@ Ouvrez le storyboard. Et cliquez en haut pour vous placer en mode assistant.
 
 À la place du *ViewController* qui devrait s'afficher sur la gauche par défaut, nous allons afficher le **mode aperçu**. Pour cela cliquez en haut sur *Automatic* puis glissez en bas dans la liste déroulante jusqu'à *Preview* et choisissez `Main.storyboard (Preview)`.
 
-![](Images/P1/P1C1_3.gif)
+==> (Images/P1/P1C1_3.gif)
 
 Votre interface devrait ressembler à ceci :
 
-![](Images/P1/P1C1_4.png)
+==> (Images/P1/P1C1_4.png)
 
 Sur la gauche vous avez le storyboard et sur la droite le mode aperçu. **Le mode aperçu permet de visualiser votre interface sur plusieurs appareils différents.** Pour cela, cliquez sur le `+` en bas à gauche de la section aperçu et rajoutez autant d'appareils que vous le souhaitez.
 
-![](Images/P1/P1C1_5.png)
+==> (Images/P1/P1C1_5.png)
 
 J'ai de mon côté décidé de rajouter toutes les tailles possibles d'iPhone et cela donne :
 
-![](Images/P1/P1C1_6.png)
+==> (Images/P1/P1C1_6.png)
 
 Et là c'est flagrant :O ! On constate avec le mode aperçu que **notre interface ne s'affiche correctement que sur l'iPhone 7** :
 - sur les plus petits iPhone : le bouton est trop bas et donc n'est même plus visible à l'écran.
@@ -107,7 +107,7 @@ En iOS, il y a deux grandes familles de tailles :
 
 Dans chaque famille il y a 4 tailles différentes, que je vous résume dans le schéma ci-dessous.
 
-![](Images/P1/P1C2_1.png)
+==> (Images/P1/P1C2_1.png)
 
 Ce schéma résume les 8 tailles existantes dans la famille iOS avec la liste exhaustive de tous les appareils iOS associés. Inutile que vous connaissiez tout cela par coeur. Sachez seulement qu'il y a 4 tailles par famille. Et ces 8 tailles, vous pouvez toutes les visualiser dans le storyboard !
 
@@ -117,11 +117,11 @@ Ce schéma résume les 8 tailles existantes dans la famille iOS avec la liste ex
 
 Pour changer la taille de l'interface dans le storyboard, il faut utiliser le sélecteur de tailles. En bas à gauche du storyboard, vous avez le bouton suivant :
 
-![](Images/P1/P1C2_2.png)
+==> (Images/P1/P1C2_2.png)
 
 Cliquez dessus pour révéler le sélecteur de taille.
 
-![](Images/P1/P1C2_3.png)
+==> (Images/P1/P1C2_3.png)
 
 Ici vous pouvez sélectionner la taille à laquelle vous souhaitez afficher les interfaces de votre storyboard. Par défaut, la taille est celle de l'iPhone 7 (*4,7 pouces*), mais vous pouvez modifier ça à votre guise.
 
@@ -134,7 +134,7 @@ Je vous invite à jouer un peu avec. Il y a trois réglages possibles :
 
 La taille de l'écran permet de choisir tou simplement la taille d'écran que l'on souhaite visualiser.
 
-![](Images/P1/P1C2_4.png)
+==> (Images/P1/P1C2_4.png)
 
 > **:question:** Il y a bien quatre tailles pour l'iPhone, mais il n'y a que trois tailles pour l'iPad ! Ils en ont oublié une ?
 
@@ -144,12 +144,12 @@ Bien vu ! La taille de l'iPad Mini (*7,9 pouces*) ne peut pas être visualisée.
 
 On peut décider d'afficher l'orientation paysage ou portrait.
 
-![](Images/P1/P1C2_5.png)
+==> (Images/P1/P1C2_5.png)
 
 ##### L'adaptation
 Si vous choisissez l'un des iPad dans le sélecteur, un troisième réglage est disponible : l'adaptation.
 
-![](Images/P1/P1C2_6.png)
+==> (Images/P1/P1C2_6.png)
 
 En effet sur l'iPad, on peut afficher deux applications l'une à côté de l'autre. Apple appelle cela [Split View](https://support.apple.com/fr-fr/HT207522). Du coup l'application ne prendra plus tout l'écran, il faut donc prévoir la variation de la taille de l'interface dans ce cas. Et c'est avec le réglage *Adaptation* qu'on peut le visualiser.
 
@@ -167,11 +167,11 @@ Pour adapter notre interface, nous allons découvrir ensemble **AutoLayout**. Da
 
 Pour l'instant, dans le mode aperçu, on voit ceci :
 
-![](Images/P2/P2C1_1.png)
+==> (Images/P2/P2C1_1.png)
 
 Nous allons faire en sorte d'obtenir plutôt ceci à la fin de la partie :
 
-![](Images/P2/P2C1_2.png)
+==> (Images/P2/P2C1_2.png)
 
 On veut donc que :
 - Toutes les vues restent centrées horizontalement.
@@ -191,7 +191,7 @@ Ok ok... Notre travail va être de donner des informations à AutoLayout, pour q
 
 **Une contrainte, c'est une distance** (en *points*) **qui doit rester constante**. Par exemple, pour le bouton *New Game*, nous allons créer une contrainte qui va dire à AutoLayout : "*garde toujours une distance de 20 points entre le bas de l'écran et le bas du bouton*".
 
-![](Images/P2/P2C1_3.png)
+==> (Images/P2/P2C1_3.png)
 
 Avec cette information, AutoLayout sait maintenant que, quelle que soit la taille de l'écran (iPhone, iPad, mode portrait ou paysage), le bouton doit **toujours** rester à 20 points du bord bas de l'écran.
 
@@ -205,7 +205,7 @@ Dans le cas d'OpenQuizz, c'est la vue bleu foncé au fond qui prend tout l'écra
 
 En effet **la vue racine a automatiquement 4 contraintes**. Ces 4 contraintes indiquent à AutoLayout que la vue racine doit toujours garder une distance de 0 point avec le bord de l'écran dans les 4 directions (haut, bas, gauche droite).
 
-![](Images/P2/P2C1_4.png)
+==> (Images/P2/P2C1_4.png)
 
 Donc **la vue racine prend toujours tout l'écran**. Et cela va nous être bien pratique, car on va pouvoir se servir du coup de cette vue comme repère pour définir les contraintes sur les autres vues.
 
@@ -233,15 +233,15 @@ AutoLayout a besoin de ces 4 informations pour savoir comment placer chaque vue 
 
 Si on reprend l'exemple de notre bouton, nous avons déjà une contrainte qui nous permet de définir sa **position verticale**.
 
-![](Images/P2/P2C1_4.png)
+==> (Images/P2/P2C1_4.png)
 
 On veut également que notre bouton soit centré. Donc on va définir une contrainte d'alignement qui indique à AutoLayout : "*le bouton doit rester centré horizontalement par rapport à la vue principale*". Cela permet de **positionner horizontalement** notre bouton.
 
-![](Images/P2/P2C1_5.png)
+==> (Images/P2/P2C1_5.png)
 
 Pour assurer que notre bouton garde toujours sa taille, nous allons définir deux contraintes supplémentaires : "*le bouton doit toujours avoir une largeur de 200 points et une hauteur de 80 points*". Cela permet de fixer sa **hauteur** et sa **largeur**.
 
-![](Images/P2/P2C1_6.png)
+==> (Images/P2/P2C1_6.png)
 
 Avec toutes ces contraintes, notre bouton va garder la taille et la position que l'on souhaite, quelle que soit la taille de l'écran.
 
@@ -269,11 +269,11 @@ Alors comment fait-on pour définir toutes ces contraintes ? On va faire cela da
 
 Cliquez sur le bouton pour le sélectionner. Ensuite nous allons nous intéresser aux 5 boutons **en bas à droite** dans le storyboard. Ce sont eux qui permettent de gérer les contraints de l'interface aux différentes tailles d'écran.
 
-![](Images/P2/P2C2_1.png)
+==> (Images/P2/P2C2_1.png)
 
 Celui qui nous intéresse en premier, c'est le quatrième (en forme de TIE Fighter pour les fans de Star Wars ;)). Cliquez dessus :
 
-![](Images/P2/P2C2_2.png)
+==> (Images/P2/P2C2_2.png)
 
 La popup qui s'affiche nous permet de définir des contraintes. En haut, vous avez 4 contraintes possibles. Ce sont des contraintes de type **distance entre deux vues**. Elles correspondent donc à **la distance au plus proche voisin** dans les 4 directions possibles (haut, bas, gauche, droite).
 
@@ -283,7 +283,7 @@ La popup qui s'affiche nous permet de définir des contraintes. En haut, vous av
 
 En haut du bouton par exemple, il y a quatre voisins possibles et vous pouvez les afficher en cliquant sur la petite flèche à droite de la valeur 234 :
 
-![](Images/P2/P2C2_3.png)
+==> (Images/P2/P2C2_3.png)
 
 Le plus proche voisin en haut, c'est donc le label score. Puis la vue grise qui contient la question. Puis au-dessus, on a le *Top Layout Guide*, enfin il y a tout en en haut, le haut de la vue principale.
 
@@ -295,7 +295,7 @@ Maintenant que la notion de plus proche voisin est claire, rajoutons notre premi
 
 Avant de cliquer sur *Add 1 Constraint*, nous allons rajouter les contraintes de **largeur** et **hauteur**. Plus bas, dans la popup, vous trouvez les contraintes *Width* et *Height*. **Par défaut, leurs valeurs correspondent à la taille actuelle du bouton**. Vous pouvez les cocher pour ajouter ces contraintes. À la fin votre popup doit ressembler à ceci :
 
-![](Images/P2/P2C2_4.png)
+==> (Images/P2/P2C2_4.png)
 
 Vous pouvez cliquer sur *Add 3 constraints* pour ajouter les trois contraintes. Les contraintes sont désormais visibles autour du bouton.
 
@@ -303,13 +303,13 @@ Vous pouvez cliquer sur *Add 3 constraints* pour ajouter les trois contraintes. 
 
 Mais un warning (erreur jaune) apparaît dans Xcode ainsi que des lignes rouges autour du bouton :
 
-![](Images/P2/P2C2_5.png)
+==> (Images/P2/P2C2_5.png)
 
 Elles sont rouges, car la position du bouton est toujours ambigüe. **En effet, sa position horizontale (sur l'axe des x) n'est pas encore fixée**. Et comme nous l'avons vu dans le chapitre précédent, AutoLayout exige les 4 informations (x, y, largeur et hauteur) pour fonctionner correctement.
 
 Pour ajouter notre dernière contrainte, nous allons utiliser le **troisième bouton en bas à droite** qui permet de gérer l'alignement. En cliquant sur ce bouton, apparaît la popup suivante :
 
-![](Images/P2/P2C2_6.png)
+==> (Images/P2/P2C2_6.png)
 
 Cette popup permet de créer des **contraintes d'alignement entre deux vues**. Ici, comme nous avons sélectionné une seule vue, nous avons seulement deux options :
 - centrer horizontalement dans la vue qui contient le bouton (la vue principale)
@@ -317,11 +317,11 @@ Cette popup permet de créer des **contraintes d'alignement entre deux vues**. I
 
 Ici, on veut centrer horizontalement donc on coche la première case et on clique sur *Add 1 constraint*.
 
-![](Images/P2/P2C2_7.png)
+==> (Images/P2/P2C2_7.png)
 
 Notre bouton a désormais 4 contraintes qui permettent de déterminer sa position avec certitude, les lignes rouges ont disparu. Si on retourne sur le mode aperçu, on peut voir que notre bouton s'affiche correctement dans tous les cas :
 
-![](Images/P2/P2C2_8.png)
+==> (Images/P2/P2C2_8.png)
 
 #### Les autres vues
 
@@ -344,11 +344,11 @@ Parfois vous allez vouloir modifier les contraintes que vous avez créées ou si
 ##### Les lignes bleues
 Lorsque vous sélectionnez une vue à laquelle vous avez ajouté des contraintes, vous voyez des lignes bleues apparaître autour.
 
-![](Images/P2/P2C3_1.png)
+==> (Images/P2/P2C3_1.png)
 
 Vous pouvez ensuite cliquer sur une de ces lignes et vous rendre dans l'inspecteur d'attribut. Vous y retrouverez les différents attributs de la contrainte. Ci-dessous vous retrouvez la contrainte de distance entre le bas de l'écran et le bas du bouton.
 
-![](Images/P2/P2C3_2.png)
+==> (Images/P2/P2C3_2.png)
 
 En particulier, vous avez :
 - Les deux vues concernées par la contrainte (`First Item` et `Second Item`)
@@ -359,7 +359,7 @@ En particulier, vous avez :
 ##### L'inspecteur de taille
 En plus des lignes bleues autour du bouton, vous pouvez vérifier vos contraintes dans le panneau de droite dans l'onglet *Inspecteur de taille* (le 5ème).
 
-![](Images/P2/P2C3_3.png)
+==> (Images/P2/P2C3_3.png)
 
 En bas, vous retrouvez les 4 contraintes que nous avons créées :
 - En cliquant sur *Edit*, vous pouvez les modifier.
@@ -368,14 +368,14 @@ En bas, vous retrouvez les 4 contraintes que nous avons créées :
 #### Les autres boutons
 Nous n'avons vu que 2 boutons parmi les 5 situés en bas à droite de l'interface :
 
-![](Images/P2/P2C3_4.png)
+==> (Images/P2/P2C3_4.png)
 
 Alors, laissez-moi vous présenter les autres qui vous seront sans doute utiles.
 
 ##### Mettre à jour les vues et les contraintes
 Le premier n'est activé que si certaines de vos vues sont à une position qui ne correspond pas à leur contrainte. Essayez de déplacer le bouton par exemple :
 
-![](Images/P2/P2C3_5.png)
+==> (Images/P2/P2C3_5.png)
 
 Dans ce cas, des lignes orange indiquent que le bouton est décalé par rapport à ses contraintes. Vous avez donc deux options :
 - soit vous souhaitez **remettre le bouton à la place indiquée par ses contraintes**, dans ce cas, il suffit de cliquer sur le **premier bouton** (la flèche circulaire).
@@ -383,7 +383,7 @@ Dans ce cas, des lignes orange indiquent que le bouton est décalé par rapport 
 
 Dans ce deuxième cas, une popup vous propose plusieurs choix allant de la suppression de toutes les contraintes à la modification de leurs valeurs pour respecter la position actuelle du bouton.
 
-![](Images/P2/P2C3_6.png)
+==> (Images/P2/P2C3_6.png)
 
 ##### Les stack view
 Enfin le deuxième bouton permet de placer vos vues dans des *Stack View*. Les stack view permettent de gérer des piles de vues horizontales ou verticales. Mais nous ne les verrons pas dans ce cours.
@@ -392,7 +392,7 @@ Enfin le deuxième bouton permet de placer vos vues dans des *Stack View*. Les s
 - Vous pouvez inspecter une contrainte avec les lignes bleues ou en utilisant l'inspecteur de taille.
 - Les boutons en bas à droite correspondent aux usages suivants :
 
-![](Images/P2/P2C3_7.png)
+==> (Images/P2/P2C3_7.png)
 
 Dans la prochaine partie, nous allons adapter notre interface sur tous les écrans avec les catégories de taille.
 
@@ -403,18 +403,18 @@ Grâce à AutoLayout, nous avons réussi à définir des contraintes pour que no
 
 Mais nous n'avons pas fait tout le travail ! En effet, notre designer a prévu des design bien précis, notamment **pour le mode paysage de l'iPhone et pour l'iPad**.
 
-![](Images/P3/P3C1_1.png)
+==> (Images/P3/P3C1_1.png)
 
 Et dans cette partie, nous allons utiliser les catégories de taille pour respecter ce design.
 
 #### Les limites d'AutoLayout
 Si on met l'iPhone 7 en mode portrait, on se rend compte que le design ne correspond pas à ce qui a été prévu par notre designer. Tout est compressé, on ne voit même plus le label score et on ne profite pas de l'espace en largeur offert par cette orientation.
 
-![](Images/P3/P3C1_2.png)
+==> (Images/P3/P3C1_2.png)
 
 De la même manière, si on essaye d'afficher notre interface au format iPad, tout parait trop petit dans cette grande interface.
 
-![](Images/P3/P3C1_3.png)
+==> (Images/P3/P3C1_3.png)
 
 Pour adapter une interface, vous savez qu'il faut utiliser AutoLayout. Le problème, c'est qu'avec AutoLayout, **les contraintes sont toujours les mêmes**. Par exemple, nous avons défini une contrainte qui dit que le score est toujours en dessous de la question. Mais le design prévu dans l'orientation paysage positionne le score à droite de la question. Il faut donc pouvoir faire varier nos contraintes.
 
@@ -435,7 +435,7 @@ Pour faire ces catégories, Apple propose deux paramètres : **largeur** (*width
 
 Avec ces deux paramètres et ces deux valeurs, Apple a construit la classification suivante :
 
-![](Images/P3/P3C1_4.png)
+==> (Images/P3/P3C1_4.png)
 
 On peut noter quelques points :
 - Tous les iPad sont dans la catégorie (Regular, Regular), quelque soit leur orientation.
@@ -462,11 +462,11 @@ Avant de nous lancer, je me permets une toute petite parenthèse sur le support 
 
 Il suffit d'aller dans les paramètres du projet en sélectionnant votre projet dans le navigateur.
 
-![](Images/P3/P3C2_1.png)
+==> (Images/P3/P3C2_1.png)
 
 Sur cette interface, vous pouvez cocher les orientations supportées par votre application.
 
-![](Images/P3/P3C2_2.png)
+==> (Images/P3/P3C2_2.png)
 
 - Les deux premières cases concernent le mode portrait avec l'iPhone à l'endroit ou à l'envers.
 - Les deux dernières concernent le mode paysage avec l'iPhone couché en mode paysage vers la droite ou vers la gauche.
@@ -477,7 +477,7 @@ Donc si vous décochez par exemple les deux dernières, votre interface ne tourn
 
 Retournez maintenant dans le storyboard, nous allons créer notre première variation en utilisant les catégories de taille. Pour cela, il faut retourner en bas dans le sélecteur de taille.
 
-![](Images/P3/P3C2_3.png)
+==> (Images/P3/P3C2_3.png)
 
 Ensuite, nous allons utiliser le bouton *Vary for Traits* qui se trouve sur la droite.
 
@@ -489,12 +489,12 @@ Par exemple, plaçons-nous sur iPhone 7 en mode paysage. Si on se réfère au sc
 
 Lorsqu'on clique sur le bouton, une popup apparaît qui nous demande sur quelle propriété on souhaite créer une variation : la hauteur, la largeur ou les deux.
 
-![](Images/P3/P3C2_4.png)
+==> (Images/P3/P3C2_4.png)
 
 Si on coche les deux, la variation concernera uniquement les écrans dans la catégorie sélectionnée : `(Compact, Compact)`. Si on décoche la largeur par exemple, la variation concernera tous les écrans qui ont une **hauteur compact quelle que soit leur largeur**.
 
 > **:information_source:** Lorsqu'on coche ou décoche les cases, le sélecteur de taille devient bleu et ne nous montre que les écrans qui correspondent à la variation que nous avons choisie.  
-![](Images/P3/P3C2_5.gif)
+==> (Images/P3/P3C2_5.gif)
 
 Dans notre cas, on souhaite créer une variation qui concerne **tous les iPhone en mode paysage**. Donc on veut que la hauteur soit compact mais la largeur peut être compact ou regular pour inclure les grands iPhone. On va donc cocher *Height* et laisser décochée *Width*.
 
@@ -506,11 +506,11 @@ Comme cette partie du travail concerne plus AutoLayout et que nous avons déjà 
 
 Quand vous avez terminé, vous pouvez cliquer sur *Done Varying* pour terminer la variation.
 
-![](Images/P3/P3C2_6.png)
+==> (Images/P3/P3C2_6.png)
 
 Vous pouvez ensuite vérifier en changeant l'orientation que tout s'affiche correctement dans les deux modes.
 
-![](Images/P3/P3C2_7.gif)
+==> (Images/P3/P3C2_7.gif)
 
 #### En résumé
 - On peut sélectionner les orientations supportées dans les paramètres du projet.
@@ -530,13 +530,13 @@ Et on va commencer par grossir la question.
 
 Dans Xcode, certains attributs peuvent varier. Commençons par exemple par faire varier la taille du texte de la question. Sélectionnez le label correspondant et allez dans l'inspecteur d'attributs :
 
-![](Images/P3/P3C3_1.png)
+==> (Images/P3/P3C3_1.png)
 
 Tous les attributs marqués avec un petit `+` peuvent subir une variation. Et comme vous le constater la police (et donc sa taille) en fait partie.
 
 Cliquez sur le `+` pour créer une variation.
 
-![](Images/P3/P3C3_2.png)
+==> (Images/P3/P3C3_2.png)
 
 Dans cette popup, on choisit la catégorie de taille pour laquelle on souhaite créer une variation. Dans notre cas, c'est l'iPad donc `(Regular, Regular)`.
 
@@ -544,7 +544,7 @@ Dans cette popup, on choisit la catégorie de taille pour laquelle on souhaite c
 
 En cliquant sur la variation, la ligne de la police est dupliquée et vous pouvez maintenant changer la taille de la police pour l'iPad. Je vous suggère de doubler sa taille. Vous devriez obtenir ceci :
 
-![](Images/P3/P3C3_3.png)
+==> (Images/P3/P3C3_3.png)
 
 Cela veut dire que pour la catégorie de taille `(Regular, Regular)`, la police a pour taille 46, et pour toutes les autres, elle vaut 23.
 
@@ -556,17 +556,17 @@ Cela veut dire que pour la catégorie de taille `(Regular, Regular)`, la police 
 
 Nous allons donc créer une variation sur la contrainte de largeur de cette vue. Commencez par sélectionner la contrainte de largeur en cliquant sur la ligne bleue qui la représente sous la vue grise.
 
-![](Images/P3/P3C3_4.png)
+==> (Images/P3/P3C3_4.png)
 
 Sur la droite dans l'inspecteur d'attributs, vous avez accès aux propriétés de cette contrainte comme on l'a vu dans la partie précédente. On peut voir notamment la constante qui a pour valeur 245. Et comme vous pouvez le voir, **la constante est un paramètre qui peut subir une variation**. Pour cela, il suffit de cliquer comme précédemment sur le petit `+`.
 
 Nous allons à nouveau choisir de créer une variation pour la catégorie de taille (Regular, Regular). Et nous allons fixer la constante à 480 pour cette variation.
 
-![](Images/P3/P3C3_5.png)
+==> (Images/P3/P3C3_5.png)
 
 Et maintenant, notre vue profite de la grande taille de l'iPad !
 
-![](Images/P3/P3C3_6.png)
+==> (Images/P3/P3C3_6.png)
 
 #### Exercice
 
@@ -583,7 +583,7 @@ Je vous propose un deuxième exercice ! En utilisant une variation, rajoutez la 
 
 Vous pouvez consulter la correction à cette adresse [FAIRE LE SCREENCAST].
 
-![](Images/P3/P3C3_6.png)
+==> (Images/P3/P3C3_6.png)
 
 #### En résumé
 Pour créer des variations en fonction des catégories de taille, vous pouvez utiliser le bouton `Vary for Traits` pour de gros changements ou le petit `+` à côté des attributs pour des changements plus fins.
@@ -610,4 +610,4 @@ Vous avez maintenant tout ce qu'il faut pour créer des applications responsive 
 
 En attendant, je n'ai plus qu'à vous laisser avec le mot de la fin et le mot de la fin évidemment, c'est :
 
-![](Images/P3/P3C4_1.jpg)
+==> (Images/P3/P3C4_1.jpg)
