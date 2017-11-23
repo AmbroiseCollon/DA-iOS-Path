@@ -242,6 +242,10 @@ Le point d'arrêt d'exception (ou *exception breakpoint*) permet d'interrompre l
 
 > **:information_source:** C'est comme si vous bousculiez un vase et qu'on mette pause juste avant que le vase ne chute pour que vous puissiez regarder comment vous l'avez fait tomber, est-ce votre coude votre main ou votre sac qui a causé le drame :O ?
 
+> **:note:** there are a few very powerful other options for breakpoints, like conditionals. maybe point to them so that the curious student discovers them himself.
+
+> **:note:** maybe for another lesson but have you considered the visual debugging tools for UI/Constraint/Animation/Accessability issues, could be worth a mention.
+
 Pour créer ce point d'arrêt, il faut aller dans le navigateur des points d'arrêts. C'est l'avant-dernier onglet du navigateur (panneau de droite) :
 
 ![](Images/P1/P1C3_1.png)
@@ -314,7 +318,9 @@ Enfin pas tout à fait vide ! On y voit l'inscription `(lldb)`, c'est un *Low Le
 
 Nous allons apprendre une seule commande, mais qui est de loin la plus utile, et elle se nomme sobrement `po` pour *Print Object*.
 
-Essayons-la avec notre mystérieuse variable `playerSetScoreLabels`:
+> **:note:** When Printing Object when its an instance of an object po will only output the description of the object, we only get such detail with dictionaries and arrays. could save some confusion when the student starts playing
+
+> **: Essayons-la avec notre mystérieuse variable `playerSetScoreLabels`:
 
 ![](Images/P1/P1C3_10.png)
 
@@ -418,7 +424,10 @@ Et pour cela, rien de plus simple, il nous suffit de cliquer sur le chiffre 33 s
 
 > **:information_source:** Vous pouvez retrouver tous les points d'arrêts de votre projet dans le navigateur de points d'arrêts.
 ![](Images/P1/P1C4_4.png)  
-Vous pouvez aussi les effacer en les sélectionnez dans le navigateur et tapant la touche "supprimer" de votre clavier. Ou en faisant un clic droit sur votre point d'arrêt dans le code puis choisissez "Delete Breakpoint".  
+Vous pouvez aussi les effacer en les sélectionnez dans le navigateur et tapant la touche "supprimer" de votre clavier. Ou en faisant un clic droit sur votre point d'arrêt dans le code puis choisissez "Delete Breakpoint".
+
+> **:note:** you can also drag and flick it, which makes a satifying sound too!
+
 ![](Images/P1/P1C4_5.png)  
 Vous pouvez aussi désactiver un point d'arrêt momentanément en cliquant dessus, il devient grisé :
 ![](Images/P1/P1C4_6.png)  
