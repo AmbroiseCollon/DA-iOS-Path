@@ -77,7 +77,7 @@
                     </text>
                     <text id="Description-Descript" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
                         <tspan x="238" y="29">On glisse le doigt sur l'écran vers le haut, le bas, la </tspan>
-                        <tspan x="238" y="47">doite ou la gauche.</tspan>
+                        <tspan x="238" y="47">droite ou la gauche.</tspan>
                     </text>
                 </g>
                 <g id="Composant/small_2_lines" transform="translate(0.000000, 96.000000)">
@@ -89,7 +89,7 @@
                         <tspan x="75" y="47">GestureRecognizer</tspan>
                     </text>
                     <text id="Description-Descript" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
-                        <tspan x="238" y="29">On glisse le doigt sur l'écran en continu en générale </tspan>
+                        <tspan x="238" y="29">On glisse le doigt sur l'écran en continu en général </tspan>
                         <tspan x="238" y="47">pour déplacer une vue qui suit le doigt.</tspan>
                     </text>
                 </g>

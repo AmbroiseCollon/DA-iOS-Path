@@ -59,10 +59,10 @@
                     <path d="M28.5,24.5 L31.5,24.5" id="Line"></path>
                 </g>
             </g>
-            <text id="On-a-pas-fait-ça" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" fill="#F48794">
-                <tspan x="68" y="37">On a </tspan>
-                <tspan x="107.788086" y="37" font-family="SFUIDisplay-Bold, SF UI Display" font-weight="bold">pas</tspan>
-                <tspan x="138.277344" y="37"> fait ça </tspan>
+            <text id="On-n’a-pas-fait-ça" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" fill="#F48794">
+                <tspan x="56" y="37">On n’a </tspan>
+                <tspan x="107.758789" y="37" font-family="SFUIDisplay-Bold, SF UI Display" font-weight="bold">pas</tspan>
+                <tspan x="138.248047" y="37"> fait ça </tspan>
             </text>
             <path d="M190.5,34.5 L216.5,34.5" id="Line" stroke="#F48794" fill="#F48794" stroke-linecap="square"></path>
             <path id="Line-decoration-1" d="M216.5,34.5 L205.7,31.5 L205.7,37.5 L216.5,34.5 Z" stroke="#F48794" fill="#F48794" stroke-linecap="square"></path>

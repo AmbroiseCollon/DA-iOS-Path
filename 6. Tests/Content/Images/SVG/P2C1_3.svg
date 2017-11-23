@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="313px" viewBox="0 0 800 313" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #DEDCD3;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P2C1_3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P2C1_3">
+            <polygon id="Triangle-2" fill="#A93C1E" points="712.5 130 729 164 696 164"></polygon>
+            <rect id="Rectangle-2" fill="#084A37" x="695" y="243" width="35" height="35"></rect>
+            <g id="Group-2" transform="translate(234.000000, 117.000000)">
+                <rect id="Rectangle" fill="#F1C531" x="0" y="0" width="319" height="174"></rect>
+                <text id="Test-unitaire" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="80.012207" y="72">Test unitaire</tspan>
+                </text>
+                <g id="Group" transform="translate(49.000000, 96.000000)">
+                    <rect id="Rectangle-2" fill="#084A37" x="186" y="0" width="35" height="35"></rect>
+                    <text id="Donnée-en-sortie-att" font-family="SFUIDisplay-Regular, SF UI Display" font-size="15" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="0.592285156" y="21">Donnée en sortie attendu :</tspan>
+                    </text>
+                </g>
+            </g>
+            <path d="M108.5,204.5 L234.5,204.5" id="Line" stroke="#4A4A4A" fill="#4A4A4A" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M234.5,204.5 L223.7,201.5 L223.7,207.5 L234.5,204.5 Z" stroke="#4A4A4A" fill="#4A4A4A" stroke-linecap="square"></path>
+            <circle id="Oval" fill="#4A4A4A" cx="94" cy="204" r="23"></circle>
+            <path d="M553.5,204.5 L694.5,156.5" id="Line" stroke="#A93C1E" fill="#A93C1E" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M694.5,156.5 L683.30939,157.140499 L685.242972,162.820399 L694.5,156.5 Z" stroke="#A93C1E" fill="#A93C1E" stroke-linecap="square"></path>
+            <path d="M553.5,204.5 L690.5,263.5" id="Line" stroke="#084A37" fill="#084A37" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M690.5,263.5 L681.76735,256.472851 L679.394128,261.983552 L690.5,263.5 Z" stroke="#084A37" fill="#084A37" stroke-linecap="square"></path>
+            <text id="Donnée-en-entrée" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#4A4A4A">
+                <tspan x="42.809082" y="51">Donnée </tspan>
+                <tspan x="32.4233398" y="87">en entrée</tspan>
+            </text>
+            <text id="Donnée-en-sortie" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#4A4A4A">
+                <tspan x="661.309082" y="51">Donnée </tspan>
+                <tspan x="656.379883" y="87">en sortie</tspan>
+            </text>
+            <text id="Test-réussi" transform="translate(614.194502, 223.155499) rotate(23.000000) translate(-614.194502, -223.155499) " font-family="SFUIDisplay-Regular, SF UI Display" font-size="15" font-weight="normal" fill="#084A37">
+                <tspan x="578.862471" y="228.155499">Test réussi</tspan>
+            </text>
+            <text id="Test-échoué" transform="translate(619.223616, 173.695177) rotate(-19.000000) translate(-619.223616, -173.695177) " font-family="SFUIDisplay-Regular, SF UI Display" font-size="15" font-weight="normal" fill="#A93C1E">
+                <tspan x="578.903791" y="178.695177">Test échoué</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="374px" viewBox="0 0 800 374" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F8F6F6;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Cocoa Touch</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Chapitre-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Cocoa-Touch">
+            <rect id="Rectangle-4" fill="#BB3030" x="40" y="69" width="720" height="266"></rect>
+            <rect id="Rectangle-5" fill="#F6E7E7" x="70" y="99" width="315" height="206" rx="4"></rect>
+            <rect id="Rectangle-5" fill="#F6E7E7" x="415" y="99" width="315" height="206" rx="4"></rect>
+            <text id="Foundation" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" letter-spacing="-0.11131724" fill="#636161">
+                <tspan x="169" y="143">Foundation</tspan>
+            </text>
+            <text id="UIKit" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" letter-spacing="-0.11131724" fill="#636161">
+                <tspan x="548" y="148">UIKit</tspan>
+            </text>
+            <text id="Les-éléments-de-base" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0890537947" fill="#636161">
+                <tspan x="93.3713581" y="205">Les éléments de base comme la </tspan>
+                <tspan x="142.536627" y="229">date, les données, la </tspan>
+                <tspan x="127.513958" y="253">comunication inter objet</tspan>
+            </text>
+            <text id="Tout-ce-qui-est-rela" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" letter-spacing="-0.0890537947" fill="#636161">
+                <tspan x="433.235572" y="219">Tout ce qui est relatif à l’interface : </tspan>
+                <tspan x="446.862569" y="243">boutons, champs de texte etc.</tspan>
+            </text>
+            <text font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" letter-spacing="-0.11131724" fill="#BB3030">
+                <tspan x="331" y="63">Cocoa Touch</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

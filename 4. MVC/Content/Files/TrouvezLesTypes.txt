@@ -1,0 +1,6 @@
+func ajouterDeux(a: Int) -> Int { (...) }                                 // (Int) -> Int
+func additioner(a: Int, b: Int) -> Int { (...) }                          // (Int, Int) -> Int
+func envoyerMail(message: String, destinataire: String) -> Bool { (...) } // (String, String) -> Bool
+func cocherLaCase(aCoché: Bool) { (...) }                                 // (Bool) -> Void ou (Bool) -> ()
+func verrouiller() { (...) }                                              // () -> () ou () -> Void
+func composerNumero(_ numero: Int) { (...) }                              // (Int) -> () ou (Int) -> Void

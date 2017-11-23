@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="452px" viewBox="0 0 800 452" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #DEDCD3;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P2C1_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#084A37" offset="0%"></stop>
+            <stop stop-color="#F1C531" offset="54.2610013%"></stop>
+            <stop stop-color="#A93C1E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="P1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P2C1_2">
+            <text id="🤖" font-family="AppleColorEmoji, Apple Color Emoji" font-size="90" font-weight="normal" fill="#A93C1E">
+                <tspan x="513" y="414">🤖</tspan>
+            </text>
+            <text id="👩‍💻" font-family="AppleColorEmoji, Apple Color Emoji" font-size="90" font-weight="normal" fill="#A93C1E">
+                <tspan x="513" y="101">👩‍💻</tspan>
+            </text>
+            <g id="Group" transform="translate(753.000000, 18.000000)">
+                <polygon id="Triangle" fill="#084A37" points="11.5 0 23 23.0828301 0 23.0828301"></polygon>
+                <path d="M11.5,391.518428 L11.5,10.1130221" id="Line" stroke="url(#linearGradient-1)" stroke-width="5" fill="#D8D8D8" stroke-linecap="square"></path>
+                <path id="Line-decoration-1" d="M11.5,10.1130221 L8.5,20.9130221 L14.5,20.9130221 L11.5,10.1130221 Z" stroke="url(#linearGradient-1)" stroke-width="5" fill="#D8D8D8" stroke-linecap="square"></path>
+            </g>
+            <text id="Fréquents" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#A93C1E">
+                <tspan x="622" y="394">Fréquents</tspan>
+            </text>
+            <text id="Rares" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#084A37">
+                <tspan x="651" y="81">Rares</tspan>
+            </text>
+            <g id="Group-3" transform="translate(25.000000, 24.000000)">
+                <g id="Group-2">
+                    <polygon id="Triangle" fill="#A93C1E" points="229 0 458 392 0 392"></polygon>
+                    <polygon id="Triangle" fill="#F1C531" points="229 0 392 279.033898 66 279.033898"></polygon>
+                    <polygon id="Triangle" fill="#084A37" points="229 0 328 169.474576 130 169.474576"></polygon>
+                </g>
+                <text id="Tests-unitaires" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="135.098145" y="355">Tests unitaires</tspan>
+                </text>
+                <text id="Tests-fonctionnels" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="110.12793" y="238">Tests fonctionnels</tspan>
+                </text>
+                <text id="Tests-manuels" font-family="SFUIDisplay-Regular, SF UI Display" font-size="30" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="193.140625" y="105">Tests</tspan>
+                    <tspan x="174.134277" y="141">manuels</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
