@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="488px" viewBox="0 0 700 488" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #DEDCD3;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P2C4_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P2C4_2">
+            <rect id="Rectangle-6" fill="#F1C531" x="48" y="51" width="605" height="358"></rect>
+            <rect id="Rectangle-6" fill="#F1C531" x="683" y="51" width="29" height="358"></rect>
+            <rect id="Rectangle-6" fill="#F1C531" x="-12" y="51" width="30" height="358"></rect>
+            <rect id="Rectangle" fill="#ECDA9B" x="71" y="87" width="171" height="287"></rect>
+            <rect id="Rectangle" fill="#ECDA9B" x="460" y="87" width="171" height="287"></rect>
+            <rect id="Rectangle" fill="#ECDA9B" x="266" y="87" width="171" height="287"></rect>
+            <rect id="Rectangle-7" fill="#C29D24" x="85" y="233" width="124" height="82"></rect>
+            <text id="____________________" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300" letter-spacing="-0.08976624" fill="#FFFFFF">
+                <tspan x="282" y="115">____________________</tspan>
+                <tspan x="282" y="134">__________</tspan>
+                <tspan x="282" y="153">___________________</tspan>
+                <tspan x="282" y="172">___________</tspan>
+                <tspan x="282" y="191">___________________</tspan>
+                <tspan x="282" y="210">__________________</tspan>
+                <tspan x="282" y="229">___________</tspan>
+                <tspan x="282" y="248">____________________</tspan>
+                <tspan x="282" y="267">_________________</tspan>
+                <tspan x="282" y="286">_________________</tspan>
+                <tspan x="282" y="305">____________________</tspan>
+                <tspan x="282" y="324">_________________</tspan>
+                <tspan x="282" y="343">______________________</tspan>
+            </text>
+            <text id="__________-_________" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300" letter-spacing="-0.08976624" fill="#FFFFFF">
+                <tspan x="87" y="115"></tspan>
+                <tspan x="87" y="134">__________</tspan>
+                <tspan x="87" y="153">___________________</tspan>
+                <tspan x="87" y="172">___________</tspan>
+                <tspan x="87" y="191">___________________</tspan>
+                <tspan x="87" y="210">__________________</tspan>
+                <tspan x="87" y="229"></tspan>
+                <tspan x="87" y="248">class MaClasse {</tspan>
+                <tspan x="87" y="267"></tspan>
+                <tspan x="87" y="286"></tspan>
+                <tspan x="87" y="305">}</tspan>
+                <tspan x="87" y="324">________________</tspan>
+                <tspan x="87" y="343">____________________</tspan>
+            </text>
+            <text id="____________________" font-family="SFUIDisplay-Light, SF UI Display" font-size="16" font-weight="300" letter-spacing="-0.08976624" fill="#FFFFFF">
+                <tspan x="476" y="115">____________________</tspan>
+                <tspan x="476" y="134">__________</tspan>
+                <tspan x="476" y="153">___________________</tspan>
+                <tspan x="476" y="172">___________</tspan>
+                <tspan x="476" y="191">___________________</tspan>
+                <tspan x="476" y="210">__________________</tspan>
+                <tspan x="476" y="229">___________</tspan>
+                <tspan x="476" y="248">____________________</tspan>
+                <tspan x="476" y="267">_________________</tspan>
+                <tspan x="476" y="286">_________________</tspan>
+                <tspan x="476" y="305">____________________</tspan>
+                <tspan x="476" y="324">_________________</tspan>
+                <tspan x="476" y="343">______________________</tspan>
+            </text>
+            <text id="Public" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.1122078" fill="#323232">
+                <tspan x="90" y="32">Public</tspan>
+            </text>
+            <text id="Interne" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.1122078" fill="#323232">
+                <tspan x="90" y="75">Interne</tspan>
+            </text>
+            <text id="Privé-au-fichier" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.1122078" fill="#323232">
+                <tspan x="90" y="110">Privé au fichier</tspan>
+            </text>
+            <text id="Privé" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.1122078" fill="#323232">
+                <tspan x="90" y="276">Privé</tspan>
+            </text>
+            <rect id="Rectangle-8" fill="#F1C531" x="160" y="438" width="87" height="28"></rect>
+            <rect id="Rectangle-8" fill="#ECD99B" x="382" y="438" width="87" height="28"></rect>
+            <text id="Module" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.1122078" fill="#323232">
+                <tspan x="259" y="457">Module</tspan>
+            </text>
+            <text id="Fichier" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="20" font-weight="500" letter-spacing="-0.1122078" fill="#323232">
+                <tspan x="481" y="457">Fichier</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
