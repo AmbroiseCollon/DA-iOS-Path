@@ -81,7 +81,7 @@ Avec notre pyramide de test, nous voilà bien embêtés ! Quels sont les tests q
 La réponse est plus compliquée qu'il n'y parait. Alors je vais la faire en 2 temps :
 
 ##### 1. Utilisez les tests manuels, mais ne vous y fiez pas !
-Vous ne pouvez pas vous passer des tests manuels, car c'est un bon moyen de voir si votre application fonctionne dans son ensemble donc il faut continuer à les faire, mais ne comptez pas exclusivement sur eux, ils ne sont pas fiables !
+Vous ne pouvez pas vous passer des tests manuels, car c'est un bon moyen de voir si votre application fonctionne dans son ensemble et surtout parce que vous pouvez toujours vous appuyez sur ce que vous voyez ! Donc il faut continuer à les faire, mais ne comptez pas exclusivement sur eux, ils sont lents et pas fiables !
 
 ##### 2. Fiez-vous aux tests unitaires
 Les tests fonctionnels et les tests unitaires ont l'avantage d'être automatisés. Donc ils vont nous permettre de tester l'intégralité de notre code.
@@ -466,6 +466,8 @@ Voyons un peu ce que je viens de rédiger :
 
 Nous avons rédigé notre premier test ! Vous pouvez le lancer et constater que cela fonctionne !
 
+> **:warning:** La technique du BDD est incontournable. Vous devez séparer le contenu de vos tests en trois parties Given / When / Then. La meilleure façon de ne pas l'oublier quand on débute, c'est d'utiliser cette technique pour nommer vos tests. Néanmoins, cette technique a le défaut de vous obliger à écrire des noms de tests assez longs, parfois trop. Donc lorsque vous maîtriserez le BDD, vous pouvez essayer de nommer vos tests de façons plus concise mais en n'oubliant pas d'organiser le contenu du test selon les 3 étapes du BDD.
+
 #### Écriture du deuxième test
 Passons à la suite ! Nous allons maintenant tester qu'au deuxième point gagné, le score passe de 15 à 30. Essayez de le faire tout seul !
 
@@ -481,7 +483,7 @@ func testGivenScoreIsFifteen_WhenIncrementingPlayer1Score_ThenScoreShouldBeThirt
 		XCTAssert(game.scores[.two]! == 0)
 }
 ```
-C'est quasiment la même chose. On a juste rajouté la deuxième ligne pour que le score démarre à 30 points.
+C'est quasiment la même chose. On a juste rajouté la deuxième ligne pour que le score démarre à 15 points.
 
 Il y a quelque chose qui me choque quand même. La première ligne est rigoureusement identique dans les deux tests ! Or un bon développeur n'aime pas se répéter ! Il faut factoriser. Je vous propose d'extraire cette ligne et d'en faire une propriété :
 

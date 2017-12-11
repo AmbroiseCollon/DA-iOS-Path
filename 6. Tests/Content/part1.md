@@ -418,7 +418,7 @@ Et pour cela, rien de plus simple, il nous suffit de cliquer sur le chiffre 33 s
 
 > **:information_source:** Vous pouvez retrouver tous les points d'arrêts de votre projet dans le navigateur de points d'arrêts.
 ![](Images/P1/P1C4_4.png)  
-Vous pouvez aussi les effacer en les sélectionnez dans le navigateur et tapant la touche "supprimer" de votre clavier. Ou en faisant un clic droit sur votre point d'arrêt dans le code puis choisissez "Delete Breakpoint".  
+Vous pouvez aussi les effacer en les sélectionnez dans le navigateur et tapant la touche "supprimer" de votre clavier. Ou en faisant un clic droit sur votre point d'arrêt dans le code puis choisissez "Delete Breakpoint" (cf image ci-dessous). Ou en le glissant-déposant en dehors de sa position. 
 ![](Images/P1/P1C4_5.png)  
 Vous pouvez aussi désactiver un point d'arrêt momentanément en cliquant dessus, il devient grisé :
 ![](Images/P1/P1C4_6.png)  
