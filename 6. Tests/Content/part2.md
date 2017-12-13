@@ -697,7 +697,7 @@ Une popup apparaît et vous présente le schéma :
 
 > **:question:**, Mais c'est quoi ce schéma ?
 
-Ne vous inquiétez pas, je vais en parler. Un schéma, c'est la séquence des actions que peut subir votre code. Il y en a 5 qui sont données sur la droite de la popup. Pour l'instant, vous en connaissez 3 :
+Ne vous inquiétez pas, je vais en parler. Un schéma, c'est la séquence des actions que peut subir votre code. Il y en a 6 qui sont données sur la gauche de la popup. Pour l'instant, vous en connaissez 3 :
 - *Build* : compile votre code (<kbd>cmd + b</kbd>).
 - *Run* : exécute votre code, une fois celui-ci compilé (<kbd>cmd + r</kbd>).
 - *Test* : lance vos tests (<kbd>cmd + u</kbd>).

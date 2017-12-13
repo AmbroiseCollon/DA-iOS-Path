@@ -285,7 +285,7 @@ Oui... Mais ne soyez pas rabat-joie non plus :D ! La ligne qui semble poser prob
 playerSetScoreLabels[player]![i].text = ""
 ```
 
-On débarque un peu dans ce code qu'on ne connaît pas donc pour savoir un peu qui est qui, laissez-moi vous présenter la **vue des variables** ! Dans la zone de débogage, vous avez deux panneaux. A droite, c'est la vue des variables et à gauche la console que vous connaissez déjà.
+On débarque un peu dans ce code qu'on ne connaît pas donc pour savoir un peu qui est qui, laissez-moi vous présenter la **vue des variables** ! Dans la zone de débogage, vous avez deux panneaux. A gauche, c'est la vue des variables et à droite la console que vous connaissez déjà.
 
 ![](Images/P1/P1C3_7.png)
 
@@ -405,7 +405,7 @@ Contrairement au chapitre précédent, notre point d'arrêt ne va pas se déclen
 
 C'est vrai. Mais on sait quand il a lieu. On sait qu'il va avoir lieu quand je vais taper une troisième fois sur le bouton `JOUEUR 1`. Donc il nous suffit de retrouver l'action liée au bouton dans le code.
 
-Et ça, ce n'est pas trop dur ! On sait qu'une action se trouve dans le contrôleur et qu'elle commence par `@IBaction`. Après une toute petite recherche, vous devriez la trouver :
+Et ça, ce n'est pas trop dur ! On sait qu'une action se trouve dans le contrôleur et qu'elle commence par `@IBAction`. Après une toute petite recherche, vous devriez la trouver :
 
 ![La voilà !](Images/P1/P1C4_2.png)
 
@@ -418,7 +418,7 @@ Et pour cela, rien de plus simple, il nous suffit de cliquer sur le chiffre 33 s
 
 > **:information_source:** Vous pouvez retrouver tous les points d'arrêts de votre projet dans le navigateur de points d'arrêts.
 ![](Images/P1/P1C4_4.png)  
-Vous pouvez aussi les effacer en les sélectionnez dans le navigateur et tapant la touche "supprimer" de votre clavier. Ou en faisant un clic droit sur votre point d'arrêt dans le code puis choisissez "Delete Breakpoint" (cf image ci-dessous). Ou en le glissant-déposant en dehors de sa position. 
+Vous pouvez aussi les effacer en les sélectionnez dans le navigateur et tapant la touche "supprimer" de votre clavier. Ou en faisant un clic droit sur votre point d'arrêt dans le code puis choisissez "Delete Breakpoint" (cf image ci-dessous). Ou en le glissant-déposant en dehors de sa position.
 ![](Images/P1/P1C4_5.png)  
 Vous pouvez aussi désactiver un point d'arrêt momentanément en cliquant dessus, il devient grisé :
 ![](Images/P1/P1C4_6.png)  
