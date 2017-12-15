@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="263px" viewBox="0 0 700 263" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #DEDCD3;">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>P3C2_1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P3C2_1">
+            <g id="Group-2" transform="translate(199.000000, 17.000000)">
+                <g id="Group" transform="translate(36.000000, 27.000000)" fill-rule="nonzero">
+                    <path d="M51.9589552,42.2574627 C66.1147403,28.125 85.5643642,19.4029851 107.147854,19.4029851 C127.950093,19.4029851 146.770057,27.5303164 160.774254,40.7765851 L147.971081,51.2243463 L189.31903,62.115206 L186.905316,19.4379672 L174.125466,29.8740657 C156.937967,12.8381522 133.255597,2.28544776 107.147854,2.28544776 C80.2005612,2.28544776 55.865206,13.4911373 38.5494388,31.4948687 L51.9589552,42.2574627 Z" id="Shape" fill="#084A37"></path>
+                    <path d="M178.777985,73.6357284 C184.188433,92.8987881 182.276119,114.144122 171.723415,132.964087 C161.555504,151.107743 145.254197,163.561101 126.854012,169.286382 L123.9972,153.008394 L94.2863821,183.756997 L132.695896,202.518657 L129.839087,186.263994 C153.101678,179.605878 173.880597,164.10914 186.660448,141.336287 C199.825093,117.817164 201.958955,91.1147403 194.717818,67.2108209 L178.777985,73.6357284 Z" id="Shape" fill="#4C7EB7"></path>
+                    <path d="M90.3801313,170.732275 C70.9538239,165.904851 53.4514925,153.743003 42.3041045,135.261194 C31.5764925,117.44403 28.8246269,97.1198687 32.9524239,78.2882448 L48.495803,83.8619403 L36.4972,42.8404836 L1.17770448,66.9193104 L16.7094209,72.4813433 C10.995803,95.988806 14.1791045,121.723415 27.6469224,144.076493 C41.5578358,167.164179 63.7126866,182.229478 88.0713612,187.768191 L90.3801313,170.732275 Z" id="Shape" fill="#A93C1E"></path>
+                </g>
+                <text id="Red" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.08976624" fill="#A93C1E">
+                    <tspan x="0" y="188">Red</tspan>
+                </text>
+                <text id="Green" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.08976624" fill="#084A37">
+                    <tspan x="114" y="24">Green</tspan>
+                </text>
+                <text id="Refactor" font-family="SFUIDisplay-Regular, SF UI Display" font-size="25" font-weight="normal" letter-spacing="-0.08976624" fill="#4C7EB7">
+                    <tspan x="230" y="188">Refactor</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

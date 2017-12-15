@@ -81,9 +81,7 @@ Avec notre pyramide de test, nous voilà bien embêtés ! Quels sont les tests q
 La réponse est plus compliquée qu'il n'y parait. Alors je vais la faire en 2 temps :
 
 ##### 1. Utilisez les tests manuels, mais ne vous y fiez pas !
-Vous ne pouvez pas vous passer des tests manuels, car c'est un bon moyen de voir si votre application fonctionne dans son ensemble donc il faut continuer à les faire, mais ne comptez pas exclusivement sur eux, ils ne sont pas fiables !
-
-> I would say that the reason you can't do without manual tests is because you can always rely on what YOU see! However they are slow and a human can always forget a test. 
+Vous ne pouvez pas vous passer des tests manuels, car c'est un bon moyen de voir si votre application fonctionne dans son ensemble et surtout parce que vous pouvez toujours vous appuyez sur ce que vous voyez ! Donc il faut continuer à les faire, mais ne comptez pas exclusivement sur eux, ils sont lents et pas fiables !
 
 ##### 2. Fiez-vous aux tests unitaires
 Les tests fonctionnels et les tests unitaires ont l'avantage d'être automatisés. Donc ils vont nous permettre de tester l'intégralité de notre code.
@@ -92,7 +90,7 @@ Les tests fonctionnels et les tests unitaires ont l'avantage d'être automatisé
 
 Je pense que chaque développeur a une réponse différente à cette question. Alors voici la mienne !
 
-**Si votre programme est bien architecturé et que vous êtes rigoureux, les tests unitaires doivent vous suffire. WOW no! different types of tests test different things at diffenrent levels. Unit tests are NOT the only testing that is required! A unit test tests only a single unit not how the app uses that unit! My answer is all three are needed more or less depending on the levels of importance of the feature/system componant. Manual testing should find the defects no one has thaught of, sometimes due to constraints/defects in the operation system or hardware. UITests should be old Manual tests that have been made repeatable to insure that manual test time is not wasted repeating the same tests manually every release cycle. Also the UITests check that all the indervidual units are working properlly TOGETHER. On first release we can, yes, ensure that rigoruse attention to a prefect dessign has been addered too, thus no need for other testing. However as features get added and tech debt accumulates UITests validate that the original dessign is still addered to even 20 years later when the original developers join all the Cobol developers! **
+**Si votre programme est bien architecturé et que vous êtes rigoureux, les tests unitaires doivent vous suffire.**
 
 > **:question:** Pourquoi ?
 
@@ -428,18 +426,6 @@ Pour nommer vos tests, je vous suggère d'utiliser une technique bien pratique :
 - *When* : Quand...[Action]
 - *Then* : Alors...[Situation d'arrivée]
 
-> I normally place the given when then in a comment above the test method, the method name is normally based on the requirment(jira ticket id or something short). Whilst I can see why this is kinda a good thing it can make for some long method names, by default I think that swiftlint allows 3-40 character lenght for names. if the logic being test is testGivenSomethingSomething_AndSomethingOtherThing_AndSomethingSomeOtherThing_WhenAnOtherThing_ThenSomethingThatCanTakeAFewWordsToExplanButIsVeryLong.   
-/*
-Given: SomethingSomething
-And    SomethingOtherThing
-And    SomethingSomeOtherThing
-
-When:  AnOtherThing
-
-Then:  SomethingThatCanTakeAFewWordsToExplanButIsVeryLong. 
-*/
-func testFirstTest() {} // I find this much easier to read, however insuring G.W.T.s get updated as code changes is a challange!
-
 Par exemple, si on devait écrire le nom d'un test qui contrôle le fonctionnement d'un like, on écrirait :
 ```swift
 GivenPostHasZeroLike_WhenPostIsLiked_ThenPostHasOneLike
@@ -480,6 +466,8 @@ Voyons un peu ce que je viens de rédiger :
 
 Nous avons rédigé notre premier test ! Vous pouvez le lancer et constater que cela fonctionne !
 
+> **:warning:** La technique du BDD est incontournable. Vous devez séparer le contenu de vos tests en trois parties Given / When / Then. La meilleure façon de ne pas l'oublier quand on débute, c'est d'utiliser cette technique pour nommer vos tests. Néanmoins, cette technique a le défaut de vous obliger à écrire des noms de tests assez longs, parfois trop. Donc lorsque vous maîtriserez le BDD, vous pouvez essayer de nommer vos tests de façons plus concise mais en n'oubliant pas d'organiser le contenu du test selon les 3 étapes du BDD.
+
 #### Écriture du deuxième test
 Passons à la suite ! Nous allons maintenant tester qu'au deuxième point gagné, le score passe de 15 à 30. Essayez de le faire tout seul !
 
@@ -495,7 +483,7 @@ func testGivenScoreIsFifteen_WhenIncrementingPlayer1Score_ThenScoreShouldBeThirt
 		XCTAssert(game.scores[.two]! == 0)
 }
 ```
-C'est quasiment la même chose. On a juste rajouté la deuxième ligne pour que le score démarre à 15????right? points.
+C'est quasiment la même chose. On a juste rajouté la deuxième ligne pour que le score démarre à 15 points.
 
 Il y a quelque chose qui me choque quand même. La première ligne est rigoureusement identique dans les deux tests ! Or un bon développeur n'aime pas se répéter ! Il faut factoriser. Je vous propose d'extraire cette ligne et d'en faire une propriété :
 
@@ -709,7 +697,7 @@ Une popup apparaît et vous présente le schéma :
 
 > **:question:**, Mais c'est quoi ce schéma ?
 
-Ne vous inquiétez pas, je vais en parler. Un schéma, c'est la séquence des actions que peut subir votre code. Il y en a 5 qui sont données sur la droite de la popup. Pour l'instant, vous en connaissez 3 :
+Ne vous inquiétez pas, je vais en parler. Un schéma, c'est la séquence des actions que peut subir votre code. Il y en a 6 qui sont données sur la gauche de la popup. Pour l'instant, vous en connaissez 3 :
 - *Build* : compile votre code (<kbd>cmd + b</kbd>).
 - *Run* : exécute votre code, une fois celui-ci compilé (<kbd>cmd + r</kbd>).
 - *Test* : lance vos tests (<kbd>cmd + u</kbd>).
