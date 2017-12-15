@@ -259,3 +259,5 @@ J'espère que vous avez eu autant de plaisir à suivre ce cours que moi à le co
 En attendant, je n'ai plus qu'à vous laisser avec le mot de la fin, et le mot de la fin évidemment c'est :
 
 ![](Images/P3/P3C5_1.jpg)
+
+> Not much to add if only to add some links to extra reading material/books/blogs such as uncle bob martin et al. all in all a very good article.
