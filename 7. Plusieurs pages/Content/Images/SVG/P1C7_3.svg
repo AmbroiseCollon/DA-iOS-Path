@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="754px" viewBox="0 0 700 754" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #CEF0FF;">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>P1C7_3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#29B1CA" offset="0%"></stop>
+            <stop stop-color="#137A8C" offset="4.83266727%"></stop>
+            <stop stop-color="#137A8C" offset="28.4979184%"></stop>
+            <stop stop-color="#DAA8C8" offset="33.1210144%"></stop>
+            <stop stop-color="#DAA8C8" offset="42.7367329%"></stop>
+            <stop stop-color="#AC4F8B" offset="47.3743891%"></stop>
+            <stop stop-color="#AC4F8B" offset="70.9583043%"></stop>
+            <stop stop-color="#DAA8C8" offset="76.0714244%"></stop>
+            <stop stop-color="#DAA8C8" offset="85.2372847%"></stop>
+            <stop stop-color="#29B1CA" offset="91.5930376%"></stop>
+            <stop stop-color="#29B1CA" offset="100%"></stop>
+        </linearGradient>
+        <path d="M200,677 L231,677 L189.5,731 L148,677 L179,677 L179,85 L200,85 L200,677 Z" id="path-2"></path>
+        <filter x="-8.4%" y="-0.8%" width="116.9%" height="102.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="P1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="P1C7_3">
+            <rect id="Rectangle-11" stroke="#29B1CA" stroke-width="5" x="52" y="102" width="596" height="558"></rect>
+            <rect id="Rectangle-11" stroke="#137A8C" stroke-width="5" x="62" y="284" width="531" height="366"></rect>
+            <rect id="Rectangle-11" stroke="#AC4F8B" stroke-width="5" x="72" y="376" width="431" height="184"></rect>
+            <g id="Combined-Shape">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+            <rect id="Rectangle-6" fill="#29B1CA" x="93" y="23" width="203" height="62"></rect>
+            <text id="Init" font-family="SFUIDisplay-Medium, SF UI Display" font-size="17" font-weight="400" fill="#FFFFFF">
+                <tspan x="183.02417" y="60">Init</tspan>
+            </text>
+            <rect id="Rectangle-6" fill="#137A8C" x="93" y="115" width="203" height="62"></rect>
+            <text id="loadView" font-family="SFUIDisplay-Medium, SF UI Display" font-size="17" font-weight="400" fill="#FFFFFF">
+                <tspan x="160.306885" y="152">loadView</tspan>
+            </text>
+            <rect id="Rectangle-6" fill="#137A8C" x="93" y="207" width="203" height="62"></rect>
+            <text id="viewDidLoad" font-family="SFUIDisplay-Medium, SF UI Display" font-size="17" font-weight="400" fill="#FFFFFF">
+                <tspan x="146.199707" y="244">viewDidLoad</tspan>
+            </text>
+            <rect id="Rectangle-6" fill="#DAA8C8" x="93" y="299" width="203" height="62"></rect>
+            <text id="viewWillAppear" font-family="SFUIDisplay-Medium, SF UI Display" font-size="17" font-weight="400" fill="#FFFFFF">
+                <tspan x="136.029297" y="336">viewWillAppear</tspan>
+            </text>
+            <rect id="Rectangle-6" fill="#AC4F8B" x="93" y="391" width="203" height="62"></rect>
+            <text id="viewDidAppear" font-family="SFUIDisplay-Medium, SF UI Display" font-size="17" font-weight="400" fill="#FFFFFF">
+                <tspan x="137.458984" y="428">viewDidAppear</tspan>
+            </text>
+            <rect id="Rectangle-6" fill="#AC4F8B" x="93" y="483" width="203" height="62"></rect>
+            <text id="viewWillDisappear" font-family="SFUIDisplay-Medium, SF UI Display" font-size="17" font-weight="400" fill="#FFFFFF">
+                <tspan x="125.063965" y="520">viewWillDisappear</tspan>
+            </text>
+            <rect id="Rectangle-6" fill="#DAA8C8" x="93" y="575" width="203" height="62"></rect>
+            <text id="viewDidDisappear" font-family="SFUIDisplay-Medium, SF UI Display" font-size="17" font-weight="400" fill="#FFFFFF">
+                <tspan x="126.493652" y="612">viewDidDisappear</tspan>
+            </text>
+            <text id="La-vue-est-à-l’écran" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="17" font-weight="500" fill="#AC4F8B">
+                <tspan x="339" y="392">La vue est à l’écran</tspan>
+            </text>
+            <text id="La-vue-est-chargée-e" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="17" font-weight="500" fill="#137A8C">
+                <tspan x="339" y="301">La vue est chargée en mémoire </tspan>
+            </text>
+            <text id="Le-contrôleur-est-in" font-family="SFUIDisplay-Semibold, SF UI Display" font-size="17" font-weight="500" fill="#29B1CA">
+                <tspan x="339" y="120">Le contrôleur est intanciée en mémoire</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
