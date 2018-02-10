@@ -708,17 +708,17 @@ Autrement dit, le cycle de vie, c'est l'histoire de la naissance, la vie et la m
 
 #### La naissance
 
-Un contrôleur passe par de nombreuses étapes avant que la vue ne soit affichée à l'écran. comprendre ces étapes va vous permettre de les utiliser pour effectuer certaines préparations ou actions sur ce dernier.
+Un contrôleur passe par de nombreuses étapes avant que la vue ne soit affichée à l'écran. Comprendre ces étapes va vous permettre de les utiliser pour effectuer certaines préparations ou actions sur ce dernier.
 
 ##### Initialisation
 > **:warning:** Pour rappel, le contrôleur même si on a tendance à l'associer à une vue **n'est pas une vue**. Il contrôle la vue qui est un objet différent de lui même.
 
-La première étape, comme pour n'importe quel objet, c'est l'initialisation du contrôleur. L'objet contrôleur est créé en mémoire avec toutes ses propriétés. Comme toute initialisation, cela se fait à l'occasion de la méthode init :
+La première étape, comme pour n'importe quel objet, c'est l'initialisation du contrôleur. L'objet contrôleur est créé en mémoire avec toutes ses propriétés. Comme toute initialisation, cela se fait à l'occasion de la méthode `init` :
 
 ```swift
 init?(coder aDecoder: NSCoder)
 ```
-> **:information_source:** Vous pouvez faire l'override de cette initialisation dans vos sous-classe de `UIViewController` et initialiser des propriétés et dépendances dont vous avez besoin mais dans le cas courant, vous ne ferez rien.
+> **:information_source:** Vous pouvez faire l'override de cette initialisation dans vos sous-classes de `UIViewController` et initialiser des propriétés et dépendances dont vous avez besoin mais dans le cas courant, vous ne ferez rien.
 
 A cette étape, on a juste instancié un objet. Il n'est pas question de la vue. C'est comme lorsque vous écrivez ceci :
 
@@ -747,7 +747,9 @@ Une fois cette étape terminée, la fameuse fonction `viewDidLoad` est appelée 
 func viewDidLoad()
 ```
 
-Quand cette fonction est appelée, **la vue est donc complètement chargée en mémoire mais elle n'est pas affichée à l'écran**. Dans cette étape, vous pouvez initialiser des objets dont vous aller avoir besoin pour la vue ou lancer des tâches de fond comme charger des données sur internet.
+Quand cette fonction est appelée, **la vue est donc complètement chargée en mémoire mais elle n'est pas affichée à l'écran**.
+
+> **:information_source:** Dans cette étape, vous pouvez initialiser des objets dont vous aller avoir besoin pour la vue ou lancer des tâches de fond comme charger des données sur internet.
 
 
 ##### Affichage de la vue à l'écran
@@ -780,7 +782,7 @@ Vous avez peut-être aperçu cette méthode :
 func didReceiveMemoryWarning()
 ```
 
-Un iPhone, contrairement à un ordinateur, c'est petit. Du coup ses capacités sont limités. Il ne peut retenir qu'un nombre limité d'objets en même temps dans ce qu'on appelle sa mémoire vive. Et si il va atteindre sa limite, il vous prévient avant pour que vous puissiez libérer la mémoire de choses inutiles.
+Un iPhone, contrairement à un ordinateur, c'est petit. Du coup, ses capacités sont limités. Il ne peut retenir qu'un nombre limité d'objets en même temps dans ce qu'on appelle sa mémoire vive. Et si il est sur le point d'atteindre sa limite, il vous prévient avant pour que vous puissiez libérer la mémoire de choses inutiles.
 
 > **:information_source:** Prenons un exemple, si vous voulez afficher le texte complet de toute la saga Harry Potter dans une seule vue, la mémoire de votre iPhone risque de flancher et vous aurez l'occasion dans la fonction `didReceiveMemoryWarning` de supprimer une partie du texte pour alléger la charge.
 
@@ -795,14 +797,18 @@ func viewWillDisappear(_ animated: Bool)
 func viewDidDisappear(_ animated: Bool)
 ```
 
-Comme précédemment, la première est appelée avant la disparition de la vue à l'écran et la deuxième juste après. Vous pouvez utilisé la deuxième pour interrompre des processus dont vous n'avez plus besoin dans le contrôleur, par exemple l'exécution d'une animation ou l'écoute d'une notification.
+Comme précédemment, la première est appelée avant la disparition de la vue à l'écran et la deuxième juste après.
+
+> **:information_source:** Vous pouvez utiliser la deuxième pour interrompre des processus dont vous n'avez plus besoin dans le contrôleur, par exemple l'exécution d'une animation ou l'écoute d'une notification.
+
+> **:information_source:** Pour poursuivre la métaphore, le DVD est éjecté.
 
 ##### Suppression du contrôleur
-Si votre vue n'est plus à l'écran, cela ne signifie pas forcément la fin définitive pour votre contrôleur. Prenons un exemple, pour bien comprendre ce point précis.
+Si votre vue n'est plus à l'écran, cela ne signifie pas forcément la fin définitive pour votre contrôleur. Prenons un exemple pour bien comprendre ce point.
 
-Mettons que j'ai un Navigation Controller qui gère la navigation entre deux contrôleurs A, B.
+Mettons que j'ai un Navigation Controller qui gère la navigation entre deux contrôleurs A et B.
 
-1/ A l'allumage de l'application, la contrôleur A est créée puis la vue A correspondante est chargée en mémoire et ensuite la vue A est montré à l'écran.  
+1/ A l'allumage de l'application, le contrôleur A est créée puis la vue A correspondante est chargée en mémoire et ensuite la vue A est montré à l'écran.  
 
 2/ Ensuite, l'utilisateur navigue vers le contrôleur B. La vue A du coup disparaît de l'écran et le contrôleur B est créé puis la vue B est chargée et enfin elle apparaît à l'écran.
 
@@ -813,7 +819,7 @@ Notre pile de navigation ressemble à ceci :
 |  B   |
 |  A   |
 
-Donc le contrôleur A existe toujours puisqu'il est stocké dans la pile de navigation. Mieux, la vue est toujours chargée ! Elle n'est juste pas montré à l'écran.
+Donc **le contrôleur A existe toujours puisqu'il est stocké dans la pile de navigation**. Mieux, la vue est toujours chargée ! Elle n'est juste pas montré à l'écran.
 
 3/ L'utilsateur revient à la vue A et la pile de navigation ressemble à ceci :
 
@@ -878,13 +884,15 @@ Vous connaissez déjà la réponse ! Alors débrouillez-vous !
 
 > **:question:** Si je pose la question a priori...
 
-Bon OK. Comme on l'a vu juste au dessus, A reste stockée dans la pile de navigation quand B est à l'écran. **Donc le contrôleur A continue à exister et il garde la vue chargée en mémoire pour pouvoir à tout moment la refaire passer à l'écran sans avoir à tout recharger.**
+Bon OK. Comme on l'a vu juste au dessus, le contrôleur A reste stockée dans la pile de navigation quand B est à l'écran. **Donc le contrôleur A continue à exister et il garde la vue chargée en mémoire pour pouvoir à tout moment la refaire passer à l'écran sans avoir à tout recharger.**
 
 Et donc si je fais dix fois l'aller-retour entre A et B, je vais passer dix fois par `viewDidAppear` mais je ne repasse plus par `viewDidLoad` car la vue n'a pas été rechargée.
 
 > **:question:** OK je vois.
 
-Merci ! Du coup, si vous voulez recharger le contenu d'une page à chaque fois qu'elle apparait, il faudra mettre cela dans `viewWillAppear` plutôt que `viewDidLoad`. En revanche, si vous souhaitez vous placer en tant qu'observeur pour une notification, vous n'avez besoin de le faire qu'une fois donc faîtes le dans `viewDidLoad`.
+Merci ;) !
+
+Du coup, si vous voulez recharger le contenu d'une page à chaque fois qu'elle apparait, il faudra mettre cela dans `viewWillAppear` plutôt que `viewDidLoad`. En revanche, si vous souhaitez vous placer en tant qu'observeur pour une notification par exemple, vous n'avez besoin de le faire qu'une fois donc faîtes le dans `viewDidLoad`.
 
 > **:information_source:** Si tout cela n'est pas encore parfaitement clair pour vous, je vous suggère de jeter un oeil à l'animation suivante. Vous pouvez également retrouver le projet Github correspondant à [cette adresse](https://github.com/AmbroiseCollon/ControllerLifeCycle/blob/master/README.md).
 ![](Images/P1/P1C7_2.gif)
@@ -894,3 +902,7 @@ Merci ! Du coup, si vous voulez recharger le contenu d'une page à chaque fois q
 En guise de résumé, je vous propose le schéma ci-dessous :
 
 ![](Images/P1/P1C7_3.png)
+
+Ça y est  ! Vous avez toutes les bases de navigation et comme tout en iOS, il y a beaucoup d’autres choses que vous pouvez aller découvrir par vous même ! Mais si la fondation est solide, le reste ira tout seul, vous n’avez plus besoin de moi !
+
+Dans la prochaine partie, nous allons créer le formulaire d’inscription et vous allez découvrir comment utiliser les composants principaux d’un formulaire, comme les switch, les champs de texte, les sélecteurs et d’autres !
