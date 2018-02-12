@@ -26,7 +26,7 @@ Dans ce cours, nous allons développer une application de rencontre... pour chie
 > **:information_source:** Cette étape est présente dans 99% des applications donc autant que vous vous frottiez à l'exercice au plus vite !
 
 Miawouf est divisée en deux, une inscription pour les chiens et une pour les chats. Et l'inscription se fait en trois pages :
-- une page d'acceuil
+- une page d'accueil
 - un formulaire d'inscription
 - une page de confirmation
 
@@ -38,7 +38,7 @@ Pour construire cette application avec moi, je vous ai préparé un petit dossie
 
 Dans ce cours, il n'y a pas de projet Xcode à télécharger donc je vous invite à créer un projet vide, en choisissant le template le plus simple : *Single Page Application*. Vous pouvez déjà glisser les images et icônes dans les assets du projet et le fichier Races.swift dans votre navigateur de fichier.
 
-> **:warning:** Si vous ne vous rappeler plus comment on gère les images dans un projet Xcode, vous pouvez revenir jeter un oeil [ici](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc/gerez-les-images).
+> **:warning:** Si vous ne vous rappelez plus comment on gère les images dans un projet Xcode, vous pouvez revenir jeter un oeil [ici](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc/gerez-les-images).
 
 Et voilà vous êtes fin prêt à suivre ce cours.
 
@@ -46,7 +46,7 @@ Et voilà vous êtes fin prêt à suivre ce cours.
 
 Avant de se lancer tête baissée dans nos différents sujets, je voudrais prendre un petit moment pour parler évidemment de MVC :D !
 
-> **:warning:** Si le concept MVC, ne vous dit rien, rendez-vous [ici](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc).
+> **:warning:** Si le concept MVC ne vous dit rien, rendez-vous [ici](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc).
 
 Pour rappel, en MVC, le modèle et la vue n'ont pas connaissance de l'existence l'une de l'autre et le contrôleur et le seul à pouvoir s'adresser directement à l'un et l'autre.
 
@@ -55,11 +55,11 @@ Pour rappel, en MVC, le modèle et la vue n'ont pas connaissance de l'existence 
 Le modèle utilise généralement des notifications pour s'adresser au contrôleur et la vue utilise des actions. Ces deux modes de communications sont aveugles pour que la vue et le modèle puissent rester complètement indépendants du contrôleur.
 
 #### Plusieurs MVCs
-En iOS, un MVC corresponds généralement à une page de l'application, ou en tout cas à un espace défini de l'écran. Donc pour chaque nouvelle page, on va avoir un nouveau MVC.
+En iOS, un MVC correspond généralement à une page de l'application, ou en tout cas à un espace défini de l'écran. Donc pour chaque nouvelle page, on va avoir un nouveau MVC.
 
 > **:question:** Mais du coup, comment communique-t-on entre MVC ?
 
-Quelle question parfaite ! Vous commencer à saisir l'importance de l'architecture, c'est beau...
+Quelle question parfaite ! Vous commencez à saisir l'importance de l'architecture, c'est beau...
 
 Je vais résumer cela en trois règles simples :
 
@@ -67,26 +67,26 @@ Je vais résumer cela en trois règles simples :
 
 ![](Images/P1/P1C1_4.png)
 
-La gestion d'une vue n'est jamais réparti entre deux contrôleurs différents.
+La gestion d'une vue n'est jamais répartie entre deux contrôleurs différents.
 
 **2/ Un modèle peut-être utilisé par plusieurs contrôleurs**
 
 ![](Images/P1/P1C1_5.png)
 
-A l'inverse de la vue, deux contrôleurs peuvent faire appel aux mêmes données. Par exemple, une classe du modèle peut gérer les utilisateurs et les informations concernant l'utilisateur ont des chances d'être utiles dans plusieurs pages. Donc, ce modèle peut être partagé par plusieurs contrôleurs.
+À l'inverse de la vue, deux contrôleurs peuvent faire appel aux mêmes données. Par exemple, une classe du modèle peut gérer les utilisateurs et les informations concernant l'utilisateur ont des chances d'être utiles dans plusieurs pages. Donc, ce modèle peut être partagé par plusieurs contrôleurs.
 
 **3/ Les MVCs communiquent entre eux via le contrôleur**
 
-Deux vues ne peuvent pas communiquer entre elles. De toutes façons, il faut bien comprendre qu'une vue, c'est l'esclave d'un contrôleur donc elle n'irait jamais prendre l'initiative de parler avec qui que ce soit :).
+Deux vues ne peuvent pas communiquer entre elles. De toute façon, il faut bien comprendre qu'une vue, c'est l'esclave d'un contrôleur donc elle n'irait jamais prendre l'initiative de parler avec qui que ce soit :).
 
-Ce sont donc les contrôleurs qui permettent de faire des liens entre MVC. **Mais lorsqu'un contrôleur s'adresse à un autre contrôleur, il le fait d'une façon aveugle et structuré comme s'il s'agissait d'une vue.**
+Ce sont donc les contrôleurs qui permettent de faire des liens entre MVC. **Mais lorsqu'un contrôleur s'adresse à un autre contrôleur, il le fait d'une façon aveugle et structurée comme s'il s'agissait d'une vue.**
 
 ![](Images/P1/P1C1_6.png)
 
 Pour vous souvenir de ces trois règles simples, il suffit de se souvenir de la logique du MVC :
-- Le modèle détient la logique mais aussi les données de l'application. Donc ces informations doivent pouvoir être accessibles depuis plusieurs contrôleurs.
-- Le contrôleur a pour rôle principale la communication entre le modèle et la vue, il est donc logique qu'il soit aussi le centre de communication vers les autres MVCs.
-- La vue a pour seule rôle d'afficher ce qu'on lui demande, elle ne réfléchit pas et du coup n'est capable que de prendre les commandes d'un seul contrôleur. Il ne faut pas lui en demander plus !
+- Le modèle détient la logique, mais aussi les données de l'application. Donc ces informations doivent pouvoir être accessibles depuis plusieurs contrôleurs.
+- Le contrôleur a pour rôle principal la communication entre le modèle et la vue, il est donc logique qu'il soit aussi le centre de communication vers les autres MVCs.
+- La vue a pour seul rôle d'afficher ce qu'on lui demande, elle ne réfléchit pas et du coup n'est capable que de prendre les commandes d'un seul contrôleur. Il ne faut pas lui en demander plus !
 
 Je pense que ça fait suffisamment de théorie pour le moment. Et si tout ça n'est pas parfaitement acquis, c'est normal. Tout va s'éclaircir lorsque vous verrez ce que ça donne concrètement dans le code ! Et ce dès le prochain chapitre, où nous allons ajouter une barre de navigation dans notre application !
 
@@ -94,7 +94,7 @@ Je pense que ça fait suffisamment de théorie pour le moment. Et si tout ça n'
 
 C'est parti ! On va tout de suite ajouter une barre de navigation qui va nous permettre, comme son nom l'indique, de naviguer entre plusieurs pages !
 
-> **:question:** Oui mais c'est quoi une barre de navigation ?
+> **:question:** Oui, mais c'est quoi une barre de navigation ?
 
 Ah oui, bien vu ! Alors une barre de navigation, c'est ça :
 
@@ -102,7 +102,7 @@ Ah oui, bien vu ! Alors une barre de navigation, c'est ça :
 
 C'est la barre que vous avez très souvent en haut de votre application et qui vous permet de revenir à la page précédente. Souvent, elle contient un titre comme "*Light*" ici et parfois un ou plusieurs boutons comme le bouton `edit`.
 
-C'est plus clair ? Alors allons-y !
+C'est plus clair ? Alors, allons-y !
 
 #### Faire place nette
 
@@ -129,13 +129,13 @@ La vue du `UINavigationController` contient une barre de navigation dont nous av
 
 Dans notre navigationcontroller, les `ViewController` vont donc défiler en suivant une logique précise, celle d'une **pile**.
 
-Lorsque vous passez de la page A à la page B, la page B vient se rajouter par dessus la page A. Même chose, si vous passez à la page C, elle vient se mettre par dessus la page B. Et comme vous pouvez le voir dans le schéma ci-desous, cela forme donc une pile.
+Lorsque vous passez de la page A à la page B, la page B vient se rajouter par-dessus la page A. Même chose, si vous passez à la page C, elle vient se mettre par dessus la page B. Et comme vous pouvez le voir dans le schéma ci dessous, cela forme donc une pile.
 
 ![](Images/P1/P1C2_3.png)
 
 > **:warning:** Cela veut dire que lorsque l'utilisateur visualise la page C, les pages A et B sont toujours présentes dans la mémoire du téléphone. Elles sont seulement visuellement cachées. On en reparlera dans le chapitre sur le cycle de vie du contrôleur.
 
-**Un navigation controller a donc pour rôle de gérer cette pile qui peut contenir en même temps plusieurs ViewController mais n'en afficher qu'un seul à l'écran.**
+**Un navigation controller a donc pour rôle de gérer cette pile qui peut contenir en même temps plusieurs ViewController, mais n'en afficher qu'un seul à l'écran.**
 
 Cela se traduit dans le code par la propriété `viewControllers` de la classe `UINavigationController` qui est un tableau de type `ViewController` et qui contient tous les contrôleurs présents dans la pile de navigation rangés par ordre de présentation.
 
@@ -154,7 +154,7 @@ Sur la gauche, vous avez le navigation controller qui est déjà lié à un prem
 #### En résumé
 - Pour ajouter une barre de navigation, on utilise un navigation controller.
 - Un navigation controller gère une vue qui contient une barre de navigation et une vue conteneur dans laquelle défile les pages de l'application.
-- Un navigation controller a pour rôle de gérer une pile qui peut contenir plusieurs ViewController mais n'en afficher qu'un seul à l'écran.
+- Un navigation controller a pour rôle de gérer une pile qui peut contenir plusieurs ViewController, mais n'en afficher qu'un seul à l'écran.
 - On peut ajouter un navigation controller en le glissant depuis la bibliothèque des objets dans le storyboard.
 
 Dans le prochain chapitre, nous allons créer la première page que présentera notre navigation controller !
@@ -163,7 +163,7 @@ Dans le prochain chapitre, nous allons créer la première page que présentera 
 
 Dans le chapitre précédent, nous avons installé notre Navigation Controller dans le storyboard et nous avons supprimé le Table View Controller qui était proposé avec par défaut.
 
-A la place, nous allons ajouter un `ViewController` tout simple dont vous avez l'habitude.
+À la place, nous allons ajouter un `ViewController` tout simple dont vous avez l'habitude.
 
 #### Ajout du rootviewcontroller
 
@@ -177,13 +177,13 @@ Glissez le dans le storyboard à côté de votre navigation controller. Maintena
 
 Il nous faut maintenant relier le navigation controller et notre view controller. L'idée, c'est de faire comprendre au navigation controller que le premier contrôleur à afficher, c'est notre contrôleur, ici à droite.
 
-Pour faire cela, nous ressortons notre fameux *control drag* ! **Laissez la touche control enfoncée et faîtes un glisser déposer depuis le contrôleur de navigation vers notre contrôleur**. La popup suivante apparaît :
+Pour faire cela, nous ressortons notre fameux *control drag* ! **Laissez la touche control enfoncée et faites un glisser-déposer depuis le contrôleur de navigation vers notre contrôleur**. La popup suivante apparaît :
 
 ![](Images/P1/P1C3_3.png)
 
-Cette popup nous demande le type de relation que l'on souhaite créer entre les deux contrôleurs. Choisissez `rootviewcontroller` pour signifier que le contrôleur racine, le premier dans la pile de navigation, c'est le contrôleur que nous venons d'ajouter dans le storyboard.
+Cette popup nous demande le type de relation que l'on souhaite créer entre les deux contrôleurs. Choisissez `rootviewcontroller` pour signifier que le contrôleur racine, le premier dans la pile de navigation, c'est le contrôleur que nous venions d'ajouter dans le storyboard.
 
-Lorsque la connection est faîte, elle est matérialisée par la flèche entre les deux contrôleurs et notre contrôleur est maintenant dôté d'une jolie petite barre de navigation.
+Lorsque la connection est faite, elle est matérialisée par la flèche entre les deux contrôleurs et notre contrôleur est maintenant doté d'une jolie petite barre de navigation.
 
 ![](Images/P1/P1C3_4.png)
 
@@ -200,9 +200,9 @@ Vous avez toutes les images et connaissances nécessaires pour y arriver seul do
 > **:warning:** L'image de patte avec l'inscription "*Go !*" est un bouton ! Pour utiliser une image au lieu d'un texte pour un bouton, il faut supprimer le texte et ajouter l'image dans la propriété `Image` :  
 ![](Images/P1/P1C3_6.png)
 
-Bien sûr, je ne vais pas vous laisser tout seul pour la customisation de la barre de navigation. Laissez moi vous montrer !
+Bien sûr, je ne vais pas vous laisser tout seul pour la customisation de la barre de navigation. Laissez-moi vous montrer !
 
-Pour ajouter un titre dans la barre, séléctionnez dans le ViewController `Navigation Item` :
+Pour ajouter un titre dans la barre, sélectionnez dans le ViewController `Navigation Item` :
 
 ![](Images/P1/P1C3_7.png)
 
@@ -224,11 +224,11 @@ Et voilà vous avez une belle barre de navigation ! :D
 
 Ah la boulette ! Ne vous inquiétez pas, tout était calculé ;) !
 
-Je vous propose de créer un nouveau contrôleur. Pour cela, allez dans File > New > File... ou <kbd>cmd + n</kbd>. Choisisser ensuite `Cocoa Touch Class` puis cliquez sur *next*.
+Je vous propose de créer un nouveau contrôleur. Pour cela, allez dans File > New > File... ou <kbd>cmd + n</kbd>. Choisissez ensuite `Cocoa Touch Class` puis cliquez sur *next*.
 
 ![](Images/P1/P1C3_10.png)
 
-Ensuite, nommez votre classe `WelcomeViewController` et faîtes en une sous-classe de `UIViewController`. Vous pouvez cliquer sur *next* puis *create* pour créer le fichier `WelcomeViewController.swift`.
+Ensuite, nommez votre classe `WelcomeViewController` et faites-en une sous-classe de `UIViewController`. Vous pouvez cliquer sur *next* puis *create* pour créer le fichier `WelcomeViewController.swift`.
 
 ![](Images/P1/P1C3_11.png)
 
@@ -244,7 +244,7 @@ Dans le champ `Class`, écrivez le nom de notre classe nouvellement créée : `W
 
 #### Le contrôleur initial
 
-Nous avons bien travaillé ! Et je vous connais, c'est le moment où vous adorez lancer votre application dans le simulateur pour voir que tout marche bien. Alors allez-y ! Vous allez pas être déçu... :)
+Nous avons bien travaillé ! Et je vous connais, c'est le moment où vous adorez lancer votre application dans le simulateur pour voir que tout marche bien. Alors, allez-y ! Vous n’allez pas être déçu... :)
 
 > **:question:** Mais... Mais mon écran est tout blanc ! L'appli ne se lance pas.
 
@@ -256,7 +256,7 @@ D'abord, elle recherche le bon storyboard. Dans notre cas, c'est facile, il y en
 
 > **:question:** Oups...
 
-Mais pas de panique, on va régler ça. Ici, notre contrôleur initial, c'est le navigation controller. Sélectionnez le dans le storyboard. Puis rendez-vous dans l'inspecteur d'attributs et cocher la propriété `Is Initial View Controller`.
+Mais pas de panique, on va régler ça. Ici, notre contrôleur initial, c'est le navigation controller. Sélectionnez-le dans le storyboard. Puis rendez-vous dans l'inspecteur d'attributs et cocher la propriété `Is Initial View Controller`.
 
 ![](Images/P1/P1C3_14.png)
 
@@ -292,7 +292,7 @@ Nous allons maintenant créer une première navigation. Lorsque l'utilisateur ap
 
 Pour cela, nous allons créer ce qu'on appelle un **segue**.
 
-> **:information_source:** C'est un mot anglais à prononcer [segwe] ;). On pourrait le traduire par *transition* en français mais transition a une autre signification en iOS. Donc pour éviter la confusion, on va gentilment garder *segue* !
+> **:information_source:** C'est un mot anglais à prononcer [segwe] ;). On pourrait le traduire par *transition* en français, mais transition a une autre signification en iOS. Donc pour éviter la confusion, on va gentiment garder *segue* !
 
 **Un segue, c'est un objet dans le storyboard, qui permet de créer une transition entre deux pages.** Et c'est exactement ce dont on a besoin. Et pour le créer, nous allons faire.... un control drag !
 
@@ -304,7 +304,7 @@ Allez-y !
 
 ![](Images/P1/P1C4_4.gif)
 
-Lorsque vous relâchez, une popup apparaît et vous propose plusieurs types de segues différents. Détaillons les !
+Lorsque vous relâchez, une popup apparaît et vous propose plusieurs types de segues différents. Détaillons-les !
 
 #### Présentation des différentes catégories de segue
 
@@ -318,7 +318,7 @@ Et pour vous expliquer qui est qui, je vous ai fait des super gifs !
 
 > **:question:** En tout cas, c'est pas la modestie qui va t'étouffer...
 
-Ma pause déjeuner y est passé donc un peu de respect ;) ! Bref, les voici :
+Ma pause déjeuner y est passée donc un peu de respect ;) ! Bref, les voici :
 
 ##### Show
 
@@ -345,15 +345,15 @@ Ce segue est donc très pratique pour faire des applications qui s'adaptent sur 
 
 ![](Images/P1/P1C4_8.gif)
 
-Avec ce segue, que l'on appelle *Modal*, vous pouvez choisir plusieurs animations de transitions comme celle que vous avez ci-dessus ou une apparition en transparence ou d'autres. Sur un iPad, en général, la nouvelle page ne prends pas tout l'écran et elle obscurcit la page derrière.
+Avec ce segue, que l'on appelle *Modal*, vous pouvez choisir plusieurs animations de transitions comme celle que vous avez ci-dessus ou une apparition en transparence ou d'autres. Sur un iPad, en général, la nouvelle page ne prend pas tout l'écran et elle obscurcit la page derrière.
 
-Contrairement au Show, **ce segue ne comprends pas un moyen de revenir en arrière**. Il faut créer son propre au bouton. Par ailleurs, il n'y a plus de barre de navigation. Donc même si techniquement, ce segue rajoute une vue à la pile de navigation comme les autres, d'un point de vue utilisateur, il interromps le flux de navigation.
+Contrairement au Show, **ce segue ne comprend pas un moyen de revenir en arrière**. Il faut créer son propre au bouton. Par ailleurs, il n'y a plus de barre de navigation. Donc même si techniquement, ce segue rajoute une vue à la pile de navigation comme les autres, d'un point de vue utilisateur, il interrompt le flux de navigation.
 
 ##### Present As Popover
 
 ![](Images/P1/P1C4_9.gif)
 
-Sur iPhone, vous obtiendrez par défaut un segue *Present Modally*. Mais sur iPad (ou sur iPhone si vous changer le réglage), vous obtiendrez **une popup accrochée visuellement à l'élément d'interface qui l'a appelée**.
+Sur iPhone, vous obtiendrez par défaut un segue *Present Modally*. Mais sur iPad (ou sur iPhone si vous changez le réglage), vous obtiendrez **une popup accrochée visuellement à l'élément d'interface qui l'a appelé**.
 
 ##### Custom
 
@@ -363,12 +363,12 @@ Comme son nom l'indique, vous pouvez créer vos propres segues pour imaginer des
 
 ##### Attention !
 
-> **:warning:** Si vous essayez de lancer un segue de type Show mais que vous n'avez pas mis de Navigation Controller préalablement, vous obtiendrez un segue de type Present Modally, car sans Navigation Controller, vous n'aurez pas de pile ni de barre de navigation. N'oubliez donc pas le Navigation Controller !
+> **:warning:** Si vous essayez de lancer un segue de type Show, mais que vous n'avez pas mis de Navigation Controller préalablement, vous obtiendrez un segue de type Present Modally, car sans Navigation Controller, vous n'aurez pas de pile ni de barre de navigation. N'oubliez donc pas le Navigation Controller !
 
 #### Ajout des segues
 
 ##### Segue show
-Il ne nous reste plus, après cette parenthèse théorique, qu'à ajouter notre segue. Faîtes votre contrôl drag depuis le bouton *Go !* vers le `FormViewController` et dans la popup, choisissez le segue `Show`.
+Il ne nous reste plus, après cette parenthèse théorique, qu'à ajouter notre segue. Faîtes votre control drag depuis le bouton *Go !* vers le `FormViewController` et dans la popup, choisissez le segue `Show`.
 
 Vous constatez qu'une barre de navigation est apparue sur le contrôleur et le segue est matérialisé par une flèche entre les deux.
 
@@ -387,13 +387,13 @@ Ensuite, nous allons juste ajouter un label pour informer l'utilisateur. Je vous
 
 ![](Images/P1/P1C4_11.png)
 
-Maintenant que notre troisième interface est prête, nous allons créer le segue entre le bouton Valider du `FormViewController` et le `SuccessViewController`. Toujours pareil : avec le control-drag. Mais cette fois-ci, je vous suggère de choisir *Present Modally*. Et voici notre storyboard finalisée :
+Maintenant que notre troisième interface est prête, nous allons créer le segue entre le bouton Valider du `FormViewController` et le `SuccessViewController`. Toujours pareil : avec le control-drag. Mais cette fois-ci, je vous suggère de choisir *Present Modally*. Et voici notre storyboard finalisé :
 
 ![](Images/P1/P1C4_12.png)
 
-> **:information_source:** Je positionne le dernier contrôleur au-dessus pour signifier qu'il interromps l'expérience de navigation de gauche à droite à cause du segue modal.
+> **:information_source:** Je positionne le dernier contrôleur au-dessus pour signifier qu'il interrompt l'expérience de navigation de gauche à droite à cause du segue modal.
 
-Vous remarquez en lançant l'application que votre troisième page arrive avec une transition depuis le bas de l'écran. Mais elle ne contient ni barre de navigation, ni bouton retour. Donc on est coincé sur cette interface ! Nous allons voir dans le prochain chapitre comment revenir en arrière.
+Vous remarquez en lançant l'application que votre troisième page arrive avec une transition depuis le bas de l'écran. Mais elle ne contient ni barre de navigation ni bouton retour. Donc on est coincé sur cette interface ! Nous allons voir dans le prochain chapitre comment revenir en arrière.
 
 #### En résumé
 - Un segue, c'est un objet dans le storyboard, qui permet de créer une transition entre deux pages.
@@ -405,7 +405,7 @@ Malgré le titre de ce chapitre, soyez bien certains que vous allez de l'avant d
 
 #### Quittez le succès !
 
-Notre `SuccessViewController` est bien beau mais quand on atterrit dessus, on ne peut plus en partir ! Il n'y a pas de bouton retour ! Cela est dû au segue *Present Modally* que l'on a choisi pour afficher cette page.
+Notre `SuccessViewController` est bien beau, mais quand on atterrit dessus, on ne peut plus en partir ! Il n'y a pas de bouton retour ! Cela est dû au segue *Present Modally* que l'on a choisi pour afficher cette page.
 
 Qu'à cela ne tienne, nous allons le créer ! Rajoutez un bouton en haut à gauche sur l'interface. Je vous suggère d'y mettre juste une croix. C'est suffisant pour qu'on en comprenne le sens.
 
@@ -413,7 +413,7 @@ Qu'à cela ne tienne, nous allons le créer ! Rajoutez un bouton en haut à gauc
 
 Nous allons maintenant créer une action. Je vous suggère de la nommer `dismiss`. Car son rôle va être de faire disparaître la page.
 
-> **:information_source:** Rappel : pour créer une action, il vous suffit de faire un control-drag depuis le bouton vers le code. Rafraîchissez vous la mémoire  [ici](https://openclassrooms.com/courses/introduction-a-ios-plongez-dans-le-developpement-mobile/creez-votre-premiere-action).
+> **:information_source:** Rappel : pour créer une action, il vous suffit de faire un control-drag depuis le bouton vers le code. Rafraîchissez-vous la mémoire  [ici](https://openclassrooms.com/courses/introduction-a-ios-plongez-dans-le-developpement-mobile/creez-votre-premiere-action).
 
 Notre action étant créée, nous allons pouvoir l'implémenter. Et ça va être très simple, nous allons juste utiliser une méthode de `ViewController` qui s'appelle... `dismiss` ! Vous pouvez écrire ceci dans votre action :
 
@@ -423,15 +423,15 @@ Notre action étant créée, nous allons pouvoir l'implémenter. Et ça va être
 }
 ```
 
-La méthode `dismiss` prends deux paramètres :
-- `animated` : si le paramètre est à `true`, la transition sera animée. C'est en générale l'animation inverse de l'animation d'apparition de la page.
-- `completion` : c'est un block qui vous permet d'exécuter du code lorsque la page a disparut au cas où vous ayiez besoin de faire qqch de spécifique à ce moment là.
+La méthode `dismiss` prend deux paramètres :
+- `animated` : si le paramètre est à `true`, la transition sera animée. C'est en général l'animation inverse de l'animation d'apparition de la page.
+- `completion` : c'est un block qui vous permet d'exécuter du code lorsque la page a disparu au cas où vous ayez besoin de faire quelque chose de spécifique à ce moment-là.
 
 Et c'est tout ! Vous pouvez tester dans le simulateur et ça marche, la vue disparaît lorsqu'on appuie sur la croix !
 
 #### Deux techniques de disparition
 
-Vous savez maintenant utiliser `dismiss` pour faire disparaître programmatiquement un contrôleur. Mais sachez qu'il y a deux techniques différentes et cela dépends du segue que vous avez utilisé.
+Vous savez maintenant utiliser `dismiss` pour faire disparaître programmatiquement un contrôleur. Mais sachez qu'il y a deux techniques différentes et cela dépend du segue que vous avez utilisé.
 
 On a vu qu'il y a plusieurs types de segues et on peut les regrouper en deux groupes :
 
@@ -440,7 +440,7 @@ On a vu qu'il y a plusieurs types de segues et on peut les regrouper en deux gro
 | Show        | Present Modally    |
 | Show Detail | Present As Popover |
 
-**Les transitions de type Modal sont régies par les ViewController eux-mêmes**. Dans ce cas là, on peut directement utiliser la méthode `dismiss` comme on vient de le faire.
+**Les transitions de type Modal sont régies par les ViewController eux-mêmes**. Dans ce cas-là, on peut directement utiliser la méthode `dismiss` comme on vient de le faire.
 
 **Les transitions de type Push ne sont possibles qu'en présence d'un Navigation Controller** car c'est lui qui sait gérer ce genre de transition. C'est la raison pour laquelle il y a une barre de navigation quand on utilise ce genre de segue. Du coup, programmatiquement, c'est le Navigation Controller qui va avoir la responsabilité de faire disparaître le contrôleur et on va écrire la commande suivante.
 
@@ -454,7 +454,7 @@ J'en profite aussi pour vous parler de la navigation dans le code (si on n'utili
 
 ![](Images/P1/P1C5_2.png)
 
-> **:warning:** Inutile de vous accrocher à le retenir mais souvenez vous que **tout ce qu'on peut faire dans le storyboard a un équivalent dans le code** ! Par ailleurs, ceci est un résumé mais il y a des méthodes plus précises mais vous ne devriez pas en avoir besoin dans 99% des cas.
+> **:warning:** Inutile de vous accrocher à le retenir, mais souvenez-vous que **tout ce qu'on peut faire dans le storyboard a un équivalent dans le code** ! Par ailleurs, ceci est un résumé, mais il y a des méthodes plus précises, mais vous ne devriez pas en avoir besoin dans 99% des cas.
 
 #### Revenir au début
 Pour l'instant, nous n'avons parlé que de navigation d'une page à l'autre. Mais ce serait pratique d'avoir un bouton dans notre dernière page qui nous ramène tout au début pour lancer l'inscription pour un deuxième chien par exemple !
@@ -463,7 +463,7 @@ Commençons par créer ce bouton "Inscrire un autre chien". Je vous laisse faire
 
 ![](Images/P1/P1C5_3.png)
 
-C'est bon ? Alors continuons !
+C'est bon ? Alors, continuons !
 
 La première idée qui vient c'est de créer un segue depuis notre bouton vers la première page. Mais ça ne va pas marcher. Souvenez-vous les pages sont empilées les unes sur les autres comme ceci :
 
@@ -482,7 +482,7 @@ Si on crée un segue qui revient à la première page, on rajouterait en fait la
 |Form   |
 |Welcome|
 
-Et la navigation forme un cycle infini et n'est plus compréhensible ! A la place, il faut hôter les pages les unes après les autres. Mais ici, nous voulons enlever deux pages d'un coup pour obtenir ceci :
+Et la navigation forme un cycle infini et n'est plus compréhensible ! À la place, il faut ôter les pages les unes après les autres. Mais ici, nous voulons enlever deux pages d'un coup pour obtenir ceci :
 
 |Pile   |
 |-------|
@@ -498,23 +498,23 @@ Ils fonctionnent comme le tir à l'arc. Il faut d'abord créer une cible sur la 
 
 ![](Images/P1/P1C5_3bis.png)
 
-Alors créons d'abord la cible. Pour cela, il faut se rendre dans le code du contrôleur qu'on cherche à atteindre, ici `WelcomeViewController` et rajouter le code suivant :
+Alors, créons d'abord la cible. Pour cela, il faut se rendre dans le code du contrôleur qu'on cherche à atteindre, ici `WelcomeViewController` et rajouter le code suivant :
 
 ```swift
 @IBAction func unwindToWelcome(segue:UIStoryboardSegue) { }
 ```
 
-Oui cette méthode est vide ! Elle ne sert qu'à déclarer le contrôleur comme cible potentiel d'un unwind segue.
+Oui cette méthode est vide ! Elle ne sert qu'à déclarer le contrôleur comme cible potentielle d'un unwind segue.
 
-> **:information_source:** Le nom `unwindToWelcome` peut bien sûr être changé mais ne touchez pas au reste de la méthode ;).
+> **:information_source:** Le nom `unwindToWelcome` peut bien sûr être changé, mais ne touchez pas au reste de la méthode ;).
 
-> **:information_source:** Cette méthode sera executée lorsqu'on sera revenu à l'interface Welcome. Donc vous pouvez écrire du code à l'intérieur, si vous avez besoin d'effectuer une action à ce moment là.
+> **:information_source:** Cette méthode sera exécutée lorsqu'on sera revenu à l'interface Welcome. Donc vous pouvez écrire du code à l'intérieur, si vous avez besoin d'effectuer une action à ce moment-là.
 
 Maintenant, il faut lancer la flèche et pour cela, il faut faire... un control drag ! Il doit démarrer du bouton responsable de lancer la transition vers l'icône exit en haut du contrôleur.
 
 ![](Images/P1/P1C5_4.png)
 
-Quand vous lâchez, vous verrez une popup contenant la méthode que nous venons de créer dans `WelcomeViewController` ! Séléctionnez la et... c'est terminé !
+Quand vous lâchez, vous verrez une popup contenant la méthode que nous venons de créer dans `WelcomeViewController` ! Sélectionnez-la et... c'est terminé !
 
 ![](Images/P1/P1C5_5.gif)
 
@@ -522,7 +522,7 @@ Vous pouvez tester et constater que le bouton ramène bien à la première page 
 
 #### En résumé
 - Lorsqu'on travaille avec des segues de type *Modal*, on doit créer un bouton pour revenir en arrière.
-- On utilise la méthode `dismiss` pour faire disparaître une vue créé par un segue modal.
+- On utilise la méthode `dismiss` pour faire disparaître une vue créée par un segue modal.
 - Le navigation controller est responsable de la navigation d'un segue de type *Push*.
 - Les unwind segues permettent de sauter plusieurs pages dans la pile de navigation. Il faut d'abord créer une cible sur la page à atteindre puis créer le segue vers cette cible en utilisant l'icône *Exit*.
 
@@ -548,7 +548,7 @@ C'est ce qu'on a vu jusqu'à présent. Les contrôleurs forment une pile de navi
 
 #### Barre d'onglets
 
-La barre d'onglets se situent en bas et est composées de différentes icônes. En général, à chaque icône corresponds une section différente de l'application et on peut naviguer entre elles en cliquant sur l'icône correspondante.
+La barre d'onglets se situe en bas et est composée de différentes icônes. En général, à chaque icône correspond une section différente de l'application et on peut naviguer entre elles en cliquant sur l'icône correspondante.
 
 ![](Images/P1/P1C6_2.gif)
 
@@ -556,7 +556,7 @@ La barre d'onglets se situent en bas et est composées de différentes icônes. 
 
 On en a déjà un peu parlé, lorsqu'on a mentionné le segue `Show Detail`. C'est le type de navigation ou l'interface est divisée en deux contrôleurs, l'un est le `master` et l'autre est le `detail`.
 
-C'est très utile lorsqu'on on a une liste d'éléments à montrer et qu'on veut visualiser le détail sans quitter la liste.
+C'est très utile lorsqu'on a une liste d'éléments à montrer et qu'on veut visualiser le détail sans quitter la liste.
 
 ![](Images/P1/P1C6_3.gif)
 
@@ -590,7 +590,7 @@ Et vous allez voir que ce n'est pas bien compliqué ! Sélectionnez le Tab Bar C
 
 ![](Images/P1/P1C6_6.png)
 
-Faîtes le glisser dans le storyboard et vous devriez obtenir ceci :
+Faîtes-le glisser dans le storyboard et vous devriez obtenir ceci :
 
 ![](Images/P1/P1C6_7.png)
 
@@ -600,7 +600,7 @@ Vous avez le Tab Bar Controller à gauche.
 
 Et il est déjà relié à deux contrôleurs qui ont été créés et reliés automatiquement pour nous. Nous n'en avons pas besoin donc vous pouvez les supprimer tous les deux.
 
-A la place, nous allons plutôt relier le Tab Bar Controller aux controleurs que nous avons déjà créés, ce sera l'onglet des chiens et à un nouveau contrôleur que nous allons rajouter tout de suite, ce sera l'onglet des chats !
+À la place, nous allons plutôt relier le Tab Bar Controller aux contrôleurs que nous avons déjà créés, ce sera l'onglet des chiens et à un nouveau contrôleur que nous allons rajouter tout de suite, ce sera l'onglet des chats !
 
 #### Bienvenue les chats, ou pas...
 Vous commencez à être extrêmement doué dans l'ajout de contrôleur donc je vous laisse créer une classe `CatWelcomeViewController` puis glisser un contrôleur correspondant dans le storyboard et le relier à la classe `CatWelcomeViewController`.
@@ -633,7 +633,7 @@ Pour changer cela, vous pouvez aller dans l'inspecteur d'attributs comme on l'a 
 
 ##### 2/ Relier au Navigation Controller
 
-**Faîtes bien attention à relier le Tab Bar Controller au `Navigation Controller`**.
+**Faites bien attention à relier le Tab Bar Controller au `Navigation Controller`**.
 
 > **:warning:** En effet, cet onglet doit mener vers toute la pile de navigation et pas seulement vers le `WelcomeViewController`.
 
@@ -645,13 +645,13 @@ Vous pouvez maintenant faire votre control drag depuis le Tab Bar Controller ver
 
 ![Le storyboard complet, c'est pas beau ?](Images/P1/P1C6_12.png)
 
-> **:information_source:** Avec la copie d'écran ci-dessus, vous pouvez voir l'un des grand intérêts du storyboard : on peut visualiser très facilement l'architecture de la navigation dans l'application.
+> **:information_source:** Avec la copie d'écran ci-dessus, vous pouvez voir l'un des grands intérêts du storyboard : on peut visualiser très facilement l'architecture de la navigation dans l'application.
 
 #### Personnalisez la barre d'onglets
 
-Tout ça, c'est bien beau mais nos onglets se nomment pour l'instant *Item*, c'est pas incroyablement clair. On peut faire mieux !
+Tout ça, c'est bien beau, mais nos onglets se nomment pour l'instant *Item*, c'est pas incroyablement clair. On peut faire mieux !
 
-Pour changer le contenu d'un onglet, il faut le sélectionner dans le contrôleur correspondant. Aller donc dans le Navigation Controller et choisissez Item.
+Pour changer le contenu d'un onglet, il faut le sélectionner dans le contrôleur correspondant. Allez donc dans le Navigation Controller et choisissez Item.
 
 ![](Images/P1/P1C6_13.png)
 
@@ -659,21 +659,21 @@ Puis dans l'inspecteur d'attribut, nous allons pouvoir modifier ses propriétés
 
 ![](Images/P1/P1C6_14.png)
 
-Passer la propriété `Title` à "Chien" et choisissez "Dog" pour la propriété `Image`. Vous pouvez faire exactement la même chose pour les chats et vous obtenez cette magnifique barre d'onglets !
+Passez la propriété `Title` à "Chien" et choisissez "Dog" pour la propriété `Image`. Vous pouvez faire exactement la même chose pour les chats et vous obtenez cette magnifique barre d'onglets !
 
 ![](Images/P1/P1C6_15.png)
 
-> **:information_source:** Si vous voulez créer vos propres icônes pour la Tab Bar, l'idéal c'est de faire des images de 25*25px en png noir sur fond transparent.
+> **:information_source:** Si vous voulez créer vos propres icônes pour la Tab Bar, l'idéal c'est de faire des images de 25*25px en png noire sur fond transparent.
 
-Vous avez sans doute remarqué que le Tab Bar Controller colore automatiquement les onglets. En bleu pour l'onglet séléctionné et grisé pour les autres.
+Vous avez sans doute remarqué que le Tab Bar Controller colore automatiquement les onglets. En bleu pour l'onglet sélectionné et grisé pour les autres.
 
 Vous pouvez modifier cela en sélectionnant la barre d'onglet dans le Tab Bar Controller et en vous rendant l'inspecteur d'attributs. Vous n'avez plus qu'à changer la propriété `Image Tint` et vos onglets seront sélectionnés dans un élégant et délicat violet.
 
 ![](Images/P1/P1C6_16.png)
 
-Et voilà vous avez une magnifique barre d'onglets ! Vous savez maintenant la grande majorité de ce qu'il y a à savoir sur la navigation en iOS ! Et si on fait le bilan, c'est seulement quelques control-drag ! Pratique, non ?
+Et voilà vous avez une magnifique barre d'onglets ! Vous savez maintenant la grande majorité de ce qu'il y a à savoir sur la navigation en iOS ! Et si on fait le bilan, c'est seulement quelques control drags ! Pratique, non ?
 
-> **:information_source:** Dernière petite info sur les Tab Bar Controller : une barre d'onglets peut contenir jusqu'à 5 onglets simultanément. Au delà, le dernier onglet se transforme en ceci :  
+> **:information_source:** Dernière petite info sur les Tab Bar Controller : une barre d'onglets peut contenir jusqu'à 5 onglets simultanément. Au-delà, le dernier onglet se transforme en ceci :  
 ![](Images/P1/P1C6_17.png)  
 En cliquant sur ce dernier onglet, l'utilisateur a accès aux autres onglets.
 
@@ -698,7 +698,7 @@ Et à moins d'avoir déjà été suffisamment curieux pour chercher par vous mê
 
 ![](Images/P1/P1C7_1.jpg)
 
-Certes, mais ne paniquez pas ! Ça va vous servir à peu près tous les jours dans votre vie de développeur iOS, donc ça vaut le coup ! Et puis, ça vous fera pas de mal, je vous trouve un peu trop heureux là...
+Certes, mais ne paniquez pas ! Ça va vous servir à peu près tous les jours dans votre vie de développeur iOS, donc ça vaut le coup ! Et puis, ça ne vous fera pas de mal, je vous trouve un peu trop heureux là...
 
 #### De quoi ça va causer ?
 
@@ -718,18 +718,18 @@ La première étape, comme pour n'importe quel objet, c'est l'initialisation du 
 ```swift
 init?(coder aDecoder: NSCoder)
 ```
-> **:information_source:** Vous pouvez faire l'override de cette initialisation dans vos sous-classes de `UIViewController` et initialiser des propriétés et dépendances dont vous avez besoin mais dans le cas courant, vous ne ferez rien.
+> **:information_source:** Vous pouvez faire l'override de cette initialisation dans vos sous-classes de `UIViewController` et initialiser des propriétés et dépendances dont vous avez besoin, mais dans le cas courant, vous ne ferez rien.
 
-A cette étape, on a juste instancié un objet. Il n'est pas question de la vue. C'est comme lorsque vous écrivez ceci :
+À cette étape, on a juste instancié un objet. Il n'est pas question de la vue. C'est comme lorsque vous écrivez ceci :
 
 ```swift
 var monObjet = Objet()
 ```
 
-> **:information_source:** Pour prendre une métaphore, c'est comme ci on construisait un lecteur DVD mais on ne s'occupe pas du DVD.
+> **:information_source:** Pour prendre une métaphore, c'est comme ci on construisait un lecteur DVD, mais on ne s'occupe pas du DVD.
 
 ##### Chargement de la vue
-L'étape suivante, c'est le chargement de la vue. A cette étape, on crée en mémoire la propriété `view` du contrôleur, la vue principale (rappel sur cette notion [ici](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc/decouvrez-uiview#/id/r-4573206)). On va y ajouter toutes les sous-vues. On va pouvoir les placer, les modifier etc. A cette étape, on prépare toutes les propriétés de la vue et de ses sous-vues. Mais **on ne les affiche pas à l'écran**.
+L'étape suivante, c'est le chargement de la vue. À cette étape, on crée en mémoire la propriété `view` du contrôleur, la vue principale (rappel sur cette notion [ici](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc/decouvrez-uiview#/id/r-4573206)). On va y ajouter toutes les sous-vues. On va pouvoir les placer, les modifier, etc. À cette étape, on prépare toutes les propriétés de la vue et de ses sous-vues. Mais **on ne les affiche pas à l'écran**.
 
 > **:information_source:** C'est l'étape où l'on construit le DVD.
 
@@ -747,7 +747,7 @@ Une fois cette étape terminée, la fameuse fonction `viewDidLoad` est appelée 
 func viewDidLoad()
 ```
 
-Quand cette fonction est appelée, **la vue est donc complètement chargée en mémoire mais elle n'est pas affichée à l'écran**.
+Quand cette fonction est appelée, **la vue est donc complètement chargée en mémoire, mais elle n'est pas affichée à l'écran**.
 
 > **:information_source:** Dans cette étape, vous pouvez initialiser des objets dont vous aller avoir besoin pour la vue ou lancer des tâches de fond comme charger des données sur internet.
 
@@ -766,11 +766,11 @@ func viewDidAppear(_ animated: Bool)
 
 La première est appelée **juste avant que la vue soit affichée à l'écran**. C'est le bon moment pour préparer une animation que l'on veut jouer à l'affichage de la vue.
 
-La deuxième est appelée **juste après que la vue soit affichée à l'écran**. C'est le bon moment pour lancer une animation, un son où une vidéo. La vue vient d'arriver à l'écran, l'utilisateur va pouvoir en profiter !
+La deuxième est appelée **juste après que la vue soit affichée à l'écran**. C'est le bon moment pour lancer une animation, un son ou une vidéo. La vue vient d'arriver à l'écran, l'utilisateur va pouvoir en profiter !
 
 #### La vie
 
-Ça y est ! La vue est à l'écran. L'utilisateur va intéragir avec en cliquant sur des boutons, en la visualisant simplement ou en faisant des gestes sur l'écran tactile.
+Ça y est ! La vue est à l'écran. L'utilisateur va interagir avec en cliquant sur des boutons, en la visualisant simplement ou en faisant des gestes sur l'écran tactile.
 
 > **:information_source:** Le DVD est tranquillement en train d'être joué.
 
@@ -782,15 +782,15 @@ Vous avez peut-être aperçu cette méthode :
 func didReceiveMemoryWarning()
 ```
 
-Un iPhone, contrairement à un ordinateur, c'est petit. Du coup, ses capacités sont limités. Il ne peut retenir qu'un nombre limité d'objets en même temps dans ce qu'on appelle sa mémoire vive. Et si il est sur le point d'atteindre sa limite, il vous prévient avant pour que vous puissiez libérer la mémoire de choses inutiles.
+Un iPhone, contrairement à un ordinateur, c'est petit. Du coup, ses capacités sont limitées. Il ne peut retenir qu'un nombre limité d'objets en même temps dans ce qu'on appelle sa mémoire vive. Et s’il est sur le point d'atteindre sa limite, il vous prévient avant pour que vous puissiez libérer la mémoire de choses inutiles.
 
 > **:information_source:** Prenons un exemple, si vous voulez afficher le texte complet de toute la saga Harry Potter dans une seule vue, la mémoire de votre iPhone risque de flancher et vous aurez l'occasion dans la fonction `didReceiveMemoryWarning` de supprimer une partie du texte pour alléger la charge.
 
 #### La mort
-Et oui, cette histoire ne se finit par très bien... :/
+Eh oui, cette histoire ne se finit par très bien... :/
 
 ##### Disparition de l'écran
-Lorsque votre vue va disparaître de l'écran, si vous passez à la vue suivante par exemple, deux méthodes vont être appelée :
+Lorsque votre vue va disparaître de l'écran, si vous passez à la vue suivante par exemple, deux méthodes vont être appelées :
 
 ```swift
 func viewWillDisappear(_ animated: Bool)
@@ -819,7 +819,7 @@ Notre pile de navigation ressemble à ceci :
 |  B   |
 |  A   |
 
-Donc **le contrôleur A existe toujours puisqu'il est stocké dans la pile de navigation**. Mieux, la vue est toujours chargée ! Elle n'est juste pas montré à l'écran.
+Donc **le contrôleur A existe toujours puisqu'il est stocké dans la pile de navigation**. Mieux, la vue est toujours chargée ! Elle n'est juste pas montrée à l'écran.
 
 3/ L'utilsateur revient à la vue A et la pile de navigation ressemble à ceci :
 
@@ -827,9 +827,9 @@ Donc **le contrôleur A existe toujours puisqu'il est stocké dans la pile de na
 |------|
 |  A   |
 
-Non seulement la vue B a disparu de l'écran mais cette fois le contrôleur B n'est plus stocké dans la pile de navigation. Le contrôleur B a bel et bien été supprimé de la mémoire.
+Non seulement la vue B a disparu de l'écran, mais cette fois le contrôleur B n'est plus stocké dans la pile de navigation. Le contrôleur B a bel et bien été supprimé de la mémoire.
 
-> **:warning:** Il faut donc bien que vous reteniez que la présence ou non de la vue à l'écran n'est pas directement corrélé à l'existence ou non du contrôleur. **Le contrôleur peut continuer à vivre sans que la vue ne soit à l'écran**. Il suffit qu'il soit toujours stocké dans la pile de navigation.
+> **:warning:** Il faut donc bien que vous reteniez que la présence ou non de la vue à l'écran n'est pas directement corrélée à l'existence ou non du contrôleur. **Le contrôleur peut continuer à vivre sans que la vue ne soit à l'écran**. Il suffit qu'il soit toujours stocké dans la pile de navigation.
 
 **La mort effective du contrôleur a donc lieu lorsqu'il quitte la pile de navigation.**
 
@@ -841,12 +841,12 @@ Cela a une conséquence importante pour deux méthodes que vous risquez d'utilis
 
 > **:question:** Pourquoi ?
 
-Reprenons notre exemple avec les contrôleurs A et B. Et concentrons nous uniquement sur l'enchaînement des méthodes du cycle de la vie de A.
+Reprenons notre exemple avec les contrôleurs A et B. Et concentrons-nous uniquement sur l'enchaînement des méthodes du cycle de la vie de A.
 
-1/ A est appelée à l'écran, les méthodes suivantes sont executées :
+1/ A est appelée à l'écran, les méthodes suivantes sont exécutés :
 
 ```swift
-// Le contrôleur est crée en mémoire
+// Le contrôleur est créé en mémoire
 init?(coder aDecoder: NSCoder)
 
 // La vue est chargée
@@ -858,9 +858,9 @@ viewWillAppear(_ animated: Bool)
 viewDidAppear(_ animated: Bool)
 ```
 
-Jusque là `viewDidLoad` et `viewDidAppear` ont tous les deux été appelé une fois.
+Jusque là `viewDidLoad` et `viewDidAppear` ont toutes les deux été appelées une fois.
 
-2/ On passe à la vue B. Sur le contrôleur A, les méthodes suivantes sont executées.
+2/ On passe à la vue B. Sur le contrôleur A, les méthodes suivantes sont exécutées.
 
 ```swift
 // La vue disparaît de l'écran
@@ -876,23 +876,23 @@ viewWillAppear(_ animated: Bool)
 viewDidAppear(_ animated: Bool)
 ```
 
-Et voilà, `viewDidAppear` (et `viewWillAppear` d'ailleurs) est appelé une seconde fois mais `viewDidLoad` n'a pas été appelée.
+Et voilà, `viewDidAppear` (et `viewWillAppear` d'ailleurs) est appelé une seconde fois, mais `viewDidLoad` n'a pas été appelée.
 
 > **:question:** Pourquoi on ne repasse pas par `viewDidLoad` ?
 
-Vous connaissez déjà la réponse ! Alors débrouillez-vous !
+Vous connaissez déjà la réponse ! Alors, débrouillez-vous !
 
 > **:question:** Si je pose la question a priori...
 
-Bon OK. Comme on l'a vu juste au dessus, le contrôleur A reste stockée dans la pile de navigation quand B est à l'écran. **Donc le contrôleur A continue à exister et il garde la vue chargée en mémoire pour pouvoir à tout moment la refaire passer à l'écran sans avoir à tout recharger.**
+Bon OK. Comme on l'a vu juste au-dessus, le contrôleur A reste stocké dans la pile de navigation quand B est à l'écran. **Donc le contrôleur A continue à exister et il garde la vue chargée en mémoire pour pouvoir à tout moment la refaire passer à l'écran sans avoir à tout recharger.**
 
-Et donc si je fais dix fois l'aller-retour entre A et B, je vais passer dix fois par `viewDidAppear` mais je ne repasse plus par `viewDidLoad` car la vue n'a pas été rechargée.
+Et donc si je fais dix fois l'aller-retour entre A et B, je vais passer dix fois par `viewDidAppear,` mais je ne repasse plus par `viewDidLoad` car la vue n'a pas été rechargée.
 
 > **:question:** OK je vois.
 
 Merci ;) !
 
-Du coup, si vous voulez recharger le contenu d'une page à chaque fois qu'elle apparait, il faudra mettre cela dans `viewWillAppear` plutôt que `viewDidLoad`. En revanche, si vous souhaitez vous placer en tant qu'observeur pour une notification par exemple, vous n'avez besoin de le faire qu'une fois donc faîtes le dans `viewDidLoad`.
+Du coup, si vous voulez recharger le contenu d'une page à chaque fois qu'elle apparaît, il faudra mettre cela dans `viewWillAppear` plutôt que `viewDidLoad`. En revanche, si vous souhaitez vous placer en tant qu'observeur pour une notification par exemple, vous n'avez besoin de le faire qu'une fois donc faîtes le dans `viewDidLoad`.
 
 > **:information_source:** Si tout cela n'est pas encore parfaitement clair pour vous, je vous suggère de jeter un oeil à l'animation suivante. Vous pouvez également retrouver le projet Github correspondant à [cette adresse](https://github.com/AmbroiseCollon/ControllerLifeCycle/blob/master/README.md).
 ![](Images/P1/P1C7_2.gif)
@@ -905,4 +905,4 @@ En guise de résumé, je vous propose le schéma ci-dessous :
 
 Ça y est  ! Vous avez toutes les bases de navigation et comme tout en iOS, il y a beaucoup d’autres choses que vous pouvez aller découvrir par vous même ! Mais si la fondation est solide, le reste ira tout seul, vous n’avez plus besoin de moi !
 
-Dans la prochaine partie, nous allons créer le formulaire d’inscription et vous allez découvrir comment utiliser les composants principaux d’un formulaire, comme les switch, les champs de texte, les sélecteurs et d’autres !
+Dans la prochaine partie, nous allons créer le formulaire d’inscription et vous allez découvrir comment utiliser les composants principaux d’un formulaire, comme les switchs, les champs de texte, les sélecteurs et d’autres !
