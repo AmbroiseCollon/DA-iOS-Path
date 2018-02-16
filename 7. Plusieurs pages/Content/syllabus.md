@@ -8,7 +8,7 @@ Bonjour et bienvenue dans ce cours sur la navigation et les formulaires en iOS !
 
 Et bien sûr, j'ai prévu quelques surprises et autres bonus en chemin !
 
-![Ne vous inquiétez pas ! Tout va bien se passer !](Images/P1/P1C1_1.jpg)
+|IMAGE Images/P1/P1C1_1.jpg| [Ne vous inquiétez pas ! Tout va bien se passer !]
 
 #### Prérequis
 
@@ -30,7 +30,7 @@ Miawouf est divisée en deux, une inscription pour les chiens et une pour les ch
 - un formulaire d'inscription
 - une page de confirmation
 
-![](Images/P1/P1C1_2.png)
+|IMAGE Images/P1/P1C1_2.png| []
 
 Pour construire cette application avec moi, je vous ai préparé un petit dossier contenant les images dont vous allez avoir besoin pour le cours. Vous pouvez le télécharger [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+7+-+Plusieurs+pages/App+Assets.zip).
 
@@ -50,7 +50,7 @@ Avant de se lancer tête baissée dans nos différents sujets, je voudrais prend
 
 Pour rappel, en MVC, le modèle et la vue n'ont pas connaissance de l'existence l'une de l'autre et le contrôleur et le seul à pouvoir s'adresser directement à l'un et l'autre.
 
-![Ce schéma vous dit quelque chose ?](Images/P1/P1C1_3.png)
+|IMAGE Images/P1/P1C1_3.png| [Ce schéma vous dit quelque chose ?]
 
 Le modèle utilise généralement des notifications pour s'adresser au contrôleur et la vue utilise des actions. Ces deux modes de communications sont aveugles pour que la vue et le modèle puissent rester complètement indépendants du contrôleur.
 
@@ -65,13 +65,13 @@ Je vais résumer cela en trois règles simples :
 
 **1/ Une vue communique toujours avec un seul contrôleur.**
 
-![](Images/P1/P1C1_4.png)
+|IMAGE Images/P1/P1C1_4.png| []
 
 La gestion d'une vue n'est jamais répartie entre deux contrôleurs différents.
 
 **2/ Un modèle peut-être utilisé par plusieurs contrôleurs**
 
-![](Images/P1/P1C1_5.png)
+|IMAGE Images/P1/P1C1_5.png| []
 
 À l'inverse de la vue, deux contrôleurs peuvent faire appel aux mêmes données. Par exemple, une classe du modèle peut gérer les utilisateurs et les informations concernant l'utilisateur ont des chances d'être utiles dans plusieurs pages. Donc, ce modèle peut être partagé par plusieurs contrôleurs.
 
@@ -81,7 +81,7 @@ Deux vues ne peuvent pas communiquer entre elles. De toute façon, il faut bien 
 
 Ce sont donc les contrôleurs qui permettent de faire des liens entre MVC. **Mais lorsqu'un contrôleur s'adresse à un autre contrôleur, il le fait d'une façon aveugle et structurée comme s'il s'agissait d'une vue.**
 
-![](Images/P1/P1C1_6.png)
+|IMAGE Images/P1/P1C1_6.png| []
 
 Pour vous souvenir de ces trois règles simples, il suffit de se souvenir de la logique du MVC :
 - Le modèle détient la logique, mais aussi les données de l'application. Donc ces informations doivent pouvoir être accessibles depuis plusieurs contrôleurs.
@@ -98,7 +98,7 @@ C'est parti ! On va tout de suite ajouter une barre de navigation qui va nous pe
 
 Ah oui, bien vu ! Alors une barre de navigation, c'est ça :
 
-![](Images/P1/P1C2_1.png)
+|IMAGE Images/P1/P1C2_1.png| []
 
 C'est la barre que vous avez très souvent en haut de votre application et qui vous permet de revenir à la page précédente. Souvent, elle contient un titre comme "*Light*" ici et parfois un ou plusieurs boutons comme le bouton `edit`.
 
@@ -117,7 +117,7 @@ Ensuite, rendez vous dans le storyboard et supprimez le ViewController qui s'y t
 #### Présentation de la classe UINavigationController
 Pour ajouter une barre de navigation, il faut ajouter ce qu'on appelle un `UINavigationController`. Cette classe est un contrôleur. Et comme tout contrôleur qui se respecte, son rôle est de gérer une vue. Et pour un navigation controller, cette vue est un peu particulière. Elle est composée de deux sous-vues comme le présente le schéma ci-dessous :
 
-![](Images/P1/P1C2_2.png)
+|IMAGE Images/P1/P1C2_2.png| []
 
 La vue du `UINavigationController` contient une barre de navigation dont nous avons déjà parlé, et **une vue conteneur qui a pour but unique d'afficher une page de votre application.**
 
@@ -131,7 +131,7 @@ Dans notre navigationcontroller, les `ViewController` vont donc défiler en suiv
 
 Lorsque vous passez de la page A à la page B, la page B vient se rajouter par-dessus la page A. Même chose, si vous passez à la page C, elle vient se mettre par dessus la page B. Et comme vous pouvez le voir dans le schéma ci dessous, cela forme donc une pile.
 
-![](Images/P1/P1C2_3.png)
+|IMAGE Images/P1/P1C2_3.png| []
 
 > **:warning:** Cela veut dire que lorsque l'utilisateur visualise la page C, les pages A et B sont toujours présentes dans la mémoire du téléphone. Elles sont seulement visuellement cachées. On en reparlera dans le chapitre sur le cycle de vie du contrôleur.
 
@@ -143,11 +143,11 @@ Cela se traduit dans le code par la propriété `viewControllers` de la classe `
 
 Assez de théorie ! Ajoutons maintenant notre `UINavigationController`. Pour cela, il vous suffit de vous rendre dans la bibliothèque des objets en bas à droite et de sélectionner un UINavigationController.
 
-![](Images/P1/P1C2_4.png)
+|IMAGE Images/P1/P1C2_4.png| []
 
 Vous n'avez plus qu'à le faire glisser dans le storyboard et vous devriez obtenir ceci :
 
-![](Images/P1/P1C2_5.png)
+|IMAGE Images/P1/P1C2_5.png| []
 
 Sur la gauche, vous avez le navigation controller qui est déjà lié à un premier ViewController de type Table View Controller visible sur la droite. Ce deuxième contrôleur permet d'ajouter des listes et nous verrons cela dans un prochain cours donc vous pouvez le supprimer pour le moment.
 
@@ -169,50 +169,50 @@ Dans le chapitre précédent, nous avons installé notre Navigation Controller d
 
 Vous pouvez trouver le `ViewController` dans la bibliothèque des composants :
 
-![](Images/P1/P1C3_1.png)
+|IMAGE Images/P1/P1C3_1.png| []
 
 Glissez le dans le storyboard à côté de votre navigation controller. Maintenant votre storyboard doit ressembler à ceci :
 
-![](Images/P1/P1C3_2.png)
+|IMAGE Images/P1/P1C3_2.png| []
 
 Il nous faut maintenant relier le navigation controller et notre view controller. L'idée, c'est de faire comprendre au navigation controller que le premier contrôleur à afficher, c'est notre contrôleur, ici à droite.
 
 Pour faire cela, nous ressortons notre fameux *control drag* ! **Laissez la touche control enfoncée et faites un glisser-déposer depuis le contrôleur de navigation vers notre contrôleur**. La popup suivante apparaît :
 
-![](Images/P1/P1C3_3.png)
+|IMAGE Images/P1/P1C3_3.png| []
 
 Cette popup nous demande le type de relation que l'on souhaite créer entre les deux contrôleurs. Choisissez `rootviewcontroller` pour signifier que le contrôleur racine, le premier dans la pile de navigation, c'est le contrôleur que nous venions d'ajouter dans le storyboard.
 
 Lorsque la connection est faite, elle est matérialisée par la flèche entre les deux contrôleurs et notre contrôleur est maintenant doté d'une jolie petite barre de navigation.
 
-![](Images/P1/P1C3_4.png)
+|IMAGE Images/P1/P1C3_4.png| []
 
 #### Personnalisez la barre de navigation
 
 Il est temps maintenant de créer notre première interface dans le contrôleur que nous venons de rajouter. Le résultat final doit ressembler à ceci :
 
-![](Images/P1/P1C3_5.png)
+|IMAGE Images/P1/P1C3_5.png| []
 
 Vous avez toutes les images et connaissances nécessaires pour y arriver seul donc je vous laisse faire !
 
 > **:information_source:** Tant qu'à faire, rendez l'interface responsive, c'est un bon réflexe à prendre ! ;)
 
 > **:warning:** L'image de patte avec l'inscription "*Go !*" est un bouton ! Pour utiliser une image au lieu d'un texte pour un bouton, il faut supprimer le texte et ajouter l'image dans la propriété `Image` :  
-![](Images/P1/P1C3_6.png)
+|IMAGE Images/P1/P1C3_6.png| []
 
 Bien sûr, je ne vais pas vous laisser tout seul pour la customisation de la barre de navigation. Laissez-moi vous montrer !
 
 Pour ajouter un titre dans la barre, sélectionnez dans le ViewController `Navigation Item` :
 
-![](Images/P1/P1C3_7.png)
+|IMAGE Images/P1/P1C3_7.png| []
 
 Puis dans l'inspecteur d'attribut, modifier la propriété `Title`.
 
-![](Images/P1/P1C3_8.png)
+|IMAGE Images/P1/P1C3_8.png| []
 
 Ensuite pour modifier l'aspect de la barre de navigation, cela se passe du côté du `UINavigationController` puisque, comme on l'a vu, c'est lui qui gère cette vue. Sélectionnez `Navigation Bar` dans le Navigation Controller.
 
-![](Images/P1/P1C3_9.png)
+|IMAGE Images/P1/P1C3_9.png| []
 
 Et ensuite, vous pouvez modifier tout ce que vous voulez du côté de l'inspecteur d'attribut, notamment la couleur de la barre avec la propriété `Bar Tint` et la couleur du titre avec la propriété `Title Color`.
 
@@ -226,21 +226,21 @@ Ah la boulette ! Ne vous inquiétez pas, tout était calculé ;) !
 
 Je vous propose de créer un nouveau contrôleur. Pour cela, allez dans File > New > File... ou <kbd>cmd + n</kbd>. Choisissez ensuite `Cocoa Touch Class` puis cliquez sur *next*.
 
-![](Images/P1/P1C3_10.png)
+|IMAGE Images/P1/P1C3_10.png| []
 
 Ensuite, nommez votre classe `WelcomeViewController` et faites-en une sous-classe de `UIViewController`. Vous pouvez cliquer sur *next* puis *create* pour créer le fichier `WelcomeViewController.swift`.
 
-![](Images/P1/P1C3_11.png)
+|IMAGE Images/P1/P1C3_11.png| []
 
 Et voilà ! Votre fichier est créé et nous avons une nouvelle classe `WelcomeViewController` !
 
 Il suffit maintenant de faire le lien avec notre contrôleur dans le storyboard. Pour cela, sélectionnez le contrôleur dans le storyboard. Puis, dans les utilitaires, ouvrez l'inspecteur d'identité (troisième onglet) :
 
-![](Images/P1/P1C3_12.png)
+|IMAGE Images/P1/P1C3_12.png| []
 
 Dans le champ `Class`, écrivez le nom de notre classe nouvellement créée : `WelcomeViewController`. Maintenant, notre contrôleur est de type `WelcomeViewController` et le lien entre le contrôleur dans le storyboard et celui dans le code est fait !
 
-![](Images/P1/P1C3_13.png)
+|IMAGE Images/P1/P1C3_13.png| []
 
 #### Le contrôleur initial
 
@@ -258,11 +258,11 @@ D'abord, elle recherche le bon storyboard. Dans notre cas, c'est facile, il y en
 
 Mais pas de panique, on va régler ça. Ici, notre contrôleur initial, c'est le navigation controller. Sélectionnez-le dans le storyboard. Puis rendez-vous dans l'inspecteur d'attributs et cocher la propriété `Is Initial View Controller`.
 
-![](Images/P1/P1C3_14.png)
+|IMAGE Images/P1/P1C3_14.png| []
 
 Et voilà ! Vous pouvez vérifier que cela a fonctionné en lançant votre simulateur ou simplement en vérifiant qu'une flèche est apparue sur la gauche de votre navigation controller.
 
-![](Images/P1/P1C3_15.png)
+|IMAGE Images/P1/P1C3_15.png| []
 
 #### En résumé
 - Avec un control drag, vous pouvez sélectionner le contrôleur racine de votre pile de navigation.
@@ -280,11 +280,11 @@ Même si nous avons deux contrôleurs dans le storyboard : `NavigationController
 Nous allons ajouter la deuxième page de l'application qui va contenir le formulaire d'inscription. Nous allons appeler le contrôleur correspondant `FormViewController`. Je vous laisse créer la classe correspondante puis faîtes glisser un contrôleur dans le storyboard et donner lui la classe `FormViewController` nouvellement créée. C'est exactement la même manipulation que pour le `WelcomeViewController` du chapitre précédent.
 
 > **:warning:** On travaille en MVC, donc je vous suggère de créer des groupes de fichier dans votre navigateur pour refléter cette architecture. Votre structure de fichier doit ressembler à ceci :
-![](Images/P1/P1C4_1.png)
+|IMAGE Images/P1/P1C4_1.png| []
 
 Maintenant, nous allons construire la base de l'interface. Nous allons juste rajouter le bouton *Valider* en bas. Le résultat doit ressembler à ceci :
 
-![](Images/P1/P1C4_2.png)
+|IMAGE Images/P1/P1C4_2.png| []
 
 #### Vous avez dit segue ?
 
@@ -296,13 +296,13 @@ Pour cela, nous allons créer ce qu'on appelle un **segue**.
 
 **Un segue, c'est un objet dans le storyboard, qui permet de créer une transition entre deux pages.** Et c'est exactement ce dont on a besoin. Et pour le créer, nous allons faire.... un control drag !
 
-![1 point pour ceux qui sauront apprécier la référence...](Images/P1/P1C4_3.jpg)
+|IMAGE Images/P1/P1C4_3.jpg| [1 point pour ceux qui sauront apprécier la référence...]
 
 Le control drag doit se faire **entre le bouton qui initie la transition**, ici notre bouton *Go !* **et le contrôleur qui doit être présenté**, ici notre `FormViewController`.
 
 Allez-y !
 
-![](Images/P1/P1C4_4.gif)
+|IMAGE Images/P1/P1C4_4.gif| []
 
 Lorsque vous relâchez, une popup apparaît et vous propose plusieurs types de segues différents. Détaillons-les !
 
@@ -310,7 +310,7 @@ Lorsque vous relâchez, une popup apparaît et vous propose plusieurs types de s
 
 Il y a 5 types de segues différents comme vous pouvez le voir sur la popup.
 
-![](Images/P1/P1C4_5.png)
+|IMAGE Images/P1/P1C4_5.png| []
 
 > **:information_source:** Les 2 derniers sont marqués *deprecated* donc cela signifie qu'ils ne sont plus utilisés que pour des versions anciennes d'iOS. Les 5 au-dessus les remplacent.
 
@@ -322,7 +322,7 @@ Ma pause déjeuner y est passée donc un peu de respect ;) ! Bref, les voici :
 
 ##### Show
 
-![](Images/P1/P1C4_6.gif)
+|IMAGE Images/P1/P1C4_6.gif| []
 
 Le segue Show est le plus simple, **il ajoute tout simplement une page par dessus la précédente en la rajoutant sur la pile de navigation**. Il vient avec des petits trucs cool :
 - L'animation que vous pouvez admirer ci-dessus
@@ -333,7 +333,7 @@ Le segue Show est le plus simple, **il ajoute tout simplement une page par dessu
 
 ##### Show Detail
 
-![](Images/P1/P1C4_7.gif)
+|IMAGE Images/P1/P1C4_7.gif| []
 
 Sur iPhone, c'est exactement le même que *Show*. **Mais sur iPad, la deuxième page est présentée sans remplacer la précédente en se positionnant à sa droite**.
 
@@ -343,7 +343,7 @@ Ce segue est donc très pratique pour faire des applications qui s'adaptent sur 
 
 ##### Present Modally
 
-![](Images/P1/P1C4_8.gif)
+|IMAGE Images/P1/P1C4_8.gif| []
 
 Avec ce segue, que l'on appelle *Modal*, vous pouvez choisir plusieurs animations de transitions comme celle que vous avez ci-dessus ou une apparition en transparence ou d'autres. Sur un iPad, en général, la nouvelle page ne prend pas tout l'écran et elle obscurcit la page derrière.
 
@@ -351,7 +351,7 @@ Contrairement au Show, **ce segue ne comprend pas un moyen de revenir en arrièr
 
 ##### Present As Popover
 
-![](Images/P1/P1C4_9.gif)
+|IMAGE Images/P1/P1C4_9.gif| []
 
 Sur iPhone, vous obtiendrez par défaut un segue *Present Modally*. Mais sur iPad (ou sur iPhone si vous changez le réglage), vous obtiendrez **une popup accrochée visuellement à l'élément d'interface qui l'a appelé**.
 
@@ -372,7 +372,7 @@ Il ne nous reste plus, après cette parenthèse théorique, qu'à ajouter notre 
 
 Vous constatez qu'une barre de navigation est apparue sur le contrôleur et le segue est matérialisé par une flèche entre les deux.
 
-![](Images/P1/P1C4_10.png)
+|IMAGE Images/P1/P1C4_10.png| []
 
 Vous pouvez tester l'interaction dans votre simulateur et ça marche ! Pas plus compliqué
 qu'un control drag !
@@ -385,11 +385,11 @@ Comme d'habitude, vous allez créer une classe que l'on va appeler cette fois `S
 
 Ensuite, nous allons juste ajouter un label pour informer l'utilisateur. Je vous laisse faire et ça donne ça :
 
-![](Images/P1/P1C4_11.png)
+|IMAGE Images/P1/P1C4_11.png| []
 
 Maintenant que notre troisième interface est prête, nous allons créer le segue entre le bouton Valider du `FormViewController` et le `SuccessViewController`. Toujours pareil : avec le control-drag. Mais cette fois-ci, je vous suggère de choisir *Present Modally*. Et voici notre storyboard finalisé :
 
-![](Images/P1/P1C4_12.png)
+|IMAGE Images/P1/P1C4_12.png| []
 
 > **:information_source:** Je positionne le dernier contrôleur au-dessus pour signifier qu'il interrompt l'expérience de navigation de gauche à droite à cause du segue modal.
 
@@ -409,7 +409,7 @@ Notre `SuccessViewController` est bien beau, mais quand on atterrit dessus, on n
 
 Qu'à cela ne tienne, nous allons le créer ! Rajoutez un bouton en haut à gauche sur l'interface. Je vous suggère d'y mettre juste une croix. C'est suffisant pour qu'on en comprenne le sens.
 
-![](Images/P1/P1C5_1.png)
+|IMAGE Images/P1/P1C5_1.png| []
 
 Nous allons maintenant créer une action. Je vous suggère de la nommer `dismiss`. Car son rôle va être de faire disparaître la page.
 
@@ -452,7 +452,7 @@ navigationController?.popViewController(animated: true)
 
 J'en profite aussi pour vous parler de la navigation dans le code (si on n'utilise pas les segues du storyboard). Et je vous résume tout ça dans ce schéma :
 
-![](Images/P1/P1C5_2.png)
+|IMAGE Images/P1/P1C5_2.png| []
 
 > **:warning:** Inutile de vous accrocher à le retenir, mais souvenez-vous que **tout ce qu'on peut faire dans le storyboard a un équivalent dans le code** ! Par ailleurs, ceci est un résumé, mais il y a des méthodes plus précises, mais vous ne devriez pas en avoir besoin dans 99% des cas.
 
@@ -461,7 +461,7 @@ Pour l'instant, nous n'avons parlé que de navigation d'une page à l'autre. Mai
 
 Commençons par créer ce bouton "Inscrire un autre chien". Je vous laisse faire, voici l'objectif :
 
-![](Images/P1/P1C5_3.png)
+|IMAGE Images/P1/P1C5_3.png| []
 
 C'est bon ? Alors, continuons !
 
@@ -496,7 +496,7 @@ La particularité de ses segues, c'est qu'ils peuvent vous mener n'importe où d
 
 Ils fonctionnent comme le tir à l'arc. Il faut d'abord créer une cible sur la page à laquelle on veut revenir, ici `WelcomeViewController`. Puis on lance une flèche vers cette cible.
 
-![](Images/P1/P1C5_3bis.png)
+|IMAGE Images/P1/P1C5_3bis.png| []
 
 Alors, créons d'abord la cible. Pour cela, il faut se rendre dans le code du contrôleur qu'on cherche à atteindre, ici `WelcomeViewController` et rajouter le code suivant :
 
@@ -512,11 +512,11 @@ Oui cette méthode est vide ! Elle ne sert qu'à déclarer le contrôleur comme 
 
 Maintenant, il faut lancer la flèche et pour cela, il faut faire... un control drag ! Il doit démarrer du bouton responsable de lancer la transition vers l'icône exit en haut du contrôleur.
 
-![](Images/P1/P1C5_4.png)
+|IMAGE Images/P1/P1C5_4.png| []
 
 Quand vous lâchez, vous verrez une popup contenant la méthode que nous venons de créer dans `WelcomeViewController` ! Sélectionnez-la et... c'est terminé !
 
-![](Images/P1/P1C5_5.gif)
+|IMAGE Images/P1/P1C5_5.gif| []
 
 Vous pouvez tester et constater que le bouton ramène bien à la première page en supprimant ainsi les pages 2 et 3 de la pile de navigation en une fois !
 
@@ -544,13 +544,13 @@ Nous avons déjà étudié le premier et dans ce chapitre nous allons nous inté
 
 C'est ce qu'on a vu jusqu'à présent. Les contrôleurs forment une pile de navigation et une barre de navigation permet de revenir en arrière en *dépilant* les pages.
 
-![](Images/P1/P1C6_1.gif)
+|IMAGE Images/P1/P1C6_1.gif| []
 
 #### Barre d'onglets
 
 La barre d'onglets se situe en bas et est composée de différentes icônes. En général, à chaque icône correspond une section différente de l'application et on peut naviguer entre elles en cliquant sur l'icône correspondante.
 
-![](Images/P1/P1C6_2.gif)
+|IMAGE Images/P1/P1C6_2.gif| []
 
 ##### Côte à côté
 
@@ -558,7 +558,7 @@ On en a déjà un peu parlé, lorsqu'on a mentionné le segue `Show Detail`. C'e
 
 C'est très utile lorsqu'on a une liste d'éléments à montrer et qu'on veut visualiser le détail sans quitter la liste.
 
-![](Images/P1/P1C6_3.gif)
+|IMAGE Images/P1/P1C6_3.gif| []
 
 > **:information_source:** Nous ne verrons pas cela ensemble, je vous suggère ces deux tutoriels si vous souhaitez aller plus loin : [ici](http://nshipster.com/uisplitviewcontroller/) ou [là](https://www.raywenderlich.com/173753/uisplitviewcontroller-tutorial-getting-started-2).
 
@@ -568,7 +568,7 @@ Dans ces interfaces, les pages sont les unes à côté des autres et on peut pas
 
 C'est souvent utilisé dans les tutoriels introductifs des applications.
 
-![](Images/P1/P1C6_4.gif)
+|IMAGE Images/P1/P1C6_4.gif| []
 
 > **:information_source:** Nous ne verrons pas cela ensemble, je vous suggère ce [tutoriel](http://www.seemuapps.com/page-view-controller-tutorial-with-page-dots) si vous souhaitez aller plus loin.
 
@@ -576,7 +576,7 @@ C'est souvent utilisé dans les tutoriels introductifs des applications.
 
 Le schéma ci-dessous résumé la navigation en iOS. Prenez le temps de le parcourir.
 
-![](Images/P1/P1C6_5.png)
+|IMAGE Images/P1/P1C6_5.png| []
 
 > **:information_source:** Pour information, les autres composants en jaune dans la bibliothèque des composants sont tous des contrôleurs comme `ViewController`. Mais à la différence de ceux cités ci-dessus, ils ont pour but d'afficher du contenu, ce sont des pages et non des outils pour gérer la navigation.
 
@@ -588,11 +588,11 @@ Nous allons diviser notre application en deux, une partie pour les chats et l'au
 
 Et vous allez voir que ce n'est pas bien compliqué ! Sélectionnez le Tab Bar Controller dans votre bibliothèque des composants.
 
-![](Images/P1/P1C6_6.png)
+|IMAGE Images/P1/P1C6_6.png| []
 
 Faîtes-le glisser dans le storyboard et vous devriez obtenir ceci :
 
-![](Images/P1/P1C6_7.png)
+|IMAGE Images/P1/P1C6_7.png| []
 
 Vous avez le Tab Bar Controller à gauche.
 
@@ -607,17 +607,17 @@ Vous commencez à être extrêmement doué dans l'ajout de contrôleur donc je v
 
 Pour l'instant, nous allons juste ajouter un petit message d'accueil... pas très accueillant car la phase d'inscription n'est pas prête pour les chats. Voici mon résultat, faîtes bien comme bon vous semble pour cette page :
 
-![](Images/P1/P1C6_8.png)
+|IMAGE Images/P1/P1C6_8.png| []
 
 Maintenant nous allons relier le Tab Bar Controller à notre nouvelle interface. Et vous l'avez deviné, **nous allons faire un control drag** ! Il doit commencer dans le Tab Bar Controller et finir dans le contrôleur que l'on souhaite relier, ici `CatWelcomeViewController`.
 
 Ensuite une popup apparaît, choisissez *view controllers*. Ce segue de relation indique que l'on va rajouter le contrôleur aux contrôleurs accessibles depuis la barre d'onglets.
 
-![](Images/P1/P1C6_9.png)
+|IMAGE Images/P1/P1C6_9.png| []
 
 Quand c'est fait, la barre d'onglet apparaît sur le `CatWelcomeViewController` et sur la Tab Bar Controller avec un premier onglet.
 
-![](Images/P1/P1C6_10.png)
+|IMAGE Images/P1/P1C6_10.png| []
 
 #### Ajoutons les chiens !
 
@@ -629,7 +629,7 @@ Maintenant, nous allons ajouter les chiens. Et c'est exactement la même manipul
 
 Pour changer cela, vous pouvez aller dans l'inspecteur d'attributs comme on l'a vu ensemble ou simplement déplacer la flèche comme ceci :
 
-![](Images/P1/P1C6_11.gif)
+|IMAGE Images/P1/P1C6_11.gif| []
 
 ##### 2/ Relier au Navigation Controller
 
@@ -643,7 +643,7 @@ Vous pouvez maintenant faire votre control drag depuis le Tab Bar Controller ver
 
 > **:information_source:** Le dernier est présenté en modal donc, comme on l'a dit, il sort de la navigation et n'a donc ni la barre de navigation, ni la barre d'onglets.
 
-![Le storyboard complet, c'est pas beau ?](Images/P1/P1C6_12.png)
+|IMAGE Images/P1/P1C6_12.png| [Le storyboard complet, c'est pas beau ?]
 
 > **:information_source:** Avec la copie d'écran ci-dessus, vous pouvez voir l'un des grands intérêts du storyboard : on peut visualiser très facilement l'architecture de la navigation dans l'application.
 
@@ -653,15 +653,15 @@ Tout ça, c'est bien beau, mais nos onglets se nomment pour l'instant *Item*, c'
 
 Pour changer le contenu d'un onglet, il faut le sélectionner dans le contrôleur correspondant. Allez donc dans le Navigation Controller et choisissez Item.
 
-![](Images/P1/P1C6_13.png)
+|IMAGE Images/P1/P1C6_13.png| []
 
 Puis dans l'inspecteur d'attribut, nous allons pouvoir modifier ses propriétés :
 
-![](Images/P1/P1C6_14.png)
+|IMAGE Images/P1/P1C6_14.png| []
 
 Passez la propriété `Title` à "Chien" et choisissez "Dog" pour la propriété `Image`. Vous pouvez faire exactement la même chose pour les chats et vous obtenez cette magnifique barre d'onglets !
 
-![](Images/P1/P1C6_15.png)
+|IMAGE Images/P1/P1C6_15.png| []
 
 > **:information_source:** Si vous voulez créer vos propres icônes pour la Tab Bar, l'idéal c'est de faire des images de 25*25px en png noire sur fond transparent.
 
@@ -669,12 +669,12 @@ Vous avez sans doute remarqué que le Tab Bar Controller colore automatiquement 
 
 Vous pouvez modifier cela en sélectionnant la barre d'onglet dans le Tab Bar Controller et en vous rendant l'inspecteur d'attributs. Vous n'avez plus qu'à changer la propriété `Image Tint` et vos onglets seront sélectionnés dans un élégant et délicat violet.
 
-![](Images/P1/P1C6_16.png)
+|IMAGE Images/P1/P1C6_16.png| []
 
 Et voilà vous avez une magnifique barre d'onglets ! Vous savez maintenant la grande majorité de ce qu'il y a à savoir sur la navigation en iOS ! Et si on fait le bilan, c'est seulement quelques control drags ! Pratique, non ?
 
 > **:information_source:** Dernière petite info sur les Tab Bar Controller : une barre d'onglets peut contenir jusqu'à 5 onglets simultanément. Au-delà, le dernier onglet se transforme en ceci :  
-![](Images/P1/P1C6_17.png)  
+|IMAGE Images/P1/P1C6_17.png| []  
 En cliquant sur ce dernier onglet, l'utilisateur a accès aux autres onglets.
 
 #### En résumé
@@ -696,7 +696,7 @@ override func viewDidLoad() {
 
 Et à moins d'avoir déjà été suffisamment curieux pour chercher par vous même, vous ne savez sans doute pas précisément ce qu'il se passe dans cette méthode. Dans ce chapitre, nous allons lever un voile sur tout ça en parlant du cycle de vie du contrôleur.
 
-![](Images/P1/P1C7_1.jpg)
+|IMAGE Images/P1/P1C7_1.jpg| []
 
 Certes, mais ne paniquez pas ! Ça va vous servir à peu près tous les jours dans votre vie de développeur iOS, donc ça vaut le coup ! Et puis, ça ne vous fera pas de mal, je vous trouve un peu trop heureux là...
 
@@ -895,13 +895,13 @@ Merci ;) !
 Du coup, si vous voulez recharger le contenu d'une page à chaque fois qu'elle apparaît, il faudra mettre cela dans `viewWillAppear` plutôt que `viewDidLoad`. En revanche, si vous souhaitez vous placer en tant qu'observeur pour une notification par exemple, vous n'avez besoin de le faire qu'une fois donc faîtes le dans `viewDidLoad`.
 
 > **:information_source:** Si tout cela n'est pas encore parfaitement clair pour vous, je vous suggère de jeter un oeil à l'animation suivante. Vous pouvez également retrouver le projet Github correspondant à [cette adresse](https://github.com/AmbroiseCollon/ControllerLifeCycle/blob/master/README.md).
-![](Images/P1/P1C7_2.gif)
+|IMAGE Images/P1/P1C7_2.gif| []
 
 #### Résumé
 
 En guise de résumé, je vous propose le schéma ci-dessous :
 
-![](Images/P1/P1C7_3.png)
+|IMAGE Images/P1/P1C7_3.png| []
 
 Ça y est  ! Vous avez toutes les bases de navigation et comme tout en iOS, il y a beaucoup d’autres choses que vous pouvez aller découvrir par vous même ! Mais si la fondation est solide, le reste ira tout seul, vous n’avez plus besoin de moi !
 
@@ -912,24 +912,24 @@ Dans la prochaine partie, nous allons créer le formulaire d’inscription et vo
 ### Mettez en forme votre formulaire
 Nous avons créé dans la partie précédente l'intégralité de la navigation de notre application ! Mais nous avons un peu délaissé l'interface. En particulier, celle correspondant au `FormViewController`...
 
-![](Images/P2/P2C1_1.png)
+|IMAGE Images/P2/P2C1_1.png| []
 
 Nous avons un joli bouton Valider qui pour le moment ne valide pas grand-chose... Dans ce chapitre, nous allons créer l'interface de ce formulaire et découvrir certains composants essentiels en iOS !
 
 Voici l'objectif :
 
-![](Images/P2/P2C1_2.png)
+|IMAGE Images/P2/P2C1_2.png| []
 
 #### Le nom
 Pour s'inscrire, l'utilisateur va devoir renseigner son nom. Et pour cela nous allons utiliser ce qu'on appelle un **champ de texte**. Un champ de texte se matérialise par une barre blanche dans laquelle on peut écrire du texte.
 
 La classe correspondante en iOS se nomme `UITextField`. Je vous invite à aller chercher un champ de texte dans la bibliothèque des composants et à le faire glisser sur l'interface.
 
-![](Images/P2/P2C1_3.png)
+|IMAGE Images/P2/P2C1_3.png| []
 
 Le champ de texte a plusieurs propriétés intéressantes que l'on va regarder ensemble du côté de l'inspecteur d'attributs :
 
-![](Images/P2/P2C1_4.png)
+|IMAGE Images/P2/P2C1_4.png| []
 
 ##### 1/ Text
 La propriété `Text` permet de **préremplir le champ de texte avec le texte de son choix**.
@@ -950,7 +950,7 @@ La propriété `Border Style` permet de **changer le style de la bordure** autou
 ##### 4/ Clear Button
 La propriété `Clear Button` permet d'afficher un bouton qui supprime le contenu complet du champ de texte pour que l'utilisateur puisse revenir à zéro. C'est très utile dans les champs de recherche notamment.
 
-![](Images/P2/P2C1_5.png)
+|IMAGE Images/P2/P2C1_5.png| []
 
 > **:information_source:** Vous pouvez aussi choisir que le champ de texte se vide dès que l'édition démarre en cochant la case `Clear when editing begins`.
 
@@ -969,7 +969,7 @@ Les propriétés sous `Text Input Traits` concernent le clavier ! Elles permette
 
 Vous pouvez rajouter un petit label avec la mention *Nom* pour clarifier ce qui est attendu dans ce champ de texte.
 
-![](Images/P2/P2C1_6.png)
+|IMAGE Images/P2/P2C1_6.png| []
 
 #### Le sexe
 
@@ -977,11 +977,11 @@ Nous bâtissons un site de rencontre, ne l'oublions pas ! Donc le sexe de nos me
 
 Sélectionnez-le depuis la bibliothèque des objets et glissez-le sur l'interface.
 
-![](Images/P2/P2C1_7.png)
+|IMAGE Images/P2/P2C1_7.png| []
 
 Cela prend la forme d'une barre sur laquelle vous avez plusieurs segments. On peut sélectionner l'un d'entre eux. Voyons dans l'inspecteur d'attributs comment personnaliser ce composant.
 
-![](Images/P2/P2C1_8.png)
+|IMAGE Images/P2/P2C1_8.png| []
 
 La propriété la plus importante, c'est la propriété `Segments`. Cette propriété permet de **choisir le nombre de segments** du composant. Dans notre cas, nous avons deux options, Male ou Femelle, donc vous pouvez laisser 2.
 
@@ -1000,11 +1000,11 @@ La classe `UIView` a une propriété `tintColor`, accessible depuis l'inspecteur
 
 Et `UISegmentedControl` ne fait pas exception ! Vous pouvez donc descendre dans l'inspecteur d'attributs jusqu'à la section View et modifier la propriété `Tint`.
 
-![](Images/P2/P2C1_9.png)
+|IMAGE Images/P2/P2C1_9.png| []
 
 Même chose, je vous invite enfin à rajouter un petit label pour organiser notre formulaire.
 
-![](Images/P2/P2C1_10.png)
+|IMAGE Images/P2/P2C1_10.png| []
 
 #### Plus de 3 ans ?
 
@@ -1020,13 +1020,13 @@ Bref, toujours est-il que pour inscrire nos chiens, il faut évidemment vérifie
 
 Pour ce genre de questions qui se répondent par oui ou par non, il existe un composant très pratique : le switch ou `UISwitch`. Sélectionnez-le dans la bibliothèque des objets et glissez-le dans l'interface :
 
-![](Images/P2/P2C1_11.png)
+|IMAGE Images/P2/P2C1_11.png| []
 
 En tapant dessus, on l'active ou on le désactive. Le switch a deux valeurs : `on` et `off`.
 
 Dans l'inspecteur d'attributs, vous avez trois propriétés très simples :
 
-![](Images/P2/P2C1_12.png)
+|IMAGE Images/P2/P2C1_12.png| []
 
 - `State` : cette propriété permet de décider de l'état par défaut du bouton. Je vous invite à le passer à off pour forcer nos utilisateurs à l'activer et donc à se poser la question de leur âge. Oui c'est le genre de question qu'un chien peut se poser...
 - `On Tint` : vous pouvez choisir la couleur du composant lorsqu'il est dans l'état `On`. Autrement dit, vous pouvez choisir autre chose que ce vert flash.
@@ -1034,7 +1034,7 @@ Dans l'inspecteur d'attributs, vous avez trois propriétés très simples :
 
 À vous d'exprimer vos talents de designer ! Voici ce que ça donne pour moi :
 
-![](Images/P2/P2C1_13.png)
+|IMAGE Images/P2/P2C1_13.png| []
 
 #### Téléphone
 
@@ -1042,7 +1042,7 @@ Pour pouvoir contacter les chiens afin de les mettre en relation, nous allons le
 
 Voici mon résultat :
 
-![](Images/P2/P2C1_14.png)
+|IMAGE Images/P2/P2C1_14.png| []
 
 > **:information_source:** `UITextField` a un cousin : `UITextView`. Le premier est dédié à de petites entrées de textes sur une seule ligne comme un nom, un numéro de téléphone, une recherche, etc. Le second que nous ne verrons pas, mais qui est très proche, permet de plus longues entrées de texte comme des commentaires, des messages, etc. `UITextView` est aussi utilisé pour afficher de grands messages textuels.
 
@@ -1056,7 +1056,7 @@ Et pour cela, il existe un composant qui a le mérite d'être très beau et trè
 
 Sélectionnez-le dans la bibliothèque des objets et glissez-le dans l'interface.
 
-![](Images/P2/P2C1_15.png)
+|IMAGE Images/P2/P2C1_15.png| []
 
 Le *PickerView* prend la forme d'une roulette (oui, comme dans les machines à sous :D) que l'on peut diviser en plusieurs colonnes qui vont chacune montrer des listes différentes. Dans notre cas, nous n'avons qu'une seule liste à afficher, la liste des races.
 
@@ -1066,7 +1066,7 @@ Sa grande beauté vient avec un petit défaut, il ne peut pas être configuré d
 
 Vous devriez maintenant avoir l'interface complète du formulaire :
 
-![](Images/P2/P2C1_2.png)
+|IMAGE Images/P2/P2C1_2.png| []
 
 #### Exercice
 Cette interface est assez complexe, car elle contient de nombreux composants. Je vous invite à la rendre responsive au moins sur les iPhone en mode portrait.
@@ -1089,7 +1089,7 @@ Dans le prochain chapitre, nous allons configurer notre sélecteur pour qu’il 
 
 Dans le chapitre précédent, nous avons créé l'interface de notre application, mais malheureusement le sélecteur a échappé à notre folie artistique ! Nous n'avons pas pu le configurer dans le storyboard. Et du coup, quand vous lancez l'application, le résultat en la matière n'est pas probant...
 
-![](Images/P2/P2C2_1.png)
+|IMAGE Images/P2/P2C2_1.png| []
 
 
 Qu'à cela ne tienne, nous aurons sa peau dans le code !
@@ -1098,7 +1098,7 @@ Qu'à cela ne tienne, nous aurons sa peau dans le code !
 
 En MVC, vous savez qu'il existe plusieurs formes de communications entre les trois parties. Ce schéma doit vous rappeler quelque chose :
 
-![](Images/P1/P1C1_3.png)
+|IMAGE Images/P1/P1C1_3.png| []
 
 Notamment, on y voit que la vue communique avec le contrôleur via les outlets et les actions. Nous allons découvrir ici deux nouvelles formes de communications : les datasource et les delegate.
 
@@ -1115,7 +1115,7 @@ Le contrôleur est donc le `dataSource`, celui qui détient les données. Et voi
 2. Cela implique que le contrôleur **s'engage à répondre à certaines questions précises** du PickerView, par exemple combien d'éléments y a-t-il dans la liste ?
 3. Lorsque la vue en a besoin, le contrôleur répond aux questions.
 
-![](Images/P2/P2C2_2.png)
+|IMAGE Images/P2/P2C2_2.png| []
 
 Vous venez de découvrir une nouvelle forme de communication aveugle entre le contrôleur et la vue.
 
@@ -1141,7 +1141,7 @@ Le contrôleur devient ce qu'on appelle le `delegate`, celui à qui est délégu
 2. Cela implique que le contrôleur s'engage à répondre à certaines questions précises du PickerView.
 3. Lorsque la vue en a besoin, le contrôleur répond aux questions.
 
-![](Images/P2/P2C2_3.png)
+|IMAGE Images/P2/P2C2_3.png| []
 
 Encore une nouvelle forme de communication aveugle entre le contrôleur et la vue. Vos compétences en MVC ont fait un bond en avant !
 
@@ -1155,7 +1155,7 @@ Lors de la première étape, la vue nomme le contrôleur son dataSource et son d
 
 Il vous suffit de faire le control drag depuis le Picker View vers le contrôleur comme ceci :
 
-![](Images/P2/P2C2_4.gif)
+|IMAGE Images/P2/P2C2_4.gif| []
 
 Une Popup apparaît. Cliquez sur `dataSource` puis répétez l'opération et cliquez cette fois sur `delegate`.
 
@@ -1224,7 +1224,7 @@ Ajoutez cette fonction dans le code du `FormViewController`. Nous allons l'impl�
 
 Les *components* représentent les différentes colonnes de notre PickerView. Souvenez-vous, le PickerView fonctionne comme la roulette au casino. Par exemple, sur la roulette suivante, il y a quatre *components*.
 
-![](Images/P2/P2C2_5.png)
+|IMAGE Images/P2/P2C2_5.png| []
 
 > **:information_source:** Au passage, ceci est un `UIDatePickerView`.
 
@@ -1281,7 +1281,7 @@ func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent c
 
 Et voilà ! Maintenant la vue sait quel titre afficher en fonction de la ligne à laquelle on se trouve, vous pouvez lancer l'application et confirmer que tout fonctionne correctement !
 
-![](Images/P2/P2C2_6.gif)
+|IMAGE Images/P2/P2C2_6.gif| []
 
 Voici le code complet de la classe `FormViewController` :
 
@@ -1317,7 +1317,7 @@ Si vous vous êtes amusés à jouer un peu avec votre formulaire, vous vous ête
 
 C'est pratique, mais du coup ça prend une bonne partie de l'écran et on ne peut plus cliquer sur le bouton *Valider*...
 
-![](Images/P2/P2C3_1.png)
+|IMAGE Images/P2/P2C3_1.png| []
 
 Dans ce chapitre, nous allons apprendre à gérer la disparition du clavier !
 
@@ -1328,7 +1328,7 @@ Tant qu'on en est à parler du clavier, laissez-moi vous faire un petit rappel s
 
 Par exemple, c'est le champ de texte qui décide du type de clavier qui s'affiche. On a ensemble modifié la propriété `Keyboard Type` pour que le champ de texte *Téléphone* affiche le clavier suivant plutôt.
 
-![](Images/P2/P2C3_2.png)
+|IMAGE Images/P2/P2C3_2.png| []
 
 Cela veut dire que c'est également **le champ de texte qui décide de l'apparition et de la disparition du clavier**.
 
@@ -1349,16 +1349,16 @@ Pour y parvenir, il faut associer le geste "*Tap*" à "*n'importe où sur la pag
 
 Sélectionnez `Tap Gesture Recognizer` dans la bibliothèque des objets :
 
-![](Images/P2/P2C3_3.png)
+|IMAGE Images/P2/P2C3_3.png| []
 
 Et glissez-le sur la vue principale. Je vous suggère d'utiliser le panneau de droite (*Document Outline*) pour être certain d'atterrir au bon endroit.
 
-![](Images/P2/P2C3_4.gif)
+|IMAGE Images/P2/P2C3_4.gif| []
 
 Le `Tap Gesture Recognizer` est maintenant ajouté et relié à la vue principale.
 
 > **:information_source:** Vous pouvez vérifier que c'est bien le cas, en faisant un clic droit sur le `Tap Gesture Recognizer`, vous devriez obtenir ceci :
-![](Images/P2/P2C3_4Bis.png)
+|IMAGE Images/P2/P2C3_4Bis.png| []
 
 ##### Création de l'action
 
@@ -1436,7 +1436,7 @@ Je résume :
 
 La touche de retour sur le clavier c'est celle-ci :
 
-![](Images/P2/P2C3_5.png)
+|IMAGE Images/P2/P2C3_5.png| []
 
 > **:information_source:** On a vu que le texte "Continuer" pouvait être changé avec la propriété `Return Key`.
 
@@ -1455,7 +1455,7 @@ En effet, on va utiliser un `delegate`. Et on suit toujours les mêmes étapes :
 
 Pour cela, vous vous souvenez on utilise un control drag depuis le champ de texte vers le contrôleur et dans la popup, on clique sur delegate.
 
-![](Images/P2/P2C3_6.gif)
+|IMAGE Images/P2/P2C3_6.gif| []
 
 Vous pouvez répéter l'opération pour le deuxième champ de texte.
 
@@ -1659,7 +1659,7 @@ Notre objet est maintenant créé, il va pouvoir être sauvegardé, utilisé dan
 #### Les actions
 Dans ce cours, nous avons vu ces composants uniquement comme *outlets*, c'est à dire des objets dont on peut obtenir une information. Mais ces objets peuvent aussi être à l'origine d'actions, comme l'est un bouton. Voici quelques exemples en iOS :
 
-![](Images/P2/P2C4_1.gif)
+|IMAGE Images/P2/P2C4_1.gif| []
 
 Vous pouvez voir ici que le switch est utilisé pour afficher une section et que le contrôle segmenté permet de modifier l'aspect de la carte.
 
@@ -1724,11 +1724,11 @@ Il ne faut donc pas que la transition ait lieu automatiquement lorsqu'on tape su
 
 Pour faire cela, il vous suffit de recréer un segue `Present Modally,` mais qui part cette fois du contrôleur `FormViewController` et qui atterrit toujours vers `SuccessViewController`.
 
-![](Images/P3/P3C1_1.gif)
+|IMAGE Images/P3/P3C1_1.gif| []
 
 Maintenant, sélectionnez le segue nouvellement créé et ouvrez l'inspecteur d'attributs :
 
-![](Images/P3/P3C1_2.png)
+|IMAGE Images/P3/P3C1_2.png| []
 
 La propriété `Identifier` va nous permettre de nommer ce segue. Nous allons utiliser ce nom pour faire référence à ce segue quand on voudra l'utiliser côté code.
 
@@ -1892,7 +1892,7 @@ Et pour ceux qui ne sont pas majeurs, nous allons leur présenter une alerte.
 
 Sur votre iPhone, vous avez sans doute déjà rencontré des alertes. Elles permettent d'interrompre l'expérience d'une application pour poser une question à l'utilisateur ou attirer son attention sur quelque chose. Elles ressemblent à ceci :
 
-![](Images/P3/P3C2_1.png)
+|IMAGE Images/P3/P3C2_1.png| []
 
 Vous en avez certainement déjà croisé. Elles sont gérées par une classe nommée `UIAlertController` que nous allons découvrir dans ce chapitre.
 
@@ -2013,7 +2013,7 @@ Comme promis, nous allons revenir sur les différents styles d'alertes que vous 
 
 Il y a deux styles d'alertes : `.alert` et `.actionSheet`. Vous les avez ci-dessous :
 
-![](Images/P3/P3C2_2.png)
+|IMAGE Images/P3/P3C2_2.png| []
 
 > **:warning:** Le premier a plus vocation à afficher des messages à l'utilisateur, il est plutôt **informatif**. Alors que le second sera plus souvent utilisé comme un moyen de sélectionner plusieurs options, il est plutôt **orienté vers l'action**.
 
@@ -2022,7 +2022,7 @@ Avec cela vous pouvez combiner trois styles de boutons :
 - `.destructive` : ce style indique que l'action risque de modifier ou supprimer des données.
 - `.cancel` : ce style indique que l'action annule l'opération et laisse les choses inchangées.
 
-![](Images/P3/P3C2_3.png)
+|IMAGE Images/P3/P3C2_3.png| []
 
 > **:information_source:** Enfin, sachez que vous pouvez aussi rajouter un champ de texte dans une alerte via la méthode `addTextField` de `UIAlertController`. Vous pouvez en savoir plus avec cet [exemple](https://www.hackingwithswift.com/example-code/uikit/how-to-add-a-uitextfield-to-a-uialertcontroller).
 
@@ -2044,7 +2044,7 @@ Dans le prochain chapitre, je vous propose un petit bonus bien pratique ! Vous a
 ### Allez plus loin avec les extensions
 Ce chapitre est un petit chapitre bonus pour vous parler d'un concept très pratique de Swift : les extensions !
 
-![](Images/P3/P3C3_1.jpg)
+|IMAGE Images/P3/P3C3_1.jpg| []
 
 Oui je sais ! Mais courage, prenez un petit remontant parce que ça vaut vraiment le coup !
 
@@ -2524,7 +2524,7 @@ Vous savez manier les différents modes de navigation comme `UINavigationControl
 
 Vous avez également tout vu sur les segues : comment les créer dans le storyboard, les différents types existants. On a même parlé des *unwind segue* pour dépiler plusieurs pages d'un coup.
 
-![Les modes de navigations disponibles en iOS](Images/P1/P1C6_5.png)
+|IMAGE Images/P1/P1C6_5.png| [Les modes de navigations disponibles en iOS]
 
 Concernant la navigation, vous avez également appris à faire passer les données d'un contrôleur à l'autre en utilisant la méthode `prepareForSegue`. Et vous savez également présenter des alertes avec `UIAlertController`.
 
@@ -2547,4 +2547,4 @@ Bref, continuez à être curieux et à explorer l'univers iOS !
 
 En attendant, je n'ai plus qu'à vous quitter avec le mot de la fin et le mot de la fin évidemment, c'est...
 
-![](Images/P3/P3C4_1.jpg)
+|IMAGE Images/P3/P3C4_1.jpg| []
