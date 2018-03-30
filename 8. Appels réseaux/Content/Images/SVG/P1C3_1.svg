@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="455px" viewBox="0 0 800 455" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #F5F0F0;">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>P1C3_1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#A8C4AD" offset="0%"></stop>
+            <stop stop-color="#CECF57" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="P1C3_1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#A8C4AD" x="76" y="54" width="648" height="216"></rect>
+        <text id="S’initialise-avec" transform="translate(215.158634, 197.333913) rotate(6.000000) translate(-215.158634, -197.333913) " font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#AC4340">
+            <tspan x="163.658634" y="202.333913">S’initialise avec</tspan>
+        </text>
+        <polygon id="Triangle-2" fill="#AC4340" transform="translate(290.882893, 193.700971) rotate(95.000000) translate(-290.882893, -193.700971) " points="290.882893 179.200971 307.382893 208.200971 274.382893 208.200971"></polygon>
+        <rect id="Rectangle-2" fill="#AC4340" x="316" y="132" width="376" height="113"></rect>
+        <text id="Cookies-?" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="334" y="166">Cookies ?</tspan>
+        </text>
+        <text id="Wifi-ou-cellulaire-?" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="340" y="220">Wifi ou cellulaire ?</tspan>
+        </text>
+        <text id="Header-?" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="475" y="185">Header ?</tspan>
+        </text>
+        <text id="Timeout-?" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="593" y="159">Timeout ?</tspan>
+        </text>
+        <text id="Cache-?" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="569" y="220">Cache ?</tspan>
+        </text>
+        <rect id="Rectangle-3" fill="#CECF57" x="76" y="367" width="197" height="62"></rect>
+        <text id="URLSession" font-family="SFUIDisplay-Medium, SF UI Display" font-size="30" font-weight="400" fill="#A8C4AD">
+            <tspan x="76" y="47">URLSession</tspan>
+        </text>
+        <text id="URLSessionConfigurat" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#AC4340">
+            <tspan x="316" y="125">URLSessionConfiguration</tspan>
+        </text>
+        <text id="URLSessionTask" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#CECF57">
+            <tspan x="81" y="361">URLSessionTask</tspan>
+        </text>
+        <rect id="Rectangle-3" fill="#CECF57" x="301" y="367" width="197" height="62"></rect>
+        <text id="URLSessionTask" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#CECF57">
+            <tspan x="306" y="361">URLSessionTask</tspan>
+        </text>
+        <rect id="Rectangle-3" fill="#CECF57" x="527" y="367" width="197" height="62"></rect>
+        <text id="URLSessionTask" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#CECF57">
+            <tspan x="532" y="361">URLSessionTask</tspan>
+        </text>
+        <g id="Group" transform="translate(161.000000, 265.000000)">
+            <path d="M8.5,0.5 L8.5,65.5" id="Line" stroke="url(#linearGradient-1)" stroke-width="3" stroke-linecap="square"></path>
+            <polygon id="Triangle" fill="#CECF57" transform="translate(8.000000, 66.000000) scale(1, -1) translate(-8.000000, -66.000000) " points="8 59 16 73 0 73"></polygon>
+            <text id="Lance" transform="translate(19.000000, 31.500000) rotate(90.000000) translate(-19.000000, -31.500000) " font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#CECF57">
+                <tspan x="-1.5" y="36.5">Lance</tspan>
+            </text>
+        </g>
+        <g id="Group" transform="translate(612.000000, 264.000000)">
+            <path d="M8.5,0.5 L8.5,65.5" id="Line" stroke="url(#linearGradient-1)" stroke-width="3" stroke-linecap="square"></path>
+            <polygon id="Triangle" fill="#CECF57" transform="translate(8.000000, 66.000000) scale(1, -1) translate(-8.000000, -66.000000) " points="8 59 16 73 0 73"></polygon>
+            <text id="Lance" transform="translate(19.000000, 31.500000) rotate(90.000000) translate(-19.000000, -31.500000) " font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#CECF57">
+                <tspan x="-1.5" y="36.5">Lance</tspan>
+            </text>
+        </g>
+        <g id="Group" transform="translate(386.000000, 265.000000)">
+            <path d="M8.5,0.5 L8.5,65.5" id="Line" stroke="url(#linearGradient-1)" stroke-width="3" stroke-linecap="square"></path>
+            <polygon id="Triangle" fill="#CECF57" transform="translate(8.000000, 66.000000) scale(1, -1) translate(-8.000000, -66.000000) " points="8 59 16 73 0 73"></polygon>
+            <text id="Lance" transform="translate(19.000000, 31.500000) rotate(90.000000) translate(-19.000000, -31.500000) " font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#CECF57">
+                <tspan x="-1.5" y="36.5">Lance</tspan>
+            </text>
+        </g>
+        <path d="M114,54 C123.756685,124.650999 139.028835,164.03763 159.816452,172.159892 C180.604069,180.282154 223.331919,187.895523 288,195" id="Line-2" stroke="#AC4340" stroke-width="4" stroke-linecap="square"></path>
+        <rect id="Rectangle-4" fill="#F5F0F0" x="108" y="51" width="11" height="3"></rect>
+        <text id="GET-https://api.mons" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="160.974121" y="394">GET</tspan>
+            <tspan x="79.0563965" y="412">https://api.monsite.com/user</tspan>
+        </text>
+        <text id="POST-https://api.twi" font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="380.898438" y="394">POST</tspan>
+            <tspan x="305.144043" y="412">https://api.twitter.com/tweet</tspan>
+        </text>
+        <text id="GET-https://monsite." font-family="SFUIDisplay-Medium, SF UI Display" font-size="15" font-weight="400" fill="#FFFFFF">
+            <tspan x="610.474121" y="394">GET</tspan>
+            <tspan x="530.482666" y="412">https://monsite.com/lune.gif</tspan>
+        </text>
+    </g>
+</svg>
