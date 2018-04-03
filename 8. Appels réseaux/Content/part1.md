@@ -876,4 +876,4 @@ Et.... c'est le drame ! Ça ne marche pas ! À la place, vous avez un message d'
 Main Thread Checker: UI API called on a background thread: -[UILabel setText:]
 ```
 
-Alors oui je sais, après tous ces efforts, c'est frustrant ! Mais ne vous inquiétez pas, on va résoudre tout ça dès le prochain chapitre en parlant du concept de *thread* !
+Alors oui je sais, après tous ces efforts, c'est frustrant de finir sur une erreur ! Mais ne vous inquiétez pas, on va résoudre tout ça dès le prochain chapitre en parlant du concept de *thread* !
