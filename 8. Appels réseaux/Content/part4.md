@@ -366,4 +366,4 @@ En particulier pour ce cours, je vous invite à vous exercer en développant une
 
 En attendant, je n'ai plus qu'à vous laisser avec le mot de la fin et le mot de la fin, évidemment c'est... 
 
-![Images/P4/P4C3_1.jpg]()
+![](Images/P4/P4C3_1.jpg)
