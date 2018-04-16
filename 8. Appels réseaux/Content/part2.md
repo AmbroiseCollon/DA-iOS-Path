@@ -102,7 +102,7 @@ Qu'à cela ne tienne, on va y retourner !
 
 #### Résolution du problème
 
-Pour gérer les queues avec Swift, on utilise la classe `DispatchQueue`. Elle permet de créer des queues Custom, Global ou de revenir dans la Main Queue. Ou pour revenir dans la Main Queue, on écrit :
+Pour gérer les queues avec Swift, on utilise la classe `DispatchQueue`. Elle permet de créer des queues Custom, Global ou de revenir dans la Main Queue. Pour revenir dans la Main Queue, on écrit :
 
 ```swift
 DispatchQueue.main.async {
@@ -201,6 +201,8 @@ QuoteService().getQuote()
 On appelle la fonction `getQuote` sur une instance de `QuoteService` et non sur la classe directement.
 
 #### Annuler une tâche
+
+**Gros caveat sur cette partie: si je commence à avoir plusieurs calls en parallèle et que j'implémente ton système, je vais annuler mes calls précédent. Tu donnes un side effect à ta fonction getQuote qui peut rapidement être indésirable. La partie singleton est très bien, mais sur l'aspect mono-task, je veux bien voir d'autres sources qui font ça si tu en as.**
 
 Avec ce petit travail préalable, **nous allons pouvoir travailler sur une instance fixe de `task`** et donc on va pouvoir annuler la tâche si une autre tâche est lancée.
 
