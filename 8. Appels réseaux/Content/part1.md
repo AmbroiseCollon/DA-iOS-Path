@@ -125,10 +125,10 @@ jsonp=<string> — callback function name, used for jsonp format only (usage exa
 
 Voyons ceux qui nous intéressent :
 - `method` : il a l'air obligatoire et c'est celui qui nous permet de récupération la citation avec la valeur `getQuote`.
-- `format` : le type de format que l'on souhaite pour la réponse. La documentation précise les différents formats disponibles. Je vous propose qu'on choisisse `json` car c'est un format de donnée très populaire dans le développement mobile pour sa petite taille.
+- `format` : le type de format que l'on souhaite pour la réponse. La documentation précise les différents formats disponibles. Je vous propose qu'on choisisse `json` car c'est un format de donnée très populaire dans le développement mobile.
 - `key` : ce paramètre n'est pas très clair et nous allons du coup essayer sans.
 - `lang` : il y a deux langages disponibles, on va favoriser l'anglais (sauf si vous parlez russe !) et choisir du coup la valeur `en`.
-- `jsonp` : nous n'avons pas besoin de ça non plus.
+- `jsonp` : nous n'avons pas besoin de ça non plus puisqu'on va utiliser du json.
 
 Du coup, nous allons indiquer 3 paramètres :
 
@@ -191,15 +191,17 @@ Il existe plusieurs types de tâches. Pour chaque type de tâche, Apple a créé
 
 > **:information_source:** Les deux dernières tâches vous permettent de suivre et donc d'indiquer à l'utilisateur la progression du chargement.
 
-> **:warning:** En pratique, **vous n'utiliserez donc jamais URLSessionTask,** mais une de ses trois sous-classes. Dans ce genre de cas, on dit qu'`URLSessionTask` est une classe *abstraite*.
+> **:warning:** En pratique, **vous n'utiliserez donc jamais URLSessionTask,** mais une de ses trois sous-classes. Dans ce genre de cas, on dit qu'`URLSessionTask` est une classe *abstraite*. Elle définit un comportement - gérer une requête et sa réponse, et les sous-classes implémentent de façon concrète ce comportement: télécharger / uploader un fichier, envoyer / recevoir des données.
+
 
 #### Format de la réponse
-Une fois la requête envoyée, la réponse est formatée et disponible dans la classe `URLResponse` ou dans sa sous-classe `HTTPURLResponse` (spécifique aux requêtes HTTP). Vous pouvez notamment y vérifier le `status code` de la requête pour vérifier que la requête a fonctionné.
+Une fois la requête envoyée, la réponse est formatée et disponible dans la classe `URLResponse` ou dans sa sous-classe `HTTPURLResponse` (spécifique aux requêtes HTTP). Vous pouvez notamment y vérifier le `status code` de la réponse pour vérifier que la requête a fonctionné.
 
 Cette réponse est accompagnée d'une éventuelle erreur (`Error`) et d'éventuelles données (`Data`).
 
 #### En résumé
 - `URLSession` est initialisée avec `URLSessionConfiguration` et permet de lancer des requêtes avec les 3 sous-classes d'`URLSessionTask` : `URLSessionDataTask`, `URLSessionUploadTask` et `URLSessionDownloadTask`.
+- `URLRequest` permet de spécifier la requête: quelle URL, quelle méthode, quels paramètres: Quel endpoint de l’API j’utilise et comment.
 - La réponse est le plus souvent disponible en trois objets : `URLResponse` (ou `HTTPURLResponse`), `Data` et `Error`.
 
 Dans le prochain chapitre, nous allons utiliser la suite de classes `URLSession` pour lancer notre première requête avec Swift !
@@ -231,6 +233,8 @@ private static let quoteUrl = URL(string: "https://api.forismatic.com/api/1.0/")
 
 > **:information_source:** Je vous suggère de bien indiquer en haut de vos classes vos URL pour qu'elles soient bien visibles et donc modifiables facilement si besoin.
 
+> **:information_source:** Sur de plus gros projets où vous utilisez votre propre API, je vous conseille de séparer la racine de l'url de la partie variable. Si vous avez de nombreux appels réseaux et que vous changez de version d'API, cela vous évitera de changer *toutes* vos URL.
+
 
 Maintenant, nous allons créer une fonction statique que nous allons appeler simplement `getQuote` et à l'intérieur de laquelle nous allons créer notre requête :
 
@@ -244,6 +248,15 @@ static func getQuote() {
 J'initialise une instance de `URLRequest` en lui passant notre url en paramètre. Ensuite, je précise la méthode HTTP choisie (en l'occurrence `POST`) avec la propriété `httpMethod` de `URLRequest`.
 
 Par ailleurs, nous avons besoin de passer des paramètres dans cette requête. Nous allons les rajouter avec la propriété `body` de `URLRequest` :
+
+**Sur ce passage je suis moyen convaincu par l'utilisation d'une String avec la paramètres. C'est un peu crade, et sur des requêtes plus complexes, ça rend la lecture vraiment difficile. Tu peux sans doute utiliser un Array [String: Any], et le serializer en data. C'est un peu plus compliqué, mais tellement plus propre.
+Il y'a un conflit du coup avec la suite quand tu introduis la sérialization de la réponse (l'introduction du try, notamment)**
+
+``` swift
+let parameters: [String: Any] = ["method": "getQuote", "lang": "en", "format": "json"]
+let body = try? JSONSerialization.data(withJSONObject: parameters)
+request.httpBody = body
+```
 
 ```swift
 let body = "method=getQuote&lang=en&format=json"
@@ -646,6 +659,8 @@ Je vous laisse donc créer un fichier `Quote.swift`. Il contiendra une structure
 Vous pouvez télécharger la correction [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+8+-+Appels+réseaux/Quote.swift).
 
 #### Nom des notifications
+
+**Comme je t'ai dit, je suis pas très fan de cette approche, utiliser des callbacks me semble une option bien plus solide à enseigner.  ** 
 
 Souvenez-vous, en MVC, **le modèle discute avec le contrôleur via les notifications**.
 
