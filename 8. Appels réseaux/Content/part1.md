@@ -660,7 +660,10 @@ Vous pouvez télécharger la correction [ici](https://s3-eu-west-1.amazonaws.com
 
 #### Nom des notifications
 
-**Comme je t'ai dit, je suis pas très fan de cette approche, utiliser des callbacks me semble une option bien plus solide à enseigner.  ** 
+**Comme je t'ai dit, je suis pas très fan de cette approche, utiliser des callbacks me semble une option bien plus solide à enseigner.
+- les callbacks donnent plus d'informations au développeur qui va consommer tes fonctions: je vais recevoir ici un objet de type Quote, et une erreur éventuellement
+- le callback te force à faire qqch du résultat de ta requête
+- les notifications sont utiles lorsque tu dois notifier plusieurs objets, ou lorsque l'objet qui réceptionne l'information est "éloigné" (n'a pas de connaissances) de l'objet qui requête l'information, ce qui n'est pas le cas ici.**
 
 Souvenez-vous, en MVC, **le modèle discute avec le contrôleur via les notifications**.
 
