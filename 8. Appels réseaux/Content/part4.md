@@ -1,8 +1,8 @@
 ## Gérez les erreurs proprement
- 
+
 ### Lancez des erreurs
 
-Pendant ce cours, nous avons croisé différentes petites choses qui ne vous sont pas forcément familières. On a notamment parlé du protocole `Error` avec notre classe `QuoteError` et on a croisé le mot-clé `try`. On n'est pas rentré dans le détail, car je ne voulais pas vous perturber avec trop d'informations à la fois. 
+Pendant ce cours, nous avons croisé différentes petites choses qui ne vous sont pas forcément familières. On a notamment parlé du protocole `Error` avec notre classe `QuoteError` et on a croisé le mot-clé `try`. On n'est pas rentré dans le détail, car je ne voulais pas vous perturber avec trop d'informations à la fois.
 
 Mais maintenant que les choses sont derrière nous, nous allons voir tout ça sérieusement !
 
@@ -13,7 +13,7 @@ Tout cela est du domaine de la gestion d'erreur en Swift. Concernant ce sujet, n
 - le protocole `error` et le mot-clé `throw` que nous allons voir **dans ce chapitre**.
 - les mot-clés `try`, `do`, `catch` dont nous allons parler **dans le prochain chapitre**.
 
-Pour découvrir tout ça, je vous propose de reprendre le Playground. Oui je sais, ça vous manquait ;) ! 
+Pour découvrir tout ça, je vous propose de reprendre le Playground. Oui je sais, ça vous manquait ;) !
 
 **Je vous invite à télécharger [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+8+-+Appels+réseaux/OrderError.playground.zip) un Playground que j'ai préparé pour vous**.
 
@@ -36,13 +36,16 @@ C'est parti !
 
 > **:information_source:** Nous n'avons pas encore parlé en détail des protocoles. On les a seulement survolés. Un protocole permet, comme une classe ou une structure de **définir un type**. Mais à la différence de ces derniers, il n'y a **pas d'implémentation**. C'est simplement une liste de fonctions.
 
+**C'est dommage de souligner le fait qu'il n'y a pas d'implémentation dans le protocol, alors que Swift permet justement de donner une implémentation aux fonctions de ton protocol via les extensions de protocol.
+C'est vrai en Java par example avec les interfaces, mais pas en swift**
+
 #### Créer les erreurs
 La façon la plus classique d'utiliser ce protocole, c'est de **définir une énumération** en lui attribuant le protocole `Error`. Nous allons donc définir une énumération `OrderError` dans notre classe `Order` comme ceci :
 
 ```swift
 enum OrderError: Error {
 }
-``` 
+```
 
 Dans cette énumération, nous allons lister les différents cas d'erreur possibles dans notre code. Il va y en avoir 4 :
 
@@ -74,7 +77,7 @@ guard status == .pending else {
 
 Plusieurs choses à noter ici :
 
-- `throw` vous fait quitter le contexte du code. Comme `return`, **lorsque `throw` est appelé on quitte la fonction**. 
+- `throw` vous fait quitter le contexte du code. Comme `return`, **lorsque `throw` est appelé on quitte la fonction**.
 
 > **:information_source:** Cela vous permet de voir une nouvelle façon de remplir la partie `else` d'un `guard`.
 
@@ -87,7 +90,7 @@ func pay(with paymentMethod: PaymentMethod) throws -> Double { // On ajoute thro
 	guard status == .pending else {
 		throw OrderError.orderAlreadyPayed
 	}
-	
+
 	// (...)
 }
 ```
@@ -134,22 +137,22 @@ func pay(with paymentMethod: PaymentMethod) throws -> Double {
 	guard status == .pending else {
 		throw OrderError.orderAlreadyPayed
 	}
-	
+
 	guard items.count > 0 else {
 		throw OrderError.orderIsEmpty
 	}
-	
+
 	var totalPrice = 0.0
 	for item in items { totalPrice += item.price }
-	
+
 	guard paymentMethod.isValid else {
 		throw OrderError.invalidPaymentMethod
 	}
-	
+
 	guard paymentMethod.maxAmount >= totalPrice else {
 		throw OrderError.insufficientFundings
 	}
-	
+
 	status = .payed
 	return totalPrice
 }
@@ -170,7 +173,7 @@ Vous savez comment créer des erreurs, voyons maintenant comment les gérer !
 #### Le mot-clé try
 Nous allons enfin parler de ce fameux mot-clé `try` que nous avons croisé plusieurs fois dans ce cours.
 
-Copiez le code suivant dans votre Playground : 
+Copiez le code suivant dans votre Playground :
 
 ```swift
 func payFruits() {
@@ -180,7 +183,7 @@ func payFruits() {
 		Item(price: 4, description: "Fraises"),
 		Item(price: 1.20, description: "Pomme")
 	]
-	
+
 	let cb = PaymentMethod(isValid: true, maxAmount: 100)
 	let price = order.pay(with: cb)
 	print("Votre commande d'un montant de \(price)€ a bien été prise en compte.")
@@ -211,7 +214,7 @@ Errors thrown from here are not handled.
 ```
 
 C'est normal ! Il ne suffit pas d'écrire le mot-clé `try`, il faut aussi gérer l'erreur et il y a deux façons de le faire.
- 
+
 #### Gérer l'erreur avec do/catch
 
 Pour gérer proprement les erreurs, il faut entourer l'appel de la fonction par l'instruction `do/catch` comme ceci :
@@ -285,7 +288,7 @@ Et voilà une très belle gestion d'erreur ! Votre utilisateur sait maintenant t
 
 > **:question:** Certes, mais du coup ça fait beaucoup de code à rédiger !
 
-Il ne faut pas être fainéant quand il s'agit de la gestion des erreurs ! Néanmoins je suis d'accord que parfois, on n'a pas besoin de donner autant de détail. 
+Il ne faut pas être fainéant quand il s'agit de la gestion des erreurs ! Néanmoins je suis d'accord que parfois, on n'a pas besoin de donner autant de détail.
 
 Dans ces cas-là, il existe une méthode plus rapide.
 
@@ -345,10 +348,10 @@ Ne réservez l'utilisation de `try!` qu'à de rares exceptions.
 Félicitations ! Ce cours n'était pas facile ! Vous verrez avec la pratique que la gestion des réseaux n'est pas la partie la plus évidente du travail de développeur iOS. Pourtant, **vous venez de faire un grand pas vers la maitrise de ce sujet !**
 
 #### En résumé
-Dans ce cours, vous avez vu comment lancer des appels réseau avec la classe `URLSession`. 
+Dans ce cours, vous avez vu comment lancer des appels réseau avec la classe `URLSession`.
 
-> **:information_source:** Cela veut dire que vous êtes maintenant autonome pour créer une application avec des fonctionnalités sophistiquées comme un login, la gestion d'API tierces ou la communication avec un back-end. 
- 
+> **:information_source:** Cela veut dire que vous êtes maintenant autonome pour créer une application avec des fonctionnalités sophistiquées comme un login, la gestion d'API tierces ou la communication avec un back-end.
+
 C'est une étape très importante vers la professionnalisation de vos compétences de développeur iOS !
 
 Malgré le fait que vous découvriez tout juste les appels réseau avec Swift, j'ai voulu vous emmener vers des concepts plus avancés comme le pattern singleton ou le multithreading. Je sais que j'ai été particulièrement exigeant avec vous, mais je pense que c'est pour la bonne cause. Il est bien plus facile de prendre de bonnes habitudes dès le début que d'en changer plus tard !
@@ -364,6 +367,6 @@ En particulier pour ce cours, je vous invite à vous exercer en développant une
 
 > **:information_source:** Par ailleurs, je vous recommande ce [blog](https://www.swiftbysundell.com). Il parle de comment tester son code, de comment écrire du code Swift propre et claire et des appels réseau. Certains articles sont une bonne suite à ce cours.
 
-En attendant, je n'ai plus qu'à vous laisser avec le mot de la fin et le mot de la fin, évidemment c'est... 
+En attendant, je n'ai plus qu'à vous laisser avec le mot de la fin et le mot de la fin, évidemment c'est...
 
 ![](Images/P4/P4C3_1.jpg)
