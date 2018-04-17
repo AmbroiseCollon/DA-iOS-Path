@@ -124,6 +124,8 @@ Puis nommez le `Quote.json` et sauvegardez-le du côté des tests.
 
 ![](Images/P3/P3C2_4.png)
 
+**Peut être expliquer le pourquoi du comment d'une target, et mettre un screenshot du File Inspector (right panel) pour montrer qu'on peut le changer plus tard. Parce que comme je suis bête j'oublie tout le temps de changer la target quand je créé mon fichier**
+
 Dedans, vous pouvez coller la réponse récupérée dans Postman.
 
 ![](Images/P3/P3C2_5.png)
@@ -297,6 +299,8 @@ class FakeResponseData {
 
 Dans le prochain chapitre, nous allons préparer notre classe `QuoteService` à être testée et vous allez découvrir un concept important en architecture logicielle : l'injection de dépendance.
 
+**Est-ce que ça vaut le coup de mentionner le swizzling ? Injection au compile time vs au runtime ?**
+
 Et rassurez-vous, ça n'est pas aussi impressionnant que ça en a l'air !
 
 ### Préparez votre classe à être testée  
@@ -468,6 +472,8 @@ Et voilà, vous avez fait vos deux premières injections de dépendance ! C'éta
 
 #### Juste pour faire propre
 Je n'aime pas trop avoir des propriétés publiques qui ne devraient pas l'être. Pourtant les tests ont besoin d'accéder à ces propriétés. Mais je vous propose du coup de créer plutôt un initialiseur pour ces deux propriétés et de les laisser privées.
+
+**Le problème avec cette injection de session c'est que tu te retrouves avec une session par call. Si je veux tester les 25 calls différents de mon app, ça devient le bazar. Je ne sais pas si c'est nécessaire de le relever, mais ça peut être intéressant de refactorer ton fake de URLSession pour l'instancier avec un dictionnaire qui map une URL à une closure, ou de lui ajouter des méthodes pour rajouter des calls.**
 
 ```swift
 private var quoteSession = URLSession(configuration: .default)
@@ -681,6 +687,8 @@ override func dataTask(with request: URLRequest, completionHandler: @escaping (D
 Et voilà nos doubles sont tout prêt et nous allons pouvoir tester !
 
 #### Par où passe le code ?
+
+**Effectivement, c'est clair, mais la première fois, c'est pas évident quand même. Un petit schéma qui compare la structure entre le test et l'original serait chouette non ?**
 
 J'ai conscience que tout ceci n'est pas évident à digérer alors je vous propose qu'on prenne du recul pour comprendre par où passe le code.
 
@@ -1054,9 +1062,9 @@ J'ai conscience que cette partie était relativement difficile. Mais je crois fo
 Et pour ne pas finir comme la grande majorité des développeurs qui procrastinent l'intégration des tests dans leurs habitudes, il vous faut apprendre avec les tests. Car **les tests et le code en production sont aussi importants l'un que l'autre.**
 
 > **:warning:** Je vous recommande vivement de faire une pause : prenez un cookie, faites du sport, nettoyez votre salle de bain ou allez vous coucher !  
-> 
+>
 > Et en revenant, **relisez l'intégralité de cette partie**.  
-> 
+>
 > Cet exercice ne vous prendra pas beaucoup de temps. Mais maintenant que vous avez la vue d'ensemble, il permettra à votre cerveau de finaliser les connexions qui ne se sont pas encore faites et vous permettra d'assimiler en profondeur le contenu riche de cette partie !
 
 Je vous donne ensuite rendez-vous dans la prochaine partie où nous allons parler de la gestion d'erreur en `Swift` et lever le voile sur ces mystérieux try que nous avons croisé ensemble !
