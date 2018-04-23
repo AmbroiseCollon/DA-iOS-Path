@@ -125,10 +125,10 @@ jsonp=<string> — callback function name, used for jsonp format only (usage exa
 
 Voyons ceux qui nous intéressent :
 - `method` : il a l'air obligatoire et c'est celui qui nous permet de récupération la citation avec la valeur `getQuote`.
-- `format` : le type de format que l'on souhaite pour la réponse. La documentation précise les différents formats disponibles. Je vous propose qu'on choisisse `json` car c'est un format de donnée très populaire dans le développement mobile pour sa petite taille.
+- `format` : le type de format que l'on souhaite pour la réponse. La documentation précise les différents formats disponibles. Je vous propose qu'on choisisse `json` car c'est un format de donnée très populaire dans le développement mobile.
 - `key` : ce paramètre n'est pas très clair et nous allons du coup essayer sans.
 - `lang` : il y a deux langages disponibles, on va favoriser l'anglais (sauf si vous parlez russe !) et choisir du coup la valeur `en`.
-- `jsonp` : nous n'avons pas besoin de ça non plus.
+- `jsonp` : nous n'avons pas besoin de ça non plus puisqu'on va utiliser du json et non du jsonp.
 
 Du coup, nous allons indiquer 3 paramètres :
 
@@ -185,21 +185,23 @@ Une fois que `URLSession` est initialisé avec la bonne configuration, il peut l
 > **:information_source:** La requête, elle, est gérée avec la classe `URLRequest`. C'est elle qui décide des éléments constituants la requête : l'URL, la méthode (GET, POST, PUT, etc.), et le contenu éventuel.
 
 Il existe plusieurs types de tâches. Pour chaque type de tâche, Apple a créé une sous-classe de `URLSessionTask` :
+
 - `URLSessionDataTask` : Cette tâche permet d'**envoyer ou de recevoir des données**.
 - `URLSessionUploadTask` : Cette tâche permet d'effectuer un **téléchargement ascendant** : l'envoi de fichiers lourds (vidéo, enregistrement audio, etc.) vers un serveur.
 - `URLSessionDownloadTask` : Cette tâche permet d'effectuer un **téléchargement descendant** : la réception de fichiers lourds (vidéo, enregistrement audio, etc.) depuis un serveur.
 
 > **:information_source:** Les deux dernières tâches vous permettent de suivre et donc d'indiquer à l'utilisateur la progression du chargement.
 
-> **:warning:** En pratique, **vous n'utiliserez donc jamais URLSessionTask,** mais une de ses trois sous-classes. Dans ce genre de cas, on dit qu'`URLSessionTask` est une classe *abstraite*.
+> **:warning:** En pratique, **vous n'utiliserez donc jamais URLSessionTask,** mais une de ses trois sous-classes. Dans ce genre de cas, on dit qu'`URLSessionTask` est une classe *abstraite*. Elle définit un comportement - gérer une requête et sa réponse, et **les sous-classes implémentent de façon concrète** ce comportement: télécharger / uploader un fichier, envoyer / recevoir des données.
 
 #### Format de la réponse
-Une fois la requête envoyée, la réponse est formatée et disponible dans la classe `URLResponse` ou dans sa sous-classe `HTTPURLResponse` (spécifique aux requêtes HTTP). Vous pouvez notamment y vérifier le `status code` de la requête pour vérifier que la requête a fonctionné.
+Une fois la requête envoyée, la réponse est formatée et disponible dans la classe `URLResponse` ou dans sa sous-classe `HTTPURLResponse` (spécifique aux requêtes HTTP). Vous pouvez notamment y vérifier le `status code` de la réponse pour vérifier que la requête a fonctionné.
 
 Cette réponse est accompagnée d'une éventuelle erreur (`Error`) et d'éventuelles données (`Data`).
 
 #### En résumé
 - `URLSession` est initialisée avec `URLSessionConfiguration` et permet de lancer des requêtes avec les 3 sous-classes d'`URLSessionTask` : `URLSessionDataTask`, `URLSessionUploadTask` et `URLSessionDownloadTask`.
+- `URLRequest` permet de spécifier la requête: quelle URL, quelle méthode, quels paramètres: Quel endpoint de l’API j’utilise et comment.
 - La réponse est le plus souvent disponible en trois objets : `URLResponse` (ou `HTTPURLResponse`), `Data` et `Error`.
 
 Dans le prochain chapitre, nous allons utiliser la suite de classes `URLSession` pour lancer notre première requête avec Swift !
@@ -231,6 +233,7 @@ private static let quoteUrl = URL(string: "https://api.forismatic.com/api/1.0/")
 
 > **:information_source:** Je vous suggère de bien indiquer en haut de vos classes vos URL pour qu'elles soient bien visibles et donc modifiables facilement si besoin.
 
+> **:information_source:** Sur de plus gros projets où vous utilisez votre propre API, je vous conseille de séparer la racine de l'url de la partie variable. Si vous avez de nombreux appels réseaux et que vous changez de version d'API, cela vous évitera de changer *toutes* vos URL.
 
 Maintenant, nous allons créer une fonction statique que nous allons appeler simplement `getQuote` et à l'intérieur de laquelle nous allons créer notre requête :
 
@@ -333,6 +336,7 @@ let author = responseDict["quoteAuthor"] as? String {
 > **:question:** Woooooh...
 
 Oui je sais, il y a pas mal de choses ici, mais à part la première ligne, rien de vraiment compliqué :
+
 - Ligne 1 : On utilise la méthode `jsonObject` de `JSONSerialization` qui prend en paramètre les `data` reçues en réponse à l'appel réseau et d'éventuelles options que nous laissons vides. Ensuite, en utilisant l'opérateur `as?`, on vérifie que le résultat est bien du type `[String: Any]`. C'est-à-dire un dictionnaire qui a des clés de type `String` et des valeurs de type divers.
 
 > **:information_source:** Besoin d'un rappel sur le type `Any` ou le contrôle des types avec `as`, c'est [par ici](https://openclassrooms.com/courses/approfondissez-swift-avec-la-programmation-orientee-objet/controlez-vos-types) ;) !
@@ -340,7 +344,7 @@ Oui je sais, il y a pas mal de choses ici, mais à part la première ligne, rien
 - Ligne 2 : On déballe la variable `responseJSON,` car elle est optionnelle et on stocke sa valeur dans `responseDict`.
 - Ligne 3 et 4 : Comme on a déjà vu à quoi ressemblaient les données reçues grâce à Postman, on sait que la citation est stockée avec la clé `quoteText` et l'auteur avec la clé `quoteAuthor`. On vérifie que ces variables sont bien de type `String` et on récupère donc la citation et l'auteur dans les variables `text` et `author`.
 
-Ensuite, vous pouvez faire des print sur les variables `text` et `author` et vous devriez voir les citations s'afficher dans votre console en appuyant sur le bouton *New Quote* dans votre simulateur !
+Ensuite, vous pouvez faire des `print` sur les variables `text` et `author` et vous devriez voir les citations s'afficher dans votre console en appuyant sur le bouton *New Quote* dans votre simulateur !
 
 Et voilà ! Dans le prochain chap...
 
@@ -457,7 +461,7 @@ let task = session.dataTask(with: pictureUrl) { (data, response, error) in
 
 Wow ! Quelle perspicacité ! Et moi qui pensais que ça allait passer inaperçu...
 
-Eh oui ! Ici nous faisons une simple requête GET sans paramètre. Dans ce cas, on peut simplement passer une URL directement à la fonction `dataTask`. Par défaut la tâche sera une requête GET sur l'URL indiquée. C'est plus rapide !
+Eh oui ! Ici nous faisons une **simple requête GET sans paramètre**. Dans ce cas, on peut simplement passer une URL directement à la fonction `dataTask`. Par défaut la tâche sera une requête GET sur l'URL indiquée. C'est plus rapide !
 
 Ensuite, on n'oublie pas de lancer l'appel avec :
 
@@ -482,7 +486,7 @@ Jusque là rien de nouveau !
 
 La difficulté apparaît maintenant. En effet, on souhaite modifier la photo et la citation en même temps sur l'interface. Donc pour que cela fonctionne, **on va chaîner les appels**.
 
-> **:information_source:** Cela veut dire que nous n'allons pas faire nos de requêtes séparément, mais l'une après l'autre. Une fois qu'on a récupéré la citation, on lance la requête pour récupérer la photo et une fois qu'on a les deux, on envoie le tout au contrôleur pour qu'il l'affiche sur l'interface.
+> **:information_source:** Cela veut dire que nous n'allons pas faire nos requêtes séparément, mais l'une après l'autre. Une fois qu'on a récupéré la citation, on lance la requête pour récupérer la photo et une fois qu'on a les deux, on envoie le tout au contrôleur pour qu'il l'affiche sur l'interface.
 
 Il faut donc qu'on appelle la fonction getImage une fois qu'on a reçu la citation :
 
@@ -596,6 +600,8 @@ class QuoteService {
 						getImage { (data) in
 							if let data = data {
 								print(data)
+								print(text)
+								print(author)
 							}
 						}
 					}
@@ -645,56 +651,57 @@ Je vous laisse donc créer un fichier `Quote.swift`. Il contiendra une structure
 
 Vous pouvez télécharger la correction [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+8+-+Appels+réseaux/Quote.swift).
 
-#### Nom des notifications
+#### Les callbacks
 
 Souvenez-vous, en MVC, **le modèle discute avec le contrôleur via les notifications**.
 
 ![](Images/P1/P1C6_1.png)
 
-> **:information_source:** Si vous avez besoin d'un rappel sur le sujet, je vous invite à aller voir le cours sur le MVC, il traite de l'[envoi](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc/envoyez-les-questions-au-controleur) et de la [réception](https://openclassrooms.com/courses/concevez-une-application-iphone-avec-le-modele-mvc/connectez-le-controleur-et-le-modele) des notifications.
+Mais il y a d'autres mécanismes et dans ce cours, nous allons parler d'un deuxième mécanisme : **les callbacks**.
 
-Pour envoyer notre citation vers le contrôleur, nous allons donc utiliser les notifications.
+![](Images/P1/P1C6_2.png)
 
-Il va y avoir deux types de notifications :
-- une pour envoyer la citation quand le chargement a réussi.
-- une pour prévenir que le chargement a échoué.
+Les callbacks sont très simples. Le contrôleur va appeler une fonction du modèle, et il va indiquer en paramètre de la fonction, l'action à effectuer lorsque la réponse est reçue. Et pour cela, nous allons simplement utiliser les fermetures.
 
-On va commencer par créer les noms de nos notifications (`Notification.Name`). Et pour cela, nous allons utiliser les extensions !
+> **:information_source:** C'est exactement comme ce que nous venons de faire avec la fonction `getImage`. Donc assurez vous d'avoir bien compris le chapitre précédent car nous allons faire la même chose avec la fonction `getQuote`.
 
-> **:information_source:** Je détaille cette technique dans [ce chapitre](https://openclassrooms.com/courses/ajoutez-plusieurs-pages-a-votre-application-ios/allez-plus-loin-avec-les-extensions) sur les extensions. N'hésitez pas à y jeter un oeil !
+Nous allons commencer par modifier la déclaration de notre fonction `getQuote` en ajoutant le paramètre `callback`. Ce paramètre est une fermeture et donc du type fonction.
 
-Créez un fichier `NotificationNames.swift` à la racine de votre projet. Dedans, vous pouvez y insérer le code suivant :
+Pour définir précisément son type, il faut réfléchir à ce que l'on veut que le callback renvoie :
+
+- un booléan `success` qui permet de savoir si l'appel a réussi ou non.
+- un objet `quote` qui est l'objet que nous avons récupéré et construit avec nos requêtes.
+
+Cela donne la déclaration suivante pour getQuote :
 
 ```swift
-extension Notification.Name {
-	static let quoteRequestDidSucceed = Notification.Name("QuoteRequestDidSucceed")
-	static let quoteRequestDidFail = Notification.Name("QuoteRequestDidFail")
-}
+static func getQuote(callback: @escaping (Bool, Quote?) -> Void) { (...) }
 ```
 
-On crée avec cette extension deux nouveaux noms : `quoteRequestDidFail` et `quoteRequestDidSucceed`.
+> **:information_source:** De nouveau, je ne détaille pas le paramètre `@escaping`. Je vous invite à regarder l'[article suivant](https://medium.com/@kumarpramod017/what-do-mean-escaping-and-nonescaping-closures-in-swift-d404d721f39d).
+ 
+On utilise en paramètre de notre fermeture un booléan et un objet `Quote` optionnel car si la requête échoue, on n'a pas d'objet à renvoyer.
 
-#### Envoie des notifications au contrôleur
+#### Envoie du callback
 
 ##### Succès
-
-Commençons par la notification de succès ! Avant de l'envoyer, il va nous falloir créer l'objet `Quote` :
+Nous allons maintenant envoyer le callback. Et pour cela, nous allons commencer par créer notre objet quote à partir des trois données reçues : `author`, `text` et `data`.
 
 ```swift
 let quote = Quote(text: text, author: author, imageData: data)
 ```
 
-Ensuite, nous allons envoyer la notification comme ceci :
+Ensuite, nous allons envoyer le callback comme ceci :
 
 ```swift
-NotificationCenter.default.post(name: .quoteRequestDidSucceed, object: quote)
+callback(true, quote)
 ```
 
-On indique le nom de la notification et on passe notre objet `quote` avec !
+On passe le booléen à `true` car on est dans le cas où la requête a réussi et ensuite, on passe l'objet `quote` que nous venons de créer.
 
 ##### Erreur
 
-Voyons maintenant, les cas d'erreur. Si on regarde notre fonction `getQuote`, on ne gère pas du tout les erreurs.
+Voyons maintenant, les cas d'erreur. Si on regarde notre fonction `getQuote`, on ne gère pas du tout les erreurs pour l'instant :
 
 ```swift
 let task = session.dataTask(with: request) { (data, response, error) in
@@ -707,7 +714,7 @@ let task = session.dataTask(with: request) { (data, response, error) in
 				getImage { (data) in
 					if let data = data {
 						let quote = Quote(text: text, author: author, imageData: data)
-						NotificationCenter.default.post(name: .quoteRequestDidSucceed, object: quote)
+						callback(true, quote)
 					}
 				}
 			}
@@ -716,39 +723,39 @@ let task = session.dataTask(with: request) { (data, response, error) in
 }
 ```
 
-On fait plein de vérifications, mais si ça ne se passe pas comme prévu, on ne fait rien ! On va rajouter des `else` à tout ces `if` et si ça ne se passe pas comme prévu, on va envoyer notre notification d'échec :
+On fait plein de vérifications, mais si ça ne se passe pas comme prévu, on ne fait rien ! On va rajouter des `else` à tout ces `if` et si ça ne se passe pas comme prévu, on va envoyer un callback d'échec :
 
 ```swift
-NotificationCenter.default.post(name: .quoteRequestDidFail, object: nil)
+callback(false, nil)
 ```
 
 Voici ce que ça donne :
 
 ```swift
 let task = session.dataTask(with: request) { (data, response, error) in
-	if let data = data, error == nil {
-		if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-			if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-				let responseDict = responseJSON,
-				let text = responseDict["quoteText"] as? String,
-				let author = responseDict["quoteAuthor"] as? String {
-				getImage { (data) in
-					if let data = data {
-						let quote = Quote(text: text, author: author, imageData: data)
-						NotificationCenter.default.post(name: .quoteRequestDidSucceed, object: quote)
-					} else {
-						NotificationCenter.default.post(name: .quoteRequestDidFail, object: nil)
-					}
-				}
-			} else {
-				NotificationCenter.default.post(name: .quoteRequestDidFail, object: nil)
-			}
-		} else {
-			NotificationCenter.default.post(name: .quoteRequestDidFail, object: nil)
-		}
-	} else {
-		NotificationCenter.default.post(name: .quoteRequestDidFail, object: nil)
-	}
+    if let data = data, error == nil {
+        if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
+                let responseDict = responseJSON,
+                let text = responseDict["quoteText"] as? String,
+                let author = responseDict["quoteAuthor"] as? String {
+                getImage { (data) in
+                    if let data = data {
+                        let quote = Quote(text: text, author: author, imageData: data)
+                        callback(true, quote)
+                    } else {
+                        callback(false, nil)
+                    }
+                }
+            } else {
+                callback(false, nil)
+            }
+        } else {
+            callback(false, nil)
+        }
+    } else {
+        callback(false, nil)
+    }
 }
 ```
 > **:information_source:** Oui je sais, c'est pas bien joli, mais dans la prochaine partie, on va apprendre une technique qui va rendre tout ça beaucoup plus propre !
@@ -781,94 +788,68 @@ let task = session.dataTask(with: pictureUrl) { (data, response, error) in
 }
 ```
 
-Si le téléchargement échoue, on ne peut pas renvoyer de données et donc à la place, on renvoie `nil`. Cette information est utilisée ensuite dans la fonction `changeQuote` pour envoyer la notification appropriée.
+Si le téléchargement échoue, on ne peut pas renvoyer de données et donc à la place, on renvoie `nil`. Cette information est utilisée ensuite dans la fonction `changeQuote` pour envoyer les bons paramètres dans le callback.
 
-#### Réception des  notifications
+#### Réception des callback
 
-Nos notifications sont envoyées et maintenant, il faut les réceptionner dans le contrôleur.
+Nos callback sont envoyées et maintenant, il faut les réceptionner dans le contrôleur.
 
-
-##### Observation des notifications
-Nous allons rajouter une méthode `observeNotifications` dans notre contrôleur que nous allons appeler dans `viewDidLoad`.
+Nous allons commencer par appeler la méthode `getQuote` dans notre fonction `tappedNewQuoteButton` :
 
 ```swift
-override func viewDidLoad() {
-	super.viewDidLoad()
-	observeNotifications()
-}
-
-private func observeNotifications() {
-	NotificationCenter.default.addObserver(self, selector: #selector(quoteRequestDidSucceed(notification:)), name: .quoteRequestDidSucceed, object: nil)
-	NotificationCenter.default.addObserver(self, selector: #selector(quoteRequestDidFail), name: .quoteRequestDidFail, object: nil)
+@IBAction func tappedNewQuoteButton() {
+    QuoteService.getQuote { (success, quote) in
+    }
 }
 ```
 
-Pour faire fonctionner ce code, il nous faut rajouter les deux fonctions indiquées dans les `selector` :
+Ensuite, nous allons vérifier que le paramètre `success` est à `true` et que l'objet `quote` ne vaut pas `nil`.
 
 ```swift
-@objc func quoteRequestDidFail() {
-}
-
-@objc func quoteRequestDidSucceed(notification: Notification) {
+QuoteService.getQuote { (success, quote) in
+	if success, let quote = quote {
+		// Afficher la citation
+	} else {
+		// Présenter un message d'erreur
+	}
 }
 ```
 
-> **:information_source:** Les sélecteurs étant un héritage d'Objective-C, nous devons indiquer la mention `@objc` pour qu'ils reconnaissent les fonctions.
-
-##### Échec
-
-Commençons par la méthode `quoteRequestDidFail`. Si le téléchargement échoue, nous allons indiquer cela à l'utilisateur avec une alerte.
+Si tout va bien, on affiche la citation, sinon on présente une alerte à l'utilisateur. 
 
 > **:information_source:** Besoin d'un rappel sur les alertes ? C'est par [ici](https://openclassrooms.com/courses/ajoutez-plusieurs-pages-a-votre-application-ios/presentez-une-alerte-a-lutilisateur) !
 
-Essayez de le faire par vous même d'abord ! Voici ma version de l'implémentation de `quoteRequestDidFail` :
+Essayez de le faire par vous même d'abord ! Voici ma version :
 
 ```swift
-@objc func quoteRequestDidFail() {
-	let alertVC = UIAlertController(title: "Error", message: "The quote download failed.", preferredStyle: .alert)
-	alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-	present(alertVC, animated: true, completion: nil)
+@IBAction func tappedNewQuoteButton() {
+    QuoteService.getQuote { (success, quote) in
+        if success, let quote = quote {
+            self.update(quote: quote)
+        } else {
+            self.presentAlert()
+        }
+    }
+}
+
+private func update(quote: Quote) {
+    quoteLabel.text = quote.text
+    authorLabel.text = quote.author
+    imageView.image = UIImage(data: quote.imageData)
+}
+
+private func presentAlert() {
+    let alertVC = UIAlertController(title: "Error", message: "The quote download failed.", preferredStyle: .alert)
+    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+    present(alertVC, animated: true, completion: nil)
 }
 ```
 
-On indique simplement à l'utilisateur que le chargement a échoué.
-
-##### Succès
-Dans le cas du succès, on va commencer par récupérer l'objet `Quote` qui est contenu dans la notification :
-
-```swift
-@objc func quoteRequestDidSucceed(notification: Notification) {
-	if let quote = notification.object as? Quote {
-	}
-}
-```
-
-On utilise la propriété `object` de `Notification` et on contrôle qu'elle est bien de type `Quote`.
-
-Ensuite, on a plus qu'à utiliser ces données pour afficher la citation et la photo.
-
-```swift
-@objc func quoteRequestDidSucceed(notification: Notification) {
-	if let quote = notification.object as? Quote {
-		quoteLabel.text = quote.text
-		authorLabel.text = quote.author
-		imageView.image = UIImage(data: quote.imageData)
-	}
-}
-```
-
-> **:information_source:** La classe `UIImage` a un initialiseur qui admet comme paramètre `data` de type `Data`. Quand vous récupèrerez des images sur internet, c'est l'initialiseur que vous utiliserez la plupart du temps.
+J'ai factorisé chaque cas dans deux fonctions, le reste ne devrait pas poser problème.
 
 #### Tadaaa...
 
 Et voilà ! Il n'y a plus qu'à tester ! Vous pouvez lancer le simulateur et appuyez sur le bouton *New Quote*.
-
-> **:information_source:** Vérifiez bien que vous appelez la fonction `getQuote` lors de l'appui sur le bouton !
-```swift
-@IBAction func tappedNewQuoteButton() {
-	 QuoteService.getQuote()
-}
-```
 
 Et.... c'est le drame ! Ça ne marche pas ! À la place, vous avez un message d'erreur dans la console qui vous dit :
 

@@ -3,7 +3,7 @@
 ### Appréhendez la difficulté de tester un appel réseau  
 Comme tout développeur qui se respecte, vous devriez vous sentir mal à l'aise maintenant... Il y a quelque chose qui vous perturbe fondamentalement, qui secoue votre être tout entier. Et tout à coup, vous posez les mots sur votre inconfort transcendantal :
 
-> **:question:** ON N’APAS FAIT DE TESTS !
+> **:question:** ON N’A PAS FAIT DE TESTS !
 
 C'est excellent ! Je vois que vous êtes pétris de bonnes pratiques. Mais rassurez-vous, nous allons en parler pendant toute cette partie ! Alors, accrochez-vous, car, c'est sans doute la partie de ce cours la plus riche !
 
@@ -88,6 +88,7 @@ Nous allons procéder en plusieurs étapes :
 
 #### En résumé
 Pour tester des appels réseau, on peut utiliser :
+
 - les expectations : facile à mettre en place mais rendent les tests lents et instables. Mauvaise option.
 - les doubles : plus compliqué à mettre en place mais gardent les tests propres et rapides.
 
@@ -309,7 +310,7 @@ Dans notre cas, voici à quoi ressemble la partie publique de notre classe :
 ```swift
 class QuoteService {
 	static let shared: QuoteService
-	func getQuote()
+	func getQuote(callback: @escaping (Bool, Quote?) -> Void)
 }
 ```
 
@@ -330,7 +331,7 @@ Pas tout à fait, et nous allons voir comment faire ça dans ce chapitre !
 Regardons un peu notre fonction `getQuote` pour voir comment elle fonctionne :
 
 ```swift
-func getQuote() {
+func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
 	let request = createQuoteRequest()
 	let session = URLSession(configuration: .default)
 
@@ -385,7 +386,7 @@ En tant que propriété de la classe, celle-ci peut-être librement modifiée et
 Prenons un exemple pour y voir plus clair. Pour l'instant, mon code ressemble à ceci :
 
 ```swift
-func getQuote() {
+func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
 	let request = createQuoteRequest()
 	let session = URLSession(configuration: .default) // Le code dépends de URLSession
 
@@ -407,7 +408,7 @@ Nous allons maintenant extirper cette variable et en faire une propriété de la
 class QuoteService {
 	var session = URLSession(configuration: .default)
 
-	func getQuote() {
+	func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
 		let request = createQuoteRequest()
 
 		task?.cancel()
@@ -442,7 +443,7 @@ Je vais créer deux sessions différentes, une par appel, donc je vais créer de
 var quoteSession = URLSession(configuration: .default)
 var imageSession = URLSession(configuration: .default)
 
-func getQuote() {
+func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
 	let request = createQuoteRequest()
 	task?.cancel()
 
@@ -791,12 +792,12 @@ Le moment que vous attendiez tous est arrivé ! Nous allons rédiger nos tests !
 Nous allons faire ensemble 5 tests. Ils vont correspondre aux 4 cas d'erreur du premier appel et au cas où tout se passe bien sur les deux appels.
 
 #### Premier test
-Pour le premier test, nous allons choisir le cas où il y a une erreur. Dans ce cas, dans le bloc de retour, on envoie une notification `quoteRequestDidFail`. Donc dans notre premier test, nous allons vérifier que si on reçoit une erreur, on a bien l'envoi de cette notification.
+Pour le premier test, nous allons choisir le cas où il y a une erreur. Dans ce cas, dans le bloc de retour, on envoie un callback d'erreur. Donc dans notre premier test, nous allons vérifier que si on reçoit une erreur, on a bien l'envoi de ce callback avec les bonnes valeurs.
 
 Commençons à rédiger notre test :
 
 ```swift
-func testGetQuoteShouldPostFailedNotificationIfError() {
+func testGetQuoteShouldPostFailedCallbackIfError() {
 	// Given
 
 	// When
@@ -824,79 +825,94 @@ Ensuite, j'écris mon *When* :
 
 ```swift
 // When
-quoteService.getQuote()
+quoteService.getQuote { (success, quote) in
+}
 ```
 
 C'est la fonction que je souhaite tester.
 
-Enfin, nous allons écrire le *Then*. Nous voulons simplement y vérifier que notre notification `quoteRequestDidFail` est bien partie. Pour cela, il existe une *expectation* prévue pour qui s'utilise comme ceci :
+Enfin, nous allons écrire le *Then*. Nous allons vérifier que `success` vaut bien `false` et que `quote` vaut bien `nil`. Notre *Then* a donc lieu dans nore fermeture.
 
 ```swift
-expectation(forNotification: .quoteRequestDidFail, object: nil, handler: nil)
-```
-
-On indique le nom de la notification et lorsqu'elle sera envoyée, votre test verra grâce à cette ligne que c'est le cas et il passera en vert.
-
-> **:information_source:** Je vous aie dit que les expectations servaient à attendre dans un test et que du coup cela rendait les tests lents. Ici, ce n'est pas le cas, car les notifications contrairement aux appels réseau sont envoyées et reçues instantanément.
-
-Vous pouvez lancer votre test et vérifier que tout va bien !
-
-> **:question:** Mais ça marche pas chez moi ! Le test est rouge !
-
-Eh oui ! Je vous ai encore bien eu ! La raison c'est que notre notification est partie après que cette ligne de code soit exécutée :
-
-```swift
-expectation(forNotification: .quoteRequestDidFail, object: nil, handler: nil)
-```
-
-> **:question:** Mais tu viens de nous dire que les notifications étaient instantanées !
-
-Oui mais ce n'est pas de la faute des notifications. Mais plutôt d'une ligne de code dans la fonction `getQuote` :
-
-```swift
-DispatchQueue.main.async {
-	// (...)
+// When
+quoteService.getQuote { (success, quote) in
+    // Then
+    XCTAssertFalse(success)
+    XCTAssertNil(quote)
 }
 ```
 
-Ici, on change de queue. Donc cela a lieu entre le *When* et le *Then* de notre test. Ce changement de queue nous fait perdre la notion d'exécution instantanée, car les instructions n'ont plus lieu les unes à la suite des autres mais dans des queues séparées. Et ce microdécalage nous empêche d'intercepter l'envoi de la notification.
+Et voilà ! Vous pouvez tester... Ça marche ?
 
-Pour résoudre ce problème, **nous allons créer un micro délai, qui va permettre d'écouter la réception seulement à partir du moment où le changement de queue a eu lieu**. Et on fait ça comme ça :
+> **:question:** Euh... oui !
+
+FAUX ! Vous n'êtes pas des testeurs vigilants ;) ! Essayez d'écrire `XCTAssertTrue` au lieu de `XCTAssertFalse`. Vous verrez qu'au mieux vos tests réussissent toujours et au pire que cela fait crasher vos tests. Dans les deux cas, cela veut dire que vos tests ne fonctionnent pas !
+
+> **:question:** Hmmm... En effet... mais pourquoi ?
+
+La raison se trouve dans notre fonction `getQuote` et plus précisément à cette ligne :
 
 ```swift
-waitForExpectations(timeout: 0.01, handler: nil)
+DispatchQueue.main.async { (...) }
 ```
 
-Cette ligne permet d'attendre un centième de seconde, le temps que le changement de queue ait lieu. Oui, je vous avais dit que les changements de queue étaient très rapides ! Ce micro délai ne va donc pas ralentir nos tests.
+Ici, on change de queue. Donc cela a lieu entre le *When* et le *Then* de notre test. Ce changement de queue nous fait perdre la notion d'exécution instantanée, car les instructions n'ont plus lieu les unes à la suite des autres mais dans des queues séparées. Du coup, on ce micro décalage nous empêche de récupérer notre callback correctement.
 
-Vous pouvez lancer vos tests et cette fois, ça marche !
+Pour résoudre ce problème, **nous allons créer un micro délai, qui va permettre d'analyser la réception du callback seulement à partir du moment où le changement de queue a eu lieu**. Et nous allons créer pour cela une `expectation` comme ceci :
+
+```swift
+// When
+let expectation = XCTestExpectation(description: "Wait for queue change.")
+quoteService.getQuote { (success, quote) in
+    // Then
+    XCTAssertFalse(success)
+    XCTAssertNil(quote)
+    expectation.fulfill()
+}
+
+wait(for: [expectation], timeout: 0.01)
+```
+
+Cela a lieu en trois temps :
+
+1. On crée un objet `expectation` en lui donnant simplement une description.
+2. Une fois le callback reçu, on appelle la méthode `fulfill` pour signifier que nous n'avons plus besoin d'attendre l'expectation a eu lieu.
+3. On fait attendre notre code 1 centième de secondes maximum, pour permettre au changement de queue d'avoir lieu.
+
+> **:information_source:** Je vous aie dit que les expectations servaient à attendre dans un test et que du coup cela rendait les tests lents. Mais ici, on attends au pire un centième de seconde donc ce micro délai ne va donc pas ralentir nos tests. Je vous avais dit que les changements de queue étaient très rapides !
+
+Vous pouvez lancer votre test et vérifier que tout va bien !
 
 Voici le code complet de notre test.
 
 ```swift
-func testGetQuoteShouldPostFailedNotificationIfError() {
-	// Given
-	let quoteService = QuoteService(
-		quoteSession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error),
-		imageSession: URLSessionFake(data: nil, response: nil, error: nil))
+func testGetQuoteShouldPostFailedCallbackIfError() {
+    // Given
+    let quoteService = QuoteService(
+        quoteSession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error),
+        imageSession: URLSessionFake(data: nil, response: nil, error: nil))
 
-	// When
-	quoteService.getQuote()
+    // When
+    let expectation = XCTestExpectation(description: "Wait for queue change.")
+    quoteService.getQuote { (success, quote) in
+        // Then
+        XCTAssertFalse(success)
+        XCTAssertNil(quote)
+        expectation.fulfill()
+    }
 
-	// Then
-	expectation(forNotification: .quoteRequestDidFail, object: nil, handler: nil)
-	waitForExpectations(timeout: 0.01, handler: nil)
+    wait(for: [expectation], timeout: 0.01)
 }
 ```
 
 #### Les autres tests d'erreur
-Nous allons maintenant tester les autres cas d'erreur. Dans tous les cas d'erreur, on doit vérifier que la  notification `quoteRequestDidFail` est bien envoyée. C'est donc la même chose que le test précédent. **Seule la situation initiale, le *Given*, va varier**.
+Nous allons maintenant tester les autres cas d'erreur. Dans tous les cas d'erreur, on doit vérifier que le callback d'erreur est bien envoyée. C'est donc la même chose que le test précédent. **Seule la situation initiale, le *Given*, va varier**.
 
 ##### Pas de données
 Nous allons tester le cas où l'appel ne renvoie pas de données :
 
 ```swift
-func testGetQuoteShouldPostFailedNotificationIfNoData() {
+func testGetQuoteShouldPostFailedCallbackIfNoData() {
 	// Given
 	let quoteService = QuoteService(
 		quoteSession: URLSessionFake(data: nil, response: nil, error: nil),
@@ -906,14 +922,14 @@ func testGetQuoteShouldPostFailedNotificationIfNoData() {
 }
 ```
 
-Ici, on ne met aucune donnée mais également pas d'erreur, la notification d'échec est censée partir.
+Ici, on ne met aucune donnée mais également pas d'erreur, le callback est censé être renvoyé.
 
 > **:information_source:** La suite du test ne change pas, donc je ne vous la redonne pas.
 
 ##### Une réponse incorrecte
 
 ```swift
-func testGetQuoteShouldPostFailedNotificationIfIncorrectResponse() {
+func testGetQuoteShouldPostFailedCallbackIfIncorrectResponse() {
 	// Given
 	let quoteService = QuoteService(
 		quoteSession: URLSessionFake(
@@ -931,7 +947,7 @@ Ici, je ne donne aucune erreur et de bonnes données pour ne pas tomber dans les
 ##### Des données incorrectes
 
 ```swift
-func testGetQuoteShouldPostFailedNotificationIfIncorrectData() {
+func testGetQuoteShouldPostFailedCallbackIfIncorrectData() {
 	// Given
 	let quoteService = QuoteService(
 		quoteSession: URLSessionFake(
@@ -947,12 +963,12 @@ func testGetQuoteShouldPostFailedNotificationIfIncorrectData() {
 Ici aucune erreur et une réponse correcte pour éviter les cas d'erreur précédents. Mais je fournis de mauvaises données pour tester le cas où le décodage du JSON échoue.
 
 #### Quand tout va bien
-Nous allons maintenant tester le cas où tout va bien. Dans ce cas, la méthode doit envoyer la notification `quoteRequestDidSucceed` qui contient un objet `Quote` rempli avec les données reçues.
+Nous allons maintenant tester le cas où tout va bien. Dans ce cas, la méthode doit envoyer un callback qui contient un booléen avc la valeur `true` et un objet `Quote` rempli avec les données reçues.
 
 Démarrons par le *Given* :
 
 ```swift
-func testGetQuoteShouldPostSuccessNotificationIfNoErrorAndCorrectData() {
+func testGetQuoteShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
 	// Given
 	let quoteService = QuoteService(
 		quoteSession: URLSessionFake(
@@ -972,63 +988,56 @@ Ensuite, le *When* ne change pas :
 
 ```swift
 // When
-quoteService.getQuote()
+let expectation = XCTestExpectation(description: "Wait for queue change.")
+quoteService.getQuote { (success, quote) in
+	// Then
+}
 ```
 
 On teste toujours la méthode `getQuote`.
 
-Et ensuite, dans le *Then*, nous allons essayer tester cette fois-ci la réception de la notification `quoteRequestDidSucceed` :
+Et ensuite, dans le *Then*, nous allons essayer tester cette fois-ci le contenu de notre callback de succès :
 
 ```swift
 // Then
-expectation(forNotification: .quoteRequestDidSucceed, object: nil, handler: nil)
-waitForExpectations(timeout: 0.01, handler: nil)
+XCTAssertTrue(success)
+XCTAssertNotNil(quote)
+expectation.fulfill()
 ```
 
 Bien ! Vous pouvez tester et ça marche !
 
-C'est du bon travail mais on doit aller plus loin. En effet la notification `quoteRequestDidSucceed` est censée renvoyer un objet `Quote`. Et **nous devons tester si cet objet est bien envoyé et s'il correspond à nos attentes**.
+C'est du bon travail mais on doit aller plus loin, on doit tester que le contenu de l'objet `quote` corresponds à ce que nous attendons.
 
-Pour cela, nous allons utiliser le paramètre `handler` de la fonction `expectation(forNotification:,object:,handler:)`. Il s'agit d'une fermeture qui prend en paramètre la notification, cela va nous permettre de récupérer et inspecter l'objet quote et qui renvoie un booléen. Si le booléen est à `true`, le test réussit, sinon il échoue.
-
-Implémentons cette fermeture en commençant par préparer les données que nous nous attendons à voir dans l'objet `Quote` renvoyée par la notification :
+Commençons par préparer les données que nous nous attendons à voir dans l'objet `Quote` renvoyée par le callback :
 
 ```swift
-expectation(forNotification: .quoteRequestDidSucceed, object: nil) { (notification) -> Bool in
-	let text = "Face your deficiencies and acknowledge them; but do not let them master you. Let them teach you patience, sweetness, insight."
-	let author = "Helen Keller"
-	let imageData = "image".data(using: .utf8)!
-}
+let text = "Face your deficiencies and acknowledge them; but do not let them master you. Let them teach you patience, sweetness, insight."
+let author = "Helen Keller"
+let imageData = "image".data(using: .utf8)!
 ```
 
 Ici, je copie simplement les données du texte et de l'auteur contenu dans mon JSON de test et je prépare des données `imageData` qui correspondent à celles que nous avions préparées dans `FakeResponseData`.
 
-Ensuite, nous allons récupérer l'objet `Quote` de la notification :
-
-```swift
-if let quote = notification.object as? Quote {
-}
-```
-
 Et nous allons maintenant vérifier que les données correspondent ce qui donne finalement :
 
 ```swift
-expectation(forNotification: .quoteRequestDidSucceed, object: nil) { (notification) -> Bool in
-	let text = "Face your deficiencies and acknowledge them; but do not let them master you. Let them teach you patience, sweetness, insight."
-	let author = "Helen Keller"
-	let imageData = "image".data(using: .utf8)!
+quoteService.getQuote { (success, quote) in
+    // Then
+    XCTAssertTrue(success)
+    XCTAssertNotNil(quote)
 
-	guard let quote = notification.object as? Quote else {
-		return false
-	}
+    let text = "Face your deficiencies and acknowledge them; but do not let them master you. Let them teach you patience, sweetness, insight."
+    let author = "Helen Keller"
+    let imageData = "image".data(using: .utf8)!
 
-	return quote.author == author
-		&& quote.text == text
-		&& quote.imageData == imageData
+    XCTAssertEqual(text, quote!.text)
+    XCTAssertEqual(author, quote!.author)
+    XCTAssertEqual(imageData, quote!.imageData)
+
+    expectation.fulfill()
 }
 ```
-
-Si l'objet `quote` est bien envoyé et contient les données attendues, la fermeture renverra `true` et le test réussira. Sinon ce sera `false` et le test échouera.
 
 Vous pouvez tester et ça marche !
 
@@ -1046,7 +1055,7 @@ Vous pourrez trouver la correction [ici](https://s3-eu-west-1.amazonaws.com/stat
 
 - On utilise nos données de test pour simuler les retours des appels réseau.
 - On passe ses données dans nos doubles et on injecte les doubles dans la classe à tester.
-- Pour tester, la réception de notifications, on utilise la méthode  `expectation(forNotification:, object:, handler:)`.
+- On contrôle la valeur des paramètres du callback.
 - Le multithreading empêche l'exécution instantanée de notre code et on introduit un micro délai pour attendre le changement de queue.
 
 J'ai conscience que cette partie était relativement difficile. Mais je crois fondamentalement que les tests feront de vous des très bons développeurs et vous permettront d'évoluer sereinement dans votre code. Ils participent donc directement à votre bien-être au travail.
@@ -1059,4 +1068,4 @@ Et pour ne pas finir comme la grande majorité des développeurs qui procrastine
 > 
 > Cet exercice ne vous prendra pas beaucoup de temps. Mais maintenant que vous avez la vue d'ensemble, il permettra à votre cerveau de finaliser les connexions qui ne se sont pas encore faites et vous permettra d'assimiler en profondeur le contenu riche de cette partie !
 
-Je vous donne ensuite rendez-vous dans la prochaine partie où nous allons parler de la gestion d'erreur en `Swift` et lever le voile sur ces mystérieux try que nous avons croisé ensemble !
+Je vous donne ensuite rendez-vous dans la prochaine partie où nous allons parler de la gestion d'erreur en `Swift` et lever le voile sur ces mystérieux `try` que nous avons croisé ensemble !

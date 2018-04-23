@@ -71,7 +71,7 @@ Le problème, c'est que lorsque vous faites un appel réseau dans la *Main Queue
 Pour empêcher cela, `URLSessionTask` effectue ses tâches de façon asynchrone dans une queue séparée. Et quand la réponse revient, je suis toujours dans une queue séparée. Pour être très concret, voici ce qui se passe dans le code :
 
 ```swift
-static func getQuote() {
+static func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
 	// On est dans la Main Queue par défaut
 	let request = createQuoteRequest()
 	let session = URLSession(configuration: .default)
@@ -88,7 +88,7 @@ Et c'est là qu'est le problème ! Car il existe une règle d'or avec les thread
 
 > **Tout ce qui touche à l'interface doit avoir lieu dans la Main Queue !**
 
-Or, ici quand on reçoit la réponse de notre appel réseau, on est dans une queue séparée, et tout ce qu'on fait ensuite a lieu dans une queue séparée, que ce soit l'envoi de la notification ou la mise à jour de l'interface.
+Or, ici quand on reçoit la réponse de notre appel réseau, on est dans une queue séparée, et tout ce qu'on fait ensuite a lieu dans une queue séparée, que ce soit l'envoi du callback ou la mise à jour de l'interface.
 
 Et maintenant, on comprend mieux ce que nous dit Xcode :
 
@@ -113,7 +113,7 @@ DispatchQueue.main.async {
 Il ne nous reste plus qu'à rajouter ça dans nos deux appels ce qui donne ceci pour la fonction `getQuote` :
 
 ```swift
-static func getQuote() {
+static func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
 	let request = createQuoteRequest()
 	let session = URLSession(configuration: .default)
 
@@ -164,7 +164,7 @@ Le problème, c'est qu'on envoie plusieurs appels à la fois et en fonction du r
 #### Utiliser une seule tâche
 Si on réfléchit à la façon dont fonctionnent nos appels pour l'instant, on se rend compte qu'à chaque appel, on crée une tâche différente.
 
-En effet, lorsqu'on appelle notre méthode static `QuoteService.getQuote()`, on crée un nouvel objet `URLSessionTask` à chaque fois :
+En effet, lorsqu'on appelle notre méthode static `QuoteService.getQuote`, on crée un nouvel objet `URLSessionTask` à chaque fois :
 
 ```swift
 let task = session.dataTask(with: request) { (data, response, error) in
@@ -195,10 +195,10 @@ Le problème, c'est que maintenant nous utilisons une propriété dans une méth
 Maintenant, nous devons modifier notre appel dans le contrôleur comme ceci :
 
 ```swift
-QuoteService().getQuote()
+QuoteService().getQuote { (success, quote) in (...) }
 ```
 
-On appelle la fonction `getQuote` sur une instance de `QuoteService` et non sur la classe directement.
+On appelle la fonction `getQuote` **sur une instance** de `QuoteService` et non sur la classe directement.
 
 #### Annuler une tâche
 
@@ -229,7 +229,7 @@ Eh oui ! Je vous ai (encore ;) ) bien eu !
 Pourquoi rien à changer ? À cause de cette ligne :
 
 ```swift
-QuoteService().getQuote()
+QuoteService().getQuote { (success, quote) in (...) }
 ```
 
 À chaque fois, qu'on appuie sur le bouton et qu'on appelle la fonction `getQuote`, **on crée une nouvelle instance de `QuoteService`**. Du coup, on créée à chaque fois une nouvelle instance de `task` et donc on ne peut jamais annuler la tâche en cours, car on ne travaille jamais avec la même tâche !
@@ -294,7 +294,7 @@ Et voilà ! Vous pouvez maintenant essayer d'écrire `QuoteService()`, cela ne m
 On a maintenant une instance unique de notre classe que nous allons pouvoir utiliser comme ceci :
 
 ```swift
-QuoteService.shared.getQuote()
+QuoteService.shared.getQuote { (success, quote) in (...) }
 ```
 
 Vous pouvez essayer dans le simulateur ! Si vous lancez deux appels sans attendre le retour du premier, vous aurez maintenant une alerte qui s'affiche :
@@ -312,46 +312,38 @@ Nous allons faire en sorte que de toute façon, l'utilisateur ne puisse pas lanc
 Rien de plus simple ! Il suffit d'utiliser la propriété `isHidden` pour cacher le bouton et afficher l'indicateur puis faire l'inverse lorsque la réponse revient :
 
 ```swift
-@objc func quoteRequestDidFail() {
-	newQuoteButton.isHidden = false
-	activityIndicator.isHidden = true
-
-	// (...)
-}
-
-@objc func quoteRequestDidSucceed(notification: Notification) {
-	newQuoteButton.isHidden = false
-	activityIndicator.isHidden = true
-
-	// (...)
-}
-
 @IBAction func tappedNewQuoteButton() {
-	QuoteService.shared.getQuote()
+    newQuoteButton.isHidden = true
+    activityIndicator.isHidden = false
+    
+    QuoteService.shared.getQuote { (success, quote) in
+        self.newQuoteButton.isHidden = false
+        self.activityIndicator.isHidden = true
 
-	newQuoteButton.isHidden = true
-	activityIndicator.isHidden = false
+        if success, let quote = quote {
+            self.update(quote: quote)
+        } else {
+            self.presentAlert()
+        }
+    }
 }
 ```
 
 Et comme nous sommes des développeurs qui détestons nous répéter, on va créer une jolie méthode et écrire plutôt ceci :
 
 ```swift
-@objc func quoteRequestDidFail() {
-	toggleActivityIndicator(shown: false)
-
-	// (...)
-}
-
-@objc func quoteRequestDidSucceed(notification: Notification) {
-	toggleActivityIndicator(shown: false)
-
-	// (...)
-}
-
 @IBAction func tappedNewQuoteButton() {
-	QuoteService.shared.getQuote()
-	toggleActivityIndicator(shown: true)
+    toggleActivityIndicator(shown: true)
+
+    QuoteService.shared.getQuote { (success, quote) in
+        self.toggleActivityIndicator(shown: false)
+
+        if success, let quote = quote {
+            self.update(quote: quote)
+        } else {
+            self.presentAlert()
+        }
+    }
 }
 
 private func toggleActivityIndicator(shown: Bool) {
