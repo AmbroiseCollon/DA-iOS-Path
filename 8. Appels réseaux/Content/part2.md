@@ -102,7 +102,7 @@ Qu'à cela ne tienne, on va y retourner !
 
 #### Résolution du problème
 
-Pour gérer les queues avec Swift, on utilise la classe `DispatchQueue`. Elle permet de créer des queues Custom, Global ou de revenir dans la Main Queue. Ou pour revenir dans la Main Queue, on écrit :
+Pour gérer les queues avec Swift, on utilise la classe `DispatchQueue`. Elle permet de créer des queues Custom, Global ou de revenir dans la Main Queue. Pour revenir dans la Main Queue, on écrit :
 
 ```swift
 DispatchQueue.main.async {

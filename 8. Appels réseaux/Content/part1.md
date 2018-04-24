@@ -323,13 +323,12 @@ let body = "method=getQuote&lang=en&format=json" // <= ICI
 
 Or, nous ne savons pas manipuler ce format en Swift. En Swift, on manipule des dictionnaires, des tableaux, des objets, mais pas des JSON !
 
-Heureusement, il existe une classe qui va nous permettre de faire la conversion depuis le format JSON vers un dictionnaire Swift classique. Elle s'appelle : `JSONSerialization`. Et elle a une méthode `jsonObject` qui renvoie un dictionnaire. Voici comment on l'utilise :
+Heureusement, il existe une classe qui va nous permettre de faire la conversion depuis le format JSON vers un dictionnaire Swift classique. Elle s'appelle : `JSONDecoder`. Et elle a une méthode `decode` qui renvoie un dictionnaire. Voici comment on l'utilise :
 
 ```swift
-if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-let responseDict = responseJSON,
-let text = responseDict["quoteText"] as? String,
-let author = responseDict["quoteAuthor"] as? String {
+if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+    let text = responseJSON["quoteText"],
+    let author = responseJSON["quoteAuthor"] {
 }
 ```
 
@@ -337,12 +336,13 @@ let author = responseDict["quoteAuthor"] as? String {
 
 Oui je sais, il y a pas mal de choses ici, mais à part la première ligne, rien de vraiment compliqué :
 
-- Ligne 1 : On utilise la méthode `jsonObject` de `JSONSerialization` qui prend en paramètre les `data` reçues en réponse à l'appel réseau et d'éventuelles options que nous laissons vides. Ensuite, en utilisant l'opérateur `as?`, on vérifie que le résultat est bien du type `[String: Any]`. C'est-à-dire un dictionnaire qui a des clés de type `String` et des valeurs de type divers.
+- Ligne 1 : On utilise la méthode `decode` de `JSONDecoder` qui prend en paramètre deux choses :
+	- le type attendu des données que l'on va recevoir, ici on s'attend à recevoir un dictionnaire qui a comme type `String` pour la clé et pour la valeur. Le `.self` permet de faire référence au type.	
+	- les `data` reçues en réponse à l'appel réseau et d'éventuelles options que nous laissons vides.
 
-> **:information_source:** Besoin d'un rappel sur le type `Any` ou le contrôle des types avec `as`, c'est [par ici](https://openclassrooms.com/courses/approfondissez-swift-avec-la-programmation-orientee-objet/controlez-vos-types) ;) !
+> **:information_source:** Ce qui est hyper puissant ici, c'est que vous pouvez utiliser n'importe quelle type, même un type de votre création pourvu qu'il se conforme au protocole `Decodable`. Plus d'info avec [cet article](http://roadfiresoftware.com/2018/02/how-to-parse-json-with-swift-4/).
 
-- Ligne 2 : On déballe la variable `responseJSON,` car elle est optionnelle et on stocke sa valeur dans `responseDict`.
-- Ligne 3 et 4 : Comme on a déjà vu à quoi ressemblaient les données reçues grâce à Postman, on sait que la citation est stockée avec la clé `quoteText` et l'auteur avec la clé `quoteAuthor`. On vérifie que ces variables sont bien de type `String` et on récupère donc la citation et l'auteur dans les variables `text` et `author`.
+- Lignes 2 et 3 : Comme on a déjà vu à quoi ressemblaient les données reçues grâce à Postman, on sait que la citation est stockée avec la clé `quoteText` et l'auteur avec la clé `quoteAuthor`. On récupère du coup simplement les valeurs correspondantes.
 
 Ensuite, vous pouvez faire des `print` sur les variables `text` et `author` et vous devriez voir les citations s'afficher dans votre console en appuyant sur le bouton *New Quote* dans votre simulateur !
 
@@ -354,7 +354,7 @@ Comment ça ?
 
 > **:question:** C'est quoi ça : `try?` ?!
 
-Aaaah ! Certes... Bon, pour la faire courte, certaines fonctions comme la fonction `jsonObject` peuvent planter et dans ce cas, on dit qu'on essaye de lancer la fonction avec `try?`. Je ne vous en dis pas plus pour le moment pour qu'on ne s'éparpille pas. Mais c'est le sujet de la dernière partie de ce cours. Alors, heureux ?
+Aaaah ! Certes... Bon, pour la faire courte, certaines fonctions comme la fonction `decode` peuvent planter et dans ce cas, on dit qu'on essaye de lancer la fonction avec `try?`. Je ne vous en dis pas plus pour le moment pour qu'on ne s'éparpille pas. Mais c'est le sujet de la dernière partie de ce cours. Alors, heureux ?
 
 > **:question:** Hmmm.... On va dire oui :) !
 
@@ -375,11 +375,10 @@ class QuoteService {
 		let task = session.dataTask(with: request) { (data, response, error) in
 			if let data = data, error == nil {
 				if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-					if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-						let responseDict = responseJSON,
-						let text = responseDict["quoteText"] as? String,
-						let author = responseDict["quoteAuthor"] as? String {
-							print(text)
+					if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+					    let text = responseJSON["quoteText"],
+					    let author = responseJSON["quoteAuthor"] {
+					    	print(text)
 							print(author)
 					}
 				}
@@ -494,10 +493,9 @@ Il faut donc qu'on appelle la fonction getImage une fois qu'on a reçu la citati
 let task = session.dataTask(with: request) { (data, response, error) in
 	if let data = data, error == nil {
 		if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-			if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-				let responseDict = responseJSON,
-				let text = responseDict["quoteText"] as? String,
-				let author = responseDict["quoteAuthor"] as? String {
+			if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+			    let text = responseJSON["quoteText"],
+			    let author = responseJSON["quoteAuthor"] {
 					getImage() // Une fois la citation reçue, on va chercher l'image
 			}
 		}
@@ -560,17 +558,16 @@ Désormais, les données de l'image, de la citation et de l'auteur sont réunies
 
 
 ```swift
-if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-	let responseDict = responseJSON,
-	let text = responseDict["quoteText"] as? String,
-	let author = responseDict["quoteAuthor"] as? String {
+if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+    let text = responseJSON["quoteText"],
+    let author = responseJSON["quoteAuthor"] {
 		getImage { (data) in
 			if let data = data {
 				print(data)
 				print(text)
 				print(author)
 			}
-	}
+		}
 }
 ```
 
@@ -589,15 +586,14 @@ class QuoteService {
 	static func getQuote() {
 		let request = createQuoteRequest()
 		let session = URLSession(configuration: .default)
-
+		
 		let task = session.dataTask(with: request) { (data, response, error) in
 			if let data = data, error == nil {
 				if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-					if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-					let responseDict = responseJSON,
-					let text = responseDict["quoteText"] as? String,
-					let author = responseDict["quoteAuthor"] as? String {
-						getImage { (data) in
+					if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+					    let text = responseJSON["quoteText"],
+					    let author = responseJSON["quoteAuthor"] {
+					    	getImage { (data) in
 							if let data = data {
 								print(data)
 								print(text)
@@ -607,7 +603,7 @@ class QuoteService {
 					}
 				}
 			}
-		}
+		}		
 		task.resume()
 	}
 
@@ -707,11 +703,10 @@ Voyons maintenant, les cas d'erreur. Si on regarde notre fonction `getQuote`, on
 let task = session.dataTask(with: request) { (data, response, error) in
 	if let data = data, error == nil {
 		if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-			if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-			let responseDict = responseJSON,
-			let text = responseDict["quoteText"] as? String,
-			let author = responseDict["quoteAuthor"] as? String {
-				getImage { (data) in
+			if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+			    let text = responseJSON["quoteText"],
+			    let author = responseJSON["quoteAuthor"] {
+			    	getImage { (data) in
 					if let data = data {
 						let quote = Quote(text: text, author: author, imageData: data)
 						callback(true, quote)
@@ -733,13 +728,12 @@ Voici ce que ça donne :
 
 ```swift
 let task = session.dataTask(with: request) { (data, response, error) in
-    if let data = data, error == nil {
-        if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-            if let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])  as? [String: Any],
-                let responseDict = responseJSON,
-                let text = responseDict["quoteText"] as? String,
-                let author = responseDict["quoteAuthor"] as? String {
-                getImage { (data) in
+	if let data = data, error == nil {
+		if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+			if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
+			    let text = responseJSON["quoteText"],
+			    let author = responseJSON["quoteAuthor"] {
+			    	getImage { (data) in
                     if let data = data {
                         let quote = Quote(text: text, author: author, imageData: data)
                         callback(true, quote)
