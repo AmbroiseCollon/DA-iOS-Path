@@ -156,11 +156,11 @@ Pour simuler `response`, nous allons créer deux instances de `HTTPURLResponse` 
 - Une avec le code 500 : quand ça ne fonctionne pas.
 
 ```swift
-let responseOK = HTTPURLResponse(
+static let responseOK = HTTPURLResponse(
 	url: URL(string: "https://openclassrooms.com")!,
 	statusCode: 200, httpVersion: nil, headerFields: [:])!
 
-let responseKO = HTTPURLResponse(
+static let responseKO = HTTPURLResponse(
 	url: URL(string: "https://openclassrooms.com")!,
 	statusCode: 500, httpVersion: nil, headerFields: [:])!
 ```
@@ -175,7 +175,7 @@ Dans notre code, on ne s'intéresse pas à l'erreur en elle-même mais seulement
 
 ```swift
 class QuoteError: Error {}
-let error = QuoteError()
+static let error = QuoteError()
 ```
 
 Ici, on doit créer une classe `QuoteError` qui implémente le protocole `Error`. En effet, `Error` étant un protocole, on ne peut pas en obtenir une instance. Donc je crée une classe pour y parvenir.
@@ -223,7 +223,7 @@ let data = try! Data(contentsOf: url)
 
 On va mettre tout ça dans une propriété calculée et ça donne ceci :
 ```swift
-var quoteCorrectData: Data? {
+static var quoteCorrectData: Data? {
 	let bundle = Bundle(for: FakeResponseData.self)
 	let url = bundle.url(forResource: "Quote", withExtension: "json")!
 	return try! Data(contentsOf: url)
@@ -241,7 +241,7 @@ Pour simuler un JSON endommagé, il suffit d'avoir des données qui n'ont rien �
 Ma méthode préférée pour créer de fausses données, c'est l'encodage des `String` :
 
 ```swift
-let quoteIncorrectData = "erreur".data(using: .utf8)!
+static let quoteIncorrectData = "erreur".data(using: .utf8)!
 ```
 
 J'utilise la méthode `data(using:)` sur un string de mon choix et je précise l'encodage le plus classique. La méthode renvoie une valeur de type `Data`.
@@ -255,7 +255,7 @@ Les données générées par cet encodage n'auront rien à voir avec un JSON et 
 Enfin, pour simuler les données de l'image, je vais faire exactement la même chose :
 
 ```swift
-let imageData = "image".data(using: .utf8)!
+static let imageData = "image".data(using: .utf8)!
 ```
 
 > **:information_source:** Ces données ne permettront jamais de faire une image mais ce n'est pas le but. Ici, je veux juste pouvoir vérifier que les données que je reçois sont utilisées correctement **dans mon modèle** mais pas dans ma vue.
@@ -684,6 +684,12 @@ Et voilà nos doubles sont tout prêt et nous allons pouvoir tester !
 #### Par où passe le code ?
 
 J'ai conscience que tout ceci n'est pas évident à digérer alors je vous propose qu'on prenne du recul pour comprendre par où passe le code.
+
+Voici un schéma que je vous propose pour vous y retrouver dans un premier temps. Je vous invite à l'étudier avant de passer à la suite.
+
+![](Images/P3/P3C4_2.png)
+
+> **:information_source:** Vous pouvez en retrouvez une version HD [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+8+-+Appels+réseaux/P3C4_2-HD.png).
 
 Dans nos tests, nous allons d'abord créer une instance de `QuoteService` avec l'initialiseur suivant :
 

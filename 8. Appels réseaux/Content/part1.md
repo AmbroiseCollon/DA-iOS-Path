@@ -114,7 +114,7 @@ Voilà ce que ça donne du coup pour l'instant en haut de l'interface :
 
 ![](Images/P1/P1C2_2.png)
 
-Maintenant, nous allons nous intéresser aux paramètres de l'application. Selon la documentation, voici ceux que nous pouvons préciser :
+Maintenant, nous allons nous intéresser aux paramètres de la requête. Selon la documentation, voici ceux que nous pouvons préciser :
 ```
 method=getQuote — method name to invoke
 format=<format> — one of the server supported response formats

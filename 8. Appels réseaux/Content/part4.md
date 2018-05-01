@@ -34,10 +34,10 @@ C'est parti !
 
 **`Error` est un protocole qui définit les erreurs en Swift**.
 
-> **:information_source:** Nous n'avons pas encore parlé en détail des protocoles. On les a seulement survolés. Un protocole permet, comme une classe ou une structure de **définir un type**. Mais à la différence de ces derniers, il n'y a **pas d'implémentation**. C'est simplement une liste de fonctions.
+> **:information_source:** Nous n'avons pas encore parlé en détail des protocoles. On les a seulement survolés. Un protocole définit **un ensemble de méthodes et de fonctions** qui vont pouvoir être adoptés par un type. En Swift, le protocole est un concept très puissant, et **peut être adopté par une classe, une structure ou même un enum**. Il permet ensuite de manipuler des types sans avoir à se soucier de ce qu'il y'a derrière. Je peux créer un protocol `Weapon` avec une méthode `shoot()` et une variable `ammunition`, et je pourrais manipuler différents objets sans savoir si j'utilise un lance-pierre ou une mitraillette.
 
 #### Créer les erreurs
-La façon la plus classique d'utiliser ce protocole, c'est de **définir une énumération** en lui attribuant le protocole `Error`. Nous allons donc définir une énumération `OrderError` dans notre classe `Order` comme ceci :
+La façon la plus classique d'utiliser ce protocole, c'est de **définir une énumération** qui adopte le protocole `Error`. Nous allons donc définir une énumération `OrderError` dans notre classe `Order` comme ceci :
 
 ```swift
 enum OrderError: Error {
