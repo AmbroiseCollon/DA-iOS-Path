@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="319px" viewBox="0 0 800 319" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>P1C4_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P1C4_2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-2" fill="#C02A75" x="20" y="30" width="167" height="259" rx="7"></rect>
+        <rect id="Rectangle-2" fill="#2AADC0" x="222" y="30" width="167" height="259" rx="7"></rect>
+        <rect id="Rectangle-2" fill="#2D8D63" x="423" y="30" width="167" height="259" rx="7"></rect>
+        <g id="Group-3" transform="translate(20.000000, 92.000000)">
+            <rect id="Rectangle-4" fill="#9A2F2F" x="0" y="0" width="761" height="40"></rect>
+            <path d="M589,0 L761,0 L761,40 L589,40 L589,0 Z" id="Rectangle" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4"></path>
+            <text id="Protocole1" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                <tspan x="623.433594" y="27">Protocole1</tspan>
+            </text>
+        </g>
+        <g id="Group-2" transform="translate(20.000000, 139.000000)">
+            <rect id="Rectangle-4" fill="#9A2F2F" x="0" y="0" width="761" height="40"></rect>
+            <path d="M589,0 L761,0 L761,40 L589,40 L589,0 Z" id="Rectangle" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4"></path>
+            <text id="Protocole2" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                <tspan x="621.669678" y="27">Protocole2</tspan>
+            </text>
+        </g>
+        <g id="Group" transform="translate(20.000000, 186.000000)">
+            <rect id="Rectangle-4" fill="#9A2F2F" x="0" y="0" width="761" height="40"></rect>
+            <path d="M589,0 L761,0 L761,40 L589,40 L589,0 Z" id="Rectangle" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4"></path>
+            <text id="Protocole3" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+                <tspan x="621.480469" y="27">Protocole3</tspan>
+            </text>
+        </g>
+        <rect id="Rectangle-5" fill="#2AADC0" x="222" y="139" width="167" height="40"></rect>
+        <rect id="Rectangle-5" fill="#2D8D63" x="423" y="186" width="167" height="40"></rect>
+        <text id="MyClass-func-method1" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="59.0476074" y="68">MyClass</tspan>
+            <tspan x="148.952393" y="68" font-size="20"></tspan>
+            <tspan x="104" y="98" font-size="20"></tspan>
+            <tspan x="40.0644531" y="122" font-size="20">func method1()</tspan>
+            <tspan x="104" y="146" font-size="20"></tspan>
+            <tspan x="38.6533203" y="170" font-size="20">func method2()</tspan>
+            <tspan x="104" y="194" font-size="20"></tspan>
+            <tspan x="38.5019531" y="218" font-size="20">func method3()</tspan>
+            <tspan x="104" y="242" font-size="20"></tspan>
+            <tspan x="31.3876953" y="266" font-size="20">func myMethod()</tspan>
+        </text>
+        <text id="MyStruct-func-method" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="258.923096" y="68">MyStruct</tspan>
+            <tspan x="354.076904" y="68" font-size="20"></tspan>
+            <tspan x="306.5" y="98" font-size="20"></tspan>
+            <tspan x="242.564453" y="122" font-size="20">func method1()</tspan>
+            <tspan x="306.5" y="146" font-size="20"></tspan>
+            <tspan x="306.5" y="170" font-size="20"></tspan>
+            <tspan x="306.5" y="194" font-size="20"></tspan>
+            <tspan x="241.001953" y="218" font-size="20">func method3()</tspan>
+            <tspan x="306.5" y="242" font-size="20"></tspan>
+            <tspan x="241.744141" y="266" font-size="20">func aMethod()</tspan>
+        </text>
+        <text id="MyEnum-func-method1(" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="461.021729" y="68">MyEnum</tspan>
+            <tspan x="553.978271" y="68" font-size="20"></tspan>
+            <tspan x="507.5" y="98" font-size="20"></tspan>
+            <tspan x="443.564453" y="122" font-size="20">func method1()</tspan>
+            <tspan x="507.5" y="146" font-size="20"></tspan>
+            <tspan x="442.15332" y="170" font-size="20">func method2()</tspan>
+            <tspan x="507.5" y="194" font-size="20"></tspan>
+            <tspan x="507.5" y="218" font-size="20"></tspan>
+            <tspan x="507.5" y="242" font-size="20"></tspan>
+            <tspan x="432.900391" y="266" font-size="20">func thisMethod()</tspan>
+        </text>
+    </g>
+</svg>

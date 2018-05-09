@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="375px" viewBox="0 0 800 375" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>P1C4_1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P1C4_1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(59.000000, 176.000000)">
+            <rect id="Rectangle-2" fill="#C02A75" x="0" y="0" width="167" height="177" rx="7"></rect>
+            <rect id="Rectangle-3" fill="#9A2F2F" x="8" y="46" width="152" height="84"></rect>
+            <text id="SubClass1-func-metho" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#FFFFFF">
+                <tspan x="39.9521484" y="22">SubClass1</tspan>
+                <tspan x="84" y="46"></tspan>
+                <tspan x="20.0644531" y="70">func method1()</tspan>
+                <tspan x="18.6533203" y="94">func method2()</tspan>
+                <tspan x="18.5019531" y="118">func method3()</tspan>
+                <tspan x="84" y="142"></tspan>
+                <tspan x="7.17382812" y="166">func myMethod1()</tspan>
+            </text>
+        </g>
+        <g id="Group-2" transform="translate(324.000000, 176.000000)">
+            <rect id="Rectangle-2" fill="#2AADC0" x="0" y="0" width="167" height="177" rx="7"></rect>
+            <rect id="Rectangle-3" fill="#9A2F2F" x="8" y="47" width="152" height="84"></rect>
+            <text id="SubClass2-func-metho" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#FFFFFF">
+                <tspan x="38.5410156" y="22">SubClass2</tspan>
+                <tspan x="84" y="46"></tspan>
+                <tspan x="20.0644531" y="70">func method1()</tspan>
+                <tspan x="18.6533203" y="94">func method2()</tspan>
+                <tspan x="18.5019531" y="118">func method3()</tspan>
+                <tspan x="84" y="142"></tspan>
+                <tspan x="5.76269531" y="166">func myMethod2()</tspan>
+            </text>
+        </g>
+        <g id="Group-3" transform="translate(589.000000, 176.000000)">
+            <rect id="Rectangle-2" fill="#2D8D63" x="0" y="0" width="167" height="177" rx="7"></rect>
+            <rect id="Rectangle-3" fill="#9A2F2F" x="8" y="47" width="152" height="84"></rect>
+            <text id="SubClass3-func-metho" font-family="SFUIDisplay-Light, SF UI Display" font-size="20" font-weight="300" fill="#FFFFFF">
+                <tspan x="38.3896484" y="22">SubClass3</tspan>
+                <tspan x="84" y="46"></tspan>
+                <tspan x="20.0644531" y="70">func method1()</tspan>
+                <tspan x="18.6533203" y="94">func method2()</tspan>
+                <tspan x="18.5019531" y="118">func method3()</tspan>
+                <tspan x="84" y="142"></tspan>
+                <tspan x="5.61132812" y="166">func myMethod3()</tspan>
+            </text>
+        </g>
+        <path d="M506.228774,133.25 C509.18171,179.15546 519.789048,211.95131 538.050787,231.63755 C556.312526,251.323791 577.270424,263.205843 600.924481,267.283707" id="Line-2" stroke="#9092A5" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-2-decoration-1" d="M589.77181,268.405286 L600.924481,267.283707 L590.791149,262.492507" stroke="#9092A5" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M212.304293,139 C215.257229,184.90546 225.864567,217.70131 244.126306,237.38755 C262.388045,257.073791 283.345943,268.955843 307,273.033707" id="Line-2" stroke="#9092A5" stroke-width="2" stroke-linecap="square" transform="translate(259.652147, 206.016853) scale(-1, 1) translate(-259.652147, -206.016853) "></path>
+        <path id="Line-2-decoration-1" d="M295.847329,274.155286 L307,273.033707 L296.866669,268.242507" stroke="#9092A5" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M406.5,139.5 C382.698278,139.345763 365.593939,146.297281 355.186983,160.354553 C344.780027,174.411826 340.448874,196.414457 342.193524,226.362446" id="Line" stroke="#9092A5" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-1" d="M338.570502,215.755198 L342.193524,226.362446 L344.560346,215.406254" stroke="#9092A5" stroke-width="2" stroke-linecap="square"></path>
+        <rect id="Rectangle" fill="#9A2F2F" x="271" y="16" width="272" height="130" rx="7"></rect>
+        <text id="SuperClass-func-meth" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="347.337646" y="39">SuperClass</tspan>
+            <tspan x="467.662354" y="39" font-size="20"></tspan>
+            <tspan x="407.5" y="69" font-size="20"></tspan>
+            <tspan x="334.345703" y="93" font-size="20">func method1() {}</tspan>
+            <tspan x="332.93457" y="117" font-size="20">func method2() {}</tspan>
+            <tspan x="332.783203" y="141" font-size="20">func method3() {}</tspan>
+        </text>
+    </g>
+</svg>
