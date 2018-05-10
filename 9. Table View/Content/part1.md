@@ -147,7 +147,7 @@ Je définis ici dans mon protocole une propriété description de type `String`.
 > ```swift
 > var description: String { get }
 > ```
-
+ 
 > **:question:** Je veux bien toute cette histoire de protocole, mais à quoi ça sert vraiment ?
 
 Je comprends que ce soit un peu flou pour le moment, mais on y vient !  
