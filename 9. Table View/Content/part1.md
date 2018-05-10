@@ -522,23 +522,22 @@ class Human: Nameable {
 
 Et voilà le travail. On utilise ce qu'on appelle une **extension de protocole** pour aller donner une implémentation par défaut de certaines de ses exigences. Du coup je peux vraiment facilement ajouter une brique de fonctionnalité bien définie à n'importe quelle classe/structure/énumération !
 
-> **:question:** Mais si je veux donner une autre implémentation, par example dans Dog, je fais comment ?! Parque `override`, ça marche pour les classes seulement !
+> **:question:** Mais si je veux donner une autre implémentation, par example dans Dog, je fais comment ?! Parce que `override`, ça marche pour les classes seulement !
 
-En effet, on n'utilisera pas override dans ce genre de situation. Si dans ma classe `Dog`, je veux une implémentation de `getFullName` différente de celle par défaut, et bien je n'ai qu'à la redonner:
+En effet, on n'utilisera pas `override` dans ce genre de situation. Si dans ma classe `Dog`, je veux une implémentation de `getFullName` différente de celle par défaut, et bien je n'ai qu'à la redonner:
 
 ```swift
 class Dog: Nameable {
     var firstName: String = ""
     var lastName: String = ""
 
-    // Lorsque j'appelle cette méthode sur un chien, c'est cette implémentation qui sera appellée, et non celle définie par défaut
+    // Lorsque j'appelle cette méthode sur un chien, c'est cette implémentation qui sera appellée,
+    // et non celle définie par défaut
     func getFullName() -> String {
       return "Waaaf \(firstName) ! WoofWoof \(lastName)"
     }
 
-    func speak() {
-        print("Bonjour !")
-    }
+    // (...)
 }
 ```
 
@@ -558,6 +557,7 @@ En orienté protocole, on partage des comportements grâce aux protocoles. C'est
 - On peut partager des comportements entre des classes/structures/énumérations.
 - Une même classe/structure/énumération peut adopter plusieurs protocoles.
 - En utilisant un protocole par fonctionnalité, on peut ajouter certaines fonctionnalités à certains objets sans l'ajouter à d'autres.
+- On peut donner une implémentation par défaut de certaines fonctionnalités en utilisant les extensions de protocole
 
 > **:information_source:** L'orienté protocole est un peu à imaginer comme des legos. On va créer des objets. Et ensuite, on va leur ajouter des briques de fonctionnalités en leur faisant adopter à chaque fois un nouveau protocole.
 
