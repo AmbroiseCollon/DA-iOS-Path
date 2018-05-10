@@ -53,13 +53,13 @@ Pour arriver à nos fins, nous allons nous suivre le plan suivant :
 Vous êtes prêts ? Alors, allons-y !
 
 ### Découvrez les protocoles
-C'est parti ! Nous allons parler des protocoles ! 
+C'est parti ! Nous allons parler des protocoles !
 
 > **:information_source:** Si vous suivez [le parcours](https://openclassrooms.com/paths/developpeur-se-dapplication-ios), je sais, on en a déjà un peu parlé. Mais cette fois-ci, on va vraiment rentrer dans le détail !
 
 #### Une histoire d'héritage...
 
-Pour découvrir les protocoles, je vous ai concocté un petit Playground ! 
+Pour découvrir les protocoles, je vous ai concocté un petit Playground !
 
 > **:information_source:** Je vous invite à le télécharger [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+9+-+Table+View/Animal+-+Starter.playground.zip).
 
@@ -84,7 +84,7 @@ Autrement dit, la classe `Animal` est **trop générique** et du coup, elle ne s
 
 En programmation, on n’aime pas trop ce qui ne sert à rien ! En biologie, non plus d'ailleurs... mais c'est un autre débat ! Du coup, on va supprimer cette classe `Animal` !
 
-> **:question:** Mais attends ! Elle permet quand même aux sous-classes d'hériter de ces méthodes et de cette propriété !
+> **:question:** Mais attends ! Elle permet quand même aux sous-classes d'hériter de ces méthodes et de cette propriété ! On pourrait en faire une classe abstraite non ?
 
 Je sais, mais faîtes moi confiance, supprimez cette classe ! On va faire ça différemment... Avec un protocole !
 
@@ -106,9 +106,9 @@ Pour déclarer un protocole, on utilise le mot-clé `protocol` suivi d'un nom et
 protocol Animal {
 
 }
-``` 
+```
 
-Oui, ça ressemble à une classe. Et la ressemblance ne s'arrête pas là ! 
+Oui, ça ressemble à une classe. Et la ressemblance ne s'arrête pas là !
 
 ##### Méthodes
 
@@ -123,7 +123,7 @@ protocol Animal {
 
 > **:question:** Hé, mais attends ! Tu as oublié l'implémentation des méthodes.
 
-Eh oui comme je l'ai dit, un protocole, c'est une liste d'exigences. Ensuite, on va demander à une classe de **se conformer** à ces exigences. 
+Eh oui comme je l'ai dit, un protocole, c'est une liste d'exigences. Ensuite, on va demander à une classe de **se conformer** à ces exigences.
 
 > **:information_source:** En gros, un protocole peut définir des méthodes, mais ce sont les classes qui les implémentent.
 
@@ -143,11 +143,11 @@ protocol Animal {
 Je définis ici dans mon protocole une propriété description de type `String`. Jusque là rien de nouveau. Ensuite, j'ajoute entre accolades les mots `get` et `set`. Cela signifie que cette propriété pourra être modifiée.
 
 > **:information_source:** Si j'avais voulu définir une propriété en lecture seule, j'aurais écrit :
-> 
+>
 > ```swift
-> var description: String { get } 
+> var description: String { get }
 > ```
-  
+
 > **:question:** Je veux bien toute cette histoire de protocole, mais à quoi ça sert vraiment ?
 
 Je comprends que ce soit un peu flou pour le moment, mais on y vient !  
@@ -161,15 +161,15 @@ Je le répète : un protocole, c'est **une liste d'exigences**. Autrement dit, u
 Par exemple, dans notre cas :
 
 > Si tu veux être un `Animal`, il faut que tu saches faire les choses suivantes :
-> 
+>
 > - `makeSound`
 > - `move`
-> 
+>
 > Et donner une valeur à la propriété suivante :
-> 
+>
 > - `description`
 
-Nous avons dans notre Playground deux classes qui voudraient bien être des animaux : `Dog` et `Bird`. 
+Nous avons dans notre Playground deux classes qui voudraient bien être des animaux : `Dog` et `Bird`.
 
 ```swift
 class Dog {
@@ -186,8 +186,8 @@ class Bird {
 ```
 
 > **:information_source:** J'ai supprimé de ces classes tout ce qui était lié à l'héritage d'`Animal,` car nous avons supprimé cette classe.
- 
-Pour que `Dog` et `Bird` soient des animaux, ils doivent **se conformer au protocole **. Cela se fait en deux étapes :
+
+Pour que `Dog` et `Bird` soient des animaux, ils doivent **se conformer au protocole**. Cela se fait en deux étapes :
 
 1. Adopter le protocole
 2. Répondre à ses exigences
@@ -259,13 +259,13 @@ On a remplacé notre classe inutile et trop générique par un protocole qui rem
 #### En résumé
 - Un protocole est une **liste d'exigences**. Ces exigences peuvent être des méthodes ou des propriétés.
 - Souvenez-vous de la phrase suivante. Un protocole est une entité qui déclare : "*Si tu veux être ça, il faut que tu fasses ça !*"
-- Un protocole se déclare avec la syntaxe suivante : 
+- Un protocole se déclare avec la syntaxe suivante :
 
 ```swift
 protocol NomDuProtocole {
 	func maMethode()
 	func maMethodeAvecParametresEtValeurDeRetour(param1: Type, Param2: Type) -> Type
-	
+
 	var maPropriete: Type { get set }
 	var maProprieteEnLectureSeule: Type { get }
 }
@@ -314,7 +314,7 @@ protocol UnProtocole { (...) }
 var uneVariable: UnProtocole
 var unTableau: [UnProtocole]
 func uneFonction(param: UnProtocole) -> UnProtocole { (...) }
-``` 
+```
 
 La seule différence, c'est que vous ne vous pouvez pas créer d'instance à partir d'un protocole. En effet, une classe/structure/énumération définit des objets. Vous pouvez donc en créer des instances. Alors que les protocoles définissent seulement des listes d'exigences.
 
@@ -325,7 +325,7 @@ var uneVariable = UnProtocole()
 ```
 
 > **:question:** Euh... Mais du coup, ça ne veut rien dire ça :
-> 
+>
 > ```swift
 > var uneVariable: UnProtocole
 > ```
@@ -354,9 +354,9 @@ Du coup, on peut faire des trucs sympas avec les protocoles comme ceci :
 
 ```swift
 var monTableauDAnimaux: [Animal] = [Dog(), Bird()]
-``` 
+```
 
-On a un tableau qui contient des objets qui ne sont pas du même type, mais qui se conforment tous au type `Animal`.
+On a un tableau qui contient des objets qui ne sont pas du même type, mais qui se conforment tous au type `Animal`. Lorsque je vais programmer en utilisant mon tableau d'animaux, je vais programmer autour de *l'interface* définie par mon protocol: je ne me soucie pas de savoir quel type d'animal je manipule, et c'est une bien meilleure pratique qui rend mon code plus *modulaire* !
 
 
 #### Des protocoles partout !
@@ -371,25 +371,27 @@ class MaClasse: MonProtocole {}
 struct MaStructure: MonProtocole {}
 
 enum MonEnumeration: MonProtocole {}
-``` 
+```
 
-Cela fonctionne exactement de la même manière ! 
+Cela fonctionne exactement de la même manière !
 
 Avant, seulement les classes pouvaient partager des comportements grâce à l'héritage. Mais les structures et les énumérations n'ont pas l'héritage.
+
+> **:information_source:** Vous voyez que comparé à notre classe abtraite Animal, le protocol est bien plus puissant !
 
 Mais grâce aux protocoles, toutes les structures de donnée peuvent partager des comportements ! Encore mieux, une classe peut partager des méthodes avec une énumération.
 
 > **:information_source:** On peut même aller encore plus loin ! Un protocole peut se conformer à un autre protocole :
-> 
+>
 > ```swift
 > protocol MonProtocole {}
-> 
+>
 > protocol UnAutreProtocole : MonProtocole {}
 > ```
 
 #### Plusieurs protocoles
 
-Une même classe/structure/énumération peut se conformer à plusieurs protocoles. En effet, un protocole est simplement une liste d'exigences, du coup, on peut combiner ces listes pour obtenir une plus grande liste. 
+Une même classe/structure/énumération peut se conformer à plusieurs protocoles. En effet, un protocole est simplement une liste d'exigences, du coup, on peut combiner ces listes pour obtenir une plus grande liste.
 
 Je vous propose qu'on rajoute du coup un deuxième protocole. On va appeler ce protocole `Nameable`. Et il sera implémenté par toute classe qui veut pouvoir avoir un nom et un prénom :
 
@@ -400,13 +402,13 @@ protocol Nameable {
 
     func getFullName() -> String
 }
-``` 
+```
 
 Notre classe `Dog` va adopter le protocole. Lorsqu'une classe adopte plusieurs protocoles, on les sépare par une virgule :
 
 ```swift
 class Dog: Animal, Nameable { (...) }
-``` 
+```
 
 Et ensuite il suffit de répondre à ses exigences.
 
@@ -418,7 +420,7 @@ class Dog: Animal, Nameable {
     func getFullName() -> String {
         return firstName + " " + lastName
     }
-    
+
     // (...)    
 }
 ```
@@ -437,7 +439,7 @@ Le monde de la programmation est généralement sous le paradigme de l'orienté 
 
 Mais en Swift, les protocoles sont tellement puissants que beaucoup considèrent que **Swift est un langage de programmation orienté protocole** (*POP : Protocol Oriented Programming*).  
 
-Pour comprendre ce que cela change, je vous propose de créer dans notre Playground, une classe `Human`. 
+Pour comprendre ce que cela change, je vous propose de créer dans notre Playground, une classe `Human`.
 
 ```swift
 class Human {
@@ -445,7 +447,7 @@ class Human {
         print("Bonjour !")
     }
 }
-``` 
+```
 
 Un humain n'est pas un animal. Mais en revanche, il a un nom et un prénom. Donc nous allons lui faire adopter le protocole `Nameable`.
 
@@ -457,7 +459,7 @@ class Human: Nameable {
     func getFullName() -> String {
         return firstName + " " + lastName
     }
- 
+
     func speak() {
         print("Bonjour !")
     }
@@ -465,6 +467,61 @@ class Human: Nameable {
 ```
 
 Vous voyez ici que le protocole `Nameable` peut s'appliquer à des objets qui n'ont a priori rien à voir entre eux. Il s'agit en effet d'**une brique de fonctionnalités que je peux donner à n'importe quelle classe/structure/énumération**.
+
+> **:question:** Très bien, mais je dois redonner dans Human une implémentation de getFullName, qui en plus est la même que pour Dog ! C'est un peu pénible si ma brique de fonctionnalité devient plus complexe, non ?
+
+Et oui, c'est bien vu. Mais c'est de ma faute, je vous ai fait un petit mensonge tout à l'heure !
+Je vous ai dit:
+
+> un protocole peut définir des méthodes, mais ce sont les classes qui les implémentent.
+
+Et en Swift, c'est un peu faux. Et c'est précisement la raison pour laquelle les protocoles sont si important dans ce language !
+
+En Swift, **un protocol peut définir l'implémentation de ses méthodes**.
+
+Je répète: **En swift, un protocol peut définir l'implémentation de ses méthodes.**
+
+> **:question:** Ok... Et, c'est bien ?
+
+C'est incroyable, tout simplement. On va voir ça avec notre example de `Nameable` tout de suite. Voici la définition du protocole qu'on avait:
+
+```swift
+protocol Nameable {
+    var firstName: String { get set }
+    var lastName: String { get set }
+
+    func getFullName() -> String
+}
+```
+
+Et pour implémenter `getFullName`, on va faire ça:
+
+```swift
+extension Nameable {
+
+    func getFullName() -> String {
+      return firstName + " " + lastName
+    }
+}
+```
+
+Du coup, pour que `Human` adopte `Nameable`, je peux simplifier le tout en:
+
+```swift
+class Human: Nameable {
+    var firstName: String = ""
+    var lastName: String = ""
+
+    // Pas besoin d'implémenter getFullName, mais toute instance de Human pour l'appeler !!
+
+    func speak() {
+        print("Bonjour !")
+    }
+}
+```
+
+Et voilà le travail. On utilise ce qu'on appelle une **extension de protocole** pour aller donner une implémentation par défaut de certaines de ses exigences. Du coup je peux vraiment facilement ajouter une brique de fonctionnalité bien définie à n'importe quelle classe/structure/énumération !
+
 
 #### L'orienté protocole en image !
 Je vous propose les schémas suivants pour comparer les approches orientées objet et orientées protocole.
@@ -491,7 +548,7 @@ Prenons un exemple avec `Equatable`. `Equatable` est un protocole qui permet de 
 
 > **:information_source:** Littéralement `Equatable` signifie qui peut être égal.
 
-Il y a donc des centaines de types qui implémentent ce protocole comme String, Int, Double, et [beaucoup beaucoup d'autres](https://developer.apple.com/documentation/swift/equatable#relationships). 
+Il y a donc des centaines de types qui implémentent ce protocole comme String, Int, Double, et [beaucoup beaucoup d'autres](https://developer.apple.com/documentation/swift/equatable#relationships).
 
 > **:information_source:** La fonctionnalité de pouvoir être égal à quelqu'un a donc été mis en boîte dans un protocole adopté ensuite par des centaines de types.
 
@@ -501,7 +558,7 @@ Je vous propose d'essayer d'implémenter ce protocole pour notre classe `Human`.
 class Human: Nameable, Equatable { (...) }
 ```
 
-Ensuite, le Playground affiche une erreur, car on ne se conforme pas au protocole. 
+Ensuite, le Playground affiche une erreur, car on ne se conforme pas au protocole.
 
 ![](Images/P1/P1C4_3.png)
 
@@ -514,8 +571,8 @@ static func == (lhs: Human, rhs: Human) -> Bool {
 
 Cette fonction prend deux paramètres du type avec lequel on travaille, en l'occurrence `Human`. Ce sont les deux valeurs que nous essayons de comparer :
 
-- `lhs` (*left hand side*) : la valeur à gauche du `==` 
-- `rhs` (*right hand side*) : la valeur à droite du `==` 
+- `lhs` (*left hand side*) : la valeur à gauche du `==`
+- `rhs` (*right hand side*) : la valeur à droite du `==`
 
 Et la fonction renvoie un booléen, résultat de l'égalité.
 
