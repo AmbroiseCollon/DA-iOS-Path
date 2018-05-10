@@ -147,7 +147,7 @@ Je définis ici dans mon protocole une propriété description de type `String`.
 > ```swift
 > var description: String { get }
 > ```
- 
+
 > **:question:** Je veux bien toute cette histoire de protocole, mais à quoi ça sert vraiment ?
 
 Je comprends que ce soit un peu flou pour le moment, mais on y vient !  
@@ -481,9 +481,9 @@ En Swift, **un protocol peut définir l'implémentation de ses méthodes**.
 
 Je répète: **En swift, un protocol peut définir l'implémentation de ses méthodes.**
 
-> **:question:** Ok... Et, c'est bien ?
+> **:question:** Ok... ça a l'air chouette ?
 
-C'est incroyable, tout simplement. On va voir ça avec notre example de `Nameable` tout de suite. Voici la définition du protocole qu'on avait:
+C'est vraiment très très chouette. On va voir ça avec notre example de `Nameable` tout de suite. Voici la définition du protocole qu'on avait:
 
 ```swift
 protocol Nameable {
@@ -512,7 +512,7 @@ class Human: Nameable {
     var firstName: String = ""
     var lastName: String = ""
 
-    // Pas besoin d'implémenter getFullName, mais toute instance de Human pour l'appeler !!
+    // Pas besoin d'implémenter getFullName, mais toute instance de Human pourra l'appeler !!
 
     func speak() {
         print("Bonjour !")
@@ -522,6 +522,27 @@ class Human: Nameable {
 
 Et voilà le travail. On utilise ce qu'on appelle une **extension de protocole** pour aller donner une implémentation par défaut de certaines de ses exigences. Du coup je peux vraiment facilement ajouter une brique de fonctionnalité bien définie à n'importe quelle classe/structure/énumération !
 
+> **:question:** Mais si je veux donner une autre implémentation, par example dans Dog, je fais comment ?! Parque `override`, ça marche pour les classes seulement !
+
+En effet, on n'utilisera pas override dans ce genre de situation. Si dans ma classe `Dog`, je veux une implémentation de `getFullName` différente de celle par défaut, et bien je n'ai qu'à la redonner:
+
+```swift
+class Dog: Nameable {
+    var firstName: String = ""
+    var lastName: String = ""
+
+    // Lorsque j'appelle cette méthode sur un chien, c'est cette implémentation qui sera appellée, et non celle définie par défaut
+    func getFullName() -> String {
+      return "Waaaf \(firstName) ! WoofWoof \(lastName)"
+    }
+
+    func speak() {
+        print("Bonjour !")
+    }
+}
+```
+
+L'implémentation donnée par l'objet qui adopte le protocol sera toujours prioritaire aux implémentations par défaut. Ce qui est rassurant, puisque les protocoles sont à la base, un moyen de s'abstraire de la façon dont sont implémentés les choses, en se limitant à connaître simplement les exigences.
 
 #### L'orienté protocole en image !
 Je vous propose les schémas suivants pour comparer les approches orientées objet et orientées protocole.
