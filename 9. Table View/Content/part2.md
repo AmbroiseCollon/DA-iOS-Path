@@ -621,6 +621,8 @@ class UITableView: UIScrollView {
 
 Alors, pourquoi est-ce qu'on a fait tout ça, et qu'est-ce que ça veut dire ? On va rapidement toucher au monde des **références** pour comprendre tout ça.
 
+#### Le mot clef weak et les références
+
 Dans les languages de programmation un peu modernes (comme Swift!), les objets que vous crééez restent dans la mémoire tant qu'au moins une référence existe vers cet objet.
 Quand mon objet n'a plus aucun autre objet qui n'a de référence sur lui, pouf ! Il disparaît ! Sous iOS, la technologie qui fait tout ça s'appelle Automatic Reference Counting (ARC).
 Tout ça ne s'applique qu'aux class, les struct et les enums ne sont pas concernées. D'où le petit mot `class` dans la déclaration de notre protocol, qui permet de garantir que seule une classe pourra adopter ce protocol.
