@@ -13,7 +13,7 @@ Et je vous propose de commencer par faire un petit tour du propriétaire histoir
 > **:information_source:** Si vous n'avez pas encore téléchargé le projet, il est encore temps ! Vous le trouverez [ici](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours+DA+iOS/Cours+9+-+Table+View/Whishmas+-+Starter.zip).
 
 #### Découverte du projet
-Le projet est divisé en 5 fichiers organisés bien évidemment selon le modèle MVC. 
+Le projet est divisé en 5 fichiers organisés bien évidemment selon le modèle MVC.
 
 ![](Images/P2/P2C1_1.png)
 
@@ -43,13 +43,13 @@ class ToyService {
         toys.append(toy)
     }
 }
-``` 
+```
 
 Cette classe utilise le singleton pattern comme on peut le voir dans les deux premières lignes.
 
 > **:information_source:** Besoin d'un rappel sur le pattern singleton ? C'est par [ici](https://openclassrooms.com/courses/faites-des-appels-reseaux-dans-votre-application-ios/gerez-les-requetes-concurrentes-avec-le-singleton-pattern).
 
-Ensuite on définit une variable `toys` qui est un tableau de `Toy`. 
+Ensuite on définit une variable `toys` qui est un tableau de `Toy`.
 
 > **:information_source:** Ici, vous remarquerez le mot-clé `private(set)` dont nous n'avons pas encore parlé. Il permet de **laisser public l'accès à la propriété, mais de rendre privé sa modification**. Autrement dit, n'importe qui peut accéder à la propriété `toys`, mais seule la classe `ToyService` peut modifier sa valeur.
 
@@ -80,7 +80,7 @@ Cette classe gère la page qui permet de rajouter un jouet. Il s'agit principale
 }
 ```
 
-> **:information_source:** Il y a aussi une petite extension qui permet de gérer le clavier. Vous avez [un chapitre dédié à la gestion du clavier](https://openclassrooms.com/courses/ajoutez-plusieurs-pages-a-votre-application-ios/gerez-le-clavier) si besoin ;) ! 
+> **:information_source:** Il y a aussi une petite extension qui permet de gérer le clavier. Vous avez [un chapitre dédié à la gestion du clavier](https://openclassrooms.com/courses/ajoutez-plusieurs-pages-a-votre-application-ios/gerez-le-clavier) si besoin ;) !
 
 ##### ListViewController.swift
 
@@ -102,7 +102,7 @@ Et cet objet mérite un cours, car :
 - Il est un peu plus complexe qu'un bouton par exemple
 - Surtout, il y a des Table View partout en iOS
 
-Partout où vous avez une liste qui défile, c'est une Table View qui se cache derrière. 
+Partout où vous avez une liste qui défile, c'est une Table View qui se cache derrière.
 Prenons quelques exemples :
 
 ![](Images/P2/P2C1_3.png)
@@ -120,10 +120,10 @@ Et je vous ai fait un joli schéma que l'on va détailler ensemble :
 
 ![](Images/P2/P2C1_5.png)
 
-Une Table View peut-être divisée en **sections**. Ces sections permettent d'organiser les données. 
+Une Table View peut-être divisée en **sections**. Ces sections permettent d'organiser les données.
 
-> **:information_source:** Par exemple, dans l'application *Contact*, il y a une section par lettre de l'alphabet. Ou encore dans l'application *Réglages*, les réglages sont découpés en thématiques. 
-  
+> **:information_source:** Par exemple, dans l'application *Contact*, il y a une section par lettre de l'alphabet. Ou encore dans l'application *Réglages*, les réglages sont découpés en thématiques.
+
 > **:warning:** Le découpage en sections n'est pas obligatoire ! Vous pouvez très bien ne pas utiliser de sections si vous n'en avez pas besoin. C'est ce que fait l'application message, par exemple.
 
 Ensuite, au sein d'une section, vous avez trois éléments :
@@ -143,9 +143,9 @@ Enfin, la Table View peut également avoir un header et un footer. À ne pas con
 Enfin, il est important que vous fassiez la distinction entre `row` et `cell` :
 
 - `row` représente le numéro de la ligne à laquelle on se trouve dans la section. Elle est de type `Int`.
-- `cell` représente la vue, elle est de type `UITableViewCell` qui hérite comme toutes les vues de `UIView`. 
+- `cell` représente la vue, elle est de type `UITableViewCell` qui hérite comme toutes les vues de `UIView`.
 
-Maintenant qu'on a dit tout ça : je vous remets le schéma, ça ne vous fera pas de mal ;) ! 
+Maintenant qu'on a dit tout ça : je vous remets le schéma, ça ne vous fera pas de mal ;) !
 
 ![](Images/P2/P2C1_5.png)
 
@@ -157,7 +157,7 @@ Mais vous devez savoir qu'il existe deux styles par défaut, `plain` et `grouped
 
 ![](Images/P2/P2C1_6.png)
 
-En général, mais ce n'est pas obligatoire, on utilise le style `plain` pour des **données dynamiques** et `grouped` pour des **données statiques**. 
+En général, mais ce n'est pas obligatoire, on utilise le style `plain` pour des **données dynamiques** et `grouped` pour des **données statiques**.
 
 > **:information_source:** Une liste contient des données dynamiques **si on ne peut pas prévoir à l'avance le contenu exact de la liste, car il est susceptible de varier**. C'est le cas d'une liste de contact ou de messages par exemple. À l'inverse, si on connaît à l'avance le contenu exact d'une liste, on dit qu'elle contient des données statiques. Elles ne bougeront pas. C'est le cas d'une liste de réglages ou d'un menu de navigation par exemple.
 
@@ -175,7 +175,7 @@ Dans le prochain chapitre, nous allons installer notre Table View !
 C'est parti ! Nous allons rajouter notre Table View dans le storyboard !
 
 #### Installation de la Table View
-Pour cela, ouvrez le fichier Main.storyboard et allez chercher l'objet Table View dans la bibliothèque des objets. 
+Pour cela, ouvrez le fichier Main.storyboard et allez chercher l'objet Table View dans la bibliothèque des objets.
 
 ![](Images/P2/P2C2_1.png)
 
@@ -206,9 +206,9 @@ Je vous laisse jouer avec les attributs `separator` qui concernent la petite lig
 
 Pour bien prendre en main la Table View, il faut comprendre comment elle fonctionne.
 
-Comme vous le savez maintenant, une Table View, c'est simplement une liste de cellules organisée éventuellement en sections. Et **cette liste n'a pas de limite de tailles** ! 
+Comme vous le savez maintenant, une Table View, c'est simplement une liste de cellules organisée éventuellement en sections. Et **cette liste n'a pas de limite de tailles** !
 
-Et c'est toute la magie des Table View ! Vous pouvez mettre 100 000 éléments dans la liste, ça ne posera pas de problème de performance. Votre iPhone supportera la charge. 
+Et c'est toute la magie des Table View ! Vous pouvez mettre 100 000 éléments dans la liste, ça ne posera pas de problème de performance. Votre iPhone supportera la charge.
 
 Ce petit miracle de performance s'appuie sur une idée très simple.
 
@@ -265,8 +265,19 @@ Or, comme on l'a vu, une liste peut avoir des tonnes de données ! Et on ne va p
 
 Du coup, la vue va devoir demander régulièrement au contrôleur de lui donner de nouvelles données. À chaque fois que l'on fait défiler la vue, elle va réclamer de nouvelles données au contrôleur.
 
-Et pour cela, elle utilise le delegate pattern. **Le delegate pattern est donc une nouvelle méthode de communication aveugle entre la vue et le contrôleur.** 
+Le problème, c'est que ma tableView ne sait pas avec quel contrôleur elle va travailler. Ici nous utilisons notre ListViewController qui présente une liste de jouets, mais ailleurs nous pourrions en utiliser un autre qui fournit des listes de réglages, ou des listes de contact...
 
+ Pour faire fonctionner notre TableView on doit donc résoudre le problème suivant:
+ 1. Ma tableview doit pouvoir être informée de la composition de la liste par le controlleur
+ 2. N'importe quel objet doit pouvoir faire ce travail, ma tableview se moque de savoir avec qui elle travaille, et cela me permet de la réutiliser dans de multiples situations
+
+Pour résoudre ce double problème, on va utiliser le **delegate pattern**. On dit en effet que la tableView _délègue_ une partie de son fonctionnement à un autre objet.
+Et au coeur du delegate pattern, on va voir ce que nous avons étudié dans la partie 1: Un protocol !
+
+ **Le delegate pattern est une nouvelle méthode de communication aveugle entre la vue et le contrôleur.**
+
+> **:information_source:** Et oui, si on dit aveugle, c'est grâce au protocol: ma vue va pouvoir demander des informations sans se soucier de savoir qui lui fournit.
+On retrouve l'aspect **modulaire** du code qu'on avait abordé en parlant des protocoles.
 
 Et voici comment cela fonctionne :
 
@@ -284,7 +295,7 @@ Détaillons maintenant ces 4 étapes en rentrant dans le détail du protocole.
 La liste de questions est une liste d'exigences en fait. Donc ici on parle de **la création d'un protocole**. Pour `UITableView`, ce protocole se nomme `UITableViewDataSource,` car c'est la source de données.
 
 ```swift
-protocol UITableViewDataSource {
+protocol UITableViewDataSource: class {
 	func numberOfSections(in tableView: UITableView) -> Int
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -292,24 +303,30 @@ protocol UITableViewDataSource {
 }
 ```
 
+> **:information_source:** Vous avez sans doute noté le petit mot réservé `class`. Il indique que notre protocol ne peut être adopté que par... des classes. Les struct et les enums ne pourront pas adopter ce protocol, et on verra bientôt pourquoi c'est important.
+
 ##### 2. La vue nomme un objet son delegate, en l'occurrence notre contrôleur.
 
 `UITableView` a une propriété `dataSource` de type `UITableViewDataSource` :
 
 ```swift
 class UITableView: UIScrollView {
-	var dataSource: UITableViewDataSource?
+	weak var dataSource: UITableViewDataSource?
 }
 ```
-
 Cette propriété est utilisée à l'intérieur de la classe `UITableView` pour appeler les méthodes du protocole au moment ou la Table View en a besoin.
+Comme promis, notre tableView se fiche bien de savoir que objet fera office de dataSource, elle a juste besoin de savoir qu'il répondra aux exigences de notre protocol.
 
 > **:warning:** J'attire votre attention sur le fait qu'à ce stade, **il n'y a pas encore d'implémentations aux méthodes,** mais rien n'empêche de les appeler.
+
+> **:information_source:** Encore un petit mot reservé que nous n'avons pas vu: `weak`. C'est lié au mot `class` qu'on a mis tout à l'heure, et c'est promis, vous aurez bientôt des explications sur ces nouveaux concepts.
 
 Ensuite, cette propriété prend pour valeur le contrôleur :
 
 ```swift
 class ViewController: UIViewController {
+
+    var tableView: UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -337,11 +354,11 @@ class ViewController: UIViewController, UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
-	
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 10
 	}
-	
+
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		// (...)
 	}
@@ -354,7 +371,7 @@ Vous venez de découvrir un nouveau mode de communication aveugle entre la vue e
 
 #### Mise en place du dataSource !
 
-Mettons toute cette théorie en application dans notre code. 
+Mettons toute cette théorie en application dans notre code.
 
 > **:information_source:** Dans les 4 étapes présentées précédemment, la première est la création d'un protocole et bien sûr, cette étape est déjà faîte par Apple. Donc nous allons commencer directement par la deuxième !
 
@@ -386,7 +403,7 @@ Lorsque vous faites adopter un protocole à une classe, je vous suggère d'utili
 class ListViewController: UIViewController {}
 
 extension ListViewController: UITableViewDataSource {}
-``` 
+```
 
 > **:information_source:** Besoin d'un rappel, sur les extensions ? C'est [par ici](https://openclassrooms.com/courses/ajoutez-plusieurs-pages-a-votre-application-ios/allez-plus-loin-avec-les-extensions) !
 
@@ -395,13 +412,15 @@ extension ListViewController: UITableViewDataSource {}
 Ensuite, nous allons implémenter les méthodes du protocole pour nous y conformer correctement. Nous n'allons en implémenter que trois. Car les autres sont optionnels.
 
 > **:information_source:** Eh oui, au passage, sachez que vous pouvez signaler une exigence d'un protocole comme optionnel avec le mot clé optional :
-> 
+>
 > ```swift
-> protocol MonProtocole {
+> @objc protocol MonProtocole {
 > 	optional func maMethodeOptionnelle()
 > 	func maMethodeRequise()
 > }
-> ``` 
+> ```
+
+> **:information_source:** Les exigences optionnelles ne fonctionnent que sur des protocoles objective-c, d'où la présence du `@objc` devant mon protocol. En swift pur, ça n'est tout simplement pas possible de déclarer une fonction d'un protocol comme `optional`.
 
 La première méthode que nous allons implémenter s'appelle `numbersOfSection` :
 
@@ -420,7 +439,7 @@ La deuxième méthode se nomme `numbersOfRowsInSection` :
 ```swift
 extension ListViewController: UITableViewDataSource {
 	// (...)
-	
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 	    return ToyService.shared.toys.count
 	}
@@ -450,7 +469,7 @@ Nous allons remplir notre Table View en précisant le contenu de nos cellules ! 
 - le nom du jouet
 - sa marque
 
-Et pour y parvenir, nous devons commencer par rajouter une cellule. 
+Et pour y parvenir, nous devons commencer par rajouter une cellule.
 
 #### Ajouter une cellule dans le storyboard
 Pour ajouter une cellule, rien de plus simple ! Choisissez `UITableViewCell` dans la bibliothèque des objets :
@@ -504,7 +523,7 @@ extension ListViewController: UITableViewDataSource {
 
 Cette méthode prend en paramètre un `IndexPath`. `IndexPath` est une structure très simple qui a deux propriétés :
 
-- `section` : contient un numéro de section. 
+- `section` : contient un numéro de section.
 - `row` : contient un numéro de ligne.
 
 Cette méthode renvoie une `UITableViewCell`. Donc le rôle de cette méthode est de construire la cellule qui va être affichée à la position précisée par `IndexPath`.
@@ -525,7 +544,7 @@ Ensuite, nous allons modifier le contenu de cette cellule. Pour cela, il nous fa
 let toy = ToyService.shared.toys[indexPath.row]
 ```
 
-`indexpath.row` donne la ligne à laquelle se trouve la cellule. Ainsi pour chaque ligne de la liste, on va afficher un jouet différent du tableau `toys`. 
+`indexpath.row` donne la ligne à laquelle se trouve la cellule. Ainsi pour chaque ligne de la liste, on va afficher un jouet différent du tableau `toys`.
 
 Il ne nous reste plus qu'à afficher ces données dans la cellule. Pour accéder aux deux labels contenus dans les styles par défaut, nous avons deux propriétés : `textLabel` et `detailTextLabel`. Nous allons modifier le texte de ces deux labels :
 
@@ -576,11 +595,77 @@ override func viewWillAppear(_ animated: Bool) {
 }
 ```
 
-Et voilà ! Notre TableView va maintenant charger ses données à chaque fois que nous revenons sur la page. 
+Et voilà ! Notre TableView va maintenant charger ses données à chaque fois que nous revenons sur la page.
 
 Cette Table View est officiellement fonctionnelle ! Vous pouvez tester en lançant le simulateur et en ajoutant quelques données.
 
 ![Tadaa !](Images/P2/P2C4_6.png)
+
+> **:question:** Hop hop hop, tu voulais pas nous parler d'un truc important encore ?!
+
+Ah si ! Quand je vous ai introduit le protocol `UITableViewDataSource`, on a d'une part limité ce protocol à des classes, en adossant `class` à la déclaration de notre protocol:
+
+```swift
+protocol UITableViewDataSource: class {
+	// (...)
+}
+```
+
+Et dans notre tableView, je vous ai dit qu'on avait notre objet dataSource, mais avec le mot réservé `weak`:
+
+```swift
+class UITableView: UIScrollView {
+	weak var dataSource: UITableViewDataSource?
+}
+```
+
+Alors, pourquoi est-ce qu'on a fait tout ça, et qu'est-ce que ça veut dire ? On va rapidement toucher au monde des **références** pour comprendre tout ça.
+
+Dans les languages de programmation un peu modernes (comme Swift!), les objets que vous crééez restent dans la mémoire tant qu'au moins une référence existe vers cet objet.
+Quand mon objet n'a plus aucun autre objet qui n'a de référence sur lui, pouf ! Il disparaît ! Sous iOS, la technologie qui fait tout ça s'appelle Automatic Reference Counting (ARC).
+Tout ça ne s'applique qu'aux class, les struct et les enums ne sont pas concernées. D'où le petit mot `class` dans la déclaration de notre protocol, qui permet de garantir que seule une classe pourra adopter ce protocol.
+
+Voilà un example d'une application simple avec une tableView:
+
+![ Les flèches en noir représentent des références](Images/P2/P2C4_7.png)
+
+Ici, ma tableView et mon bouton restent bien dans la mémoire puisque j'ai au moins un objet qui les référence, mon ViewController. Et celui-ci reste aussi dans la mémoire, puisqu'il a aussi une référence... Et ainsi de suite.
+
+> **:question:** Ok, mais tout ça ne me dit pas ce que c'est une référence !
+
+Une référence, c'est très simple: Quand j'écris ça:
+
+```swift
+class ListViewController: UIViewController {
+	var tableView: UITableView
+}
+```
+
+Je créé une référence de mon `ListViewController` vers ma propriété `tableView`. Tant que mon controlleur est dans la mémoire (et généralement il y reste tant qu'il est présent dans ma navigation), ma tableView sera là aussi. C'est bien rassurant au final !
+
+Si on reprend notre example de delegate de tout à l'heure, ma tableView s'écrit comme ça si j'enlève ce fameux mot `weak`:
+
+```swift
+class UITableView: UIScrollView {
+	var dataSource: UITableViewDataSource?
+}
+```
+
+Du coup en terme de réference, quand j'écris après dans mon viewController `tableView.dataSource = self`, ça donne ça:
+
+![Et là, c'est le drame. 😱😱😱 ](Images/P2/P2C4_8.png)
+
+Pourquoi c'est le drame ? Parce que sans faire attention, j'ai créé un **retain cycle**. En fait chaque objet a une référence vers l'autre. Même si mon view controller n'est plus dans la navigation, et qu'aucun objet n'a de référence vers lui, le couple viewController <> tableView ne disparaitrat jamais. C'est ce qu'on appelle aussi une _fuite mémoire_.
+
+> **:question:** Mon Dieu, mais qu'est-ce qu'on va faire ??!
+
+Pas de panique ! Vous l'aurez sans doute compris, c'est là que le mot `weak` entre en jeu ! Weak veut dire: cette propriété me permet d'accéder à mon objet, mais ne compte pas de référence dessus. Si on reprend notre schéma:
+
+![Voilà, plus de retain cycle ! ](Images/P2/P2C4_9.png)
+
+Et voilà le travail, le mot weak permet de briser ce fameux **retain cycle**, parce que par défaut une propriété est **strong**: ma propriété maintient un lien fort avec l'objet: elle compte comme une référence.
+
+Si tout ça vous paraît compliqué, pas de panique. Retenez simplement le concept de retain cycle, et que si deux objets s'auto-référencent, vous allez avoir des problèmes de mémoire. Lorsque vous créérez vos propres delegates, pensez à les indiquer en `weak` pour éviter ce problème, et tout ira bien !
 
 #### En résumé
 - On peut rajouter une cellule en la faisant glisser depuis la bibliothèque des objets vers la Table View.
@@ -588,6 +673,7 @@ Cette Table View est officiellement fonctionnelle ! Vous pouvez tester en lança
 - On peut choisir parmi 4 styles par défaut pour les cellules.
 - On précise le contenu de la cellule avec la méthode `cellForRowAt` du protocole `UITableViewDataSource`.
 - On lance le chargement des données avec la méthode reloadData de `UITableView`.
+- Un delegate est déclaré avec l'indicateur `weak` pour éviter un retain cycle entre l'objet et son delegate.
 
 Dans la prochaine partie, nous allons ajouter plusieurs fonctionnalités à notre application : la gestion de plusieurs catégories, la possibilité de supprimer des messages, la création de cellules customisées et bien d'autres !
 
