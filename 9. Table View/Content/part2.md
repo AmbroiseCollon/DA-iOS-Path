@@ -601,6 +601,8 @@ Cette Table View est officiellement fonctionnelle ! Vous pouvez tester en lança
 
 ![Tadaa !](Images/P2/P2C4_6.png)
 
+**Tadaa !** C'est chouette non ?
+
 > **:question:** Hop hop hop, tu voulais pas nous parler d'un truc important encore ?!
 
 Ah si ! Quand je vous ai introduit le protocol `UITableViewDataSource`, on a d'une part limité ce protocol à des classes, en adossant `class` à la déclaration de notre protocol:
@@ -629,7 +631,9 @@ Tout ça ne s'applique qu'aux class, les struct et les enums ne sont pas concern
 
 Voilà un example d'une application simple avec une tableView:
 
-![ Les flèches en noir représentent des références](Images/P2/P2C4_7.png)
+![](Images/P2/P2C4_7.png)
+
+> **:information_source:** Les flèches en noir représentent des références
 
 Ici, ma tableView et mon bouton restent bien dans la mémoire puisque j'ai au moins un objet qui les référence, mon ViewController. Et celui-ci reste aussi dans la mémoire, puisqu'il a aussi une référence... Et ainsi de suite.
 
@@ -655,7 +659,8 @@ class UITableView: UIScrollView {
 
 Du coup en terme de réference, quand j'écris après dans mon viewController `tableView.dataSource = self`, ça donne ça:
 
-![Et là, c'est le drame. 😱😱😱 ](Images/P2/P2C4_8.png)
+![](Images/P2/P2C4_8.png)
+> **:information_source:** Et là, c'est le drame. 😱😱😱
 
 Pourquoi c'est le drame ? Parce que sans faire attention, j'ai créé un **retain cycle**. En fait chaque objet a une référence vers l'autre. Même si mon view controller n'est plus dans la navigation, et qu'aucun objet n'a de référence vers lui, le couple viewController <> tableView ne disparaitrat jamais. C'est ce qu'on appelle aussi une _fuite mémoire_.
 
@@ -663,7 +668,7 @@ Pourquoi c'est le drame ? Parce que sans faire attention, j'ai créé un **retai
 
 Pas de panique ! Vous l'aurez sans doute compris, c'est là que le mot `weak` entre en jeu ! Weak veut dire: cette propriété me permet d'accéder à mon objet, mais ne compte pas de référence dessus. Si on reprend notre schéma:
 
-![Voilà, plus de retain cycle ! ](Images/P2/P2C4_9.png)
+![](Images/P2/P2C4_9.png)
 
 Et voilà le travail, le mot weak permet de briser ce fameux **retain cycle**, parce que par défaut une propriété est **strong**: ma propriété maintient un lien fort avec l'objet: elle compte comme une référence.
 
