@@ -356,8 +356,7 @@ Du coup, on peut faire des trucs sympas avec les protocoles comme ceci :
 var monTableauDAnimaux: [Animal] = [Dog(), Bird()]
 ```
 
-On a un tableau qui contient des objets qui ne sont pas du même type, mais qui se conforment tous au type `Animal`. Lorsque je vais programmer en utilisant mon tableau d'animaux, je vais programmer autour de *l'interface* définie par mon protocol: je ne me soucie pas de savoir quel type d'animal je manipule, et c'est une bien meilleure pratique qui rend mon code plus *modulaire* !
-
+On a un tableau qui contient des objets qui ne sont pas du même type, mais qui se conforment tous au type `Animal`. Lorsque je vais programmer en utilisant mon tableau d'animaux, je vais programmer autour de *l'interface* définie par mon protocole : je ne me soucie pas de savoir quel type d'animal je manipule, et c'est une bien meilleure pratique qui rend mon code plus *modulaire* !
 
 #### Des protocoles partout !
 
@@ -468,22 +467,23 @@ class Human: Nameable {
 
 Vous voyez ici que le protocole `Nameable` peut s'appliquer à des objets qui n'ont a priori rien à voir entre eux. Il s'agit en effet d'**une brique de fonctionnalités que je peux donner à n'importe quelle classe/structure/énumération**.
 
+#### Les extensions de protocole
+
 > **:question:** Très bien, mais je dois redonner dans Human une implémentation de getFullName, qui en plus est la même que pour Dog ! C'est un peu pénible si ma brique de fonctionnalité devient plus complexe, non ?
 
-Et oui, c'est bien vu. Mais c'est de ma faute, je vous ai fait un petit mensonge tout à l'heure !
-Je vous ai dit:
+Eh oui, c'est bien vu. Mais c'est de ma faute, je vous ai fait un petit mensonge tout à l'heure ! Je vous ai dit:
 
-> un protocole peut définir des méthodes, mais ce sont les classes qui les implémentent.
+> Un protocole peut définir des méthodes, mais ce sont les classes qui les implémentent.
 
 Et en Swift, c'est un peu faux. Et c'est précisement la raison pour laquelle les protocoles sont si important dans ce language !
 
-En Swift, **un protocol peut définir l'implémentation de ses méthodes**.
+En Swift, **un protocole peut définir l'implémentation de ses méthodes**.
 
-Je répète: **En swift, un protocol peut définir l'implémentation de ses méthodes.**
+Je répète: **En swift, un protocole peut définir l'implémentation de ses méthodes.**
 
 > **:question:** Ok... ça a l'air chouette ?
 
-C'est vraiment très très chouette. On va voir ça avec notre example de `Nameable` tout de suite. Voici la définition du protocole qu'on avait:
+C'est vraiment très très chouette. On va voir ça avec notre exemple de `Nameable` tout de suite. Voici la définition du protocole qu'on avait:
 
 ```swift
 protocol Nameable {
@@ -494,7 +494,7 @@ protocol Nameable {
 }
 ```
 
-Et pour implémenter `getFullName`, on va faire ça:
+Et pour implémenter `getFullName`, on va faire ceci :
 
 ```swift
 extension Nameable {
@@ -520,7 +520,7 @@ class Human: Nameable {
 }
 ```
 
-Et voilà le travail. On utilise ce qu'on appelle une **extension de protocole** pour aller donner une implémentation par défaut de certaines de ses exigences. Du coup je peux vraiment facilement ajouter une brique de fonctionnalité bien définie à n'importe quelle classe/structure/énumération !
+Et voilà le travail ;) ! On utilise ce qu'on appelle une **extension de protocole** pour aller donner une implémentation par défaut de certaines de ses exigences. Du coup je peux vraiment facilement ajouter une brique de fonctionnalité bien définie à n'importe quelle classe/structure/énumération !
 
 > **:question:** Mais si je veux donner une autre implémentation, par example dans Dog, je fais comment ?! Parce que `override`, ça marche pour les classes seulement !
 
@@ -531,8 +531,9 @@ class Dog: Nameable {
     var firstName: String = ""
     var lastName: String = ""
 
-    // Lorsque j'appelle cette méthode sur un chien, c'est cette implémentation qui sera appellée,
-    // et non celle définie par défaut
+    // Lorsque j'appelle cette méthode sur un chien,
+    // c'est cette implémentation qui sera appellée,
+    // et non celle définie par défaut.
     func getFullName() -> String {
       return "Waaaf \(firstName) ! WoofWoof \(lastName)"
     }
@@ -541,7 +542,7 @@ class Dog: Nameable {
 }
 ```
 
-L'implémentation donnée par l'objet qui adopte le protocol sera toujours prioritaire aux implémentations par défaut. Ce qui est rassurant, puisque les protocoles sont à la base, un moyen de s'abstraire de la façon dont sont implémentés les choses, en se limitant à connaître simplement les exigences.
+**L'implémentation donnée par l'objet qui adopte le protocole sera toujours prioritaire aux implémentations par défaut**. Ce qui est rassurant, puisque les protocoles sont à la base, un moyen de s'abstraire de la façon dont sont implémentés les choses, en se limitant à connaître simplement les exigences.
 
 #### L'orienté protocole en image !
 Je vous propose les schémas suivants pour comparer les approches orientées objet et orientées protocole.
@@ -557,7 +558,7 @@ En orienté protocole, on partage des comportements grâce aux protocoles. C'est
 - On peut partager des comportements entre des classes/structures/énumérations.
 - Une même classe/structure/énumération peut adopter plusieurs protocoles.
 - En utilisant un protocole par fonctionnalité, on peut ajouter certaines fonctionnalités à certains objets sans l'ajouter à d'autres.
-- On peut donner une implémentation par défaut de certaines fonctionnalités en utilisant les extensions de protocole
+- On peut donner une implémentation par défaut de certaines fonctionnalités en utilisant les extensions de protocole.
 
 > **:information_source:** L'orienté protocole est un peu à imaginer comme des legos. On va créer des objets. Et ensuite, on va leur ajouter des briques de fonctionnalités en leur faisant adopter à chaque fois un nouveau protocole.
 
