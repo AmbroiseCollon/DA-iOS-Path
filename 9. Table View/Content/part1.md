@@ -84,7 +84,7 @@ Autrement dit, la classe `Animal` est **trop générique** et du coup, elle ne s
 
 En programmation, on n’aime pas trop ce qui ne sert à rien ! En biologie, non plus d'ailleurs... mais c'est un autre débat ! Du coup, on va supprimer cette classe `Animal` !
 
-> **:question:** Mais attends ! Elle permet quand même aux sous-classes d'hériter de ces méthodes et de cette propriété ! On pourrait en faire une classe abstraite non ?
+> **:question:** Mais attends ! Elle permet quand même aux sous-classes d'hériter de ces méthodes et de cette propriété !
 
 Je sais, mais faîtes moi confiance, supprimez cette classe ! On va faire ça différemment... Avec un protocole !
 
@@ -375,8 +375,6 @@ enum MonEnumeration: MonProtocole {}
 Cela fonctionne exactement de la même manière !
 
 Avant, seulement les classes pouvaient partager des comportements grâce à l'héritage. Mais les structures et les énumérations n'ont pas l'héritage.
-
-> **:information_source:** Vous voyez que comparé à notre classe abtraite Animal, le protocol est bien plus puissant !
 
 Mais grâce aux protocoles, toutes les structures de donnée peuvent partager des comportements ! Encore mieux, une classe peut partager des méthodes avec une énumération.
 
