@@ -265,19 +265,19 @@ Or, comme on l'a vu, une liste peut avoir des tonnes de données ! Et on ne va p
 
 Du coup, la vue va devoir demander régulièrement au contrôleur de lui donner de nouvelles données. À chaque fois que l'on fait défiler la vue, elle va réclamer de nouvelles données au contrôleur.
 
-Le problème, c'est que ma tableView ne sait pas avec quel contrôleur elle va travailler. Ici nous utilisons notre ListViewController qui présente une liste de jouets, mais ailleurs nous pourrions en utiliser un autre qui fournit des listes de réglages, ou des listes de contact...
+Le problème, c'est que ma tableView ne sait pas avec quel contrôleur elle va travailler. Ici nous utilisons notre `ListViewController` qui présente une liste de jouets, mais ailleurs nous pourrions en utiliser un autre qui fournit des listes de réglages, ou des listes de contact...
 
- Pour faire fonctionner notre TableView on doit donc résoudre le problème suivant:
- 1. Ma tableview doit pouvoir être informée de la composition de la liste par le controlleur
+Pour faire fonctionner notre TableView on doit donc résoudre le problème suivant :
+
+ 1. Ma tableview doit pouvoir être informée de la composition de la liste par le contrôleur
  2. N'importe quel objet doit pouvoir faire ce travail, ma tableview se moque de savoir avec qui elle travaille, et cela me permet de la réutiliser dans de multiples situations
 
 Pour résoudre ce double problème, on va utiliser le **delegate pattern**. On dit en effet que la tableView _délègue_ une partie de son fonctionnement à un autre objet.
-Et au coeur du delegate pattern, on va voir ce que nous avons étudié dans la partie 1: Un protocol !
+Et au coeur du delegate pattern, on va voir ce que nous avons étudié dans la partie 1 : Un protocole !
 
- **Le delegate pattern est une nouvelle méthode de communication aveugle entre la vue et le contrôleur.**
+**Le delegate pattern est une nouvelle méthode de communication aveugle entre la vue et le contrôleur.**
 
-> **:information_source:** Et oui, si on dit aveugle, c'est grâce au protocol: ma vue va pouvoir demander des informations sans se soucier de savoir qui lui fournit.
-On retrouve l'aspect **modulaire** du code qu'on avait abordé en parlant des protocoles.
+> **:information_source:** Et oui, si on dit aveugle, c'est grâce au protocole : ma vue va pouvoir demander des informations sans se soucier de savoir qui lui fournit. On retrouve l'aspect **modulaire** du code qu'on avait abordé en parlant des protocoles.
 
 Et voici comment cela fonctionne :
 
@@ -303,7 +303,7 @@ protocol UITableViewDataSource: class {
 }
 ```
 
-> **:information_source:** Vous avez sans doute noté le petit mot réservé `class`. Il indique que notre protocol ne peut être adopté que par... des classes. Les struct et les enums ne pourront pas adopter ce protocol, et on verra bientôt pourquoi c'est important.
+> **:information_source:** Vous avez sans doute noté le petit mot réservé `class`. Il indique que notre protocole ne peut être adopté que par... des classes. Les struct et les enums ne pourront pas adopter ce protocole, et on verra bientôt pourquoi c'est important.
 
 ##### 2. La vue nomme un objet son delegate, en l'occurrence notre contrôleur.
 
@@ -314,8 +314,8 @@ class UITableView: UIScrollView {
 	weak var dataSource: UITableViewDataSource?
 }
 ```
-Cette propriété est utilisée à l'intérieur de la classe `UITableView` pour appeler les méthodes du protocole au moment ou la Table View en a besoin.
-Comme promis, notre tableView se fiche bien de savoir que objet fera office de dataSource, elle a juste besoin de savoir qu'il répondra aux exigences de notre protocol.
+
+Cette propriété est utilisée à l'intérieur de la classe `UITableView` pour appeler les méthodes du protocole au moment ou la Table View en a besoin. Comme promis, notre tableView se fiche bien de savoir que objet fera office de dataSource, elle a juste besoin de savoir qu'il répondra aux exigences de notre protocole.
 
 > **:warning:** J'attire votre attention sur le fait qu'à ce stade, **il n'y a pas encore d'implémentations aux méthodes,** mais rien n'empêche de les appeler.
 
@@ -326,7 +326,7 @@ Ensuite, cette propriété prend pour valeur le contrôleur :
 ```swift
 class ViewController: UIViewController {
 
-    var tableView: UITableView
+	var tableView: UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -419,8 +419,7 @@ Ensuite, nous allons implémenter les méthodes du protocole pour nous y conform
 > 	func maMethodeRequise()
 > }
 > ```
-
-> **:information_source:** Les exigences optionnelles ne fonctionnent que sur des protocoles objective-c, d'où la présence du `@objc` devant mon protocol. En swift pur, ça n'est tout simplement pas possible de déclarer une fonction d'un protocol comme `optional`.
+> Les exigences optionnelles ne fonctionnent que sur des protocoles Objective-C, d'où la présence du `@objc` devant mon protocole. En swift pur, ça n'est tout simplement pas possible de déclarer une fonction d'un protocole comme `optional`.
 
 La première méthode que nous allons implémenter s'appelle `numbersOfSection` :
 
@@ -687,3 +686,83 @@ Dans la prochaine partie, nous allons ajouter plusieurs fonctionnalités à notr
 Et au passage, vous allez approfondir votre compréhension des Table View et des protocoles.
 
 À tout de suite !
+
+### Bonus : Découvrez le concept de références
+
+> **:question:** Hop hop hop, tu voulais pas nous parler d'un truc important encore ?!
+
+Ah si ! Quand je vous ai introduit le protocole `UITableViewDataSource`, on a d'une part limité ce protocol à des classes, en adossant `class` à la déclaration de notre protocole :
+
+```swift
+protocol UITableViewDataSource: class {
+	// (...)
+}
+```
+
+Et dans notre tableView, je vous ai dit qu'on avait notre objet `dataSource`, mais avec le mot réservé `weak`:
+
+```swift
+class UITableView: UIScrollView {
+	weak var dataSource: UITableViewDataSource?
+}
+```
+
+Alors, pourquoi est-ce qu'on a fait tout ça, et qu'est-ce que ça veut dire ? On va rapidement toucher au monde des **références** pour comprendre tout ça.
+
+#### Les références
+
+Dans les languages de programmation un peu modernes (comme Swift!), les objets que vous crééez restent dans la mémoire tant qu'au moins une référence existe vers cet objet.
+
+Quand mon objet n'a plus aucun autre objet qui n'a de référence sur lui, pouf ! Il disparaît ! Sous iOS, la technologie qui fait tout ça s'appelle Automatic Reference Counting (ARC).
+
+**Tout ça ne s'applique qu'aux classes, les structures et les enums ne sont pas concernées.** D'où le petit mot `class` dans la déclaration de notre protocole, qui permet de garantir que seule une classe pourra adopter ce protocole.
+
+Voilà un example d'une application simple qui contient une *Table View* et un bouton :
+
+![](Images/P2/P2C4_7.png)
+
+> **:information_source:** Les flèches en noir représentent des références
+
+Ici, ma Table View et mon bouton restent bien dans la mémoire puisque j'ai au moins un objet qui les référence, mon ViewController. Et celui-ci reste aussi dans la mémoire, puisqu'il a aussi une référence... Et ainsi de suite.
+
+> **:question:** Ok, mais tout ça ne me dit pas ce que c'est une référence !
+
+Une référence, c'est très simple ! Quand j'écris ceci :
+
+```swift
+class ListViewController: UIViewController {
+	var tableView: UITableView
+}
+```
+
+Je créé une référence de mon `ListViewController` vers ma propriété `tableView`. Tant que mon contrôleur est dans la mémoire (et généralement il y reste tant qu'il est présent dans ma navigation), ma Table View sera là aussi. C'est bien rassurant au final !
+
+#### Le mot-clé weak
+
+Si on reprend notre example de delegate de tout à l'heure, ma Table View s'écrit comme ça si j'enlève ce fameux mot `weak`:
+
+```swift
+class UITableView: UIScrollView {
+	var dataSource: UITableViewDataSource?
+}
+```
+
+Du coup en terme de réference, quand j'écris après dans mon viewController `tableView.dataSource = self`, ça donne ça :
+
+![](Images/P2/P2C4_8.png)
+
+> **:information_source:** Et là, c'est le drame. 😱😱😱
+
+> **:question:** Pourquoi c'est le drame ?
+
+Parce que sans faire attention, j'ai créé un **retain cycle**. En fait chaque objet a une référence vers l'autre. Même si mon View Controller n'est plus dans la navigation, et qu'aucun objet n'a de référence vers lui, le couple View Controller <> Table View ne disparaitrat jamais. C'est ce qu'on appelle aussi une _fuite mémoire_.
+
+> **:question:** Mon Dieu, mais qu'est-ce qu'on va faire ??!
+
+Pas de panique ! Vous l'aurez sans doute compris, c'est là que le mot `weak` entre en jeu ! Weak veut dire: cette propriété me permet d'accéder à mon objet, mais ne compte pas de référence dessus. Si on reprend notre schéma:
+
+![](Images/P2/P2C4_9.png)
+
+Et voilà le travail, le mot weak permet de briser ce fameux **retain cycle**, parce que par défaut une propriété est **strong** : ma propriété maintient un lien fort avec l'objet: elle compte comme une référence.
+
+Si tout ça vous paraît compliqué, pas de panique. Retenez simplement le concept de retain cycle, et que si deux objets s'auto-référencent, vous allez avoir des problèmes de mémoire. Lorsque vous créérez vos propres delegates, pensez à les indiquer en `weak` pour éviter ce problème, et tout ira bien !
