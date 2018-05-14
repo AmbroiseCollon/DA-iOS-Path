@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700px" height="392px" viewBox="0 0 700 392" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>P3C1_4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,0 L221,0 L221,327 L0,327 L0,0 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="221" height="327" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#2AADC0" offset="0%"></stop>
+            <stop stop-color="#9A2F2F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#2D8D63" offset="0%"></stop>
+            <stop stop-color="#2AADC0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="P3C1_4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-5" transform="translate(254.500000, 34.000000)">
+            <use id="Rectangle" stroke="#AEEBF3" mask="url(#mask-2)" stroke-width="6" fill="#2AADC0" stroke-dasharray="6" xlink:href="#path-1"></use>
+            <text id="protocol-Present-{-v" font-family="SFUIDisplay-Medium, SF UI Display" font-size="18" font-weight="400" fill="#FFFFFF">
+                <tspan x="7" y="132">protocol Present {</tspan>
+                <tspan x="7" y="153" font-size="15">    var description: String { get }</tspan>
+                <tspan x="7" y="171" font-size="15">    var detail: String { get }</tspan>
+                <tspan x="7" y="189">}</tspan>
+            </text>
+        </g>
+        <g id="Group-4" transform="translate(24.000000, 32.000000)">
+            <g id="Group-2" transform="translate(1.000000, 126.000000)">
+                <rect id="Rectangle-2" fill="#9A2F2F" x="0" y="0" width="181" height="96" rx="5"></rect>
+                <text id="struct-Book-{-var-ti" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" fill="#FFFFFF">
+                    <tspan x="12" y="26">struct Book {</tspan>
+                    <tspan x="12" y="47" font-size="15">    var title = ""</tspan>
+                    <tspan x="12" y="65" font-size="15">    var author = ""</tspan>
+                    <tspan x="12" y="83">}</tspan>
+                </text>
+            </g>
+            <g id="Group-3" transform="translate(0.000000, 233.000000)">
+                <rect id="Rectangle-2" fill="#9A2F2F" x="0" y="0" width="181" height="96" rx="5"></rect>
+                <text id="struct-Toy-{-var-nam" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" fill="#FFFFFF">
+                    <tspan x="13" y="26">struct Toy {</tspan>
+                    <tspan x="13" y="47" font-size="15">    var name = ""</tspan>
+                    <tspan x="13" y="65" font-size="15">    var brand = ""</tspan>
+                    <tspan x="13" y="83">}</tspan>
+                </text>
+            </g>
+            <g id="Group">
+                <rect id="Rectangle-2" fill="#9A2F2F" x="0" y="0" width="181" height="115" rx="5"></rect>
+                <text id="struct-Trip-{-var-de" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" fill="#FFFFFF">
+                    <tspan x="13" y="28">struct Trip {</tspan>
+                    <tspan x="13" y="49" font-size="15">    var departure = ""</tspan>
+                    <tspan x="13" y="67" font-size="15">    var destination = ""</tspan>
+                    <tspan x="13" y="85" font-size="15">    var durationInDays = 0</tspan>
+                    <tspan x="13" y="103">}</tspan>
+                </text>
+            </g>
+        </g>
+        <g id="Group-6" transform="translate(524.000000, 96.000000)">
+            <ellipse id="Oval" fill="#2D8D63" cx="76.5" cy="92.5" rx="76.5" ry="92.5"></ellipse>
+            <text id="ListViewController" font-family="SFUIDisplay-Light, SF UI Display" font-size="18" font-weight="300" fill="#FFFFFF">
+                <tspan x="8" y="97">ListViewController</tspan>
+            </text>
+        </g>
+        <path d="M208.628571,316 L251.371429,316" id="Line" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-1" d="M219.428571,319 L208.628571,316 L219.428571,313" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-2" d="M240.571429,319 L251.371429,316 L240.571429,313" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M208.628571,207 L251.371429,207" id="Line" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-1" d="M219.428571,210 L208.628571,207 L219.428571,204" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-2" d="M240.571429,210 L251.371429,207 L240.571429,204" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M478.628571,188 L521.371429,188" id="Line" stroke="url(#linearGradient-4)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-1" d="M489.428571,191 L478.628571,188 L489.428571,185" stroke="url(#linearGradient-4)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-2" d="M510.571429,191 L521.371429,188 L510.571429,185" stroke="url(#linearGradient-4)" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M208.628571,88 L251.371429,88" id="Line" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-1" d="M219.428571,91 L208.628571,88 L219.428571,85" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+        <path id="Line-decoration-2" d="M240.571429,91 L251.371429,88 L240.571429,85" stroke="url(#linearGradient-3)" stroke-width="2" stroke-linecap="square"></path>
+    </g>
+</svg>
