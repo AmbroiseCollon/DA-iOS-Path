@@ -600,79 +600,6 @@ Cette Table View est officiellement fonctionnelle ! Vous pouvez tester en lança
 
 ![Tadaa !](Images/P2/P2C4_6.png)
 
-**Tadaa !** C'est chouette non ?
-
-> **:question:** Hop hop hop, tu voulais pas nous parler d'un truc important encore ?!
-
-Ah si ! Quand je vous ai introduit le protocol `UITableViewDataSource`, on a d'une part limité ce protocol à des classes, en adossant `class` à la déclaration de notre protocol:
-
-```swift
-protocol UITableViewDataSource: class {
-	// (...)
-}
-```
-
-Et dans notre tableView, je vous ai dit qu'on avait notre objet dataSource, mais avec le mot réservé `weak`:
-
-```swift
-class UITableView: UIScrollView {
-	weak var dataSource: UITableViewDataSource?
-}
-```
-
-Alors, pourquoi est-ce qu'on a fait tout ça, et qu'est-ce que ça veut dire ? On va rapidement toucher au monde des **références** pour comprendre tout ça.
-
-#### Le mot clef weak et les références
-
-Dans les languages de programmation un peu modernes (comme Swift!), les objets que vous crééez restent dans la mémoire tant qu'au moins une référence existe vers cet objet.
-Quand mon objet n'a plus aucun autre objet qui n'a de référence sur lui, pouf ! Il disparaît ! Sous iOS, la technologie qui fait tout ça s'appelle Automatic Reference Counting (ARC).
-Tout ça ne s'applique qu'aux class, les struct et les enums ne sont pas concernées. D'où le petit mot `class` dans la déclaration de notre protocol, qui permet de garantir que seule une classe pourra adopter ce protocol.
-
-Voilà un example d'une application simple avec une tableView:
-
-![](Images/P2/P2C4_7.png)
-
-> **:information_source:** Les flèches en noir représentent des références
-
-Ici, ma tableView et mon bouton restent bien dans la mémoire puisque j'ai au moins un objet qui les référence, mon ViewController. Et celui-ci reste aussi dans la mémoire, puisqu'il a aussi une référence... Et ainsi de suite.
-
-> **:question:** Ok, mais tout ça ne me dit pas ce que c'est une référence !
-
-Une référence, c'est très simple: Quand j'écris ça:
-
-```swift
-class ListViewController: UIViewController {
-	var tableView: UITableView
-}
-```
-
-Je créé une référence de mon `ListViewController` vers ma propriété `tableView`. Tant que mon controlleur est dans la mémoire (et généralement il y reste tant qu'il est présent dans ma navigation), ma tableView sera là aussi. C'est bien rassurant au final !
-
-Si on reprend notre example de delegate de tout à l'heure, ma tableView s'écrit comme ça si j'enlève ce fameux mot `weak`:
-
-```swift
-class UITableView: UIScrollView {
-	var dataSource: UITableViewDataSource?
-}
-```
-
-Du coup en terme de réference, quand j'écris après dans mon viewController `tableView.dataSource = self`, ça donne ça:
-
-![](Images/P2/P2C4_8.png)
-> **:information_source:** Et là, c'est le drame. 😱😱😱
-
-Pourquoi c'est le drame ? Parce que sans faire attention, j'ai créé un **retain cycle**. En fait chaque objet a une référence vers l'autre. Même si mon view controller n'est plus dans la navigation, et qu'aucun objet n'a de référence vers lui, le couple viewController <> tableView ne disparaitrat jamais. C'est ce qu'on appelle aussi une _fuite mémoire_.
-
-> **:question:** Mon Dieu, mais qu'est-ce qu'on va faire ??!
-
-Pas de panique ! Vous l'aurez sans doute compris, c'est là que le mot `weak` entre en jeu ! Weak veut dire: cette propriété me permet d'accéder à mon objet, mais ne compte pas de référence dessus. Si on reprend notre schéma:
-
-![](Images/P2/P2C4_9.png)
-
-Et voilà le travail, le mot weak permet de briser ce fameux **retain cycle**, parce que par défaut une propriété est **strong**: ma propriété maintient un lien fort avec l'objet: elle compte comme une référence.
-
-Si tout ça vous paraît compliqué, pas de panique. Retenez simplement le concept de retain cycle, et que si deux objets s'auto-référencent, vous allez avoir des problèmes de mémoire. Lorsque vous créérez vos propres delegates, pensez à les indiquer en `weak` pour éviter ce problème, et tout ira bien !
-
 #### En résumé
 - On peut rajouter une cellule en la faisant glisser depuis la bibliothèque des objets vers la Table View.
 - Il faut configurer la cellule dans le storyboard en lui donnant un identifiant unique.
@@ -689,9 +616,9 @@ Et au passage, vous allez approfondir votre compréhension des Table View et des
 
 ### Bonus : Découvrez le concept de références
 
-> **:question:** Hop hop hop, tu voulais pas nous parler d'un truc important encore ?!
+> **:question:** Hop hop hop, tu ne voulais pas nous parler d'un truc important encore ?!
 
-Ah si ! Quand je vous ai introduit le protocole `UITableViewDataSource`, on a d'une part limité ce protocol à des classes, en adossant `class` à la déclaration de notre protocole :
+Ah si ! Quand je vous ai introduit le protocole `UITableViewDataSource`, on a d'une part limité ce protocole à des classes, en adossant `class` à la déclaration de notre protocole :
 
 ```swift
 protocol UITableViewDataSource: class {
@@ -714,6 +641,7 @@ Alors, pourquoi est-ce qu'on a fait tout ça, et qu'est-ce que ça veut dire ? O
 Dans les languages de programmation un peu modernes (comme Swift!), les objets que vous crééez restent dans la mémoire tant qu'au moins une référence existe vers cet objet.
 
 Quand mon objet n'a plus aucun autre objet qui n'a de référence sur lui, pouf ! Il disparaît ! Sous iOS, la technologie qui fait tout ça s'appelle Automatic Reference Counting (ARC).
+Dans d'autres languages, on parle de _Garbage collector_ pour désigner cette technologie: le programme nettoie la mémoire en enlevant les objets qui ne servent plus à rien. Et comment sait-on qu'un objet ne sert plus à rien ? Quand il n'a plus de références! Dans ce cas, mon programme n'a plus aucun moyen d'accéder à cet objet, et il est considéré comme **perdu**.
 
 **Tout ça ne s'applique qu'aux classes, les structures et les enums ne sont pas concernées.** D'où le petit mot `class` dans la déclaration de notre protocole, qui permet de garantir que seule une classe pourra adopter ce protocole.
 
@@ -755,14 +683,38 @@ Du coup en terme de réference, quand j'écris après dans mon viewController `t
 
 > **:question:** Pourquoi c'est le drame ?
 
-Parce que sans faire attention, j'ai créé un **retain cycle**. En fait chaque objet a une référence vers l'autre. Même si mon View Controller n'est plus dans la navigation, et qu'aucun objet n'a de référence vers lui, le couple View Controller <> Table View ne disparaitrat jamais. C'est ce qu'on appelle aussi une _fuite mémoire_.
+Parce que sans faire attention, j'ai créé un **retain cycle**. En fait chaque objet a une référence vers l'autre. Même si mon View Controller n'est plus dans la navigation, et qu'aucun objet n'a de référence vers lui, le couple View Controller <> Table View ne disparaitrat jamais. Ce qui créé au final une _fuite mémoire_.
 
 > **:question:** Mon Dieu, mais qu'est-ce qu'on va faire ??!
 
-Pas de panique ! Vous l'aurez sans doute compris, c'est là que le mot `weak` entre en jeu ! Weak veut dire: cette propriété me permet d'accéder à mon objet, mais ne compte pas de référence dessus. Si on reprend notre schéma:
+Pas de panique ! Vous l'aurez sans doute compris, c'est là que le mot `weak` entre en jeu !
+Pour comprendre `weak`, on va d'abord regarder ce que fait son contraire: `strong`.
+
+Par défaut, quand je déclare une propriété sur un objet de type `Objet`: `var monObjet: Objet`, c'est en fait équivalent à écrire: `strong var monObjet: Objet`. Ma référence vers mon instance de `Objet` doit être **forte** pour maintenir mon objet dans la mémoire. Quand le nombre de référence forte vers mon objet tombe à zéro, il n'y a plus rien pour le garder dans la mémoire et c'est là qu'il disparaît.
+
+Du coup, quand je prépose `weak` à la déclaration de ma variable, j'indique que je veux une référence faible. Et au contraire d'une référence forte, une référence faible ne retient pas mon objet dans la mémoire ! Je peux accéder à mon objet dans la mémoire, mais ce n'est pas moi qui le retiendrai je ne vais pas le retenir s'il doit disparaître.
+
+Si on reprend notre schéma de tout à l'heure, avec la déclaration en weak, ça donne ça:
 
 ![](Images/P2/P2C4_9.png)
 
-Et voilà le travail, le mot weak permet de briser ce fameux **retain cycle**, parce que par défaut une propriété est **strong** : ma propriété maintient un lien fort avec l'objet: elle compte comme une référence.
+Et voilà le travail, le mot weak permet de briser ce fameux **retain cycle** ! Quand mon contrôleur ne sera plus dans la navigation, et qu'il n'aura plus de référence vers lui, ma `tableView` ne l'empêchera pas d'être enlevé de la mémoire.
+
+> **:question:** Ouais, mais on me la fait pas, ton schéma est faux, nous on a déclaré notre tableView avec un IBOutlet et avec le mot clef `weak`.
+
+C'est vrai, quand on déclare un Outlet avec `weak`, en théorie notre objet ne devrait même pas pouvoir rester dans la mémoire puisqu'il n'y a aucune référence `strong` pour le retenir, non ?
+Bien sûr, vous savez que c'est faux, puisque sinon nos apps ne fonctionneraient pas depuis le début héhé.
+Alors, qu'est-ce qu'il se passe au juste en réalité ? Et bien pour ça, il suffit de se souvenir, quand tout bon `UIViewController` gère une vue. Et si on reprend notre schéma, dans la réalité, on a ça:
+
+![](Images/P2/P2C4_10.png)
+
+La vue maintient un lien fort sur l'ensemble de ses sous-vues. Et tant que mon contrôleur est présent, il maintient aussi un lien sur sa vue, donc ma `tableView` reste bien dans la mémoire. On déclare nos outlets en `weak` pour éviter une redondance, ou pour éviter des problèmes si on créé des liens entre objets qui n'ont rien à voir! Depuis le temps qu'on déclare des outlets, ça devait vous démanger de ne pas savoir non ? :)
 
 Si tout ça vous paraît compliqué, pas de panique. Retenez simplement le concept de retain cycle, et que si deux objets s'auto-référencent, vous allez avoir des problèmes de mémoire. Lorsque vous créérez vos propres delegates, pensez à les indiquer en `weak` pour éviter ce problème, et tout ira bien !
+
+#### En résumé
+- Un objet reste dans la mémoire tant qu'au moins une référence **forte** existe vers cet objet.
+- Si deux objets s'auto-référencent avec des références fortes, cela créé un **retain cycle**: mes objets ne peuvent plus être nettoyés de la mémoire.
+- le mot réservé `weak` permet de résoudre ce problème: les références dites **faibles** ne comptent pas lorsque le programme détermine si l'objet est encore utile ou pas.
+- On déclare un `delegate` en `weak` pour éviter de créer un cycle de rétention et du coup une fuite mémoire
+- Les propriétés avec des IBOutlets sont déclarées en `weak`: en général l'objet aura déjà une référence interne et en rajouter une autre ne servira pas.
