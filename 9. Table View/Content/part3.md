@@ -8,15 +8,15 @@ Bienvenue dans cette troisième partie ! Dans cette partie, nous allons amélior
 
 #### Quoi de neuf ?
 
-Je vous propose de prendre quelques minutes pour parcourir les petits changements que j'ai apporté au projet pour que vous ne soyez pas perdus pour la suite.
+Je vous propose de prendre quelques minutes pour parcourir les petits changements que j'ai apportés au projet pour que vous ne soyez pas perdus pour la suite.
 
-La principale modification est l'ajout de la possibilité de pouvoir créer des objets dans la liste **de trois catégories différentes** :
+La principale modification est l'ajout de la possibilité de créer des objets dans la liste **de trois catégories différentes** :
 
 - Voyage (*Trip*)
 - Livre (*Book*)
 - Jouet (*Toy*)
 
-Pour cela, j'ai ajouté une pages qui permet de choisir la catégorie et qui redirige vers trois pages différentes, une pour chaque catégorie d'objet à créer.
+Pour cela, j'ai ajouté une page qui permet de choisir la catégorie et qui redirige vers trois pages différentes, une pour chaque catégorie d'objet à créer.
 
 Voilà ce que ça donne dans le détail :
 
@@ -68,9 +68,9 @@ struct Book {
 
 3/ J'ai rajouté deux contrôleurs `TripViewController` et `BookViewController` qui permettent respectivement de gérer les pages de création d'un objet `Trip` et `Book`. Ils sont extrêmement similaires à `ToyViewController`.
 
-La seule grosse différence, c'est que je n'ai pas su comment ajouter des `Book` ou des `Trip` à notre liste car ils ne sont pas du type `Toy`. Donc nous allons faire ça ensemble.
+La seule grosse différence, c'est que je n'ai pas su comment ajouter des `Book` ou des `Trip` à notre liste, car ils ne sont pas du type `Toy`. Donc nous allons faire ça ensemble.
 
-4/ Enfin, par acquis de conscience, j'ai ajouté un `CategoryViewController` mais qui est vide car tout la navigation est faite dans le storyboard directement. 
+4/ Enfin, par acquit de conscience, j'ai ajouté un `CategoryViewController,` mais qui est vide, car toute la navigation est faite dans le storyboard directement. 
 
 #### Une liste hétérogène
 
@@ -173,13 +173,13 @@ Et voilà ! Nous avons réussi à remplir notre liste avec des objets de types d
 
 #### Ajouter des exigences
 
-> **:question:** Hé mais j'ai des erreurs dans mon code !
+> **:question:** Hé, mais j'ai des erreurs dans mon code !
 > 
 > ![](Images/P3/P3C1_2.png)
 
 Ah oui... J'ai oublié `ListViewController`. [La boulette](https://www.youtube.com/watch?v=au0ZMqyoWwg) ! Cette classe utilise toujours `ToyService` que nous venons de remplacer par `PresentService`.
 
-Ce n'est pas grave, ce n'est qu'un petit changement rapide, faisons le !
+Ce n'est pas grave, ce n'est qu'un petit changement rapide, faisons-le !
 
 ```swift
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -260,7 +260,7 @@ PAUSE ! Il faut admirer ce que vous venez de faire. **Vous avez créé ce qu'on 
 
 ![](Images/P3/P3C1_4.png)
 
-Cette méthode est extrêment utile pour supprimer la dépendance d'une classe envers une autre. Ici, `ListViewController` ne connaît même pas l'existence de `Trip`, `Book` et `Toy` car il n'en a pas besoin. Il n'a accès qu'au minimum d'informations que lui fournit `Present`.
+Cette méthode est extrêmement utile pour supprimer la dépendance d'une classe envers une autre. Ici, `ListViewController` ne connaît même pas l'existence de `Trip`, `Book` et `Toy,` car il n'en a pas besoin. Il n'a accès qu'au minimum d'informations que lui fournit `Present`.
 
 #### En résumé
 - Les protocoles permettent de gérer des collections de types hétérogènes.
@@ -273,7 +273,7 @@ Dans ce chapitre, nous allons modifier l'aspect de nos cellules pour qu'elles so
 
 ![](Images/P3/P3C2_1.png)
 
-Vous allez voir que ces celulles sont particulièrement flexibles et c'est ce qui fait une bonne partie de la puissance des Table View. Vous allez donc la plupart du temps travailler avec des cellules de votre création.
+Vous allez voir que ces cellules sont particulièrement flexibles et c'est ce qui fait une bonne partie de la puissance des Table View. Vous allez donc la plupart du temps travailler avec des cellules de votre création.
 
 #### Design dans le storyboard
 
@@ -281,13 +281,13 @@ Nous allons commencer par revoir le design directement dans le storyboard.
 
 ##### Couleur de fond
 
-Démarrons avec la couleur de fond de notre Table View. Choisissez la Table View et modifier la couleur de fond dans l'inspecteur d'attributs (comme d'habitude dans la section *View*).
+Démarrons avec la couleur de fond de notre Table View. Choisissez la Table View et modifiez la couleur de fond dans l'inspecteur d'attributs (comme d'habitude dans la section *View*).
 
 ![](Images/P3/P3C2_2.png)
 
 ##### Séparateurs
 
-Notre nouveau design nous permet de nous passer des séparateurs proposés par défaut dans une Table View, je vous suggère de supprimer ces séparateurs. Pour cela, sélectionnez la Table View et passer le paramètre *Separator* à *None* dans l'inspecteur d'attributs. 
+Notre nouveau design nous permet de nous passer des séparateurs proposés par défaut dans une Table View, je vous suggère de supprimer ces séparateurs. Pour cela, sélectionnez la Table View et passez le paramètre *Separator* à *None* dans l'inspecteur d'attributs. 
 
 ![](Images/P3/P3C2_2_bis.png)
 
@@ -299,13 +299,13 @@ Nous allons maintenant agrandir la taille de la cellule. Pour cela, sélectionne
 
 ##### Couleur de fond de la cellule
 
-Comme vous pouvez le voir dans la hiérchie des vues, la cellule a une Content View. C'est cette view qui, comme son nom l'indique, *contient* l'ensemble des vues qui seront affichées dans la cellule.
+Comme vous pouvez le voir dans la hiérarchie des vues, la cellule a une Content View. C'est cette view qui, comme son nom l'indique, *contient* l'ensemble des vues qui seront affichées dans la cellule.
 
 ![](Images/P3/P3C2_4.png)
 
-Cette vue est simplement de type `UIView`. Je vous invite à changer sa couleur à pour qu'elle soit verte et se fondent avec la couleur de fond de la Table View. Cela va nous permettre de voir le fond vert de la Table View et obtenir l'effet désiré.
+Cette vue est simplement de type `UIView`. Je vous invite à changer sa couleur pour qu'elle soit verte et se fonde avec la couleur de fond de la Table View. Cela va nous permettre de voir le fond vert de la Table View et obtenir l'effet désiré.
 
-##### Contenu de la celulle
+##### Contenu de la cellule
 Ça y est ! Nous allons nous attaquer au design de la cellule en elle-même. Pour cela, il faut d'abord changer le style de la vue à custom dans l'inspecteur d'attribut. 
 
 ![](Images/P3/P3C2_5.png)
@@ -316,8 +316,8 @@ Regardons un peu le résultat que l'on souhaite obtenir :
 
 Il y a donc 4 vues :
 
-- Une vue blanche avec un effet ombrée qui ne prends pas tout à fait tout le contenu de la cellule.
-- Une icône qui dépends de la catégorie de l'élément.
+- Une vue blanche avec un effet ombrée qui ne prend pas tout à fait tout le contenu de la cellule.
+- Une icône qui dépend de la catégorie de l'élément.
 - Un label de titre
 - Un label de détail
 
@@ -330,14 +330,14 @@ Maintenant que notre cellule est toute belle, il va falloir l'utiliser ! Pour ce
 
 Le problème, c'est que `UITableViewCell` ne connaît pas ces vues que nous avons ajoutées.
 
-Alors comment faire ? La solution est simple, nous allons créer une sous-classe de `UITableViewCell` et lui ajouter nos vues sous forme de propriétés.
+Alors, comment faire ? La solution est simple, nous allons créer une sous-classe de `UITableViewCell` et lui ajouter nos vues sous forme de propriétés.
 
 ##### Création de la classe
 Créez un nouveau fichier <keyboard>cmd + n<keyboard> et choisissez *Cocoa Touch Class* :
 
 ![](Images/P3/P3C2_8.png)
 
-Ensuite choisissez de créer une sous-classe de `UITableViewCell`. Puis nommez la `PresentTableViewCell` (car elle va servir à afficher des cadeaux) :
+Ensuite, choisissez de créer une sous-classe de `UITableViewCell`. Puis nommez la `PresentTableViewCell` (car elle va servir à afficher des cadeaux) :
 
 ![](Images/P3/P3C2_9.png)
 
@@ -363,11 +363,11 @@ class PresentTableViewCell: UITableViewCell {
 Dans ce fichier, on vous propose de faire l'override de deux méthodes de `UITableViewCell` :
 
 - `awakeFromNib` : cette méthode est utilisée lorsqu'une vue est initialisée depuis un storyboard. C'est ici que vous pouvez customiser votre cellule. Par exemple, dans notre cas, nous allons rajouter une ombre sur notre vue blanche.
-- `setSelected` : cette méthode vous permettra de modifier l'aspect selon l'état de la vue : sélectionnée ou non. Nous n'en auront pas besoin, donc vous pouvez supprimer cette méthode.
+- `setSelected` : cette méthode vous permettra de modifier l'aspect selon l'état de la vue : sélectionnée ou non. Nous n'en aurons pas besoin, donc vous pouvez supprimer cette méthode.
 
-> **:information_source:** Dans ce cours, on n'abordera pas la sélection d'une cellule mais vous devez savoir qu'une cellule peut être sélectionnée dans une Table View. Par exemple dans une liste d'emails, vous pouvez sélectionner l'un d'entre eux pour accéder à l'email complet. Si vous voulez apprendre à gérer la sélection d'une cellule, je vous recommande [ce tutoriel rapide](https://www.simplifiedios.net/ios-tableview-tutorial-handling-clicks/).
+> **:information_source:** Dans ce cours, on n'abordera pas la sélection d'une cellule, mais vous devez savoir qu'une cellule peut être sélectionnée dans une Table View. Par exemple dans une liste d'emails, vous pouvez sélectionner l'un d'entre eux pour accéder à l'email complet. Si vous voulez apprendre à gérer la sélection d'une cellule, je vous recommande [ce tutoriel rapide](https://www.simplifiedios.net/ios-tableview-tutorial-handling-clicks/).
 
-##### Connection avec le storyboard
+##### Connexion avec le storyboard
 Maintenant, il nous faut modifier le type de notre cellule pour lui dire que désormais elle utilise le type `PresentTableViewCell`. Pour cela, sélectionnez la cellule dans le storyboard, allez dans l'inspecteur d'identité et modifiez sa classe :
 
 ![](Images/P3/P3C2_10.png)
@@ -465,7 +465,7 @@ Maintenant qu'on sait qu'on à affaire à une `PresentTableViewCell`, on va pouv
 
 ```swift
 let present = PresentService.shared.presents[indexPath.row]
-cell.configure(withIcon: "A FAIRE", title: present.description, subtitle: present.detail)
+cell.configure(withIcon: "À FAIRE", title: present.description, subtitle: present.detail)
 ```
 
 Vous noterez ici que je ne me suis pas encore occupé de l'icône. Le problème, c'est que notre protocole `Present` n'a pas de propriété `icon` qui contiendrait le nom d'une image.
@@ -480,7 +480,7 @@ protocol Present {
 }
 ```
 
-Il faut maintenant que nos trois types `Trip`, `Book` et `Toy` se conforment à cette nouvelle exigence. Pour cela, vous pouvez remarquez dans les assets du projet que j'ai rajouté pour vous trois images nommées respectivement `TripIcon`, `BookIcon` et `ToyIcon`.
+Il faut maintenant que nos trois types `Trip`, `Book` et `Toy` se conforment à cette nouvelle exigence. Pour cela, vous pouvez remarquer dans les assets du projet que j'ai rajouté pour vous trois images nommées respectivement `TripIcon`, `BookIcon` et `ToyIcon`.
 
 C'est ce que nous allons utiliser :
 
@@ -518,7 +518,7 @@ Pour créer une cellule customisée, vous devez :
 - Créer une sous-classe de `UITableViewCell`.
 - Connecter cette sous-classe à votre cellule dans le storyboard.
 - Créer les outlets dont vous avez besoin.
-- Créer une méthode qui vous permettre de configurer facilement votre cellule.
+- Créer une méthode qui vous permette de configurer facilement votre cellule.
 - Utiliser votre nouvelle classe et sa méthode de configuration dans votre contrôleur.
 
 Dans le prochain chapitre, nous allons apprendre à supprimer des éléments de votre liste.
@@ -534,14 +534,14 @@ Un petit malin m'a piqué mon téléphone et s'est amusé à écrire n'importe q
 
 Pour y arriver, nous allons revenir sur le delegate pattern. Vous vous souvenez, dans la partie précédente, nous avons utilisé le delegate pattern avec le protocole `UITableViewDataSource` pour remplir notre Table View.
 
-**Il existe un autre protocole qui utilise le delegate pattern** et il se nomme `UITableViewDelegate`. Il fonctionne exactement comme `UITableViewDataSource` mais son rôle est différent :
+**Il existe un autre protocole qui utilise le delegate pattern** et il se nomme `UITableViewDelegate`. Il fonctionne exactement comme `UITableViewDataSource,` mais son rôle est différent :
 
 - `UITableViewDataSource` permet de **fournir les données** à la Table View.
 - `UITableViewDelegate` permet de **gérer certaines actions** de la Table View comme la sélection des cellules, la suppression de cellules, la réorganisation de la liste ou la configuration des différents header et footer et d'autres.
 
 C'est donc avec `UITableViewDelegate` qu'on va pouvoir supprimer des cellules de notre liste !
 
-> **:information_source:** `UITableViewDelegate` est pas mal lié à des évènements qui peuvent avoir lieu sur la liste. Dès qu'un évènement à lieu, la Table View passe par son delegate pour demander quoi faire. C'est la raison pour laquelle en iOS, les méthodes d'un delegate commence souvent par des mots comme *should*, *can*, *will*, *did*, etc.
+> **:information_source:** `UITableViewDelegate` est pas mal lié à des évènements qui peuvent avoir lieu sur la liste. Dès qu'un évènement a lieu, la Table View passe par son delegate pour demander quoi faire. C'est la raison pour laquelle en iOS, les méthodes d'un delegate commencent souvent par des mots comme *should*, *can*, *will*, *did*, etc.
 
 Il ne nous reste plus qu'à implémenter ce delegate. Je vous redonne les 4 étapes de la création du delegate pattern :
 
@@ -550,7 +550,7 @@ Il ne nous reste plus qu'à implémenter ce delegate. Je vous redonne les 4 éta
 3. Le contrôleur s'engage à répondre aux questions sur la liste.
 4. Le contrôleur répond effectivement aux questions.
 
-> **:warning:** La première est faîte, il s'agit du protocole `UITableViewDelegate`. Je vous invite à essayer de faire par vous même les deux suivantes. C'est exactement pareil que dans la partie précédente. Je vous donne la correction juste en dessous.
+> **:warning:** La première est faite, il s'agit du protocole `UITableViewDelegate`. Je vous invite à essayer de faire par vous même les deux suivantes. C'est exactement pareil que dans la partie précédente. Je vous donne la correction juste en dessous.
 
 On va utiliser le storyboard avec un control drag depuis la Table View vers le contrôleur pour nommer le contrôleur delegate de la Table View.
 
@@ -573,7 +573,7 @@ Voici à quoi ressemble la méthode qui permet de gérer l'édition et donc la s
 func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
 ```
 
-Cette méthode prends en paramètre `editingStyle` qui est une énumération qui contient les différents styles d'éditions (`none`, `insert`, `delete`). Ici c'est bien sûr `delete` qui va nous intéresser. Et en deuxième paramètre, vous avez l'index de la cellule qui subit l'édition.
+Cette méthode prend en paramètre `editingStyle` qui est une énumération qui contient les différents styles d'éditions (`none`, `insert`, `delete`). Ici c'est bien sûr `delete` qui va nous intéresser. Et en deuxième paramètre, vous avez l'index de la cellule qui subit l'édition.
 
 Pour implémenter cette méthode, on va commencer par se placer dans le cas d'édition qui nous intéresse : la suppression.
 
@@ -584,7 +584,7 @@ func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEdi
 }
 ```
 
-Maintenant nous allons pouvoir gérer la suppression. Et pour cela, il y une règle que vous devez suivre, sans quoi votre code va planter :
+Maintenant nous allons pouvoir gérer la suppression. Et pour cela, il y a une règle que vous devez suivre, sans quoi votre code va planter :
 
 > **On supprime d'abord les données correspondant à la cellule puis on supprime la cellule.**
 
@@ -614,7 +614,7 @@ func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEdi
 }
 ```
 
-On utilise ici `indexPath.row` pour supprimer le bon élement du tableau. Et enfin, pour supprimer la cellule, on utilise la méthode `deleteRows` de `UITableView` :
+On utilise ici `indexPath.row` pour supprimer le bon élément du tableau. Et enfin, pour supprimer la cellule, on utilise la méthode `deleteRows` de `UITableView` :
 
 ```swift
 func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -625,9 +625,9 @@ func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEdi
 }
 ```
 
-Cette méthode prends en paramètre un tableau des index des cellules à supprimer. C'est pourquoi on lui passe un tableau contenant un seul élément : l'index de la cellule à supprimer. Le deuxième argument est une énumération de type `UITableViewRowAnimation` qui permet de choisir parmi différents styles de suppression de la cellule.
+Cette méthode prend en paramètre un tableau des index des cellules à supprimer. C'est pourquoi on lui passe un tableau contenant un seul élément : l'index de la cellule à supprimer. Le deuxième argument est une énumération de type `UITableViewRowAnimation` qui permet de choisir parmi différents styles de suppression de la cellule.
 
-Et voilà ces quelques lignes de code suffisent à ajouter la fonctionnalité désirée. Si vous lancez le simulateur et que vous glissez une cellule vers la gauche, vous devriez obtenir ceci :
+Et voilà ! Ces quelques lignes de code suffisent à ajouter la fonctionnalité désirée. Si vous lancez le simulateur et que vous glissez une cellule vers la gauche, vous devriez obtenir ceci :
 
 ![](Images/P3/P3C3_3.png)
 
@@ -638,3 +638,35 @@ Pour ajouter la fonctionnalité de suppression à vos listes, il faut :
 
 - Utiliser le delegate pattern avec `UITableViewDelegate`
 - Implémenter la méthode `tableViewCommitEditingStyleForRowAtIndexPath`  
+
+### Conclusion
+
+Bravo ! Si vous en êtes arrivés jusque là, c'est que vous êtes maintenant des maîtres de la Table View et des protocoles.
+
+Ne laissez pas tomber ces compétences, comme je vous l'ai dit, les listes sont partout et vous serez très vite confronté à leur utilisation, quelle que soit l'application que vous allez créer.
+
+#### En résumé
+
+On a parlé ensemble des protocoles. Les protocoles sont une notion finalement assez simple de Swift, mais qui peut perturber au démarrage, car le concept est assez éloigné des classes et structures que vous avez vues jusqu'à présent.
+
+Souvenez-vous d'une seule chose, **un protocole n'est qu'une liste d'exigences**. De tout ce qu'on a vu ensemble, les protocoles, c'est le sujet que je veux que vous reteniez. Certains développeurs ont peur de s'y frotter et restent bien au chaud dans leur orienté objet. Ne soyez pas de ceux-là, car les protocoles sont très puissants en Swift, à tel point que beaucoup parlent de Swift comme le premier langage orienté protocole.
+
+> **:information_source:** Je vous redirige vers cette [excellente vidéo d'Apple](https://developer.apple.com/videos/play/wwdc2015/408/) sur l'orienté protocole. Vous ne pouvez pas passer à côté.
+
+Ensuite, vous avez appris à créer et gérer des Table View. Je ne vais pas réinsister sur l'omniprésence de ce composant en iOS, mais vous venez de rajouter un gros outil dans votre caisse. Vous allez tellement en avoir besoin que je sais que vous allez le maîtriser sans problème.
+
+Je vous suggère, du coup, de ne pas vous concentrer sur les Table View, mais de vous assurer que avez bien compris le principe du delegate pattern. Les Table View n'en sont qu'une application après tout. La seule difficulté est là donc relisez les chapitres sur le sujet et documentez-vous jusqu'à ce que vous soyez convaincu que ce pattern est maîtrisé, car il est l'un des plus répandus en iOS.
+
+#### Et maintenant ?
+
+Pour la suite, je vous suggère de vous reprendre vos projets précédents avec un oeil neuf. Entraînez-vous à modifier votre code pour prendre appui sur les protocoles dès que vous le pouvez. Essayez par exemple de remplacer vos classes et vos héritages par des structures et des protocoles.
+
+Par ailleurs, si vous souhaitez mettre en application vos compétences, lancez-vous dans la création d'une application qui affiche une liste.
+
+Et encore mieux, essayez de refaire la démo Whishmas de ce projet en remplaçant la liste par une grille. Vous allez devoir vous frotter aux Collection View ! Une fois passées les premières différences, vous allez vite vous rendre compte que les mécanismes sont très proches !
+
+En attendant, il ne me reste plus qu'à vous laisser avec le mot de la fin. Et le mot de la fin évidemment, c'est :
+
+![Oui, j'ai manqué d'inspiration sur ce meme...](Images/P3/P3C4_1.jpg)
+
+

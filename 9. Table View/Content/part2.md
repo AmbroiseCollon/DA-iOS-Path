@@ -663,7 +663,7 @@ class ListViewController: UIViewController {
 }
 ```
 
-Je créé une référence de mon `ListViewController` vers ma propriété `tableView`. Tant que mon contrôleur est dans la mémoire (et généralement il y reste tant qu'il est présent dans ma navigation), ma Table View sera là aussi. C'est bien rassurant au final !
+Je créé une référence de mon `ListViewController` vers ma propriété `tableView`. Tant que mon contrôleur est dans la mémoire (et généralement il y reste tant qu'il est présent dans ma navigation), ma Table View sera là aussi. C'est bien rassurant finalement !
 
 #### Le mot-clé weak
 
