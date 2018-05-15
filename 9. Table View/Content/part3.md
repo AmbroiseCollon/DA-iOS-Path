@@ -524,10 +524,117 @@ Pour créer une cellule customisée, vous devez :
 Dans le prochain chapitre, nous allons apprendre à supprimer des éléments de votre liste.
 
 ### Supprimez une cellule
-Section 1 : Ajout de la méthode      
-Section 2 : Test sur l’iPhone       
+Notre liste est maintenant belle en plus d'être fonctionnelle ! Mais il y a un petit truc qui me chagrine et vous allez voir tout de suite de quoi je parle avec cette image.
 
-### Réutilisez vos animations avec les protocoles
-Section 1 : Création du protocole      
-Section 2 : Explication de l’extension de protocole      
-Section 3 : La vue adopte le protocole    
+![](Images/P3/P3C3_1.png)
+
+Un petit malin m'a piqué mon téléphone et s'est amusé à écrire n'importe quoi dans ma liste. Or pour l'instant, on ne peut pas supprimer les éléments de notre liste. On va changer ça dans ce chapitre.
+
+#### Un deuxième delegate
+
+Pour y arriver, nous allons revenir sur le delegate pattern. Vous vous souvenez, dans la partie précédente, nous avons utilisé le delegate pattern avec le protocole `UITableViewDataSource` pour remplir notre Table View.
+
+**Il existe un autre protocole qui utilise le delegate pattern** et il se nomme `UITableViewDelegate`. Il fonctionne exactement comme `UITableViewDataSource` mais son rôle est différent :
+
+- `UITableViewDataSource` permet de **fournir les données** à la Table View.
+- `UITableViewDelegate` permet de **gérer certaines actions** de la Table View comme la sélection des cellules, la suppression de cellules, la réorganisation de la liste ou la configuration des différents header et footer et d'autres.
+
+C'est donc avec `UITableViewDelegate` qu'on va pouvoir supprimer des cellules de notre liste !
+
+> **:information_source:** `UITableViewDelegate` est pas mal lié à des évènements qui peuvent avoir lieu sur la liste. Dès qu'un évènement à lieu, la Table View passe par son delegate pour demander quoi faire. C'est la raison pour laquelle en iOS, les méthodes d'un delegate commence souvent par des mots comme *should*, *can*, *will*, *did*, etc.
+
+Il ne nous reste plus qu'à implémenter ce delegate. Je vous redonne les 4 étapes de la création du delegate pattern :
+
+1. On crée une liste de questions que la vue peut poser.
+2. La vue nomme un objet son delegate, en l'occurrence notre contrôleur.
+3. Le contrôleur s'engage à répondre aux questions sur la liste.
+4. Le contrôleur répond effectivement aux questions.
+
+> **:warning:** La première est faîte, il s'agit du protocole `UITableViewDelegate`. Je vous invite à essayer de faire par vous même les deux suivantes. C'est exactement pareil que dans la partie précédente. Je vous donne la correction juste en dessous.
+
+On va utiliser le storyboard avec un control drag depuis la Table View vers le contrôleur pour nommer le contrôleur delegate de la Table View.
+
+![](Images/P3/P3C3_2.gif)
+
+Ensuite, il faut que le contrôleur adopte le protocole. Et nous allons faire ça comme d'habitude avec une extension :
+
+```swift
+extension ListViewController: UITableViewDelegate {
+}
+```
+
+Dans cette extension, nous allons pouvoir maintenant ajouter les méthodes de notre delegate.
+
+#### Implémentation de la méthode
+
+Voici à quoi ressemble la méthode qui permet de gérer l'édition et donc la suppression d'une cellule :
+
+```swift
+func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+```
+
+Cette méthode prends en paramètre `editingStyle` qui est une énumération qui contient les différents styles d'éditions (`none`, `insert`, `delete`). Ici c'est bien sûr `delete` qui va nous intéresser. Et en deuxième paramètre, vous avez l'index de la cellule qui subit l'édition.
+
+Pour implémenter cette méthode, on va commencer par se placer dans le cas d'édition qui nous intéresse : la suppression.
+
+```swift
+func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+    }
+}
+```
+
+Maintenant nous allons pouvoir gérer la suppression. Et pour cela, il y une règle que vous devez suivre, sans quoi votre code va planter :
+
+> **On supprime d'abord les données correspondant à la cellule puis on supprime la cellule.**
+
+Autrement dit, dans notre cas, il faut d'abord supprimer l'élément dans notre tableau `presents` puis on supprimera la cellule.
+
+> **:information_source:** L'idée, c'est que les données et la Table View doivent **toujours rester synchronisés**. 
+
+
+Pour cela, nous allons rajouter la méthode `removePresent` dans notre classe `PresentService` :
+
+```swift
+class PresentService {
+	// (...)
+    func removePresent(at index: Int) {
+        presents.remove(at: index)
+    }
+}
+```
+
+Maintenant, nous allons l'utiliser dans notre méthode d'édition de la Table View :
+
+```swift
+func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+        PresentService.shared.removePresent(at: indexPath.row)
+    }
+}
+```
+
+On utilise ici `indexPath.row` pour supprimer le bon élement du tableau. Et enfin, pour supprimer la cellule, on utilise la méthode `deleteRows` de `UITableView` :
+
+```swift
+func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+        PresentService.shared.removePresent(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+}
+```
+
+Cette méthode prends en paramètre un tableau des index des cellules à supprimer. C'est pourquoi on lui passe un tableau contenant un seul élément : l'index de la cellule à supprimer. Le deuxième argument est une énumération de type `UITableViewRowAnimation` qui permet de choisir parmi différents styles de suppression de la cellule.
+
+Et voilà ces quelques lignes de code suffisent à ajouter la fonctionnalité désirée. Si vous lancez le simulateur et que vous glissez une cellule vers la gauche, vous devriez obtenir ceci :
+
+![](Images/P3/P3C3_3.png)
+
+En glissant la cellule jusqu'au bout à gauche ou en cliquant sur *Delete*, la cellule est supprimée de la liste.
+
+#### En résumé
+Pour ajouter la fonctionnalité de suppression à vos listes, il faut :
+
+- Utiliser le delegate pattern avec `UITableViewDelegate`
+- Implémenter la méthode `tableViewCommitEditingStyleForRowAtIndexPath`  
