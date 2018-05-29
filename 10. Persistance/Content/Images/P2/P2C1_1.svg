@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="236px" viewBox="0 0 800 236" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>P2C1_1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P2C1_1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M202.5,160.5 L204,162" id="Line" stroke="#979797" stroke-linecap="square"></path>
+        <text id="User-Defaults" font-family="SFUIDisplay-Medium, SF UI Display" font-size="40" font-weight="400" fill="#FFFFFF">
+            <tspan x="269" y="48">User Defaults</tspan>
+        </text>
+        <rect id="Rectangle" stroke="#FFFFFF" stroke-width="2" fill="#F5CC6F" x="144" y="69" width="490" height="139"></rect>
+        <rect id="Rectangle" stroke="#FFFFFF" stroke-width="2" fill="#F2676B" x="144" y="69" width="246" height="139"></rect>
+        <path d="M634,104 L144,104" id="Line-10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"></path>
+        <path d="M634,157 L144,157" id="Line-10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"></path>
+        <text id="Pierre" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="481" y="140">Pierre</tspan>
+        </text>
+        <text id="Valeur" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#FFFFFF">
+            <tspan x="477" y="96">Valeur</tspan>
+        </text>
+        <text id="Clé" font-family="SFUIDisplay-Medium, SF UI Display" font-size="25" font-weight="400" fill="#FFFFFF">
+            <tspan x="249" y="96">Clé</tspan>
+        </text>
+        <text id="name" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="236" y="140">name</tspan>
+        </text>
+        <text id="useDarkMode" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="189" y="193">useDarkMode</tspan>
+        </text>
+        <text id="true" font-family="SFUIDisplay-Light, SF UI Display" font-size="25" font-weight="300" fill="#FFFFFF">
+            <tspan x="491" y="193">true</tspan>
+        </text>
+    </g>
+</svg>
