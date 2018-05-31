@@ -182,12 +182,337 @@ Et voilà ! Notre relation est parfaitement configurée !
 
 Dans le prochain chapitre, nous allons utiliser notre nouvelle entité `Spending` pour sauvegarder nos dépenses ! 
 
-### Sauvegardez et récupérer vos données
-Section 1 : Save sur les spendings  
-Section 2 : FetchRequest pour remplir la table view  
+### Sauvegardez vos dépenses
+Dans ce chapitre, nous allons utiliser notre entité `Spending` pour sauvegarder les dépenses.
+
+#### Supprimer la solution existante
+Jusqu'à présent, le mécanisme qu'on utilisait pour sauvegarder les dépenses, c'était `SpendingService`. Cette classe utilisait le Singleton Pattern pour stocker les données dans un tableau `spendings`.
+
+Bien sûr, maintenant on va utiliser Core Data, donc je vous invite à supprimer le fichier `SpendingService.swift`.
+
+> **:warning:** Cela engendre un paquet d'erreurs mais on va résoudre tout ça !
+
+#### Sauvegarde de la dépense
+
+Les dépenses sont ajoutés dans l'interface `AddSpendingViewController` lors de l'appui sur le bouton `Save`. Côté code, cela a lieu dans la méthode `save` que voici :
+
+```swift
+@IBAction func save() {
+    guard let content = contentTextField.text,
+        let amountText = amountTextField.text,
+        let amount = Double(amountText) else {
+            return
+    }
+
+    let spending = Spending(content: content, amount: amount)
+    SpendingService.shared.add(spending: spending)
+
+    navigationController?.popViewController(animated: true)
+}
+```
+
+Cette méthode fait trois choses :
+
+- Elle récupère les informations du formulaire.
+- Elle crée et sauvegarde un objet `Spending` avec `SpendingService`.
+- Elle renvoie l'utilisateur vers la liste des dépenses.
+
+Bien sûr, nous allons modifier la deuxième étape. A la place, nous allons créer notre objet Core Data et le sauvegarder.
+
+On va faire ça exactement comme pour `Person` tout à l'heure :
+
+```swift
+@IBAction func save() {
+    guard let content = contentTextField.text,
+        let amountText = amountTextField.text,
+        let amount = Double(amountText) else {
+            return
+    }
+
+    let spending = Spending(context: AppDelegate.viewContext)
+    spending.content = content
+    spending.amount = amount
+    try? AppDelegate.viewContext.save()
+
+    navigationController?.popViewController(animated: true)
+}
+```
+
+On initialise notre objet en lui passant le contexte `AppDelegate.viewContext`, ensuite on remplit ses propriétés et on sauvegarde le contexte. Pas grand-chose de neuf ici.
+
+#### Ajout de la relation
+Notre objet `Spending` a une troisième propriété : `person`. Cette propriété fait le lien avec notre autre entité `Person`. Pour créer la relation, il nous suffit de donner à la propriété la personne choisie par l'utilisateur dans le Picker View.
+
+On va récupérer cette personne dans une méthode privée à part :
+
+```swift
+private func getSelectedPerson() -> Person? {
+    if persons.count > 0 {
+        let index = personPickerView.selectedRow(inComponent: 0)
+        return persons[index]
+    }
+    return nil
+}
+```
+
+On la récupère dans notre tableau `persons` en utilisant l'index de la ligne sélectionnée par l'utilisateur dans le Picker View.
+
+Ensuite, on va l'utiliser au moment de la création de notre objet `Spending` et le code complet donne :
+
+```swift
+@IBAction func save() {
+    guard let content = contentTextField.text,
+        let amountText = amountTextField.text,
+        let amount = Double(amountText) else {
+            return
+    }
+
+    let spending = Spending(context: AppDelegate.viewContext)
+    spending.content = content
+    spending.amount = amount
+    spending.person = getSelectedPerson() // <===
+    try? AppDelegate.viewContext.save()
+
+    navigationController?.popViewController(animated: true)
+}
+
+private func getSelectedPerson() -> Person? {
+    if persons.count > 0 {
+        let index = personPickerView.selectedRow(inComponent: 0)
+        return persons[index]
+    }
+    return nil
+}
+```
+
+On utilise tout simplement la propriété `person`. On fait toujours de l'orienté objet classique !
+
+> **:warning:** Il est important que vous sachiez que lorsqu'on relie deux objets, **il faut absolument que les deux objets soient manipulés par le même contexte**. Dans notre application, on utilise seulement `viewContext` donc on sait que notre objet `Person` est forcément dans le même contexte que `Spending`. Mais il pourra vous arriver de jongler entre plusieurs contextes, notamment si vous faîtes du multithreadind donc faîtes attention à ça.
+
+Et voilà notre dépense est sauvegardé dans Core Data ! Dans le prochain chapitre, nous allons récupérer nos données pour les afficher dans notre liste de dépenses !
+
+### Récupérez les dépenses
+Nos dépenses sont maintenant sauvegardées dans Core Data. On va les récupérer pour les afficher dans notre liste.
+
+#### Récupération des données
+Vous savez déjà récupérer des données, on l'a fait avec `Person` précédemment. On va donc faire exactement et on va faire ça directement côté modèle dans notre classe `Spending`.
+
+```swift
+class Spending: NSManagedObject {
+    static var all: [Spending] {
+        let request: NSFetchRequest<Spending> = Spending.fetchRequest()
+        guard let spendings = try? AppDelegate.viewContext.fetch(request) else { return [] }
+        return spendings
+    }
+}
+```
+
+C'est exactement le même code que tout à l'heure pour la classe Person. On récupère toutes les dépenses dans une propriété statique calculée `all`.
+
+#### Affichage des données
+On n'a plus qu'à afficher les données dans la liste. Pour ça, on va commencer par récupérer les données dans une propriété `spendings` :
+
+```swift
+class ListViewController: UIViewController {
+	// (...)
+    var spendings = Spending.all
+}
+```
+
+Et nous allons utiliser cette propriété pour remplir notre Table View :
+
+```swift
+extension ListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return spendings.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SpendingCell", for: indexPath)
+
+        let spending = spendings[indexPath.row]
+        cell.textLabel?.text = spending.content
+        cell.detailTextLabel?.text = "\(spending.amount) \(SettingsService.currency)"
+
+        return cell
+    }
+}
+```
+
+Notre Table View affiche maintenant les données issues de Core Data !
+
+Il nous reste une toute petite chose à faire. On veut que les données soient mises à jour dès qu'on revient sur la liste.
+
+Pour cela, il faut réclamer nos données à chaque fois que la vue apparaît, juste avant le rechargement de la liste. On va donc faire ça dans `viewDidAppear` :
+
+```swift
+class ListViewController: UIViewController {
+	// (...)
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        spendings = Spending.all
+        tableView.reloadData()
+    }
+}
+```
+
+Et voilà ! Nos données seront récupérées sur la base à chaque fois que la vue apparaît !
+
+#### Organiser les données
+
+Tout ça c'est très bien... mais on peut faire mieux ! Notre liste n'est pas du tout organisée. Tout est mélangé, il n'y a pas d'ordre. Ce serait quand même beaucoup mieux si on pouvait organiser nos dépenses par participants et par prix.
+
+L'objectif est le suivant :
+
+![](Images/P4/P4C3_1.png)
+
+On va créer des sections qui seront organisées par participant. Et à l'intérieur, les dépenses vont être rangées par ordre croissant.
+
+Pour pouvoir organiser la liste ainsi, il faut préalablement que les données le soient. Pour récupérer des données dans un ordre particulier, il faut utiliser la propriété `sortDescriptors` de `NSFetchRequest`.
+
+Il faut fournir à `sortDescriptors` un tableau de `NSSortDescriptor`. `NSSortDescriptor` permet de préciser la clé avec laquelle on souhaite ranger les données. On l'utilise comme ceci :
+
+```swift
+NSSortDescriptor(key: "amount", ascending: true),
+```
+
+Ici, je demande de trier les données selon le prix des dépenses par ordre croissant. **Je peux aussi fournir comme clé l'attribut d'une autre entité à laquelle je suis relié** en utilisant le point :
+
+```swift
+NSSortDescriptor(key: "person.name", ascending: true),
+```
+
+Ici je demande de trier dans l'ordre des participants, en utilisant leur nom.
+
+Maintenant, si je mets tout ça ensemble ça donne :
+
+```swift
+class Spending: NSManagedObject {
+    static var all: [Spending] {
+        let request: NSFetchRequest<Spending> = Spending.fetchRequest()
+        
+        // Je fournis un tableau de NSSortDescriptors
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "person.name", ascending: true),
+            NSSortDescriptor(key: "amount", ascending: true)
+        ]
+        guard let spendings = try? AppDelegate.viewContext.fetch(request) else { return [] }
+        return spendings
+    }
+}
+```
+
+Ici je donne deux `NSSortDescriptor` à ma requête. Cela signifie que je veux d'abord que les données soient ordonnées par participant. Et ensuite pour chaque participant, je souhaite obtenir les données rangées par prix croissant. 
+
+#### Organiser la liste
+
+Comme je vais utiliser des sections dans ma liste pour afficher mes données, ce serait pratique si mes données étaient organisées selon des sections aussi. Pour cela, on utilise un tableau de tableau. En gros, le premier niveau contient les sections et le deuxième les cellules.
+
+Pour l'instant, on a un tableau de `Spending`, donc l'objectif est d'en faire un tableau de tableau de `Spending` :
+
+![](Images/P4/P4C3_2.png)
+
+On va juste réorganiser les données à l'intérieur du tableau pour les mettre dans des tableaux par participant.
+
+Je vous donne le code pour faire cela, ce n'est pas le plus important. Vous pouvez copier ceci dans votre fichier `Spending.swift` :
+
+```swift
+extension Array where Element == Spending {
+    var convertedToArrayOfArray: [[Spending]] {
+        var dict = [Person: [Spending]]()
+
+        for spending in self where spending.person != nil {
+            dict[spending.person!, default: []].append(spending)
+        }
+
+        var result = [[Spending]]()
+        for (_, val) in dict {
+            result.append(val)
+        }
+
+        return result
+    }
+}
+```
+
+Et ensuite, vous pouvez utiliser la propriété `convertedToArrayOfArray` dans votre code :
+
+```swift
+class Spending: NSManagedObject {
+    static var all: [[Spending]] { // Pensez à changez le type ici !
+        let request: NSFetchRequest<Spending> = Spending.fetchRequest()
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "person.name", ascending: true),
+            NSSortDescriptor(key: "amount", ascending: true)
+        ]
+        guard let spendings = try? AppDelegate.viewContext.fetch(request) else { return [] }
+        return spendings.convertedToArrayOfArray // <===
+    }
+}
+```
+
+Maintenant, on peut modifier notre Table View pour prendre en compte cette nouvelle organisation de nos données :
+
+```swift
+extension ListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return spendings.count // <====
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return spendings[section].count // <====
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SpendingCell", for: indexPath)
+
+        let spending = spendings[indexPath.section][indexPath.row] // <====
+        cell.textLabel?.text = spending.content
+        cell.detailTextLabel?.text = "\(spending.amount) \(SettingsService.currency)"
+
+        return cell
+    }
+}
+```
+
+Ensuite, on peut modifier le titre de nos sections avec la méthode `titleForSection` de `UITableViewDataSource`.
+
+```swift
+func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    // Je récupère le nom du participant
+    guard let person = spendings[section].first?.person, let name = person.name else {
+        return nil
+    }
+
+    // Je calcule le total de ses dépenses
+    var totalAmount = 0.0
+    for spending in spendings[section] {
+        totalAmount += spending.amount
+    }
+
+    // Je renvoie le nom du participant avec le total de ses dépenses
+    // dans la monnaie choisie par l'utilisateur
+    return name + " (\(totalAmount) \(SettingsService.currency))"
+}
+```
+
+Et voilà ! Vous pouvez tester et vos données maintenant sont bien organisées !
+
+#### En résumé
+- On peut utiliser la propriété `sortDescriptors` de `NSFetchRequest` pour ordonner les données.
+- On peut lui passer plusieurs `NSSortDescriptor` pour un tri sur plusieurs niveaux. 
+
+C'est tout pour notre démo ! On a fini notre application Cekikapeye ! Bravo !
+
+Dans ce cours, je n'ai le temps de vous faire qu'une introduction de Core Data. Mais c'est une technologie très riche et très puissante avec pleins de fonctionnalités. Donc j'ai décidé dans le prochain chapitre de vous donner plusieurs aperçus de ses nombreuses possibilités.
 
 ### Allez plus loin avec Core Data
-Section 1 : Predicate  
+Section 1 : Undo / Redo  
 Section 2 : NSFetchResultController  
 Section 3 : Migration  
 
