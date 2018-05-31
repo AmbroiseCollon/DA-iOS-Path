@@ -2,7 +2,7 @@
 
 ### Prenez en main Core Data
 
-Nous allons maintenant nous attaquer au gros morceau de ce cours : **Core Data** ! 
+Nous allons maintenant nous attaquer au gros morceau de ce cours : **Core Data** !
 
 ![](Images/P3/P3C1_1.jpg)
 
@@ -32,13 +32,13 @@ Concrètement, voici comment Core Data fonctionne :
 
 ```swift
 let song = Song()
-song.title = « Attrapez-les tous !"
+song.title = "Attrapez-les tous !"
 song.artist = "Pokemon"
 ```
 
 **3/** Vous sauvegarder votre objet.
 
-Rien de plus simple, non ? C'est exactement comme l'orientée objet !
+Rien de plus simple, non ? C'est exactement comme l'orienté objet !
 
 Évidemment pour que tout cela fonctionne, il n'y a pas de lutin magique, mais plusieurs couches de technologies. Et pour que vous maitrisiez Core Data, il vous faut en comprendre les rouages.
 
@@ -66,7 +66,7 @@ Pour faire cela, on utilise un fichier qui a pour extension : `xcdatamodeld` et 
 
 ![](Images/P3/P3C1_2.png)
 
-C'est dans ce fichier qu'on va définir nos objets dans la base de données. Comment s'appellent-ils ? Quelles sont leurs propriétés ? Quelles sont les relations entre eux ? 
+C'est dans ce fichier qu'on va définir nos objets dans la base de données. Comment s'appellent-ils ? Quelles sont leurs propriétés ? Quelles sont les relations entre eux ?
 
 C'est un peu comme si on définissait une classe.
 
@@ -99,9 +99,9 @@ Le `NSPersistentStoreCoordinator` a donc le rôle de gérer la communication ent
 ![](Images/P3/P3C1_4.png)
 
 ##### NSManagedObjectContext
-Enfin, le contexte, géré par la classe `NSManagedObjectContext`, est une sorte de bloc-notes intelligent. Il réclame des objets au `NSPersitentStoreCoordinator` qui les lui fournit. 
+Enfin, le contexte, géré par la classe `NSManagedObjectContext`, est une sorte de bloc-notes intelligent. Il réclame des objets au `NSPersitentStoreCoordinator` qui les lui fournit.
 
-> **:information_source:** Les objets récupérés sont du type `NSManagedObject`. 
+> **:information_source:** Les objets récupérés sont du type `NSManagedObject`.
 
 Une fois récupérés, le contexte va manipuler les objets. Il peut les lire, les modifier, en ajouter de nouveaux, en supprimer. Il peut tout faire.
 
@@ -109,7 +109,7 @@ Ce qu'il faut bien comprendre, c'est que tout cela a lieu seulement dans le cont
 
 C'est un peu comme si vous notiez certains paragraphes d'un livre dans un bloc-notes. Une fois dans le bloc-notes, vous pouvez modifier autant que vous voulez vos paragraphes, ça n'affectera pas le livre. Ensuite, une fois que vous êtes contents de vos modifications, vous allez les intégrer toutes dans le livre avant de l'envoyer à votre éditeur.
 
-Un contexte fonctionne exactement de la même façon. Il récupère quelques objets. Donc **il ne manipule pas toute la base de données d'un coup**, c'est beaucoup plus performant. Ensuite, il modifie/ajoute/supprime des objets. La base de données n'est pas encore affectée. Seulement une fois qu'il en est content, il envoie tout ça au `NSPersitentStoreCoordinator` qui va faire la sauvegarde effective dans la base de données. 
+Un contexte fonctionne exactement de la même façon. Il récupère quelques objets. Donc **il ne manipule pas toute la base de données d'un coup**, c'est beaucoup plus performant. Ensuite, il modifie/ajoute/supprime des objets. La base de données n'est pas encore affectée. Seulement une fois qu'il en est content, il envoie tout ça au `NSPersistentStoreCoordinator` qui va faire la sauvegarde effective dans la base de données.
 
 > **:information_source:** On appelle cette dernière étape la sauvegarde du contexte.
 
@@ -121,7 +121,7 @@ Du coup, **lorsqu'un objet est modifié, sa modification est temporaire tant que
 
 #### NSPersistentContainer
 
-Du coup, pour installer Core Data, si on résumé il faut :
+Du coup, pour installer Core Data, si on résume il faut :
 
 - Créer un fichier `DataModel.xcdatamodeld`.
 - Récupérer la version compilée `DataModel.momd`.
@@ -206,7 +206,7 @@ En plus, dans la suite, je vais vraiment m'appuyer sur ce chapitre, donc assurez
 
 > **:information_source:** Vous pouvez compléter ce chapitre avec la lecture de [cette très bonne documentation d'Apple](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/InitializingtheCoreDataStack.html).
 
-Dans le prochain chapitre, nous allons installer Core Data en suivant les trois étapes dont nous avons parlées ! 
+Dans le prochain chapitre, nous allons installer Core Data en suivant les trois étapes dont nous avons parlées !
 
 ### Installez Core Data
 C'est parti, nous allons installer Core Data. Et comme on l'a vu dans le chapitre précédent, nous allons commencer par ajouter un fichier `xcdatamodeld`.
@@ -263,7 +263,7 @@ Donc si vous rajoutez une propriété dans votre classe AppDelegate :
 ```swift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	// (...)
-	
+
 	var myProperty = ""
 }
 ```
@@ -320,7 +320,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -384,11 +384,11 @@ On fait tout simplement ça lors de l'initialisation de `NSPersistentContainer` 
 
 ```swift
 let container = NSPersistentContainer(name: "Cekikapeye")
-``` 
+```
 
 Et voilà ! Nous avons installé notre container !
 
-> **:information_source:** Je ne détaille pas le contenu de cette propriété calculée, car j'ai déjà bien parlé du rôle de cette classe et c'est largement suffisant pour bien comprendre Core Data. Et au passage, si vous n'aviez jamais rencontré le mot-clé `lazy`, c'est juste un moyen de charger une propriété seulement lorsqu'elle est réclamée pour la première fois. Ça évite d'installer plusieurs fois Core Data. Plus d'infos [ici](https://medium.com/@abhimuralidharan/lazy-var-in-ios-swift-96c75cb8a13a).
+> **:information_source:** Je ne détaille pas le contenu de cette propriété, car j'ai déjà bien parlé du rôle de cette classe et c'est largement suffisant pour bien comprendre Core Data. Et au passage, si vous n'aviez jamais rencontré le mot-clé `lazy`, c'est juste un moyen de charger une propriété seulement lorsqu'elle est réclamée pour la première fois. La fermeture est executée la première fois qu'on utilise la variable, et le résultat est stocké dans cette variable. Notez que ceci n'est *pas* une propriété calculée. Plus d'infos [ici](https://medium.com/@abhimuralidharan/lazy-var-in-ios-swift-96c75cb8a13a).
 
 ##### Refactorisation
 
@@ -420,7 +420,7 @@ Et voilà ! Maintenant j'ai accès à mon `persistentContainer` avec :
 
 ```swift
 AppDelegate.persistentContainer
-``` 
+```
 
 C'est quand même plus pratique !
 
@@ -440,7 +440,7 @@ static var viewContext: NSManagedObjectContext {
 }
 ```
 
-Et voilà ! On pourra utiliser notre contexte partout dans notre code en écrivant simplement `AppDelegate.viewContext` ! 
+Et voilà ! On pourra utiliser notre contexte partout dans notre code en écrivant simplement `AppDelegate.viewContext` !
 
 #### En résumé
 On suit trois étapes pour installer Core Data :
@@ -471,7 +471,7 @@ On va rajouter notre première entité : `Person`. Pour cela, il faut cliquer su
 
 ![](Images/P3/P3C3_2.png)
 
-Une nouvelle entité apparait dans la section *Entities*. 
+Une nouvelle entité apparait dans la section *Entities*.
 
 ![](Images/P3/P3C3_3.png)
 
@@ -498,14 +498,14 @@ Un nouvel attribut apparait :
 ![](Images/P3/P3C3_6.png)
 
 Vous pouvez modifier son nom. Nous allons l'appeler `name`, car il nous permettra de stocker le nom de la personne.
- 
+
 Ensuite, vous pouvez cliquer sur la liste déroulante pour choisir son type :
 
 ![](Images/P3/P3C3_7.png)
 
 Dans la liste, vous avez plusieurs types possibles pour stocker des données, vous en reconnaissez la plupart, je pense. Il y a les types numériques, les chaînes de caractères, les dates, les booléens, les data, etc.
 
-Pour notre propriété `name`, on va bien sûr choisir `String`. 
+Pour notre propriété `name`, on va bien sûr choisir `String`.
 
 ![](Images/P3/P3C3_8.png)
 
@@ -564,7 +564,7 @@ extension Person {
 
 On retrouve notre propriété `name` de type `String?`. Elle est précédée par la mention `@NSManaged` qui permet à Xcode de faire le lien avec l'attribut de votre entité.
 
-Et il y a une deuxième méthode `fetchRequest` qui retourne un objet de type `NSFetchRequest`. `NSFetchRequest` est la classe qui permet au contexte de réclamer des objets à la base de données. Cette méthode vous permet donc d'obtenir une instance de `NSFetchRequest`, dédiée à la récupération d'objets `Person`. 
+Et il y a une deuxième méthode `fetchRequest` qui retourne un objet de type `NSFetchRequest`. `NSFetchRequest` est la classe qui permet au contexte de réclamer des objets à la base de données. Cette méthode vous permet donc d'obtenir une instance de `NSFetchRequest`, dédiée à la récupération d'objets `Person`.
 
 > **:information_source:** C'est assez pratique et on va y revenir dans le dernier chapitre de cette partie qui parle de la récupération de données.
 
@@ -572,7 +572,7 @@ Et il y a une deuxième méthode `fetchRequest` qui retourne un objet de type `N
 
 Pour faire fonctionner cette extension, il nous faut créer notre classe `Person`. Donc je vous laisse faire ça dans le modèle en ajoutant un fichier `Person.swift`.
 
-Pour que `Person` soit un objet au sens de Core Data, il doit hérité de la classe `NSManagedObject` :
+Pour que `Person` soit un objet au sens de Core Data, il doit hériter de la classe `NSManagedObject` :
 
 ```swift
 import CoreData
@@ -587,7 +587,7 @@ Et voilà ! Votre première entité est parfaitement fonctionnelle !
 
 #### S'éviter des ennuis
 
-Enfin, un petit bug d'Xcode peut intervenir si vous ne précisez le module dans lequel évolue l'entité. 
+Enfin, un petit bug d'Xcode peut intervenir si vous ne précisez le module dans lequel évolue l'entité.
 
 En attendant qu'Apple se penche sur la question, vous pouvez empêcher ça très facilement en indiquant *Current Product Module* comme valeur du réglage *Module* dans l'inspecteur de modèle de donnée.
 
@@ -602,7 +602,7 @@ En attendant qu'Apple se penche sur la question, vous pouvez empêcher ça très
 Dans le prochain chapitre, nous allons apprendre à créer et sauvegarder nos objets.
 
 ### Sauvegardez votre premier objet
-Vous savez de quoi j'ai envie ? Je crois que j'ai bien envie de sauvegarder notre tout premier objet avec Core Data ! Et comme le monde est bien fait, c'est précisément ce que nous allons faire dans ce chapitre ! 
+Vous savez de quoi j'ai envie ? Je crois que j'ai bien envie de sauvegarder notre tout premier objet avec Core Data ! Et comme le monde est bien fait, c'est précisément ce que nous allons faire dans ce chapitre !
 
 > **:question:** On t'a connu plus en forme sur les introductions de chapitre...
 
@@ -631,7 +631,7 @@ private func addPerson() {
 ```
 
 > **:information_source:** Je parle de l'appui sur ce bouton :
-> 
+>
 > ![](Images/P3/P3C4_1.png)
 
 Cette méthode fait deux choses :
@@ -661,7 +661,7 @@ Seulement, souvenez-vous que pour manipuler des objets de Core Data, il nous fau
 
 ```swift
 init(context: NSManagedObjectContext)
-``` 
+```
 
 > **:question:** OK, mais on va utiliser quoi comme contexte ?
 
@@ -736,12 +736,12 @@ C'est logique, on sauvegarde les données, mais on ne les récupère pas. Dans c
 
 #### À la découverte d'NSFetchRequest
 
-Pour récupérer des données, on va utiliser une classe dont on a à peine parlé : `NSFetchRequest`. **Cette classe permet de créer une requête**. 
+Pour récupérer des données, on va utiliser une classe dont on a à peine parlé : `NSFetchRequest`. **Cette classe permet de créer une requête**.
 
 Une requête va contenir un certain nombre d'informations :
 
 - Quel type de données je cherche à récupérer ? Des `Person` ? Des `Spending` ? Quelle entité ?
-- Quels objets je veux récupérer ? Tous ? Seulement ceux dont le nom commence par A ? 
+- Quels objets je veux récupérer ? Tous ? Seulement ceux dont le nom commence par A ?
 - Dans quel ordre je veux obtenir les objets ? Par ordre croissant ? Décroissant ? Rangés selon quel attribut ?
 
 Dans ce chapitre, nous allons faire la requête la plus simple : récupérer tous les objets d'une même entité sans plus de précision. Mais dans la prochaine partie, nous allons faire des requêtes plus fines en répondant aux questions citées ci-dessus.
@@ -829,7 +829,7 @@ AppDelegate.viewContext.fetch(request)
 
 Cette méthode retourne un tableau de `Person`. Ce tableau contient tous les objets récupérés dans la base de données.
 
-Cette méthode peut renvoyer une erreur, donc je vais devoir utiliser try? et déballé l'optionnel ainsi créé. Je fais ça avec `guard let` :
+Cette méthode peut renvoyer une erreur, donc je vais devoir utiliser try? et déballer l'optionnel ainsi créé. Je fais ça avec `guard let` :
 
 ```swift
 let request: NSFetchRequest<Person> = Person.fetchRequest()
@@ -838,7 +838,7 @@ guard let persons = try? AppDelegate.viewContext.fetch(request) else {
 }
 ```
 
-Et voilà ! En à peine 4 lignes, on a récupéré nos objets dans la base de données. 
+Et voilà ! En à peine 4 lignes, on a récupéré nos objets dans la base de données.
 
 Maintenant, je peux utiliser mes objets pour afficher la liste des participants dans ma Text View.
 
@@ -872,7 +872,7 @@ class Person: NSManagedObject {
         return persons
     }
 }
-``` 
+```
 
 Maintenant, je peux supprimer ma requête et modifier mon code côté contrôleur pour appeler `Person.all` :
 
@@ -915,13 +915,11 @@ Maintenant, nous allons ajouter une propriété `persons` dans `AddSpendingViewC
 class AddSpendingViewController: UIViewController {
     // (...)
 
-    lazy var persons = Person.all
+    var persons = Person.all
 }
 ```
 
-J'initialise ma propriété `persons` avec ma super propriété calculée `Person.all` qui me renvoie tous les objets dans la base de données. 
-
-> **:information_source:** J'utilise le mot-clé `lazy` pour éviter de charger les données à chaque fois que la propriété est utilisée. Pour plus d'infos sur ce mot-clé, je vous renvoie à nouveau vers [ce tutoriel](https://medium.com/@abhimuralidharan/lazy-var-in-ios-swift-96c75cb8a13a).
+J'initialise ma propriété `persons` avec ma super propriété calculée `Person.all` qui me renvoie tous les objets dans la base de données.
 
 Maintenant, je n'ai plus qu'à remplir mon Picker View avec mon tableau `persons` :
 
