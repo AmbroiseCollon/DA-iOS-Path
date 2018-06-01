@@ -122,33 +122,13 @@ Je sauvegarde mon objet `currency` avec la clé *currency*. J'utiliserais cette 
 
 > **:warning:** Je peux sauvegarder `currency` dans les User Defaults, car il est de type `String`. C'est donc bien une Property List.
 
-#### Synchronisation
-
-Une fois qu'on a fait ça, on n'a pas tout à fait sauvegardé notre donnée dans les User Defaults. En fait, la modification n'est que temporaire. 
-
-Pour des raisons de performance, les User Defaults sont sauvegardés automatiquement à intervalle régulier. Donc la sauvegarde effective aura lieu lors de la prochaine sauvegarde automatique.
-
-> **:question:** Bon bah super ! On n'a rien à faire. Il suffit d'attendre.
-
-En effet, on peut faire ça. Mais parfois, pour éviter des problèmes, notamment lorsqu'on debug, on peut vouloir forcer la sauvegarde. On peut faire cela en utilisant la méthode `synchronize` :
-
-```swift
-UserDefaults.standard.synchronize()
-```
-
-Cette fois-ci, on est certain que les données sont bien sauvegardées dans les User Defaults.
-
-> **:information_source:** La sauvegarde automatique coûte moins cher en performance que l'appel de la méthode `synchronize`. Mais tant que `synchronize` n'est pas appelé 10 fois par secondes, ça impactera très peu vos performances.
-
 Voilà ce que donne le code complet de notre méthode `changeCurrency` :
 
 ```swift
 @IBAction func changeCurrency(_ sender: UIButton) {
     guard let currency = sender.titleLabel?.text else { return }
     currencyLabel.text = currency
-
     UserDefaults.standard.set(currency, forKey: "currency")
-    UserDefaults.standard.synchronize()
 }
 ``` 
 
@@ -231,7 +211,6 @@ Et voilà ! Vous pouvez tester ! Désormais, la monnaie choisie par l'utilisateu
 
 #### En résumé
 - On utilise la plupart du temps l'instance `standard` de la classe `UserDefaults`.
-- La sauvegarde des User Defaults a lieu automatiquement à intervalle régulier, mais on peut la forcer avec la méthode `synchronize`. 
 - Il existe plusieurs variantes de `object(forKey:)` qui permettent d'éviter le contrôle de type.
 
 Dans le prochain chapitre, nous allons refactoriser notre code parce que, je ne sais pas pour vous, mais moi il y a un ou deux trucs qui me brûlent les yeux !
@@ -277,7 +256,6 @@ static var currency: String {
     }
     set {
         UserDefaults.standard.set(newValue, forKey: "currency")
-        UserDefaults.standard.synchronize()
     }
 }
 ```
@@ -300,7 +278,6 @@ class SettingService {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.currency)
-            UserDefaults.standard.synchronize()
         }
     }
 }

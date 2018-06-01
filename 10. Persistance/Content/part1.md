@@ -68,11 +68,11 @@ Dans les applications que vous avez déjà développées, vous vous êtes sans d
 
 La raison, c'est que lorsque l'application est supprimée, le processeur est libéré de toute activité liée à cette application et donc toutes les données en mémoire sont supprimées.
 
-> **:information_source:** Ici, il faut faire la différence entre la mémoire du processeur qui retient les données temporairement (mémoire vive) et le stockage sur le long terme (disque dur). Ici je parlais bien sûr de la mémoire vive.
+> **:information_source:** Ici, il faut faire la différence entre la mémoire du processeur qui retient les données temporairement (mémoire vive) et le stockage sur le long terme (disque). Ici je parlais bien sûr de la mémoire vive.
 
 **La persistance désigne l'ensemble des techniques qui permettent de stocker des données sur votre iPhone.** Grâce à la persistance, les données peuvent rester stockées tant que l'application est installée sur le téléphone.
 
-> **:information_source:** Techniquement, **la persistance permet d'enregistrer les informations sur le disque dur de votre iPhone** et non dans la mémoire du processeur.
+> **:information_source:** Techniquement, **la persistance permet d'enregistrer les informations sur le disque de votre iPhone** et non dans la mémoire du processeur.
 
 #### Vue d'ensemble de la persistance
 
@@ -128,9 +128,9 @@ La première et la plus basique est l'utilisation d'SQLite. **SQLite est une bas
 
 > **:question:** Le langage C ? Mais je fais du Swift moi !
 
-Oui, je C... ça ne fait pas rêver :D ! Et c'est la raison pour laquelle il existe des alternatives.
+Oui, je C... ça ne fait pas rêver :D ! Malgré tout, on peut intéragir via [des API en Swift](https://github.com/stephencelis/SQLite.swift), mais ça reste proche du SQL et pas forcément très pratique pour une grosse base de données. 
 
-La plus répandue se nomme Core Data. **C'est une base de donnée SQL avec une API orientée objet**.
+C'est la raison pour laquelle il existe des alternatives. La plus répandue se nomme Core Data. **C'est une base de donnée SQL avec une API orientée objet**.
 
 En français, cela signifie que vous avez une base de donnée SQL standard (souvent SQLite) que vous ne manipulez pas directement. À la place, vous manipulez directement des objets Swift. Vous travaillez donc en orienté objet et toute la complexité SQL est géré à votre place par le framework.
 

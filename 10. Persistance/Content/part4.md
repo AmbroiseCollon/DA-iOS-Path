@@ -619,7 +619,7 @@ Si vous voulez aller plus loin, les possibilités sont nombreuses ! Je vous invi
 
 > **:information_source:** Vous avez dans la première partie de ce cours, des liens vers de nombreux tutoriels qui vous permettront de démarrer.
 
-Vous pouvez aussi plus loin Core Data et notre application Cekikapeye. Pourquoi ne pas rajouter un filtre à notre liste de dépenses pour vous entraîner avec les predicate ? Ou ajouter une fonctionnalité d'annulation pour tester l'`UndoManager` ?
+Vous pouvez aussi pousser plus loin Core Data et notre application Cekikapeye. Pourquoi ne pas rajouter un filtre à notre liste de dépenses pour vous entraîner avec les predicate ? Ou ajouter une fonctionnalité d'annulation pour tester l'`UndoManager` ?
 
 Bref, amusez-vous !
 

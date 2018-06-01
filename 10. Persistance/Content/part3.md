@@ -32,7 +32,7 @@ Concrètement, voici comment Core Data fonctionne :
 
 ```swift
 let song = Song()
-song.title = « Attrapez-les tous !"
+song.title = "Attrapez-les tous !"
 song.artist = "Pokemon"
 ```
 
@@ -99,7 +99,7 @@ Le `NSPersistentStoreCoordinator` a donc le rôle de gérer la communication ent
 ![](Images/P3/P3C1_4.png)
 
 ##### NSManagedObjectContext
-Enfin, le contexte, géré par la classe `NSManagedObjectContext`, est une sorte de bloc-notes intelligent. Il réclame des objets au `NSPersitentStoreCoordinator` qui les lui fournit. 
+Enfin, le contexte, géré par la classe `NSManagedObjectContext`, est une sorte de bloc-notes intelligent. Il réclame des objets au `NSPersistentStoreCoordinator` qui les lui fournit. 
 
 > **:information_source:** Les objets récupérés sont du type `NSManagedObject`. 
 
@@ -109,7 +109,7 @@ Ce qu'il faut bien comprendre, c'est que tout cela a lieu seulement dans le cont
 
 C'est un peu comme si vous notiez certains paragraphes d'un livre dans un bloc-notes. Une fois dans le bloc-notes, vous pouvez modifier autant que vous voulez vos paragraphes, ça n'affectera pas le livre. Ensuite, une fois que vous êtes contents de vos modifications, vous allez les intégrer toutes dans le livre avant de l'envoyer à votre éditeur.
 
-Un contexte fonctionne exactement de la même façon. Il récupère quelques objets. Donc **il ne manipule pas toute la base de données d'un coup**, c'est beaucoup plus performant. Ensuite, il modifie/ajoute/supprime des objets. La base de données n'est pas encore affectée. Seulement une fois qu'il en est content, il envoie tout ça au `NSPersitentStoreCoordinator` qui va faire la sauvegarde effective dans la base de données. 
+Un contexte fonctionne exactement de la même façon. Il récupère quelques objets. Donc **il ne manipule pas toute la base de données d'un coup**, c'est beaucoup plus performant. Ensuite, il modifie/ajoute/supprime des objets. La base de données n'est pas encore affectée. Seulement une fois qu'il en est content, il envoie tout ça au `NSPersistentStoreCoordinator` qui va faire la sauvegarde effective dans la base de données. 
 
 > **:information_source:** On appelle cette dernière étape la sauvegarde du contexte.
 
@@ -121,7 +121,7 @@ Du coup, **lorsqu'un objet est modifié, sa modification est temporaire tant que
 
 #### NSPersistentContainer
 
-Du coup, pour installer Core Data, si on résumé il faut :
+Du coup, pour installer Core Data, si on résume, il faut :
 
 - Créer un fichier `DataModel.xcdatamodeld`.
 - Récupérer la version compilée `DataModel.momd`.
@@ -388,7 +388,7 @@ let container = NSPersistentContainer(name: "Cekikapeye")
 
 Et voilà ! Nous avons installé notre container !
 
-> **:information_source:** Je ne détaille pas le contenu de cette propriété calculée, car j'ai déjà bien parlé du rôle de cette classe et c'est largement suffisant pour bien comprendre Core Data. Et au passage, si vous n'aviez jamais rencontré le mot-clé `lazy`, c'est juste un moyen de charger une propriété seulement lorsqu'elle est réclamée pour la première fois. Ça évite d'installer plusieurs fois Core Data. Plus d'infos [ici](https://medium.com/@abhimuralidharan/lazy-var-in-ios-swift-96c75cb8a13a).
+> **:information_source:** Je ne détaille pas le contenu de cette propriété calculée, car j'ai déjà bien parlé du rôle de cette classe et c'est largement suffisant pour bien comprendre Core Data. Et au passage, si vous n'aviez jamais rencontré le mot-clé `lazy`, c'est juste un moyen de charger une propriété seulement lorsqu'elle est réclamée pour la première fois. Ça évite d'installer plusieurs fois Core Data. Notez que ceci n'est *pas* une propriété calculée. Plus d'infos [ici](https://medium.com/@abhimuralidharan/lazy-var-in-ios-swift-96c75cb8a13a).
 
 ##### Refactorisation
 
@@ -572,7 +572,7 @@ Et il y a une deuxième méthode `fetchRequest` qui retourne un objet de type `N
 
 Pour faire fonctionner cette extension, il nous faut créer notre classe `Person`. Donc je vous laisse faire ça dans le modèle en ajoutant un fichier `Person.swift`.
 
-Pour que `Person` soit un objet au sens de Core Data, il doit hérité de la classe `NSManagedObject` :
+Pour que `Person` soit un objet au sens de Core Data, il doit hériter de la classe `NSManagedObject` :
 
 ```swift
 import CoreData
@@ -829,7 +829,7 @@ AppDelegate.viewContext.fetch(request)
 
 Cette méthode retourne un tableau de `Person`. Ce tableau contient tous les objets récupérés dans la base de données.
 
-Cette méthode peut renvoyer une erreur, donc je vais devoir utiliser try? et déballé l'optionnel ainsi créé. Je fais ça avec `guard let` :
+Cette méthode peut renvoyer une erreur, donc je vais devoir utiliser try? et déballer l'optionnel ainsi créé. Je fais ça avec `guard let` :
 
 ```swift
 let request: NSFetchRequest<Person> = Person.fetchRequest()
@@ -915,13 +915,11 @@ Maintenant, nous allons ajouter une propriété `persons` dans `AddSpendingViewC
 class AddSpendingViewController: UIViewController {
     // (...)
 
-    lazy var persons = Person.all
+    var persons = Person.all
 }
 ```
 
 J'initialise ma propriété `persons` avec ma super propriété calculée `Person.all` qui me renvoie tous les objets dans la base de données. 
-
-> **:information_source:** J'utilise le mot-clé `lazy` pour éviter de charger les données à chaque fois que la propriété est utilisée. Pour plus d'infos sur ce mot-clé, je vous renvoie à nouveau vers [ce tutoriel](https://medium.com/@abhimuralidharan/lazy-var-in-ios-swift-96c75cb8a13a).
 
 Maintenant, je n'ai plus qu'à remplir mon Picker View avec mon tableau `persons` :
 
