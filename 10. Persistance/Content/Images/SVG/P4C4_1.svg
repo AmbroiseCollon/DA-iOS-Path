@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="373px" viewBox="0 0 800 373" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>P4C4_1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="P4C4_1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M413,208 L413,200 L449,217 L413,234 L413,227 L352,227 L352,208 L413,208 Z" id="Combined-Shape" fill="#325983"></path>
+        <g id="Group-4" transform="translate(37.000000, 12.000000)">
+            <path d="M1.5,12.5 L45.5,12.5" id="Line" stroke="#BF4E6C" stroke-width="3" stroke-linecap="square"></path>
+            <rect id="Rectangle" fill="#F2676B" x="0" y="35" width="47" height="11"></rect>
+            <text id="Modèle-de-données" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" fill="#BF4E6C">
+                <tspan x="64" y="19">Modèle de données</tspan>
+            </text>
+            <text id="Base-de-données" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" fill="#F2676B">
+                <tspan x="64" y="47">Base de données</tspan>
+            </text>
+        </g>
+        <g id="Group-3" transform="translate(35.000000, 83.000000)">
+            <g id="Group" transform="translate(33.000000, 0.000000)">
+                <rect id="Rectangle-4" stroke="#979797" fill="#F5CC6F" x="0.5" y="0.5" width="216" height="216" rx="21"></rect>
+                <circle id="Oval" stroke="#BF4E6C" stroke-width="3" fill="#F2676B" cx="43" cy="47" r="22"></circle>
+                <circle id="Oval" stroke="#BF4E6C" stroke-width="3" fill="#F2676B" cx="167" cy="171" r="17"></circle>
+                <circle id="Oval" stroke="#BF4E6C" stroke-width="3" fill="#F2676B" cx="56.5" cy="159.5" r="41.5"></circle>
+                <rect id="Rectangle-5" stroke="#BF4E6C" stroke-width="3" fill="#F2676B" x="142.5" y="21.5" width="48" height="46"></rect>
+            </g>
+            <text id="V1.0-Le-modèle-et-la" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" fill="#FFFFFF">
+                <tspan x="121.102539" y="248">V1.0</tspan>
+                <tspan x="0.118164062" y="272" font-family="SFUIDisplay-Light, SF UI Display" font-size="14" font-weight="300">Le modèle et la base de donnée correspondent.</tspan>
+            </text>
+        </g>
+        <g id="Group-2" transform="translate(439.000000, 83.000000)">
+            <g id="Group" transform="translate(56.000000, 0.000000)">
+                <rect id="Rectangle-4" stroke="#979797" fill="#F5CC6F" x="0.5" y="0.5" width="216" height="216" rx="21"></rect>
+                <circle id="Oval" stroke="#BF4E6C" stroke-width="3" fill="#F2676B" cx="43" cy="47" r="22"></circle>
+                <circle id="Oval" fill="#F2676B" cx="167" cy="171" r="17"></circle>
+                <circle id="Oval" stroke="#BF4E6C" stroke-width="3" fill="#F2676B" cx="56.5" cy="159.5" r="41.5"></circle>
+                <rect id="Rectangle-6" stroke="#BF4E6C" stroke-width="3" x="115.5" y="101.5" width="29" height="32"></rect>
+                <rect id="Rectangle-5" fill="#F2676B" x="141" y="20" width="51" height="49"></rect>
+                <polygon id="Triangle-2" stroke="#BF4E6C" stroke-width="3" points="166 19 193 68 139 68"></polygon>
+            </g>
+            <text id="V1.1-Le-modèle-et-la" font-family="SFUIDisplay-Medium, SF UI Display" font-size="20" font-weight="400" fill="#FFFFFF">
+                <tspan x="145.762695" y="248">V1.1</tspan>
+                <tspan x="0.323730469" y="272" font-family="SFUIDisplay-Light, SF UI Display" font-size="14" font-weight="300">Le modèle et la base de donnée ne correspondent plus.</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
